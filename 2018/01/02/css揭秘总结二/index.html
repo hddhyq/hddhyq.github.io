@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="CSS," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="主要总结了下CSS３的形状，视觉效果。">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css揭秘总结(二)">
+<meta property="og:url" content="https://hddhyq.github.io/2018/01/02/css揭秘总结二/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="主要总结了下CSS３的形状，视觉效果。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/半椭圆.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/四分之一椭圆.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/纵轴半椭圆.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/切角.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/box_shadow.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/transparentPic1.png">
+<meta property="og:updated_time" content="2018-07-08T04:25:55.514Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="css揭秘总结(二)">
+<meta name="twitter:description" content="主要总结了下CSS３的形状，视觉效果。">
+<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com//csssercets/半椭圆.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2018/01/02/css揭秘总结二/"/>
+
+
+
+
+
+  <title>css揭秘总结(二) | hddhyq's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/01/02/css揭秘总结二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">css揭秘总结(二)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T20:49:13+08:00">
+                2018-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>主要总结了下CSS３的形状，视觉效果。<br><a id="more"></a></p>
+<h1 id="形状"><a href="#形状" class="headerlink" title="形状"></a>形状</h1><h2 id="9-自适应的椭圆"><a href="#9-自适应的椭圆" class="headerlink" title="9. 自适应的椭圆"></a>9. 自适应的椭圆</h2><blockquote>
+<p>背景知识：<code>border-radius</code>属性的基本用法</p>
+</blockquote>
+<h3 id="难题"><a href="#难题" class="headerlink" title="难题"></a>难题</h3><p>一个圆很容易生成，设置一个足够大的<code>border-radius</code>就可以了,如果我们希望一个自适应的椭圆呢，根据内容自动调整并适应。如果它的宽高相等，就显示为一个圆；如果宽高不等，就显示为一个椭圆。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>border-radius，可以单独指定水平和垂直半径，只要用一个斜杠分开。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">border-radius</span>: 50% 50%;</div><div class="line"><span class="comment">/* 简写 */</span></div><div class="line"><span class="selector-tag">border-radius</span>: 50%;</div></pre></td></tr></table></figure></p>
+<h3 id="其他椭圆"><a href="#其他椭圆" class="headerlink" title="其他椭圆"></a>其他椭圆</h3><p>我们可以为所有四个角提供完全不同的水平和垂直半径，方法是在斜杠前指定 1~4 个值，在斜杠后指定另外 1~4 个值。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 半椭圆 */</span></div><div class="line">border-radius: 50% / 100% 100% 0 0;</div><div class="line"><span class="comment">/* 沿纵轴劈开的半椭圆 */</span></div><div class="line">border-radius: 100% 0 0 100% / 50%;</div><div class="line"><span class="comment">/* 四分之一椭圆 */</span></div><div class="line"><span class="selector-tag">border-radius</span>: 100% 0 0 0;</div></pre></td></tr></table></figure></p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/半椭圆.png" alt=""> <img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/四分之一椭圆.png" alt=""> <img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/纵轴半椭圆.png" alt=""></p>
+<h2 id="10-平行四边形"><a href="#10-平行四边形" class="headerlink" title="10. 平行四边形"></a>10. 平行四边形</h2><blockquote>
+<p>背景知识：基本的CSS 变形</p>
+</blockquote>
+<h3 id="难题-1"><a href="#难题-1" class="headerlink" title="难题"></a>难题</h3><p>平行四边形可以通过<code>skew()</code>的变形属性来对这个矩形进行斜向拉伸，这导致它的内容也发生了斜向变形，这很不好看，而且难读，有没有办法只让容器的形状倾斜，而保持其内容不变呢？</p>
+<h3 id="嵌套元素方案"><a href="#嵌套元素方案" class="headerlink" title="嵌套元素方案"></a>嵌套元素方案</h3><p>我们可以对内容再应用一次反向的 <code>skew()</code> 变形，从而抵消容器的变形效果, 缺点：需要添加一层层额外的 HTML 元素来包裹内容。</p>
+<h3 id="伪元素方案"><a href="#伪元素方案" class="headerlink" title="伪元素方案"></a>伪元素方案</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.button</span> &#123;</div><div class="line"> <span class="attribute">position</span>: relative;</div><div class="line"> <span class="comment">/* 其他的文字颜色、内边距等样式…… */</span></div><div class="line">&#125;</div><div class="line"><span class="selector-class">.button</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="string">''</span>; <span class="comment">/* 用伪元素来生成一个矩形 */</span></div><div class="line"> <span class="attribute">position</span>: absolute;</div><div class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line"> <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line"> <span class="attribute">background</span>: <span class="number">#58a</span>;</div><div class="line"> <span class="attribute">transform</span>: <span class="built_in">skew</span>(45deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>适用于其他任何变形样式，当我们想变形一个元素而不想变形它的内容时就可以用到它</p>
+<h2 id="11-菱形图片"><a href="#11-菱形图片" class="headerlink" title="11. 菱形图片"></a>11. 菱形图片</h2><blockquote>
+<p>背景知识: CSS 变形，“平行四边形”</p>
+</blockquote>
+<h3 id="难题-2"><a href="#难题-2" class="headerlink" title="难题"></a>难题</h3><p>在视觉设计中，把图片裁切为菱形是一种常见的设计手法，但在 <code>CSS</code>中还没有一种简单直观的方法来实现它。事实上，直到最近，这种效果才基本成为可能。当网页设计师想要实现这种设计风格时，他们通常不希望在图像处理软件中预先把图片裁好。显然不用说你也知道，这个方法的可维护性并不好。如果未来有人想修改图片风格，将很难增加其他效果，而且最终往往会搞得一团糟。</p>
+<h3 id="基于变形的方案"><a href="#基于变形的方案" class="headerlink" title="基于变形的方案"></a>基于变形的方案</h3><p>主要的思路与前一篇攻略“平行四边形”中讨论的第一个解决方案一致：需要把图片用一个 <div> 包裹起来，然后对其应用相反的 <code>rotate()</code>变形样式，这个方法不是推荐的方法。</div></p>
+<h3 id="裁切路径方案"><a href="#裁切路径方案" class="headerlink" title="裁切路径方案"></a>裁切路径方案</h3><p>它的主要思路是使用 <code>clip-path</code> 属性。这个特性也是从 <code>SVG</code> 那里借鉴而来，已经可以应用在 <code>HTML</code> 元素上了（至少对于支持的浏览器来说是这样的）。</p>
+<p>我们将会使用 polygon()（多边形）函数来指定一个菱形。实际上，它允许我们用一系列（以逗号分隔的）坐标点来指定任意的多边形。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">img</span> &#123;</div><div class="line"> <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(50% 0, 100% 50%,</div><div class="line"> 50% 100%, 0 50%);</div><div class="line"> <span class="attribute">transition</span>: <span class="number">1s</span> clip-path;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line"> <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(0 0, 100% 0,</div><div class="line"> 100% 100%, 0 100%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="12-切角效果"><a href="#12-切角效果" class="headerlink" title="12. 切角效果"></a>12. 切角效果</h2><blockquote>
+<p>背景知识: CSS 渐变，background-size，“条纹背景”</p>
+</blockquote>
+<h3 id="难题-3"><a href="#难题-3" class="headerlink" title="难题"></a>难题</h3><p>最常见的形态是把元素的一个或多个角切成 45°的缺口（也称作斜面切角）。</p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/切角.png" alt=""></p>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>第一种方案来自于无所不能的 CSS 渐变。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>;</div><div class="line"><span class="selector-tag">background</span>:</div><div class="line"> <span class="selector-tag">linear-gradient</span>(135<span class="selector-tag">deg</span>, <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0)</div><div class="line"> <span class="selector-tag">top</span> <span class="selector-tag">left</span>,</div><div class="line"> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">-135deg</span>, <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0)</div><div class="line"> <span class="selector-tag">top</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">-45deg</span>, <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0)</div><div class="line"> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">linear-gradient</span>(45<span class="selector-tag">deg</span>, <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0)</div><div class="line"> <span class="selector-tag">bottom</span> <span class="selector-tag">left</span>;</div><div class="line"><span class="selector-tag">background-size</span>: 50% 50%; </div><div class="line"><span class="comment">/* 如果不设置的话，背景会相互覆盖 */</span></div><div class="line"><span class="selector-tag">background-repeat</span>: <span class="selector-tag">no-repeat</span>;</div><div class="line"><span class="comment">/* 如果不设置，每层渐变图案各自平铺了两次 */</span></div></pre></td></tr></table></figure></p>
+<p>现在我们会得到，切了四个角的div。不过可维护性并不高。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> beveled-corners(<span class="variable">$bg</span>,</div><div class="line"> <span class="variable">$tl</span>:<span class="number">0</span>, <span class="variable">$tr</span>:<span class="variable">$tl</span>, <span class="variable">$br</span>:<span class="variable">$tl</span>, <span class="variable">$bl</span>:<span class="variable">$tr</span>) &#123;</div><div class="line"> <span class="attribute">background</span>: <span class="variable">$bg</span>;</div><div class="line"> <span class="attribute">background</span>:</div><div class="line"> linear-gradient(<span class="number">135deg</span>, transparent <span class="variable">$tl</span>, <span class="variable">$bg</span> <span class="number">0</span>)</div><div class="line"> top left,</div><div class="line"> linear-gradient(<span class="number">225deg</span>, transparent <span class="variable">$tr</span>, <span class="variable">$bg</span> <span class="number">0</span>)</div><div class="line"> top right,</div><div class="line"> linear-gradient(-<span class="number">45deg</span>, transparent <span class="variable">$br</span>, <span class="variable">$bg</span> <span class="number">0</span>)</div><div class="line"> bottom right,</div><div class="line"> linear-gradient(<span class="number">45deg</span>, transparent <span class="variable">$bl</span>, <span class="variable">$bg</span> <span class="number">0</span>)</div><div class="line"> bottom left;</div><div class="line"> <span class="attribute">background-size</span>: <span class="number">50%</span> <span class="number">50%</span>;</div><div class="line"> <span class="attribute">background-repeat</span>: no-repeat;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 调用 传入 2~5 个参数：</span></div><div class="line">@<span class="keyword">include</span> beveled-corners(<span class="number">#58a</span>, 15px, 5px);</div></pre></td></tr></table></figure>
+<h3 id="弧形切角"><a href="#弧形切角" class="headerlink" title="弧形切角"></a>弧形切角</h3><p>很多人也把这种效果称为“内凹圆角”，因为它看起来就像是圆角的反向版本。用径向渐变来替代上述线性渐变：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>;</div><div class="line"><span class="selector-tag">background</span>:</div><div class="line"> <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span> <span class="selector-tag">at</span> <span class="selector-tag">top</span> <span class="selector-tag">left</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0) <span class="selector-tag">top</span> <span class="selector-tag">left</span>,</div><div class="line"> <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span> <span class="selector-tag">at</span> <span class="selector-tag">top</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0) <span class="selector-tag">top</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span> <span class="selector-tag">at</span> <span class="selector-tag">bottom</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0) <span class="selector-tag">bottom</span> <span class="selector-tag">right</span>,</div><div class="line"> <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span> <span class="selector-tag">at</span> <span class="selector-tag">bottom</span> <span class="selector-tag">left</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 15<span class="selector-tag">px</span>, <span class="selector-id">#58a</span> 0) <span class="selector-tag">bottom</span> <span class="selector-tag">left</span>;</div><div class="line"><span class="selector-tag">background-size</span>: 50% 50%;</div><div class="line"><span class="selector-tag">background-repeat</span>: <span class="selector-tag">no-repeat</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="内联-SVG-与-border-image-方案"><a href="#内联-SVG-与-border-image-方案" class="headerlink" title="内联 SVG 与 border-image 方案"></a>内联 SVG 与 border-image 方案</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">border</span>: 20<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-tag">transparent</span>;</div><div class="line">border-image: 1 url('data:image/svg+xml,\</div><div class="line"> &lt;svg xmlns="http://www.w3.org/2000/svg"\</div><div class="line"> width="3" height="3" fill="%2358a"&gt;\</div><div class="line"> &lt;polygon points="0,1 1,0 2,0 3,1 3,2 2,3 1,3 0,2"/&gt;\</div><div class="line"> &lt;/svg&gt;');</div><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>;</div><div class="line"><span class="selector-tag">background-clip</span>: <span class="selector-tag">padding-box</span>;</div></pre></td></tr></table></figure>
+<h3 id="裁切路径方案-1"><a href="#裁切路径方案-1" class="headerlink" title="裁切路径方案"></a>裁切路径方案</h3><p>利用<code>clip-path</code>属性。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>;</div><div class="line"><span class="selector-tag">clip-path</span>: <span class="selector-tag">polygon</span>(</div><div class="line"> 20<span class="selector-tag">px</span> 0, <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 20<span class="selector-tag">px</span>) 0, 100% 20<span class="selector-tag">px</span>,</div><div class="line"> 100% <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 20<span class="selector-tag">px</span>), <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 20<span class="selector-tag">px</span>) 100%,</div><div class="line"> 20<span class="selector-tag">px</span> 100%, 0 <span class="selector-tag">calc</span>(100% <span class="selector-tag">-</span> 20<span class="selector-tag">px</span>), 0 20<span class="selector-tag">px</span></div><div class="line">);</div></pre></td></tr></table></figure></p>
+<h3 id="补充多边形裁剪"><a href="#补充多边形裁剪" class="headerlink" title="补充多边形裁剪"></a>补充多边形裁剪</h3><p><a href="https://www.w3cplus.com/preprocessor/creat-css-polygon-wiht-border-and-clip-path-property.html" target="_blank" rel="noopener">https://www.w3cplus.com/preprocessor/creat-css-polygon-wiht-border-and-clip-path-property.html</a></p>
+<h2 id="13-梯形标签页"><a href="#13-梯形标签页" class="headerlink" title="13. 梯形标签页"></a>13. 梯形标签页</h2><blockquote>
+<p>背景知识: 基本的 3D 变形，“平行四边形”</p>
+</blockquote>
+<h3 id="难题-4"><a href="#难题-4" class="headerlink" title="难题"></a>难题</h3><p>一直以来，梯形都是众所周知难以用 CSS 生成的形状，尽管它也十分常用，尤其是对于标签页来说。</p>
+<h3 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h3><p>利用 CSS 中用 3D 旋转来模拟出这个效果<code>transform: perspective(.5em) rotateX(5deg);</code>。</p>
+<p>对元素使用了 3D变形之后，其内部的变形效应是“不可逆转”的, 这里我们像上一节利用伪类就好了。而给元素应用变形效果会让这个元素以它自身的中心线为轴进行空间上的旋转。所以我们需要设置<code>transform-origin</code>属性。<code>transform-origin:bottom;</code>，当它在 3D 空间中旋转时，可以把它的底边固定住。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">nav</span> &gt; <span class="selector-tag">a</span> &#123;</div><div class="line"> <span class="attribute">position</span>: relative;</div><div class="line"> <span class="attribute">display</span>: inline-block;</div><div class="line"> <span class="attribute">padding</span>: .<span class="number">3em</span> <span class="number">1em</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">nav</span> &gt; <span class="selector-tag">a</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line"> <span class="attribute">position</span>: absolute;</div><div class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line"> <span class="attribute">z-index</span>: -<span class="number">1</span>;</div><div class="line"> <span class="attribute">background</span>: <span class="number">#ccc</span>;</div><div class="line"> <span class="attribute">background-image</span>: <span class="built_in">linear-gradient</span>(</div><div class="line"> hsla(0,0%,100%,.6),</div><div class="line"> <span class="built_in">hsla</span>(0,0%,100%,0));</div><div class="line"> <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="built_in">rgba</span>(0,0,0,.4);</div><div class="line"> <span class="attribute">border-bottom</span>: none;</div><div class="line"> <span class="attribute">border-radius</span>: .<span class="number">5em</span> .<span class="number">5em</span> <span class="number">0</span> <span class="number">0</span>;</div><div class="line"> <span class="attribute">box-shadow</span>: <span class="number">0</span> .<span class="number">15em</span> white inset;</div><div class="line"> <span class="attribute">transform</span>: <span class="built_in">perspective</span>(.5em) <span class="built_in">rotateX</span>(5deg);</div><div class="line"> <span class="attribute">transform-origin</span>: bottom;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="14-简单的饼图"><a href="#14-简单的饼图" class="headerlink" title="14. 简单的饼图"></a>14. 简单的饼图</h2><blockquote>
+<p>背景知识: CSS 渐变，基本的 SVG，CSS 动画，“条纹背景”，“自适应的椭圆”</p>
+</blockquote>
+<h3 id="难题-5"><a href="#难题-5" class="headerlink" title="难题"></a>难题</h3><p>饼图在网页中的运用极为普遍，比如简单的统计图表、进度指示器、定时器等。</p>
+<h3 id="基于-transform-的解决方案"><a href="#基于-transform-的解决方案" class="headerlink" title="基于 transform 的解决方案"></a>基于 transform 的解决方案</h3><p>简单来说就是三个遮罩层的互相重叠，这里直接放代码。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.pie</span> &#123;</div><div class="line"> <span class="attribute">position</span>: relative;</div><div class="line"> <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line"> <span class="attribute">line-height</span>: <span class="number">100px</span>;</div><div class="line"> <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line"> <span class="attribute">background</span>: yellowgreen;</div><div class="line"> <span class="attribute">background-image</span>:</div><div class="line"> <span class="built_in">linear-gradient</span>(to right, transparent 50%, #655 0);</div><div class="line"> <span class="attribute">color</span>: transparent;</div><div class="line"> <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">keyframes</span> spin &#123;</div><div class="line"> <span class="selector-tag">to</span> &#123; <span class="attribute">transform</span>: <span class="built_in">rotate</span>(.5turn); &#125;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">keyframes</span> bg &#123;</div><div class="line"> 50% &#123; <span class="attribute">background</span>: <span class="number">#655</span>; &#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.pie</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line"> <span class="attribute">position</span>: absolute;</div><div class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">50%</span>;</div><div class="line"> <span class="attribute">width</span>: <span class="number">50%</span>; <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line"> <span class="attribute">border-radius</span>: <span class="number">0</span> <span class="number">100%</span> <span class="number">100%</span> <span class="number">0</span> / <span class="number">50%</span>;</div><div class="line"> <span class="attribute">background-color</span>: inherit;</div><div class="line"> <span class="attribute">transform-origin</span>: left;</div><div class="line"> <span class="attribute">animation</span>: spin <span class="number">50s</span> linear infinite,</div><div class="line"> bg <span class="number">100s</span> step-end infinite;</div><div class="line"> <span class="attribute">animation-play-state</span>: paused;</div><div class="line"> <span class="attribute">animation-delay</span>: inherit;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="SVG-解决方案"><a href="#SVG-解决方案" class="headerlink" title="SVG 解决方案"></a>SVG 解决方案</h3><p>一个圆形：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"100"</span> <span class="attr">height</span>=<span class="string">"100"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">circle</span> <span class="attr">r</span>=<span class="string">"30"</span> <span class="attr">cx</span>=<span class="string">"50"</span> <span class="attr">cy</span>=<span class="string">"50"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>基本样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">circle</span> &#123;</div><div class="line"> <span class="attribute">fill</span>: yellowgreen;</div><div class="line"> <span class="attribute">stroke</span>: <span class="number">#655</span>; </div><div class="line"> <span class="comment">/* stroke: 描边颜色 */</span></div><div class="line"> <span class="attribute">stroke-width</span>: <span class="number">30</span>;</div><div class="line"> <span class="comment">/* stroke-width：描边宽度 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里我们还需要了解一个属性<code>stroke-dasharray</code>，它是为虚线描边而准备的。<code>stroke-dasharray</code>，第一个参数是线段长度，第二个是间隙长度。当我们把这个虚线描边的线段长度指定为 0，并且把虚线间隙的长度设置为等于或大于整个圆周的长度时，答案就会浮出水面了。（这里做个简单的计算，圆形的周长 C = 2πr，因此在这里C= 2π × 30 ≈ 189。）</p>
+<p>这里直接放出优化版本。</p>
+<p>我们可以给这个圆形指定一个特定的半径，从而让它的周长无限接近 100，这样就可以直接把比率的百分比值指定为 <code>strokedasharray</code>的长度，不需要做任何计算了。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">viewBox</span>=<span class="string">"0 0 32 32"</span>&gt;</span></div><div class="line"> <span class="tag">&lt;<span class="name">circle</span> <span class="attr">r</span>=<span class="string">"16"</span> <span class="attr">cx</span>=<span class="string">"16"</span> <span class="attr">cy</span>=<span class="string">"16"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">svg</span> &#123;</div><div class="line"> <span class="attribute">width</span>: <span class="number">100px</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line"> <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-90deg);</div><div class="line"> <span class="attribute">background</span>: yellowgreen;</div><div class="line"> <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">circle</span> &#123;</div><div class="line"> <span class="attribute">fill</span>: yellowgreen;</div><div class="line"> <span class="attribute">stroke</span>: <span class="number">#655</span>;</div><div class="line"> <span class="attribute">stroke-width</span>: <span class="number">32</span>;</div><div class="line"> <span class="attribute">stroke-dasharray</span>: <span class="number">38</span> <span class="number">100</span>; <span class="comment">/* 可得到比率为38%的扇区 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="视觉效果"><a href="#视觉效果" class="headerlink" title="视觉效果"></a>视觉效果</h1><h2 id="15-单侧投影"><a href="#15-单侧投影" class="headerlink" title="15. 单侧投影"></a>15. 单侧投影</h2><h3 id="难题-6"><a href="#难题-6" class="headerlink" title="难题"></a>难题</h3><p>如何只在元素的一侧（偶尔是两侧）设置投影。</p>
+<h3 id="单侧投影"><a href="#单侧投影" class="headerlink" title="单侧投影"></a>单侧投影</h3><p><img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/box_shadow.png" alt=""></p>
+<p>上图演示了投影生成的过程。</p>
+<p>最终的解决方案来自 <code>box-shadow</code> 鲜为人知的第四个长度参数, 这是我们需要了解的。这个参数会根据你指定的值去扩大或（当指定负值时）缩小投影的尺寸。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">box-shadow</span>: 0 5<span class="selector-tag">px</span> 4<span class="selector-tag">px</span> <span class="selector-tag">-4px</span> <span class="selector-tag">black</span>;</div></pre></td></tr></table></figure>
+<h3 id="邻边投影"><a href="#邻边投影" class="headerlink" title="邻边投影"></a>邻边投影</h3><p>一层藏起来，另一侧自然漏出。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">box-shadow</span>: 3<span class="selector-tag">px</span> 3<span class="selector-tag">px</span> 6<span class="selector-tag">px</span> <span class="selector-tag">-3px</span> <span class="selector-tag">black</span>;</div></pre></td></tr></table></figure></p>
+<h3 id="双侧投影"><a href="#双侧投影" class="headerlink" title="双侧投影"></a>双侧投影</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">box-shadow</span>: 5<span class="selector-tag">px</span> 0 5<span class="selector-tag">px</span> <span class="selector-tag">-5px</span> <span class="selector-tag">black</span>,</div><div class="line">            <span class="selector-tag">-5px</span> 0 5<span class="selector-tag">px</span> <span class="selector-tag">-5px</span> <span class="selector-tag">black</span>;</div></pre></td></tr></table></figure>
+<h2 id="16-不规则投影"><a href="#16-不规则投影" class="headerlink" title="16. 不规则投影"></a>16. 不规则投影</h2><blockquote>
+<p>背景知识: box-shadow</p>
+</blockquote>
+<h3 id="难题-7"><a href="#难题-7" class="headerlink" title="难题"></a>难题</h3><p>当我们想给一个矩形或其他能用 border-radius 生成的形状（在“自适应的椭圆”一节中可以看到一些示例）加投影时，box-shadow 的表现都堪称完美。但是，当元素添加了一些伪元素或半透明的装饰之后，它就有些力不从心了，因为 border-radius 会无耻地忽视透明部分。</p>
+<h3 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h3><p>滤镜效果规范（<a href="http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。`filter`就是我们需要的属性，我们甚至可以用多个滤镜。" target="_blank" rel="noopener">http://w3.org/TR/filter-effects）为这个问题提供了一个解决方案。`filter`就是我们需要的属性，我们甚至可以用多个滤镜。</a></p>
+<p>drop-shadow() 滤镜可接受的参数基本上跟 box-shadow 属性是一样的，不包括 inset 关键字，也不支持逗号分割的多层投影语法。 </p>
+<p>我们需要知道的就是，任何非透明的部分都会被一视同仁地打上投影。小心文本的两层阴影。</p>
+<h2 id="17-染色效果"><a href="#17-染色效果" class="headerlink" title="17. 染色效果"></a>17. 染色效果</h2><blockquote>
+<p>背景知识: HSL 色彩模型，background-size</p>
+</blockquote>
+<h3 id="难题-8"><a href="#难题-8" class="headerlink" title="难题"></a>难题</h3><p>为一幅灰度图片（或是被转换为灰度模式的彩色图片）增加染色效果（color tint），是一种流行且优雅的方式，可以给一系列风格迥异的照片带来视觉上的一致性。</p>
+<p>常见的解决方法就是给图层上面添加一层半透明的实色背景，但减少了图片的对比度。</p>
+<h3 id="基于滤镜的方案"><a href="#基于滤镜的方案" class="headerlink" title="基于滤镜的方案"></a>基于滤镜的方案</h3><p>多种滤镜组合。</p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/CSS/filter</a></p>
+<h3 id="基于混合模式的方案"><a href="#基于混合模式的方案" class="headerlink" title="基于混合模式的方案"></a>基于混合模式的方案</h3><p>“混合模式”控制了上层元素的颜色与下层颜色进行混合的方式。要对一个元素设置混合模式，有两个属性可以派上用场：<code>mix-blendmode</code>可以为整个元素设置混合模式，<code>background-blend-mode</code> 可以为每层背景单独指定混合模式。</p>
+<p>缺点：</p>
+<ul>
+<li>图片的尺寸需要在 CSS 代码中写死。</li>
+<li>在语义上，这个元素并不是一张图片，因此并不会被读屏器之类的设备读出来。</li>
+</ul>
+<h2 id="18-毛玻璃效果"><a href="#18-毛玻璃效果" class="headerlink" title="18. 毛玻璃效果"></a>18. 毛玻璃效果</h2><blockquote>
+<p>背景知识: RGBA/HSLA 颜色</p>
+</blockquote>
+<h3 id="难题-9"><a href="#难题-9" class="headerlink" title="难题"></a>难题</h3><p>半透明颜色最初的使用场景之一就是作为背景。将其叠放在照片类或其他花哨的背层之上，可以减少对比度，确保文本的可读性。这种效果确实很有视觉冲击力，但仍然可能导致文字很难阅读。</p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//csssercets/transparentPic1.png" alt=""> </p>
+<h3 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>, <span class="selector-tag">main</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line"> <span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">"tiger.jpg"</span>) <span class="number">0</span> / cover fixed;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">main</span> &#123;</div><div class="line"> <span class="attribute">position</span>: relative;</div><div class="line"> <span class="attribute">background</span>: <span class="built_in">hsla</span>(0,0%,100%,.3);</div><div class="line"> <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">main</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line"> <span class="attribute">position</span>: absolute;</div><div class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line"> <span class="attribute">filter</span>: <span class="built_in">blur</span>(20px);</div><div class="line"> <span class="attribute">margin</span>: -<span class="number">30px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>问题：</p>
+<ul>
+<li>伪元素现在就覆盖在内容元素之上。可以用 z-index: -1; 来修正这个问题。</li>
+<li><code>blur</code>模糊效果在中心区域看起来非常完美，但在接近边缘处会逐渐消退。为了补偿这种情况，我们需要让伪元素相对其宿主元素的尺寸再向外扩大至少 20px（即它的模糊半径）。这里取30px。</li>
+<li>上一个解决方法会导致一圈模糊效果超出了容器。只要对 main 元素应用overflow: hidden;，就可以把多余的模糊区域裁切掉了。</li>
+</ul>
+<p>最终得到上述代码。</p>
+<h2 id="19-折角效果"><a href="#19-折角效果" class="headerlink" title="19. 折角效果"></a>19. 折角效果</h2><blockquote>
+<p>背景知识: CSS 变形，CSS 渐变，“切角效果“</p>
+</blockquote>
+<h3 id="难题-10"><a href="#难题-10" class="headerlink" title="难题"></a>难题</h3><p>把元素的一个角（通常是右上角或右下角）处理为类似折角的形状，再配上或多或少的拟物样式。</p>
+<h3 id="45°折角的解决方案"><a href="#45°折角的解决方案" class="headerlink" title="45°折角的解决方案"></a>45°折角的解决方案</h3><p>我们会从一个右上角具有斜面切角的元素开始，这个切角是由“切角效果”一节中的渐变方案实现的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>; <span class="comment">/* 回退样式 */</span></div><div class="line"><span class="selector-tag">background</span>:</div><div class="line"> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">-135deg</span>, <span class="selector-tag">transparent</span> 2<span class="selector-tag">em</span>, <span class="selector-id">#58a</span> 0);</div></pre></td></tr></table></figure></p>
+<p>接下来所需要做的就是增加一个暗色的三角形来实现翻折效果。注意长度斜的。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">background</span>: <span class="selector-id">#58a</span>; <span class="comment">/* 回退样式 */</span></div><div class="line"><span class="selector-tag">background</span>:</div><div class="line"> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">left</span> <span class="selector-tag">bottom</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 50%, <span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.4</span>) 0)</div><div class="line"> no-repeat 100% 0 / 2em 2em,</div><div class="line"> <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">-135deg</span>,</div><div class="line"> <span class="selector-tag">transparent</span> 1<span class="selector-class">.5em</span>, <span class="selector-id">#58a</span> 0);</div></pre></td></tr></table></figure></p>
+<h3 id="其他角度的解决方案"><a href="#其他角度的解决方案" class="headerlink" title="其他角度的解决方案"></a>其他角度的解决方案</h3><p>直接放<code>mixin</code><br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> folded-corner(<span class="variable">$background</span>, <span class="variable">$size</span>,</div><div class="line"> <span class="variable">$angle</span>: 30deg) &#123;</div><div class="line"><span class="attribute">position</span>: relative;</div><div class="line"><span class="attribute">background</span>: <span class="variable">$background</span>; <span class="comment">/* 回退样式 */</span></div><div class="line"><span class="attribute">background</span>:</div><div class="line"> linear-gradient(<span class="variable">$angle</span> - <span class="number">180deg</span>,</div><div class="line"> transparent <span class="variable">$size</span>, <span class="variable">$background</span> <span class="number">0</span>);</div><div class="line"><span class="attribute">border-radius</span>: .<span class="number">5em</span>;</div><div class="line"><span class="variable">$x</span>: <span class="variable">$size</span> / sin(<span class="variable">$angle</span>);</div><div class="line"><span class="variable">$y</span>: <span class="variable">$size</span> / cos(<span class="variable">$angle</span>);</div><div class="line">&amp;::before &#123;</div><div class="line"> <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line"> <span class="attribute">position</span>: absolute;</div><div class="line"> <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line"> <span class="attribute">background</span>: linear-gradient(to left bottom,</div><div class="line"> transparent <span class="number">50%</span>, rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">2</span>) <span class="number">0</span>,</div><div class="line"> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">4</span>)) <span class="number">100%</span> <span class="number">0</span> no-repeat;</div><div class="line"> <span class="attribute">width</span>: <span class="variable">$y</span>; <span class="attribute">height</span>: <span class="variable">$x</span>;</div><div class="line"> <span class="attribute">transform</span>: translateY(<span class="variable">$y</span> - <span class="variable">$x</span>)</div><div class="line"> rotate(<span class="number">2</span>*<span class="variable">$angle</span> - <span class="number">90deg</span>);</div><div class="line"> <span class="attribute">transform-origin</span>: bottom right;</div><div class="line"> <span class="attribute">border-bottom-left-radius</span>: inherit;</div><div class="line"> <span class="attribute">box-shadow</span>: -.<span class="number">2em</span> .<span class="number">2em</span> .<span class="number">3em</span> -.<span class="number">1em</span> rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">2</span>);</div><div class="line">&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 当调用时... */</span></div><div class="line"><span class="selector-class">.note</span> &#123;</div><div class="line"> @<span class="keyword">include</span> folded-corner(<span class="number">#58a</span>, 2em, 40deg);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CSS/" rel="tag"># CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/31/css揭秘总结－/" rel="next" title="css揭秘总结(－)">
+                <i class="fa fa-chevron-left"></i> css揭秘总结(－)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/03/css揭秘总结三/" rel="prev" title="css揭秘总结(三)">
+                css揭秘总结(三) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#形状"><span class="nav-number">1.</span> <span class="nav-text">形状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#9-自适应的椭圆"><span class="nav-number">1.1.</span> <span class="nav-text">9. 自适应的椭圆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题"><span class="nav-number">1.1.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他椭圆"><span class="nav-number">1.1.3.</span> <span class="nav-text">其他椭圆</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-平行四边形"><span class="nav-number">1.2.</span> <span class="nav-text">10. 平行四边形</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套元素方案"><span class="nav-number">1.2.2.</span> <span class="nav-text">嵌套元素方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪元素方案"><span class="nav-number">1.2.3.</span> <span class="nav-text">伪元素方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-菱形图片"><span class="nav-number">1.3.</span> <span class="nav-text">11. 菱形图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于变形的方案"><span class="nav-number">1.3.2.</span> <span class="nav-text">基于变形的方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#裁切路径方案"><span class="nav-number">1.3.3.</span> <span class="nav-text">裁切路径方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-切角效果"><span class="nav-number">1.4.</span> <span class="nav-text">12. 切角效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弧形切角"><span class="nav-number">1.4.3.</span> <span class="nav-text">弧形切角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内联-SVG-与-border-image-方案"><span class="nav-number">1.4.4.</span> <span class="nav-text">内联 SVG 与 border-image 方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#裁切路径方案-1"><span class="nav-number">1.4.5.</span> <span class="nav-text">裁切路径方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充多边形裁剪"><span class="nav-number">1.4.6.</span> <span class="nav-text">补充多边形裁剪</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-梯形标签页"><span class="nav-number">1.5.</span> <span class="nav-text">13. 梯形标签页</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-4"><span class="nav-number">1.5.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-2"><span class="nav-number">1.5.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-简单的饼图"><span class="nav-number">1.6.</span> <span class="nav-text">14. 简单的饼图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-5"><span class="nav-number">1.6.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-transform-的解决方案"><span class="nav-number">1.6.2.</span> <span class="nav-text">基于 transform 的解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVG-解决方案"><span class="nav-number">1.6.3.</span> <span class="nav-text">SVG 解决方案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视觉效果"><span class="nav-number">2.</span> <span class="nav-text">视觉效果</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#15-单侧投影"><span class="nav-number">2.1.</span> <span class="nav-text">15. 单侧投影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-6"><span class="nav-number">2.1.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单侧投影"><span class="nav-number">2.1.2.</span> <span class="nav-text">单侧投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#邻边投影"><span class="nav-number">2.1.3.</span> <span class="nav-text">邻边投影</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双侧投影"><span class="nav-number">2.1.4.</span> <span class="nav-text">双侧投影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-不规则投影"><span class="nav-number">2.2.</span> <span class="nav-text">16. 不规则投影</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-7"><span class="nav-number">2.2.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-3"><span class="nav-number">2.2.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-染色效果"><span class="nav-number">2.3.</span> <span class="nav-text">17. 染色效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-8"><span class="nav-number">2.3.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于滤镜的方案"><span class="nav-number">2.3.2.</span> <span class="nav-text">基于滤镜的方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于混合模式的方案"><span class="nav-number">2.3.3.</span> <span class="nav-text">基于混合模式的方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-毛玻璃效果"><span class="nav-number">2.4.</span> <span class="nav-text">18. 毛玻璃效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-9"><span class="nav-number">2.4.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案-4"><span class="nav-number">2.4.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-折角效果"><span class="nav-number">2.5.</span> <span class="nav-text">19. 折角效果</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#难题-10"><span class="nav-number">2.5.1.</span> <span class="nav-text">难题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#45°折角的解决方案"><span class="nav-number">2.5.2.</span> <span class="nav-text">45°折角的解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他角度的解决方案"><span class="nav-number">2.5.3.</span> <span class="nav-text">其他角度的解决方案</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

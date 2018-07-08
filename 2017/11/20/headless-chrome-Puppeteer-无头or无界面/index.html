@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="chrome,Puppeteer," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="概述PuppeteerPuppeteer 是一个用来控制无界面Chrome的Node库，它提供了很多高级的api来使我们跟好的控制无界面的Chrome。这个headless可以叫无头，也可以叫无界面吧">
+<meta name="keywords" content="chrome,Puppeteer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="headless chrome Puppeteer 无头or无界面 ">
+<meta property="og:url" content="https://hddhyq.github.io/2017/11/20/headless-chrome-Puppeteer-无头or无界面/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="概述PuppeteerPuppeteer 是一个用来控制无界面Chrome的Node库，它提供了很多高级的api来使我们跟好的控制无界面的Chrome。这个headless可以叫无头，也可以叫无界面吧">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://user-images.githubusercontent.com/746130/31592143-089f6f9a-b1db-11e7-9a20-16b7fc754fa1.png">
+<meta property="og:updated_time" content="2018-07-08T04:25:55.515Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="headless chrome Puppeteer 无头or无界面 ">
+<meta name="twitter:description" content="概述PuppeteerPuppeteer 是一个用来控制无界面Chrome的Node库，它提供了很多高级的api来使我们跟好的控制无界面的Chrome。这个headless可以叫无头，也可以叫无界面吧">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/746130/31592143-089f6f9a-b1db-11e7-9a20-16b7fc754fa1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2017/11/20/headless-chrome-Puppeteer-无头or无界面/"/>
+
+
+
+
+
+  <title>headless chrome Puppeteer 无头or无界面  | hddhyq's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/11/20/headless-chrome-Puppeteer-无头or无界面/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">headless chrome Puppeteer 无头or无界面 </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-20T14:21:17+08:00">
+                2017-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Puppeteer/" itemprop="url" rel="index">
+                    <span itemprop="name">Puppeteer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述Puppeteer"><a href="#概述Puppeteer" class="headerlink" title=" 概述Puppeteer"></a><a id="instruction-puppeteer"></a> 概述Puppeteer</h1><p>Puppeteer 是一个用来控制无界面Chrome的Node库，它提供了很多高级的api来使我们跟好的控制无界面的Chrome。这个headless可以叫无头，也可以叫无界面吧<br><a id="more"></a></p>
+<h2 id="我们能做什么？"><a href="#我们能做什么？" class="headerlink" title=" 我们能做什么？"></a><a id="what-can-we-do"></a> 我们能做什么？</h2><p>大多数我们能在浏览器上做的都能用Puppeteer来做！</p>
+<ul>
+<li>生成页面的截图和PDF文件。</li>
+<li>抓取spa并生成预渲染内容（即“SSR”）。</li>
+<li>从网页爬取内容。</li>
+<li>自动化表单提交、UI测试、键盘输入等。</li>
+<li>自动化更新表格创建，自动化测试环境。</li>
+<li>捕获站点的时间线跟踪，以帮助诊断性能问题。</li>
+</ul>
+<p>了解这么多，我主要是从爬虫知道的这个工具。</p>
+<p>因为这个工具相关的几个类似的工具(像PhantomJS)也大多停止更新了，谷歌真厉害。。</p>
+<h2 id="shotscreens-和-PDF实例"><a href="#shotscreens-和-PDF实例" class="headerlink" title=" shotscreens 和 PDF实例"></a><a id="shotscreens-pdf"></a> shotscreens 和 PDF实例</h2><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p>page.screenshot([options]) 这个api 可以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"></div><div class="line">(<span class="keyword">async</span> () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://example.com'</span>);</div><div class="line">  <span class="keyword">await</span> page.screenshot(&#123;<span class="attr">path</span>: <span class="string">'example.png'</span>&#125;);</div><div class="line"></div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="PDF"><a href="#PDF" class="headerlink" title="PDF"></a>PDF</h3><p>page.pdf(options)这个api来打印，也有一些options可以设置<br>比较常用的format：A4 之类的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"></div><div class="line">(<span class="keyword">async</span> () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://news.ycombinator.com'</span>, &#123;<span class="attr">waitUntil</span>: <span class="string">'networkidle2'</span>&#125;);</div><div class="line">  <span class="keyword">await</span> page.pdf(&#123;<span class="attr">path</span>: <span class="string">'hn.pdf'</span>, <span class="attr">format</span>: <span class="string">'A4'</span>&#125;);</div><div class="line"></div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<h3 id="获取页面上下文"><a href="#获取页面上下文" class="headerlink" title="获取页面上下文"></a>获取页面上下文</h3><p>page.evaluate(pageFunction, …args)， 这个api， 来解析<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"></div><div class="line">(<span class="keyword">async</span> () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://example.com'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// Get the "viewport" of the page, as reported by the page.</span></div><div class="line">  <span class="keyword">const</span> dimensions = <span class="keyword">await</span> page.evaluate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      width: <span class="built_in">document</span>.documentElement.clientWidth,</div><div class="line">      height: <span class="built_in">document</span>.documentElement.clientHeight,</div><div class="line">      deviceScaleFactor: <span class="built_in">window</span>.devicePixelRatio</div><div class="line">    &#125;;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'Dimensions:'</span>, dimensions);</div><div class="line"></div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;)();</div></pre></td></tr></table></figure></p>
+<h1 id="Puppeteer常用api分类"><a href="#Puppeteer常用api分类" class="headerlink" title=" Puppeteer常用api分类"></a><a id="common-api"></a> Puppeteer常用api分类</h1><h2 id="概览"><a href="#概览" class="headerlink" title=" 概览"></a><a id="summary"></a> 概览</h2><p><img src="https://user-images.githubusercontent.com/746130/31592143-089f6f9a-b1db-11e7-9a20-16b7fc754fa1.png" alt=""></p>
+<ul>
+<li>Puppeteer 使用开发者工具和浏览器通信</li>
+<li>Browser 拥有多个界面的实例</li>
+<li>Page 至少有一个框架：主框架。可能还有其他由iframe和frame标签创建的frames</li>
+<li>Frame 至少有一个执行上下文，默认的上下文是JavaScript的执行框架。框架可能有与执行相关联的附加执行上下文。</li>
+</ul>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title=" 环境变量"></a><a id="environment-variable"></a> 环境变量</h2><p>由<code>npm config</code>设置proxy代理，或关于下载的Url和版本之类的。</p>
+<h2 id="类：Puppeteer"><a href="#类：Puppeteer" class="headerlink" title=" 类：Puppeteer"></a><a id="class-puppeteer"></a> 类：Puppeteer</h2><p>Puppeteer模块提供了一种方法来登录Chromium实例。</p>
+<h2 id="类：Browser"><a href="#类：Browser" class="headerlink" title=" 类：Browser"></a><a id="class-browser"></a> 类：Browser</h2><p>一个Browser 在Puppeteer连接到Chromium实例时被创建,通过<code>puppeteer.launch</code> 或 <code>puppeteer.connect</code>.<br>常用<code>browser.newPage()</code>新界面 ,<code>browser.close()</code>关闭browser和<code>browser.wsEndpoint()</code>断点打开。</p>
+<h2 id="类：Page"><a href="#类：Page" class="headerlink" title=" 类：Page"></a><a id="class-page"></a> 类：Page</h2><p>Page提供了于Chromium单选项交互的方法。一个Browser有多个Page实例<br>基础的方法有：<br>一些原生的事件，还有<code>page.$(selector)</code>，<code>page.$$(selector)</code>来进行页面的元素选择，<code>page.$eval(selector, pageFunction[, ...args])</code>和<code>page.$$eval(selector, pageFunction[, ...args])</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> searchValue = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'#search'</span>, el =&gt; el.value);</div><div class="line"><span class="keyword">const</span> preloadHref = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'link[rel=preload]'</span>, el =&gt; el.href);</div><div class="line"><span class="keyword">const</span> html = <span class="keyword">await</span> page.$<span class="built_in">eval</span>(<span class="string">'.main-container'</span>, e =&gt; e.outerHTML);</div></pre></td></tr></table></figure>
+<p><code>page.click(selector[, options])</code>鼠标点击，相关的点击事件也可以通过options来设置。</p>
+<p><code>page.content()</code>返回整个HTML的page内容，包括doctype。</p>
+<p><code>page.cookies(...urls)</code>,<br><code>page.deleteCookie(...cookies)</code></p>
+<p>page.emulate(options)媒体设置。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">'puppeteer'</span>);</div><div class="line"><span class="keyword">const</span> devices = <span class="built_in">require</span>(<span class="string">'puppeteer/DeviceDescriptors'</span>);</div><div class="line"><span class="keyword">const</span> iPhone = devices[<span class="string">'iPhone 6'</span>];</div><div class="line"></div><div class="line">puppeteer.launch().then(<span class="keyword">async</span> browser =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</div><div class="line">  <span class="keyword">await</span> page.emulate(iPhone);</div><div class="line">  <span class="keyword">await</span> page.goto(<span class="string">'https://www.google.com'</span>);</div><div class="line">  <span class="comment">// other actions...</span></div><div class="line">  <span class="keyword">await</span> browser.close();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><code>page.evaluate(pageFunction, ...args)</code>对页面的上下文进行操作。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bodyHandle = <span class="keyword">await</span> page.$(<span class="string">'body'</span>);</div><div class="line"><span class="keyword">const</span> html = <span class="keyword">await</span> page.evaluate(<span class="function"><span class="params">body</span> =&gt;</span> body.innerHTML, bodyHandle);</div><div class="line"><span class="keyword">await</span> bodyHandle.dispose();</div></pre></td></tr></table></figure></p>
+<p><code>page.goto(url, options)</code>,<code>page.goForward(options)</code>和<code>page.goBack(options)</code>。</p>
+<p>还可以对页面的js,css,html进行行管的操作。</p>
+<p><code>page.setUserAgent(userAgent)</code>,<br><code>page.setViewport(viewport)</code>亦可以进行相关操作。</p>
+<h2 id="类：Keyboard"><a href="#类：Keyboard" class="headerlink" title=" 类：Keyboard"></a><a id="class-keyboard"></a> 类：Keyboard</h2><p>键盘相关输入，<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">await</span> page.keyboard.type(<span class="string">'Hello World!'</span>);</div><div class="line"><span class="keyword">await</span> page.keyboard.press(<span class="string">'ArrowLeft'</span>);</div><div class="line"></div><div class="line"><span class="keyword">await</span> page.keyboard.down(<span class="string">'Shift'</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="string">' World'</span>.length; i++)</div><div class="line">  <span class="keyword">await</span> page.keyboard.press(<span class="string">'ArrowLeft'</span>);</div><div class="line"><span class="keyword">await</span> page.keyboard.up(<span class="string">'Shift'</span>);</div><div class="line"></div><div class="line"><span class="keyword">await</span> page.keyboard.press(<span class="string">'Backspace'</span>);</div><div class="line"><span class="comment">// Result text will end up saying 'Hello!'</span></div></pre></td></tr></table></figure></p>
+<h2 id="类：Mouse"><a href="#类：Mouse" class="headerlink" title=" 类：Mouse"></a><a id="class-mouse"></a> 类：Mouse</h2><p>鼠标点击拖住事件。和键盘事件类似。</p>
+<h2 id="类-Touchscreen"><a href="#类-Touchscreen" class="headerlink" title=" 类: Touchscreen"></a><a id="class-touchscreen"></a> 类: Touchscreen</h2><p>点击屏幕位置。<br><code>touchscreen.tap(x, y)</code></p>
+<h2 id="类：Dialog"><a href="#类：Dialog" class="headerlink" title=" 类：Dialog"></a><a id="class-dialog"></a> 类：Dialog</h2><p>弹出框确认，取消以及相关的信息，输入都客气取得。</p>
+<h2 id="类：ConsoleMessage"><a href="#类：ConsoleMessage" class="headerlink" title=" 类：ConsoleMessage"></a><a id="class-console-message"></a> 类：ConsoleMessage</h2><p>页面的console信息获取。</p>
+<h2 id="类：Frame"><a href="#类：Frame" class="headerlink" title=" 类：Frame"></a><a id="class-frame"></a> 类：Frame</h2><p>大部分page都有Frame的方法，相当于<br><code>page.mainFrame()</code>。</p>
+<p><code>frame.childFrame()</code>，<br><code>frame.name()</code>，<br><code>frame.parentFrame()</code>相关操作。属于frame的。</p>
+<h2 id="类：ExecutionContext"><a href="#类：ExecutionContext" class="headerlink" title=" 类：ExecutionContext"></a><a id="class-execution-context"></a> 类：ExecutionContext</h2><p>类表示JavaScript执行的上下文。</p>
+<h2 id="类：JSHandle"><a href="#类：JSHandle" class="headerlink" title=" 类：JSHandle"></a><a id="class-jshandle"></a> 类：JSHandle</h2><p>JSHandle表示页面中的JavaScript对象。JSHandles可以由page.evaluateHandle方法创建。</p>
+<h2 id="类：ElementHandle"><a href="#类：ElementHandle" class="headerlink" title=" 类：ElementHandle"></a><a id="class-elementhandle"></a> 类：ElementHandle</h2><p>elementhandle代表一个页面的DOM元素。elementhandles可以 <code>page.$</code>由方法。</p>
+<p><code>elementHandle.getProperties()</code><br><code>elementHandle.getProperty(propertyName)</code><br>获取元素的属性值, 爬取页面的url可用。</p>
+<p><code>elementHandle.screenshot([options])</code>，<br>这个会将页面滚动到可以显示元素的地方，来截图。</p>
+<p><code>elementHandle.uploadFile(...filePaths)</code>上出文件。</p>
+<h2 id="类：Request"><a href="#类：Request" class="headerlink" title=" 类：Request"></a><a id="class-request"></a> 类：Request</h2><p>当一个页面发送一个request，puppeteer’s page会派发一下以下几个事件</p>
+<ul>
+<li>‘request’当页面发出请求时发出。</li>
+<li>‘response’ 当响应请求接收到响应时发出。</li>
+<li>‘requestfinished’ 当响应体被下载并请求完成时发出。</li>
+</ul>
+<h2 id="类：-Response"><a href="#类：-Response" class="headerlink" title=" 类： Response"></a><a id="class-response"></a> 类： Response</h2><p>响应类表示由页面接收的响应。</p>
+<h1 id="api详情"><a href="#api详情" class="headerlink" title=" api详情"></a><a id="api-detail"></a> api详情</h1><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#overview" target="_blank" rel="noopener">Overview</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#environment-variables" target="_blank" rel="noopener">Environment Variables</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-puppeteer" target="_blank" rel="noopener">class: Puppeteer</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerconnectoptions" target="_blank" rel="noopener">puppeteer.connect(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerexecutablepath" target="_blank" rel="noopener">puppeteer.executablePath()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#puppeteerlaunchoptions" target="_blank" rel="noopener">puppeteer.launch([options])</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-browser" target="_blank" rel="noopener">class: Browser</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-disconnected" target="_blank" rel="noopener">event: ‘disconnected’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-targetchanged" target="_blank" rel="noopener">event: ‘targetchanged’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-targetcreated" target="_blank" rel="noopener">event: ‘targetcreated’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-targetdestroyed" target="_blank" rel="noopener">event: ‘targetdestroyed’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browserclose" target="_blank" rel="noopener">browser.close()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browserdisconnect" target="_blank" rel="noopener">browser.disconnect()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browsernewpage" target="_blank" rel="noopener">browser.newPage()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browserpages" target="_blank" rel="noopener">browser.pages()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browsertargets" target="_blank" rel="noopener">browser.targets()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browserversion" target="_blank" rel="noopener">browser.version()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#browserwsendpoint" target="_blank" rel="noopener">browser.wsEndpoint()</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-page" target="_blank" rel="noopener">class: Page</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-console" target="_blank" rel="noopener">event: ‘console’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-dialog" target="_blank" rel="noopener">event: ‘dialog’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-error" target="_blank" rel="noopener">event: ‘error’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-frameattached" target="_blank" rel="noopener">event: ‘frameattached’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-framedetached" target="_blank" rel="noopener">event: ‘framedetached’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-framenavigated" target="_blank" rel="noopener">event: ‘framenavigated’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-load" target="_blank" rel="noopener">event: ‘load’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-metrics" target="_blank" rel="noopener">event: ‘metrics’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-pageerror" target="_blank" rel="noopener">event: ‘pageerror’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-request" target="_blank" rel="noopener">event: ‘request’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-requestfailed" target="_blank" rel="noopener">event: ‘requestfailed’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-requestfinished" target="_blank" rel="noopener">event: ‘requestfinished’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#event-response" target="_blank" rel="noopener">event: ‘response’</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageselector" target="_blank" rel="noopener">page.$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageselector" target="_blank" rel="noopener">page.$$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageevalselector-pagefunction-args" target="_blank" rel="noopener">page.$$eval(selector, pageFunction[, …args])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageevalselector-pagefunction-args" target="_blank" rel="noopener">page.$eval(selector, pageFunction[, …args])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageaddscripttagoptions" target="_blank" rel="noopener">page.addScriptTag(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageaddstyletagoptions" target="_blank" rel="noopener">page.addStyleTag(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageauthenticatecredentials" target="_blank" rel="noopener">page.authenticate(credentials)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagebringtofront" target="_blank" rel="noopener">page.bringToFront()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageclickselector-options" target="_blank" rel="noopener">page.click(selector[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageclose" target="_blank" rel="noopener">page.close()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagecontent" target="_blank" rel="noopener">page.content()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagecookiesurls" target="_blank" rel="noopener">page.cookies(…urls)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagedeletecookiecookies" target="_blank" rel="noopener">page.deleteCookie(…cookies)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageemulateoptions" target="_blank" rel="noopener">page.emulate(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageemulatemediamediatype" target="_blank" rel="noopener">page.emulateMedia(mediaType)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageevaluatepagefunction-args" target="_blank" rel="noopener">page.evaluate(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageevaluatehandlepagefunction-args" target="_blank" rel="noopener">page.evaluateHandle(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageevaluateonnewdocumentpagefunction-args" target="_blank" rel="noopener">page.evaluateOnNewDocument(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageexposefunctionname-puppeteerfunction" target="_blank" rel="noopener">page.exposeFunction(name, puppeteerFunction)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagefocusselector" target="_blank" rel="noopener">page.focus(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageframes" target="_blank" rel="noopener">page.frames()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegobackoptions" target="_blank" rel="noopener">page.goBack(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegoforwardoptions" target="_blank" rel="noopener">page.goForward(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagegotourl-options" target="_blank" rel="noopener">page.goto(url, options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagehoverselector" target="_blank" rel="noopener">page.hover(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagekeyboard" target="_blank" rel="noopener">page.keyboard</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagemainframe" target="_blank" rel="noopener">page.mainFrame()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagemetrics" target="_blank" rel="noopener">page.metrics()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagemouse" target="_blank" rel="noopener">page.mouse</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagepdfoptions" target="_blank" rel="noopener">page.pdf(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagequeryobjectsprototypehandle" target="_blank" rel="noopener">page.queryObjects(prototypeHandle)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagereloadoptions" target="_blank" rel="noopener">page.reload(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagescreenshotoptions" target="_blank" rel="noopener">page.screenshot([options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageselectselector-values" target="_blank" rel="noopener">page.select(selector, …values)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetcontenthtml" target="_blank" rel="noopener">page.setContent(html)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetcookiecookies" target="_blank" rel="noopener">page.setCookie(…cookies)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetextrahttpheadersheaders" target="_blank" rel="noopener">page.setExtraHTTPHeaders(headers)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetjavascriptenabledenabled" target="_blank" rel="noopener">page.setJavaScriptEnabled(enabled)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetofflinemodeenabled" target="_blank" rel="noopener">page.setOfflineMode(enabled)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetrequestinterceptionvalue" target="_blank" rel="noopener">page.setRequestInterception(value)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetuseragentuseragent" target="_blank" rel="noopener">page.setUserAgent(userAgent)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagesetviewportviewport" target="_blank" rel="noopener">page.setViewport(viewport)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagetapselector" target="_blank" rel="noopener">page.tap(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagetitle" target="_blank" rel="noopener">page.title()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagetouchscreen" target="_blank" rel="noopener">page.touchscreen</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagetracing" target="_blank" rel="noopener">page.tracing</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagetypeselector-text-options" target="_blank" rel="noopener">page.type(selector, text[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageurl" target="_blank" rel="noopener">page.url()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pageviewport" target="_blank" rel="noopener">page.viewport()</a></li>
+<li>[page.waitFor(selectorOrFunctionOrTimeout<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagewaitforselectororfunctionortimeout-options-args" target="_blank" rel="noopener">, options[, …args]])</a></li>
+<li>[page.waitForFunction(pageFunction<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagewaitforfunctionpagefunction-options-args" target="_blank" rel="noopener">, options[, …args]])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagewaitfornavigationoptions" target="_blank" rel="noopener">page.waitForNavigation(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#pagewaitforselectorselector-options" target="_blank" rel="noopener">page.waitForSelector(selector[, options])</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-keyboard" target="_blank" rel="noopener">class: Keyboard</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#keyboarddownkey-options" target="_blank" rel="noopener">keyboard.down(key[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#keyboardpresskey-options" target="_blank" rel="noopener">keyboard.press(key[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#keyboardsendcharacterchar" target="_blank" rel="noopener">keyboard.sendCharacter(char)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#keyboardtypetext-options" target="_blank" rel="noopener">keyboard.type(text, options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#keyboardupkey" target="_blank" rel="noopener">keyboard.up(key)</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-mouse" target="_blank" rel="noopener">class: Mouse</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#mouseclickx-y-options" target="_blank" rel="noopener">mouse.click(x, y, [options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#mousedownoptions" target="_blank" rel="noopener">mouse.down([options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#mousemovex-y-options" target="_blank" rel="noopener">mouse.move(x, y, [options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#mouseupoptions" target="_blank" rel="noopener">mouse.up([options])</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-touchscreen" target="_blank" rel="noopener">class: Touchscreen</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#touchscreentapx-y" target="_blank" rel="noopener">touchscreen.tap(x, y)</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-tracing" target="_blank" rel="noopener">class: Tracing</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#tracingstartoptions" target="_blank" rel="noopener">tracing.start(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#tracingstop" target="_blank" rel="noopener">tracing.stop()</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-dialog" target="_blank" rel="noopener">class: Dialog</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#dialogacceptprompttext" target="_blank" rel="noopener">dialog.accept([promptText])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#dialogdefaultvalue" target="_blank" rel="noopener">dialog.defaultValue()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#dialogdismiss" target="_blank" rel="noopener">dialog.dismiss()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#dialogmessage" target="_blank" rel="noopener">dialog.message()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#dialogtype" target="_blank" rel="noopener">dialog.type</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-consolemessage" target="_blank" rel="noopener">class: ConsoleMessage</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#consolemessageargs" target="_blank" rel="noopener">consoleMessage.args</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#consolemessagetext" target="_blank" rel="noopener">consoleMessage.text</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#consolemessagetype" target="_blank" rel="noopener">consoleMessage.type</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-frame" target="_blank" rel="noopener">class: Frame</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameselector" target="_blank" rel="noopener">frame.$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameselector" target="_blank" rel="noopener">frame.$$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameevalselector-pagefunction-args" target="_blank" rel="noopener">frame.$$eval(selector, pageFunction[, …args])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameevalselector-pagefunction-args" target="_blank" rel="noopener">frame.$eval(selector, pageFunction[, …args])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameaddscripttagoptions" target="_blank" rel="noopener">frame.addScriptTag(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameaddstyletagoptions" target="_blank" rel="noopener">frame.addStyleTag(options)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#framechildframes" target="_blank" rel="noopener">frame.childFrames()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameevaluatepagefunction-args" target="_blank" rel="noopener">frame.evaluate(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameexecutioncontext" target="_blank" rel="noopener">frame.executionContext()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameisdetached" target="_blank" rel="noopener">frame.isDetached()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#framename" target="_blank" rel="noopener">frame.name()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameparentframe" target="_blank" rel="noopener">frame.parentFrame()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameselectselector-values" target="_blank" rel="noopener">frame.select(selector, …values)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frametitle" target="_blank" rel="noopener">frame.title()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#frameurl" target="_blank" rel="noopener">frame.url()</a></li>
+<li>[frame.waitFor(selectorOrFunctionOrTimeout<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#framewaitforselectororfunctionortimeout-options-args" target="_blank" rel="noopener">, options[, …args]])</a></li>
+<li>[frame.waitForFunction(pageFunction<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#framewaitforfunctionpagefunction-options-args" target="_blank" rel="noopener">, options[, …args]])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#framewaitforselectorselector-options" target="_blank" rel="noopener">frame.waitForSelector(selector[, options])</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-executioncontext" target="_blank" rel="noopener">class: ExecutionContext</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#executioncontextevaluatepagefunction-args" target="_blank" rel="noopener">executionContext.evaluate(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#executioncontextevaluatehandlepagefunction-args" target="_blank" rel="noopener">executionContext.evaluateHandle(pageFunction, …args)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#executioncontextqueryobjectsprototypehandle" target="_blank" rel="noopener">executionContext.queryObjects(prototypeHandle)</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-jshandle" target="_blank" rel="noopener">class: JSHandle</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandleaselement" target="_blank" rel="noopener">jsHandle.asElement()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandledispose" target="_blank" rel="noopener">jsHandle.dispose()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandleexecutioncontext" target="_blank" rel="noopener">jsHandle.executionContext()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandlegetproperties" target="_blank" rel="noopener">jsHandle.getProperties()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandlegetpropertypropertyname" target="_blank" rel="noopener">jsHandle.getProperty(propertyName)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#jshandlejsonvalue" target="_blank" rel="noopener">jsHandle.jsonValue()</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-elementhandle" target="_blank" rel="noopener">class: ElementHandle</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleselector" target="_blank" rel="noopener">elementHandle.$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleselector" target="_blank" rel="noopener">elementHandle.$$(selector)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleaselement" target="_blank" rel="noopener">elementHandle.asElement()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleboundingbox" target="_blank" rel="noopener">elementHandle.boundingBox()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleclickoptions" target="_blank" rel="noopener">elementHandle.click([options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandledispose" target="_blank" rel="noopener">elementHandle.dispose()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleexecutioncontext" target="_blank" rel="noopener">elementHandle.executionContext()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlefocus" target="_blank" rel="noopener">elementHandle.focus()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlegetproperties" target="_blank" rel="noopener">elementHandle.getProperties()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlegetpropertypropertyname" target="_blank" rel="noopener">elementHandle.getProperty(propertyName)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlehover" target="_blank" rel="noopener">elementHandle.hover()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlejsonvalue" target="_blank" rel="noopener">elementHandle.jsonValue()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlepresskey-options" target="_blank" rel="noopener">elementHandle.press(key[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandlescreenshotoptions" target="_blank" rel="noopener">elementHandle.screenshot([options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandletap" target="_blank" rel="noopener">elementHandle.tap()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandletostring" target="_blank" rel="noopener">elementHandle.toString()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandletypetext-options" target="_blank" rel="noopener">elementHandle.type(text[, options])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#elementhandleuploadfilefilepaths" target="_blank" rel="noopener">elementHandle.uploadFile(…filePaths)</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-request" target="_blank" rel="noopener">class: Request</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestaborterrorcode" target="_blank" rel="noopener">request.abort([errorCode])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestcontinueoverrides" target="_blank" rel="noopener">request.continue([overrides])</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestfailure" target="_blank" rel="noopener">request.failure()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestheaders" target="_blank" rel="noopener">request.headers</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestmethod" target="_blank" rel="noopener">request.method</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestpostdata" target="_blank" rel="noopener">request.postData</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestresourcetype" target="_blank" rel="noopener">request.resourceType</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestrespondresponse" target="_blank" rel="noopener">request.respond(response)</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requestresponse" target="_blank" rel="noopener">request.response()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#requesturl" target="_blank" rel="noopener">request.url</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-response" target="_blank" rel="noopener">class: Response</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responsebuffer" target="_blank" rel="noopener">response.buffer()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responseheaders" target="_blank" rel="noopener">response.headers</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responsejson" target="_blank" rel="noopener">response.json()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responseok" target="_blank" rel="noopener">response.ok</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responserequest" target="_blank" rel="noopener">response.request()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responsestatus" target="_blank" rel="noopener">response.status</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responsetext" target="_blank" rel="noopener">response.text()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#responseurl" target="_blank" rel="noopener">response.url</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#class-target" target="_blank" rel="noopener">class: Target</a><ul>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#targetpage" target="_blank" rel="noopener">target.page()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#targettype" target="_blank" rel="noopener">target.type()</a></li>
+<li><a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/api.md#targeturl" target="_blank" rel="noopener">target.url()</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/chrome/" rel="tag"># chrome</a>
+          
+            <a href="/tags/Puppeteer/" rel="tag"># Puppeteer</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/12/express后续篇/" rel="next" title="express后续篇">
+                <i class="fa fa-chevron-left"></i> express后续篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/24/通过爬虫看async-await/" rel="prev" title="通过爬虫看async/await">
+                通过爬虫看async/await <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述Puppeteer"><span class="nav-number">1.</span> <span class="nav-text"> 概述Puppeteer</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#我们能做什么？"><span class="nav-number">1.1.</span> <span class="nav-text"> 我们能做什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shotscreens-和-PDF实例"><span class="nav-number">1.2.</span> <span class="nav-text"> shotscreens 和 PDF实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#截图"><span class="nav-number">1.2.1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDF"><span class="nav-number">1.2.2.</span> <span class="nav-text">PDF</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取页面上下文"><span class="nav-number">1.2.3.</span> <span class="nav-text">获取页面上下文</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Puppeteer常用api分类"><span class="nav-number">2.</span> <span class="nav-text"> Puppeteer常用api分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概览"><span class="nav-number">2.1.</span> <span class="nav-text"> 概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">2.2.</span> <span class="nav-text"> 环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Puppeteer"><span class="nav-number">2.3.</span> <span class="nav-text"> 类：Puppeteer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Browser"><span class="nav-number">2.4.</span> <span class="nav-text"> 类：Browser</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Page"><span class="nav-number">2.5.</span> <span class="nav-text"> 类：Page</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Keyboard"><span class="nav-number">2.6.</span> <span class="nav-text"> 类：Keyboard</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Mouse"><span class="nav-number">2.7.</span> <span class="nav-text"> 类：Mouse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类-Touchscreen"><span class="nav-number">2.8.</span> <span class="nav-text"> 类: Touchscreen</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Dialog"><span class="nav-number">2.9.</span> <span class="nav-text"> 类：Dialog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：ConsoleMessage"><span class="nav-number">2.10.</span> <span class="nav-text"> 类：ConsoleMessage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Frame"><span class="nav-number">2.11.</span> <span class="nav-text"> 类：Frame</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：ExecutionContext"><span class="nav-number">2.12.</span> <span class="nav-text"> 类：ExecutionContext</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：JSHandle"><span class="nav-number">2.13.</span> <span class="nav-text"> 类：JSHandle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：ElementHandle"><span class="nav-number">2.14.</span> <span class="nav-text"> 类：ElementHandle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：Request"><span class="nav-number">2.15.</span> <span class="nav-text"> 类：Request</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类：-Response"><span class="nav-number">2.16.</span> <span class="nav-text"> 类： Response</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#api详情"><span class="nav-number">3.</span> <span class="nav-text"> api详情</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

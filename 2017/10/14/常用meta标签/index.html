@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="HTML,meta标签," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="meta常用属性原地址作用：提供HTML文档的元数据，常用于告知浏览器如何显示内容和搜索引擎优化。">
+<meta name="keywords" content="HTML,meta标签">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用meta标签">
+<meta property="og:url" content="https://hddhyq.github.io/2017/10/14/常用meta标签/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="meta常用属性原地址作用：提供HTML文档的元数据，常用于告知浏览器如何显示内容和搜索引擎优化。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-08T04:25:55.521Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用meta标签">
+<meta name="twitter:description" content="meta常用属性原地址作用：提供HTML文档的元数据，常用于告知浏览器如何显示内容和搜索引擎优化。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2017/10/14/常用meta标签/"/>
+
+
+
+
+
+  <title>常用meta标签 | hddhyq's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/10/14/常用meta标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用meta标签</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-14T10:44:21+08:00">
+                2017-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML基础/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="meta常用属性"><a href="#meta常用属性" class="headerlink" title="meta常用属性"></a>meta常用属性</h2><p><a href="https://tink.gitbooks.io/fe-collections/content/ch02-html/s03-meta.html" target="_blank" rel="noopener">原地址</a><br><br>作用：提供HTML文档的元数据，常用于告知浏览器如何显示内容和搜索引擎优化。<br><a id="more"></a></p>
+<h1 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h1><h2 id="声明编码"><a href="#声明编码" class="headerlink" title="声明编码"></a>声明编码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta charset=&apos;utf-8&apos; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="优先使用IE最新版本和Chrome"><a href="#优先使用IE最新版本和Chrome" class="headerlink" title="优先使用IE最新版本和Chrome"></a>优先使用IE最新版本和Chrome</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</div><div class="line">&lt;!-- 关于X-UA-Compatible --&gt;</div><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=6&quot; &gt;&lt;!-- 使用IE6 --&gt;</div><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=7&quot; &gt;&lt;!-- 使用IE7 --&gt;</div><div class="line">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=8&quot; &gt;&lt;!-- 使用IE8 --&gt;</div></pre></td></tr></table></figure>
+<h2 id="浏览器内核控制"><a href="#浏览器内核控制" class="headerlink" title="浏览器内核控制"></a>浏览器内核控制</h2><p>国内浏览器很多都是双内核(wekit和Trident)，wekit内核高速浏览，IE内核兼容网页和旧版网站。而添加meta标签的网站可以控制浏览器选择何种内核渲染。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>国内双核浏览器默认内核模式如下:</p>
+<ol>
+<li>搜狗高速浏览器、QQ浏览器: IE内核（兼容模式）</li>
+<li>360极速浏览器、遨游浏览器: Webkit内核（极速模式）</li>
+</ol>
+<h2 id="禁止浏览器从本地计算机的缓存中访问页面内容"><a href="#禁止浏览器从本地计算机的缓存中访问页面内容" class="headerlink" title="禁止浏览器从本地计算机的缓存中访问页面内容"></a>禁止浏览器从本地计算机的缓存中访问页面内容</h2><p>这样设定,访问着者无法脱机浏览。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="Windows-8"><a href="#Windows-8" class="headerlink" title="Windows 8"></a>Windows 8</h2><ul>
+<li><p>Windows 8 磁贴颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#000&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Windows 8 磁贴图标</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;icon.png&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="站点适配"><a href="#站点适配" class="headerlink" title="站点适配"></a>站点适配</h2><p>主要用于PC-手机页的对应关系。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;mobile-agent&quot;content=&quot;format=[wml|xhtml|html5]; url=url&quot;&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><code>[wml | xhtml | html5]</code></li>
+</ul>
+<p>根据手机页的协议语言，选择其中一种。</p>
+<ul>
+<li><code>url=&quot;url&quot;</code></li>
+</ul>
+<p>后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系</p>
+<h2 id="避免百度转码声明"><a href="#避免百度转码声明" class="headerlink" title="避免百度转码声明"></a>避免百度转码声明</h2><p>用百度打开网页可能会对其进行转码(比如贴广告)，避免转码可添加如下meta<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="用于SEO优化"><a href="#用于SEO优化" class="headerlink" title="用于SEO优化"></a>用于SEO优化</h1><h2 id="页面关键词"><a href="#页面关键词" class="headerlink" title="页面关键词"></a>页面关键词</h2><p>每个网页应具有面熟网页内容的一组唯一的关键字，不要太长也不要太短<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;keywords&quot; content=&quot;your tags&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="页面描述"><a href="#页面描述" class="headerlink" title="页面描述"></a>页面描述</h2><p>每个网页都应该有一个不超过１５０字符的页面描述<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;description&quot; content=&quot;150 words&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="设置搜索引擎索引方式"><a href="#设置搜索引擎索引方式" class="headerlink" title="设置搜索引擎索引方式"></a>设置搜索引擎索引方式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;</div><div class="line">&lt;!--</div><div class="line">    all：文件将被检索，且页面上的链接可以被查询；</div><div class="line">    none：文件将不被检索，且页面上的链接不可以被查询；</div><div class="line">    index：文件将被检索；</div><div class="line">    follow：页面上的链接可以被查询；</div><div class="line">    noindex：文件将不被检索；</div><div class="line">    nofollow：页面上的链接不可以被查询。</div><div class="line">--&gt;</div></pre></td></tr></table></figure>
+<h1 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h1><h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><p>viewport能优化移动浏览器的显示。如果不是响应式网站，不要使用initial-scale或者禁用缩放</p>
+<ul>
+<li>大部分4.7-5寸设备的viewport宽设为360px；</li>
+<li>5.5寸设备设为400px；</li>
+<li>iphone6设为375px；ipone6 plus设为414px。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><code>width=device-width</code>会导致iPhone5添加到主屏后以WebApp全屏模式打开页面时出现黑边</p>
+<ul>
+<li>width宽度</li>
+</ul>
+<p>数值或device-width，范围从200到10000，默认980像素</p>
+<ul>
+<li>height高度</li>
+</ul>
+<p>数值或device-height， 范围从223到10000</p>
+<ul>
+<li>initial-scale 初始的缩放比例</li>
+</ul>
+<p>范围从0到10</p>
+<ul>
+<li>minimum-scale 允许用户缩放到的最小比例</li>
+<li>maximum-scale 允许用户缩放到的最大比例</li>
+<li>user-scalable 用户是否可以手动缩</li>
+</ul>
+<p>注意，很多人使用initial-scale=1运用到非响应式网站上，这会让网站以100%宽度渲染，用户需要手动移动页面或者缩放。如果nitial-scale=1同时使用user-scalable=no或maximum-scale=1，则用户将不能放大/缩小网页来看到全部的内容。</p>
+<h2 id="WebApp全屏模式"><a href="#WebApp全屏模式" class="headerlink" title="WebApp全屏模式"></a>WebApp全屏模式</h2><p>启用全屏模式，伪装app，离线应用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="隐藏状态栏-设置状态栏颜色"><a href="#隐藏状态栏-设置状态栏颜色" class="headerlink" title="隐藏状态栏/设置状态栏颜色"></a>隐藏状态栏/设置状态栏颜色</h2><p>只有在开启WebApp全屏模式时才生效。 content的值为default | black | black-translucent 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="添加到主屏后的标题"><a href="#添加到主屏后的标题" class="headerlink" title="添加到主屏后的标题"></a>添加到主屏后的标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;</div></pre></td></tr></table></figure>
+<h2 id="忽略数字自动识别为电话号码"><a href="#忽略数字自动识别为电话号码" class="headerlink" title="忽略数字自动识别为电话号码"></a>忽略数字自动识别为电话号码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="忽略识别邮箱"><a href="#忽略识别邮箱" class="headerlink" title="忽略识别邮箱"></a>忽略识别邮箱</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot; /&gt;</div></pre></td></tr></table></figure>
+<h2 id="添加智能-App-广告条-Smart-App-Banner"><a href="#添加智能-App-广告条-Smart-App-Banner" class="headerlink" title="添加智能 App 广告条 Smart App Banner"></a>添加智能 App 广告条 Smart App Banner</h2><p>告诉浏览器这个网站对应的app，并在页面上显示下载banner<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;apple-itunes-app&quot; content=&quot;app-id=myAppStoreID,affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="针对不识别Viewport的手持设备进行优化"><a href="#针对不识别Viewport的手持设备进行优化" class="headerlink" title="针对不识别Viewport的手持设备进行优化"></a>针对不识别Viewport的手持设备进行优化</h2><p>主要是针对一些老的不识别viewport的浏览器，比如黑莓<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="适配微软的老式浏览器"><a href="#适配微软的老式浏览器" class="headerlink" title="适配微软的老式浏览器"></a>适配微软的老式浏览器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;</div></pre></td></tr></table></figure>
+<h2 id="强制竖屏"><a href="#强制竖屏" class="headerlink" title="强制竖屏"></a>强制竖屏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- uc强制竖屏 --&gt;</div><div class="line">&lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</div><div class="line">&lt;!-- QQ强制竖屏 --&gt;</div><div class="line">&lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</div></pre></td></tr></table></figure>
+<h2 id="强制全屏"><a href="#强制全屏" class="headerlink" title="强制全屏"></a>强制全屏</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;!-- UC强制全屏 --&gt;</div><div class="line">&lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</div><div class="line">&lt;!-- QQ强制全屏 --&gt;</div><div class="line">&lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</div></pre></td></tr></table></figure>
+<h2 id="windows-phone-点击无高光"><a href="#windows-phone-点击无高光" class="headerlink" title="windows phone 点击无高光"></a>windows phone 点击无高光</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML/" rel="tag"># HTML</a>
+          
+            <a href="/tags/meta标签/" rel="tag"># meta标签</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/12/vue-music目录及样式初始化/" rel="next" title="vue-music目录及样式初始化">
+                <i class="fa fa-chevron-left"></i> vue-music目录及样式初始化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/22/babel使用/" rel="prev" title="babel使用">
+                babel使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#meta常用属性"><span class="nav-number">1.</span> <span class="nav-text">meta常用属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网页相关"><span class="nav-number"></span> <span class="nav-text">网页相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#声明编码"><span class="nav-number">1.</span> <span class="nav-text">声明编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优先使用IE最新版本和Chrome"><span class="nav-number">2.</span> <span class="nav-text">优先使用IE最新版本和Chrome</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器内核控制"><span class="nav-number">3.</span> <span class="nav-text">浏览器内核控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#禁止浏览器从本地计算机的缓存中访问页面内容"><span class="nav-number">4.</span> <span class="nav-text">禁止浏览器从本地计算机的缓存中访问页面内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows-8"><span class="nav-number">5.</span> <span class="nav-text">Windows 8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#站点适配"><span class="nav-number">6.</span> <span class="nav-text">站点适配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#避免百度转码声明"><span class="nav-number">7.</span> <span class="nav-text">避免百度转码声明</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用于SEO优化"><span class="nav-number"></span> <span class="nav-text">用于SEO优化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面关键词"><span class="nav-number">1.</span> <span class="nav-text">页面关键词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面描述"><span class="nav-number">2.</span> <span class="nav-text">页面描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置搜索引擎索引方式"><span class="nav-number">3.</span> <span class="nav-text">设置搜索引擎索引方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动设备"><span class="nav-number"></span> <span class="nav-text">移动设备</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport"><span class="nav-number">1.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebApp全屏模式"><span class="nav-number">2.</span> <span class="nav-text">WebApp全屏模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏状态栏-设置状态栏颜色"><span class="nav-number">3.</span> <span class="nav-text">隐藏状态栏/设置状态栏颜色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加到主屏后的标题"><span class="nav-number">4.</span> <span class="nav-text">添加到主屏后的标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略数字自动识别为电话号码"><span class="nav-number">5.</span> <span class="nav-text">忽略数字自动识别为电话号码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略识别邮箱"><span class="nav-number">6.</span> <span class="nav-text">忽略识别邮箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加智能-App-广告条-Smart-App-Banner"><span class="nav-number">7.</span> <span class="nav-text">添加智能 App 广告条 Smart App Banner</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#针对不识别Viewport的手持设备进行优化"><span class="nav-number">8.</span> <span class="nav-text">针对不识别Viewport的手持设备进行优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#适配微软的老式浏览器"><span class="nav-number">9.</span> <span class="nav-text">适配微软的老式浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制竖屏"><span class="nav-number">10.</span> <span class="nav-text">强制竖屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制全屏"><span class="nav-number">11.</span> <span class="nav-text">强制全屏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#windows-phone-点击无高光"><span class="nav-number">12.</span> <span class="nav-text">windows phone 点击无高光</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

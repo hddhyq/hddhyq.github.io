@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node,mongodb," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="mongoDB">
+<meta name="keywords" content="node,mongodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb用法初识">
+<meta property="og:url" content="https://hddhyq.github.io/2017/10/29/mongodb用法初识/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="mongoDB">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-08T04:25:55.516Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb用法初识">
+<meta name="twitter:description" content="mongoDB">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2017/10/29/mongodb用法初识/"/>
+
+
+
+
+
+  <title>mongodb用法初识 | hddhyq's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/10/29/mongodb用法初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mongodb用法初识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-29T14:18:14+08:00">
+                2017-10-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mongodb/" itemprop="url" rel="index">
+                    <span itemprop="name">mongodb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="mongoDB"><a href="#mongoDB" class="headerlink" title=" mongoDB"></a><a id="toc-mongodb"></a> mongoDB</h1><a id="more"></a>
+<h2 id="什么是mongodb"><a href="#什么是mongodb" class="headerlink" title=" 什么是mongodb"></a><a id="toc-what-mongodb"></a> 什么是mongodb</h2><p><a href="http://www.mongodb.org.cn/" target="_blank" rel="noopener">中文官网</a>首页是这么介绍的:mongoDB基于分布式文件储存的数据库高性能、可拓展、易部署、易使用，存储数据非常方便</p>
+<h3 id="NoSQL简介"><a href="#NoSQL简介" class="headerlink" title="NoSQL简介"></a><a href="http://www.mongodb.org.cn/tutorial/2.html" target="_blank" rel="noopener">NoSQL简介</a></h3><p>NoSQL(NoSQL = Not Only SQL )，意即”不仅仅是SQL”。<br>在现代的计算系统上每天网络上都会产生庞大的数据量。</p>
+<p>这些数据有很大一部分是由关系数据库管理系统（RDMBSs）来处理。 </p>
+<p>1970年 E.F.Codd’s提出的关系模型的论文 “A relational model of data for large shared data banks”，这使得数据建模和应用程序编程更加简单。</p>
+<p>通过应用实践证明，关系模型是非常适合于客户服务器编程，远远超出预期的利益，今天它是结构化数据存储在网络和商务应用的主导技术。</p>
+<p>NoSQL 是一项全新的数据库革命性运动，早期就有人提出，发展至2009年趋势越发高涨。NoSQL的拥护者们提倡运用非关系型的数据存储，相对于铺天盖地的关系型数据库运用，这一概念无疑是一种全新的思维的注入。</p>
+<h3 id="MongoDB-简介"><a href="#MongoDB-简介" class="headerlink" title="MongoDB 简介"></a><a href="http://www.mongodb.org.cn/tutorial/3.html" target="_blank" rel="noopener">MongoDB 简介</a></h3><h4 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB ?"></a>什么是MongoDB ?</h4><p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。</p>
+<p>在高负载的情况下，添加更多的节点，可以保证服务器性能。</p>
+<p>MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。<br>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。</p>
+<p>MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  name: "hdd",</div><div class="line">  age: 22,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h4><ul>
+<li>MongoDB的提供了一个面向文档存储，操作起来比较简单和容易。</li>
+<li>你可以在MongoDB记录中设置任何属性的索引 (如：FirstName=”Sameer”,Address=”8 Gandhi Road”)来实现更快的排序。</li>
+<li>你可以通过本地或者网络创建数据镜像，这使得MongoDB有更强的扩展性。</li>
+<li>如果负载的增加（需要更多的存储空间和更强的处理能力） ，它可以分布在计算机网络中的其他节点上这就是所谓的分片。</li>
+<li>Mongo支持丰富的查询表达式。查询指令使用JSON形式的标记，可轻易查询文档中内嵌的对象及数组。</li>
+<li>MongoDb 使用update()命令可以实现替换完成的文档（数据）或者一些指定的数据字段 。</li>
+<li>Mongodb中的Map/reduce主要是用来对数据进行批量处理和聚合操作。</li>
+<li>Map和Reduce。Map函数调用emit(key,value)遍历集合中所有的记录，将key与value传给Reduce函数进行处理。</li>
+<li>Map函数和Reduce函数是使用Javascript编写的，并可以通过db.runCommand或mapreduce命令来执行MapReduce操作。</li>
+<li>GridFS是MongoDB中的一个内置功能，可以用于存放大量小文件。</li>
+<li>MongoDB允许在服务端执行脚本，可以用Javascript编写某个函数，直接在服务端执行，也可以把函数的定义存储在服务端，下次直接调用即可。</li>
+<li>MongoDB支持各种编程语言:RUBY，PYTHON，JAVA，C++，PHP，C#等多种语言。</li>
+<li>MongoDB安装简单。</li>
+</ul>
+<h2 id="安装mongoDB"><a href="#安装mongoDB" class="headerlink" title=" 安装mongoDB"></a><a id="toc-install-mongoDB"></a> <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/" target="_blank" rel="noopener">安装mongoDB</a></h2><h3 id="Linux平台Ubuntu安装MongoDB社区版"><a href="#Linux平台Ubuntu安装MongoDB社区版" class="headerlink" title="Linux平台Ubuntu安装MongoDB社区版"></a>Linux平台Ubuntu安装MongoDB社区版</h3><h4 id="第一步：导入包管理系统使用的公钥"><a href="#第一步：导入包管理系统使用的公钥" class="headerlink" title="第一步：导入包管理系统使用的公钥"></a>第一步：导入包管理系统使用的公钥</h4><p>Ubuntu软件包管理工具（即dpkg和apt）通过要求分销商使用GPG密钥对软件包进行签名来确保软件包的一致性和真实性。发出以下命令导入 MongoDB公共GPG密钥：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6</div></pre></td></tr></table></figure>
+<h4 id="第二步：为MongoDB创建一个列表文件"><a href="#第二步：为MongoDB创建一个列表文件" class="headerlink" title="第二步：为MongoDB创建一个列表文件"></a>第二步：为MongoDB创建一个列表文件</h4><p>/etc/apt/sources.list.d/mongodb-org-3.4.list使用适合您的Ubuntu版本的命令创建列表文件：</p>
+<p>Ubuntu<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">echo</span> <span class="string">"deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse"</span> | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list</div></pre></td></tr></table></figure></p>
+<h4 id="第三步：重新加载本地包数据库"><a href="#第三步：重新加载本地包数据库" class="headerlink" title="第三步：重新加载本地包数据库"></a>第三步：重新加载本地包数据库</h4><p>发出以下命令重新加载本地软件包数据库：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<h4 id="第四步：安装MongoDB包"><a href="#第四步：安装MongoDB包" class="headerlink" title="第四步：安装MongoDB包"></a>第四步：安装MongoDB包</h4><p><strong>安装最新的稳定版本的MongoDB</strong></p>
+<p>发出以下命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install -y mongodb-org</div></pre></td></tr></table></figure>
+<h2 id="运行MongoDB社区版"><a href="#运行MongoDB社区版" class="headerlink" title=" 运行MongoDB社区版"></a><a id="toc-run-mongodb"></a> 运行MongoDB社区版</h2><h4 id="第一步：启动MongoDB"><a href="#第一步：启动MongoDB" class="headerlink" title="第一步：启动MongoDB"></a>第一步：启动MongoDB</h4><p>发出以下命令开始mongod：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod start</div></pre></td></tr></table></figure>
+<h4 id="第二步：验证MongoDB已经成功启动"><a href="#第二步：验证MongoDB已经成功启动" class="headerlink" title="第二步：验证MongoDB已经成功启动"></a>第二步：验证MongoDB已经成功启动</h4><p>验证MongoDB已经成功启动</p>
+<p>mongod通过检查日志文件的内容进行/var/log/mongodb/mongod.log 读取，验证进程是否成功启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[initandlisten] waiting for connections on port &lt;port&gt;</div></pre></td></tr></table></figure>
+<p>其中<port>被配置为在该端口/etc/mongod.conf，27017默认情况下。</port></p>
+<h4 id="第三步：停止MongoDB"><a href="#第三步：停止MongoDB" class="headerlink" title="第三步：停止MongoDB"></a>第三步：停止MongoDB</h4><p>根据需要，您可以mongod通过发出以下命令来停止进程：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod stop</div></pre></td></tr></table></figure>
+<h4 id="第四步：重新启动MongoDB"><a href="#第四步：重新启动MongoDB" class="headerlink" title="第四步：重新启动MongoDB"></a>第四步：重新启动MongoDB</h4><p>发出以下命令重新启动mongod：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod restart</div></pre></td></tr></table></figure>
+<h4 id="第五步：开始使用MongoDB"><a href="#第五步：开始使用MongoDB" class="headerlink" title="第五步：开始使用MongoDB"></a>第五步：开始使用MongoDB</h4><p>为了帮助您开始使用MongoDB，MongoDB提供了各种驱动程序版本中的<a href="https://docs.mongodb.com/manual/tutorial/getting-started/#getting-started" target="_blank" rel="noopener">入门指南</a>。有关可用版本，请参阅 <a href="https://docs.mongodb.com/manual/tutorial/getting-started/#getting-started" target="_blank" rel="noopener">入门</a>。</p>
+<p>在生产环境中部署MongoDB之前，请考虑 <a href="https://docs.mongodb.com/manual/administration/production-notes/" target="_blank" rel="noopener">生产备注文档</a>。</p>
+<p>稍后，要停止MongoDB，请<code>Control+C</code>在mongod实例运行的终端上 按。</p>
+<h2 id="NodeJS中MongoDB驱动"><a href="#NodeJS中MongoDB驱动" class="headerlink" title=" NodeJS中MongoDB驱动"></a><a id="toc-node-mongodb"></a> <a href="http://www.mongodb.org.cn/drivers/5.html" target="_blank" rel="noopener">NodeJS中MongoDB驱动</a></h2><p>虽然说在NodeJS下连接MongoDB用Mongoose的较多，但作为其基础的mongodb库了解一下还是很有必要的。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>一如既往的通过npm安装，命令<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mongodb</div></pre></td></tr></table></figure></p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><p>通过MongoClient.connect连接数据库，在回调中会返回db对象以供之后使用。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MongoClient = <span class="built_in">require</span>(<span class="string">'mongodb'</span>).MongoClient;</div><div class="line"><span class="keyword">var</span> url = <span class="string">'mongodb://localhost:27017/dbname'</span>;</div><div class="line">MongoClient.connect(url, <span class="function"><span class="keyword">function</span>(<span class="params">err, db</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(err)&#123;</div><div class="line">		<span class="built_in">console</span>.error(err);</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Connected correctly to server"</span>);</div><div class="line">		db.close();</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="获得Collection"><a href="#获得Collection" class="headerlink" title="获得Collection"></a>获得Collection</h3><p>调用db对象的collection获得collection</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> collection = db.collection(<span class="string">'collectionName'</span>);</div></pre></td></tr></table></figure>
+<h3 id="添加记录"><a href="#添加记录" class="headerlink" title="添加记录"></a>添加记录</h3><p>调用collection的insert|insertMany方法添加记录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">collection.insert[|insertMangy](&#123;<span class="attr">name</span>:<span class="string">"myName"</span>,<span class="attr">age</span>:<span class="string">"myAge"</span>&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err,result</span>)</span>&#123;</div><div class="line">	<span class="keyword">if</span>(err)&#123;</div><div class="line">		<span class="built_in">console</span>.error(err);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"insert result:"</span>);</div><div class="line">		<span class="built_in">console</span>.log(result);</div><div class="line">	&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h3><p>调用collection的updateOne方法更新单个记录。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">collection.updateOne(&#123; <span class="attr">a</span> : <span class="number">2</span> &#125;, &#123; <span class="attr">$set</span>: &#123; <span class="attr">b</span> : <span class="number">1</span> &#125; &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span>(err)&#123;</div><div class="line">		<span class="built_in">console</span>.error(err);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"update result:"</span>);</div><div class="line">		<span class="built_in">console</span>.log(result);</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><p>调用collection的deleteOne方法更新单个记录。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">collection.deleteOne(&#123; <span class="attr">a</span> : <span class="number">3</span> &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">        <span class="built_in">console</span>.error(err);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"delete result:"</span>);</div><div class="line">        <span class="built_in">console</span>.log(result);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><p>调用collection的find方法查找记录,find方法的参数为查找条件。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">collection.find(&#123;&#125;).toArray(<span class="function"><span class="keyword">function</span>(<span class="params">err, docs</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)&#123;</div><div class="line">        <span class="built_in">console</span>.error(err);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"find result:"</span>);</div><div class="line">        <span class="built_in">console</span>.log(result);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div></pre></td></tr></table></figure></p>
+<p>仅仅写了基础的CRUD,详情参考 <a href="http://mongodb.github.io/node-mongodb-native/2.0" target="_blank" rel="noopener">http://mongodb.github.io/node-mongodb-native/2.0</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/22/babel使用/" rel="next" title="babel使用">
+                <i class="fa fa-chevron-left"></i> babel使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/02/mongoose常用用法/" rel="prev" title="mongoose常用用法">
+                mongoose常用用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mongoDB"><span class="nav-number">1.</span> <span class="nav-text"> mongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是mongodb"><span class="nav-number">1.1.</span> <span class="nav-text"> 什么是mongodb</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#NoSQL简介"><span class="nav-number">1.1.1.</span> <span class="nav-text">NoSQL简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MongoDB-简介"><span class="nav-number">1.1.2.</span> <span class="nav-text">MongoDB 简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是MongoDB"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">什么是MongoDB ?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#主要特点"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">主要特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装mongoDB"><span class="nav-number">1.2.</span> <span class="nav-text"> 安装mongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux平台Ubuntu安装MongoDB社区版"><span class="nav-number">1.2.1.</span> <span class="nav-text">Linux平台Ubuntu安装MongoDB社区版</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：导入包管理系统使用的公钥"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">第一步：导入包管理系统使用的公钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：为MongoDB创建一个列表文件"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">第二步：为MongoDB创建一个列表文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：重新加载本地包数据库"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">第三步：重新加载本地包数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步：安装MongoDB包"><span class="nav-number">1.2.1.4.</span> <span class="nav-text">第四步：安装MongoDB包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行MongoDB社区版"><span class="nav-number">1.3.</span> <span class="nav-text"> 运行MongoDB社区版</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一步：启动MongoDB"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">第一步：启动MongoDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二步：验证MongoDB已经成功启动"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">第二步：验证MongoDB已经成功启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三步：停止MongoDB"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">第三步：停止MongoDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四步：重新启动MongoDB"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">第四步：重新启动MongoDB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五步：开始使用MongoDB"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">第五步：开始使用MongoDB</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS中MongoDB驱动"><span class="nav-number">1.4.</span> <span class="nav-text"> NodeJS中MongoDB驱动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.4.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">1.4.2.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获得Collection"><span class="nav-number">1.4.3.</span> <span class="nav-text">获得Collection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加记录"><span class="nav-number">1.4.4.</span> <span class="nav-text">添加记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新记录"><span class="nav-number">1.4.5.</span> <span class="nav-text">更新记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除记录"><span class="nav-number">1.4.6.</span> <span class="nav-text">删除记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询记录"><span class="nav-number">1.4.7.</span> <span class="nav-text">查询记录</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

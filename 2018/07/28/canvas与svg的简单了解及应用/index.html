@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="html5,canvas," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="这个星期抽空看了下canvas和svg，之前一直就对这两个东西望而却步，连简单的api和应用都没有了解。 工作中看到了html2canvas这个简单的工具可以根据DOM生成截图，于是抽空将MDN上的canvas和svg教程撸了一遍。">
+<meta name="keywords" content="html5,canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas的简单了解及应用">
+<meta property="og:url" content="https://hddhyq.github.io/2018/07/28/canvas与svg的简单了解及应用/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="这个星期抽空看了下canvas和svg，之前一直就对这两个东西望而却步，连简单的api和应用都没有了解。 工作中看到了html2canvas这个简单的工具可以根据DOM生成截图，于是抽空将MDN上的canvas和svg教程撸了一遍。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/Canvas_default_grid.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/Canvas_drawimage.jpg">
+<meta property="og:updated_time" content="2018-07-28T15:08:32.484Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas的简单了解及应用">
+<meta name="twitter:description" content="这个星期抽空看了下canvas和svg，之前一直就对这两个东西望而却步，连简单的api和应用都没有了解。 工作中看到了html2canvas这个简单的工具可以根据DOM生成截图，于是抽空将MDN上的canvas和svg教程撸了一遍。">
+<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/Canvas_default_grid.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2018/07/28/canvas与svg的简单了解及应用/"/>
+
+
+
+
+
+  <title>canvas的简单了解及应用 | hddhyq's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?671b7357b676399cebda034766dfd8e8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'asKTi5Nu4ER1aCCzJX1R','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/07/28/canvas与svg的简单了解及应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">canvas的简单了解及应用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T15:22:33+08:00">
+                2018-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/canvas/" itemprop="url" rel="index">
+                    <span itemprop="name">canvas</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个星期抽空看了下canvas和svg，之前一直就对这两个东西望而却步，连简单的api和应用都没有了解。</p>
+<p>工作中看到了<a href="https://html2canvas.hertzen.com/" target="_blank" rel="noopener">html2canvas</a>这个简单的工具可以根据DOM生成截图，于是抽空将MDN上的<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial" target="_blank" rel="noopener">canvas</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial" target="_blank" rel="noopener">svg</a>教程撸了一遍。<br><a id="more"></a></p>
+<h1 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h1><p><code>&lt;canvas&gt;</code>是HTML5新增的元素，可以通过JavaScript中的脚本来绘制图形。例如，它可以绘制图形，制作照片，创建动画，甚至可以进行实时视频处理或渲染。</p>
+<p>时间太短，没有看canvas的3d部分，下面的介绍都是关于canvas的2d部分的。</p>
+<h2 id="canvas基本概念"><a href="#canvas基本概念" class="headerlink" title="canvas基本概念"></a>canvas基本概念</h2><p>首先需要知道的是canvas的绘图栅格，canvas和svg一样，坐标都是一样的，坐标都是从左上角起始：</p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/Canvas_default_grid.png" alt=""></p>
+<h2 id="绘制相关"><a href="#绘制相关" class="headerlink" title="绘制相关"></a>绘制相关</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fillRect(x, y, width, height)</td>
+<td>绘制一个填充的矩形</td>
+</tr>
+<tr>
+<td>strokeRect(x, y, width, height)</td>
+<td>绘制一个矩形的边框</td>
+</tr>
+<tr>
+<td>clearRect(x, y, width, height)</td>
+<td>清除指定矩形区域，让清除部分完全透明</td>
+</tr>
+<tr>
+<td>beginPath()</td>
+<td>新建一条路径，生成之后，图形绘制命令被指向到路径上生成路径</td>
+</tr>
+<tr>
+<td>closePath()</td>
+<td>闭合路径之后图形绘制命令又重新指向到上下文中</td>
+</tr>
+<tr>
+<td>stroke()</td>
+<td>通过线条来绘制图形轮廓</td>
+</tr>
+<tr>
+<td>moveTo(x, y)</td>
+<td>将笔触移动到指定的坐标x以及y上</td>
+</tr>
+<tr>
+<td>lineTo(x, y)</td>
+<td>绘制一条从当前位置到指定x以及y位置的直线</td>
+</tr>
+<tr>
+<td>arc(x, y, radius, startAngle, endAngle, anticlockwise)</td>
+<td>画一个以（x,y）为圆心的以radius为半径的圆弧（圆），从startAngle开始到endAngle结束，按照anticlockwise给定的方向（默认为顺时针）来生成</td>
+</tr>
+<tr>
+<td>arcTo(x1, y1, x2, y2, radius)</td>
+<td>根据给定的控制点和半径画一段圆弧，再以直线连接两个控制点</td>
+</tr>
+<tr>
+<td>quadraticCurveTo(cp1x, cp1y, x, y)</td>
+<td>绘制二次贝塞尔曲线，cp1x,cp1y为一个控制点，x,y为结束点</td>
+</tr>
+<tr>
+<td>bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y)</td>
+<td>绘制三次贝塞尔曲线，cp1x,cp1y为控制点一，cp2x,cp2y为控制点二，x,y为结束点</td>
+</tr>
+<tr>
+<td>rect(x, y, width, height)</td>
+<td>绘制一个左上角坐标为（x,y），宽高为width以及height的矩形</td>
+</tr>
+<tr>
+<td>Path2D.addPath(path [, transform])​</td>
+<td>添加了一条路径到当前路径（可能添加了一个变换矩阵）</td>
+</tr>
+<tr>
+<td>fillStyle = color</td>
+<td>设置图形的填充颜色</td>
+</tr>
+<tr>
+<td>strokeStyle = color</td>
+<td>设置图形轮廓的颜色</td>
+</tr>
+<tr>
+<td>globalAlpha = transparencyValue</td>
+<td>这个属性影响到 canvas 里所有图形的透明度，有效的值范围是 0.0 （完全透明）到 1.0（完全不透明），默认是 1.0</td>
+</tr>
+<tr>
+<td>lineWidth = value</td>
+<td>设置线条宽度</td>
+</tr>
+<tr>
+<td>lineCap = type</td>
+<td>设置线条末端样式(butt，round和square)</td>
+</tr>
+<tr>
+<td>lineJoin = type</td>
+<td>设定线条与线条间接合处的样式(round，bevel和miter)</td>
+</tr>
+<tr>
+<td>miterLimit = value</td>
+<td>限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度</td>
+</tr>
+<tr>
+<td>getLineDash()</td>
+<td>返回一个包含当前虚线样式，长度为非负偶数的数组</td>
+</tr>
+<tr>
+<td>setLineDash(segments)</td>
+<td>设置当前虚线样式</td>
+</tr>
+<tr>
+<td>lineDashOffset = value</td>
+<td>设置虚线样式的起始偏移量</td>
+</tr>
+<tr>
+<td>createLinearGradient(x1, y1, x2, y2)</td>
+<td>createLinearGradient 方法接受 4 个参数，表示渐变的起点 (x1,y1) 与终点 (x2,y2)</td>
+</tr>
+<tr>
+<td>createRadialGradient(x1, y1, r1, x2, y2, r2)</td>
+<td>createRadialGradient 方法接受 6 个参数，前三个定义一个以 (x1,y1) 为原点，半径为 r1 的圆，后三个参数则定义另一个以 (x2,y2) 为原点，半径为 r2 的圆</td>
+</tr>
+<tr>
+<td>gradient.addColorStop(position, color)</td>
+<td>addColorStop 方法接受 2 个参数，position 参数必须是一个 0.0 与 1.0 之间的数值，表示渐变中颜色所在的相对位置。例如，0.5 表示颜色会出现在正中间。color 参数必须是一个有效的 CSS 颜色值（如 #FFF， rgba(0,0,0,1)，等等）</td>
+</tr>
+<tr>
+<td>createPattern(image, type)</td>
+<td>该方法接受两个参数。Image 可以是一个 Image 对象的引用，或者另一个 canvas 对象。Type 必须是下面的字符串值之一：repeat，repeat-x，repeat-y 和 no-repeat</td>
+</tr>
+<tr>
+<td>shadowOffsetX/Y = float</td>
+<td>shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0</td>
+</tr>
+<tr>
+<td>shadowBlur = float</td>
+<td>shadowBlur 用于设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响，默认为 0</td>
+</tr>
+<tr>
+<td>shadowColor = color</td>
+<td>shadowColor 是标准的 CSS 颜色值，用于设定阴影颜色效果，默认是全透明的黑色</td>
+</tr>
+<tr>
+<td>fillText(text, x, y [, maxWidth])</td>
+<td>在指定的(x,y)位置填充指定的文本，绘制的最大宽度是可选的</td>
+</tr>
+<tr>
+<td>strokeText(text, x, y [, maxWidth])</td>
+<td>在指定的(x,y)位置绘制文本边框，绘制的最大宽度是可选的</td>
+</tr>
+<tr>
+<td>font = value</td>
+<td>当前我们用来绘制文本的样式. 这个字符串使用和 CSS font 属性相同的语法. 默认的字体是 10px sans-serif</td>
+</tr>
+<tr>
+<td>textAlign = value</td>
+<td>文本对齐选项. 可选的值包括：start, end, left, right or center. 默认值是 start</td>
+</tr>
+<tr>
+<td>textBaseline = value</td>
+<td>基线对齐选项. 可选的值包括：top, hanging, middle, alphabetic, ideographic, bottom。默认值是 alphabetic</td>
+</tr>
+<tr>
+<td>direction = value</td>
+<td>文本方向。可能的值包括：ltr, rtl, inherit。默认值是 inherit</td>
+</tr>
+</tbody>
+</table>
+<h2 id="绘制和使用图片"><a href="#绘制和使用图片" class="headerlink" title="绘制和使用图片"></a>绘制和使用图片</h2><p>canvas具有图像操作能力，可以用于动态的图像合成或者作为图像的背景，已经游戏界面等等。</p>
+<p>引入图像到canvas需要下面两个操作</p>
+<ol>
+<li>获得一个指向HTMLImageElement的对象或者另一个canvas元素的引用作为源，也可以通过提供一个URL的方式来使用图片</li>
+<li>使用drawImage()函数将图片绘制到画布上</li>
+</ol>
+<h3 id="可获取图片类型"><a href="#可获取图片类型" class="headerlink" title="可获取图片类型"></a>可获取图片类型</h3><ul>
+<li><p><strong>HTMLImageElement</strong></p>
+<p>这些图片是由Image()函数构造出来的，或者任何的 <code>&lt;img&gt;</code> 元素</p>
+</li>
+<li><p><strong>HTMLVideoElement</strong></p>
+<p>用一个HTML的 <code>&lt;video&gt;</code> 元素作为你的图片源，可以从视频中抓取当前帧作为一个图像</p>
+</li>
+<li><p><strong>HTMLCanvasElement</strong></p>
+<p>可以使用另一个 <code>&lt;canvas&gt;</code> 元素作为你的图片源</p>
+</li>
+<li><p><strong>ImageBitmap</strong></p>
+<p>这是一个高性能的位图，可以低延迟地绘制，它可以从上述的所有源以及其它几种源中生成</p>
+</li>
+</ul>
+<h3 id="使用图像"><a href="#使用图像" class="headerlink" title="使用图像"></a>使用图像</h3><p>我们可以创建一个新的<code>HTMLImageElement</code>元素，或者直接使用相同页面的图片。如果是其他域的图片，图片需要使用<code>crossOrigin</code>属性，需要图片的服务器允许跨域访问这个图片。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();   <span class="comment">// 创建img元素</span></div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="comment">// 执行drawImage语句</span></div><div class="line">&#125;</div><div class="line">img.src = <span class="string">'myImage.png'</span>; <span class="comment">// 设置图片源地址</span></div></pre></td></tr></table></figure>
+<p>新建的图片中，如果图片还没有加载，我们调用<code>drawImage()</code>什么都不会发生，所以我们的drawImage需要在<code>img.onload</code>里面执行，确保图片加载完毕。</p>
+<p>还有一种方法就是通过<code>data:url</code>方式嵌入图片，可以使用base64格式。</p>
+<h3 id="使用视频帧"><a href="#使用视频帧" class="headerlink" title="使用视频帧"></a>使用视频帧</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMyVideo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line">  <span class="keyword">if</span> (canvas.getContext) &#123;</div><div class="line">    <span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.getElementById(<span class="string">'myvideo'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h3><p>我们获取了源图对象，可以使用<code>drawImage</code>方法将它渲染到canvas里。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>drawImage(image, x, y)</td>
+<td>其中 image 是 image 或者 canvas 对象，x 和 y 是其在目标 canvas 里的起始坐标</td>
+</tr>
+<tr>
+<td>drawImage(image, x, y, width, height)</td>
+<td>这个方法多了2个参数：width 和 height，这两个参数用来控制 当向canvas画入时应该缩放的大小</td>
+</tr>
+<tr>
+<td>drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)</td>
+<td>第一个参数和其它的是相同的，都是一个图像或者另一个 canvas 的引用。其它8个参数最好是参照右边的图解，前4个是定义图像源的切片位置和大小，后4个则是定义切片的目标显示位置和大小。</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/Canvas_drawimage.jpg" alt=""></p>
+<h2 id="canvas变形"><a href="#canvas变形" class="headerlink" title="canvas变形"></a>canvas变形</h2><p>变形之前，了解两个状态的保存和恢复<code>save()</code>和<code>restore()</code>。</p>
+<p>save 和 restore 方法是用来保存和恢复 canvas 状态的，都没有参数。Canvas 的状态就是当前画面应用的所有样式和变形的一个快照。</p>
+<p>每一次调用 restore 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。在做变形之前先保存状态是一个良好的习惯，变形也是相对于整个画板的。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>translate(x, y)</td>
+<td>translate 方法接受两个参数。x 是左右偏移量，y 是上下偏移量</td>
+</tr>
+<tr>
+<td>rotate(angle)</td>
+<td>这个方法只接受一个参数：旋转的角度(angle)，它是顺时针方向的，以弧度为单位的值</td>
+</tr>
+<tr>
+<td>scale(x, y)</td>
+<td>scale 方法接受两个参数。x,y 分别是横轴和纵轴的缩放因子，它们都必须是正值。值比 1.0 小表示缩小，比 1.0 大则表示放大，值为 1.0 时什么效果都没有</td>
+</tr>
+<tr>
+<td>transform(m11, m12, m21, m22, dx, dy)</td>
+<td>这个方法是将当前的变形矩阵乘上一个基于自身参数的矩阵</td>
+</tr>
+<tr>
+<td>setTransform(m11, m12, m21, m22, dx, dy)</td>
+<td>这个方法会将当前的变形矩阵重置为单位矩阵，然后用相同的参数调用 transform 方法。如果任意一个参数是无限大，那么变形矩阵也必须被标记为无限大，否则会抛出异常。从根本上来说，该方法是取消了当前变形,然后设置为指定的变形,一步完成。</td>
+</tr>
+<tr>
+<td>resetTransform()</td>
+<td>重置当前变形为单位矩阵</td>
+</tr>
+</tbody>
+</table>
+<h2 id="合成和裁切"><a href="#合成和裁切" class="headerlink" title="合成和裁切"></a>合成和裁切</h2><p>globalCompositeOperation 属性设置或返回如何将一个源（新的）图像绘制到目标（已有）的图像上。</p>
+<p>源图像 = 您打算放置到画布上的绘图。</p>
+<p>目标图像 = 您已经放置在画布上的绘图。</p>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source-over</td>
+<td>默认。在目标图像上显示源图像。</td>
+</tr>
+<tr>
+<td>source-atop</td>
+<td>在目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的。</td>
+</tr>
+<tr>
+<td>source-in</td>
+<td>在目标图像中显示源图像。只有目标图像内的源图像部分会显示，目标图像是透明的。</td>
+</tr>
+<tr>
+<td>source-out</td>
+<td>在目标图像之外显示源图像。只会显示目标图像之外源图像部分，目标图像是透明的。</td>
+</tr>
+<tr>
+<td>destination-over</td>
+<td>在源图像上方显示目标图像。</td>
+</tr>
+<tr>
+<td>destination-atop</td>
+<td>在源图像顶部显示目标图像。源图像之外的目标图像部分不会被显示。</td>
+</tr>
+<tr>
+<td>destination-in</td>
+<td>在源图像中显示目标图像。只有源图像内的目标图像部分会被显示，源图像是透明的。</td>
+</tr>
+<tr>
+<td>destination-out</td>
+<td>在源图像外显示目标图像。只有源图像外的目标图像部分会被显示，源图像是透明的。</td>
+</tr>
+<tr>
+<td>lighter</td>
+<td>显示源图像 + 目标图像。</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>显示源图像。忽略目标图像。</td>
+</tr>
+<tr>
+<td>xor</td>
+<td>使用异或操作对源图像与目标图像进行组合。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="裁切路径"><a href="#裁切路径" class="headerlink" title="裁切路径"></a>裁切路径</h3><p><code>clip()</code>裁切路径和普通的 <code>canvas</code> 图形差不多，不同的是它的作用是遮罩，用来隐藏不需要的部分。如右图所示。红边五角星就是裁切路径，所有在路径以外的部分都不会在 <code>canvas</code> 上绘制出来。</p>
+<h2 id="canvas动画"><a href="#canvas动画" class="headerlink" title="canvas动画"></a>canvas动画</h2><p>首先了解一下，canvas动画的基本步骤：</p>
+<ol>
+<li><p>清空canvas</p>
+<p>除非接下来要画的内容会完全充满 canvas （例如背景图），否则你需要清空所有。最简单的做法就是用 clearRect 方法。</p>
+</li>
+<li><p>保存canvas状态</p>
+<p>如果你要改变一些会改变 canvas 状态的设置（样式，变形之类的），又要在每画一帧之时都是原始状态的话，你需要先保存一下。</p>
+</li>
+<li><p>绘制动画图形</p>
+<p>这一步是重画动画帧。</p>
+</li>
+<li><p>回复canvas状态</p>
+<p>如果已经保存了canvas的状态，可以先恢复它，然会重绘下一帧。</p>
+</li>
+</ol>
+<h3 id="操作动画"><a href="#操作动画" class="headerlink" title="操作动画"></a>操作动画</h3><p>实现动画，我们需要一些定时重绘的方法。简单的有两个方法<code>setInterval</code>和<code>setTimeout</code>方法来控制在设定的时间点上执行重绘。</p>
+<p>可以用<code>window.setInterval()</code>, <code>window.setTimeout()</code>,和<code>window.requestAnimationFrame()</code>来设定定期执行一个指定函数</p>
+<ul>
+<li><code>setInterval(function, delay)</code> 当设定好间隔时间后，function会定期执行。</li>
+<li><code>setTimeout(function, delay)</code> 在设定好的事件之后执行函数。</li>
+<li><code>requestAnimationFrame(callback)</code> 告诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。</li>
+</ul>
+<p>如果不需要和用户互动，可以使用<code>setInterval()</code>方法，它可以定期的执行指定代码。如果我们需要做一个游戏，我们可以使用键盘或者鼠标事件配合<code>setTimeout()</code>方法来实现。通过设置事件监听，我们可以捕捉用户的交互，并执行相应的动作。</p>
+<p><code>window.requestAnimationFrame()</code>实现动画效果。这个方法提供了更加平滑更加有效率的方式来执行动画，当系统准备好了重绘条件的时候，才调用绘制动画帧。一般每秒钟回调函数执行60次，也有可能会被降低。</p>
+<p>还有一个<code>window.cancelAnimationFrame()</code>用于取消动画。</p>
+<h2 id="像素操作"><a href="#像素操作" class="headerlink" title="像素操作"></a>像素操作</h2><p>执行像素操作，我们需要了解一下ImageData对象。</p>
+<p>ImageData对象中存储着canvas对象真实的像素数据，它包含以下几个只读属性：</p>
+<ul>
+<li><strong>width</strong> 图片宽度，单位是像素</li>
+<li><strong>height</strong> 图片高度，单位是像素</li>
+<li><strong>data</strong> <code>Uint8ClampedArray</code>类型的一维数组，包含着RGBA格式的整型数据，范围在0至255之间（包括255）</li>
+</ul>
+<p>data属性返回一个<code>Uint8ClampedArray</code>,它可以被使用作为查看初始像素数据。每个像素用四个1bytes值（按照red，green，blue和alpha），rgba的顺序来排列。</p>
+<p>每个部分的颜色值部分用0至255来表示，每个部分被分配到一个数组内连续的索引，左上角像素的红色部分在数组的索引0位置。像素从左到右被处理，然后往下，遍历整个数组。</p>
+<p>如要读取，第50行，第200列的像素的蓝色部分，你会写以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blueComponent = imageData.data[((<span class="number">50</span>*(imageData.width*<span class="number">4</span>)) + (<span class="number">200</span>*<span class="number">4</span>)) + <span class="number">2</span>];</div></pre></td></tr></table></figure>
+<h3 id="创建一个ImageData对象"><a href="#创建一个ImageData对象" class="headerlink" title="创建一个ImageData对象"></a>创建一个ImageData对象</h3><p>去创建一个新的，空白的ImageData对象，你应该会使用<code>createImageData()</code>方法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImageData = ctx.createImageData(width, height);</div><div class="line"><span class="comment">// 创建了一个新的具体特定尺寸的ImageData对象。所有像素被预设为透明黑</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> myImageData = ctx.createImageData(anotherImageData)</div><div class="line"><span class="comment">// 尺寸相同，依旧是透明黑</span></div></pre></td></tr></table></figure>
+<h3 id="得到场景像素数据"><a href="#得到场景像素数据" class="headerlink" title="得到场景像素数据"></a>得到场景像素数据</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取指定区域的画布对象</span></div><div class="line"><span class="keyword">var</span> myImageData = ctx.getImageData(left, top, width, height)</div></pre></td></tr></table></figure>
+<p>下面看一个颜色选择器的代码</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> img = <span class="keyword">new</span> Image();</div><div class="line">img.src = <span class="string">'./cat.jpg'</span>;</div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>);</div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div><div class="line">img.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  ctx.drawImage(img, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">  img.style.display = <span class="string">'none'</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> color = <span class="built_in">document</span>.getElementById(<span class="string">'color'</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">pick</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> x = event.layerX;</div><div class="line">  <span class="keyword">var</span> y = event.layerY;</div><div class="line">  <span class="keyword">var</span> pixel = ctx.getImageData(x, y, <span class="number">1</span>, <span class="number">1</span>);</div><div class="line">  <span class="keyword">var</span> data = pixel.data;</div><div class="line">  <span class="keyword">var</span> rgba = <span class="string">'rgba('</span> + data[<span class="number">0</span>] + <span class="string">','</span> + data[<span class="number">1</span>] + <span class="string">','</span> + data[<span class="number">2</span>] + <span class="string">','</span> + (data[<span class="number">3</span>] / <span class="number">255</span>) + <span class="string">')'</span>;</div><div class="line">  color.style.background =  rgba;</div><div class="line">  color.textContent = rgba;</div><div class="line">&#125;</div><div class="line">canvas.addEventListener(<span class="string">'mousemove'</span>, pick);</div></pre></td></tr></table></figure>
+<h3 id="在场景中写入数据"><a href="#在场景中写入数据" class="headerlink" title="在场景中写入数据"></a>在场景中写入数据</h3><p>可以利用putImageData()方法对场景进行像素数据的写入。</p>
+<p><code>ctx.putImageData(myImageData, dx, dy);</code></p>
+<p>dx和dy参数表示你希望在场景内左上角绘制的像素数据得到的设备坐标。</p>
+<h3 id="缩放和反锯齿"><a href="#缩放和反锯齿" class="headerlink" title="缩放和反锯齿"></a>缩放和反锯齿</h3><p><code>imageSmoothingEnabled</code>默认是启用的，想要关闭需要添加不同的浏览器前缀来手动关闭。</p>
+<h2 id="保存图片"><a href="#保存图片" class="headerlink" title="保存图片"></a>保存图片</h2><p><code>HTMLCanvasElement</code>提供一个toDataURL()方法，此方法在保存图片的时候有用。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>canvas.toDataURL(‘image/png’)</td>
+<td>默认设定。创建一个PNG图片。</td>
+</tr>
+<tr>
+<td>canvas.toDataURL(‘image/jpeg’, quality)</td>
+<td>创建一个JPG图片。你可以有选择地提供从0到1的品质量，1表示最好品质，0基本不被辨析但有比较小的文件大小。</td>
+</tr>
+<tr>
+<td>canvas.toBlob(callback, type, encoderOptions)</td>
+<td>这个创建了一个在画布中的代表图片的Blob对象</td>
+</tr>
+</tbody>
+</table>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ul>
+<li>在离屏canvas上预渲染相似的图形或重复的对象</li>
+<li>避免浮点数的坐标点，用整数取而代之</li>
+<li>不要在用drawImage时缩放图像</li>
+<li>使用多层画布去画一个复杂的场景</li>
+<li>用CSS设置大的背景图</li>
+<li>用CSS transforms特性缩放画布</li>
+<li>使用moz-opaque属性(仅限Gecko)</li>
+</ul>
+<h3 id="更多贴士"><a href="#更多贴士" class="headerlink" title="更多贴士"></a>更多贴士</h3><ul>
+<li>将画布的函数调用集合到一起（例如，画一条折线，而不要画多条分开的直线）</li>
+<li>避免不必要的画布状态改变</li>
+<li>渲染画布中的不同点，而非整个新状态</li>
+<li>尽可能避免 shadowBlur特性</li>
+<li>尽可能避免text rendering</li>
+<li>使用不同的办法去清除画布(clearRect() vs. fillRect() vs. 调整canvas大小)</li>
+<li>有动画，请使用window.requestAnimationFrame() 而非window.setInterval()</li>
+<li>请谨慎使用大型物理库</li>
+<li>用<a href="https://jsperf.com/" target="_blank" rel="noopener">JSPerf</a>测试性能</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5/" rel="tag"># html5</a>
+          
+            <a href="/tags/canvas/" rel="tag"># canvas</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/12/touch事件-mouse事件-PC端-移动端总结/" rel="next" title="touch事件&&mouse事件&&PC端&&移动端总结">
+                <i class="fa fa-chevron-left"></i> touch事件&&mouse事件&&PC端&&移动端总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg"
+                alt="hddhyq" />
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hddhyq" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:brokenbonesdd@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#canvas"><span class="nav-text">canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas基本概念"><span class="nav-text">canvas基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制相关"><span class="nav-text">绘制相关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制和使用图片"><span class="nav-text">绘制和使用图片</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#可获取图片类型"><span class="nav-text">可获取图片类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用图像"><span class="nav-text">使用图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用视频帧"><span class="nav-text">使用视频帧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制图片"><span class="nav-text">绘制图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas变形"><span class="nav-text">canvas变形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合成和裁切"><span class="nav-text">合成和裁切</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#裁切路径"><span class="nav-text">裁切路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#canvas动画"><span class="nav-text">canvas动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作动画"><span class="nav-text">操作动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#像素操作"><span class="nav-text">像素操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个ImageData对象"><span class="nav-text">创建一个ImageData对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#得到场景像素数据"><span class="nav-text">得到场景像素数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在场景中写入数据"><span class="nav-text">在场景中写入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缩放和反锯齿"><span class="nav-text">缩放和反锯齿</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存图片"><span class="nav-text">保存图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能优化"><span class="nav-text">性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更多贴士"><span class="nav-text">更多贴士</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v6.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

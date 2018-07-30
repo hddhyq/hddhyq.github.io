@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="html5,svg," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="SVG(scalable、vector、graphics)是XML语言的一种形式，有点类似XHTML，它可以用来绘制矢量图形。&amp;lt;!– —参考  MDN的svg教程 W3school的svg教程 –&amp;gt;">
+<meta name="keywords" content="html5,svg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg简介及svg与canvas对比">
+<meta property="og:url" content="https://hddhyq.github.io/2018/07/30/svg简介及svg与canvas对比/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="SVG(scalable、vector、graphics)是XML语言的一种形式，有点类似XHTML，它可以用来绘制矢量图形。&amp;lt;!– —参考  MDN的svg教程 W3school的svg教程 –&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ShortCut_Cubic_Bezier.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/SVG_Stroke_Linecap_Example.png">
+<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/SVG_Stroke_Linejoin_Example.png">
+<meta property="og:updated_time" content="2018-07-30T12:13:02.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="svg简介及svg与canvas对比">
+<meta name="twitter:description" content="SVG(scalable、vector、graphics)是XML语言的一种形式，有点类似XHTML，它可以用来绘制矢量图形。&amp;lt;!– —参考  MDN的svg教程 W3school的svg教程 –&amp;gt;">
+<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ShortCut_Cubic_Bezier.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2018/07/30/svg简介及svg与canvas对比/"/>
+
+
+
+
+
+  <title>svg简介及svg与canvas对比 | hddhyq's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?671b7357b676399cebda034766dfd8e8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'asKTi5Nu4ER1aCCzJX1R','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/07/30/svg简介及svg与canvas对比/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">svg简介及svg与canvas对比</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T10:07:05+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/svg/" itemprop="url" rel="index">
+                    <span itemprop="name">svg</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SVG(scalable、vector、graphics)是XML语言的一种形式，有点类似XHTML，它可以用来绘制矢量图形。<br>&lt;!– —<br>参考</p>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Introduction" target="_blank" rel="noopener">MDN的svg教程</a></li>
+<li><a href="http://www.w3school.com.cn/svg/svg_intro.asp" target="_blank" rel="noopener">W3school的svg教程</a> –&gt;<a id="more"></a>
+</li>
+</ul>
+<h1 id="SVG的基本应用"><a href="#SVG的基本应用" class="headerlink" title="SVG的基本应用"></a>SVG的基本应用</h1><p>首先需要记住的是，svg在HTML中的写法是用的XML的语法，所以：</p>
+<ol>
+<li>SVG的元素和属性必须按标准格式书写，因为XML是区分大小写的（这一点和html不同）</li>
+<li>SVG里的属性值必须用引号引起来，就算是数值也必须这样做。</li>
+</ol>
+<h1 id="svg文件的基本属性"><a href="#svg文件的基本属性" class="headerlink" title="svg文件的基本属性"></a>svg文件的基本属性</h1><h2 id="svg渲染及压缩"><a href="#svg渲染及压缩" class="headerlink" title="svg渲染及压缩"></a>svg渲染及压缩</h2><ul>
+<li>元素的渲染顺序，SVG文件全局有效的规则是“后来居上”，越后面的元素越可见。</li>
+<li>web上的svg文件可以直接展示，或者通过以下几种方法嵌入到HTML文件：<ul>
+<li>HTML是XHTML，并且声明类型为application/xhtml+xml</li>
+<li>HTML是HTML5，并且浏览器支持HTML5，可以直接嵌入SVG</li>
+<li>通过<code>object</code>引入SVG文件。<code>&lt;object data=&quot;image.svg&quot; type=&quot;image/svg+xml&quot; /&gt;</code></li>
+<li>通过<code>iframe</code>引入SVG文件。<code>&lt;iframe src=&quot;image.svg&quot;&gt;&lt;/iframe&gt;</code></li>
+<li>可以使用img元素，但是在低于4.0版本的Firefox中不起作用</li>
+<li>最后SVG可以通过JavaScript动态创建并注入到HTML DOM中</li>
+</ul>
+</li>
+</ul>
+<p>svg有两种文件类型，一个是”.svg”，一个是压缩的”.svgz”。”.svgz”在Firefox不能通过本地的机器加载，微软的IIS服务器对于gzip压缩的SVG文件，在用户代理上也不是很可靠。”.svgz”多用于地图应用等需要大型SVG文件的应用。</p>
+<h2 id="SVG的坐标定位及窗口"><a href="#SVG的坐标定位及窗口" class="headerlink" title="SVG的坐标定位及窗口"></a>SVG的坐标定位及窗口</h2><p>svg的网格布局和canvas是一样的，都是以一个左上角为原点，向下和向右延申的。</p>
+<p>正常情况下，svg的一个像素对应显示屏的一个像素，不过这种情况是可以改变的，我们需要定义<code>viewBox</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">width</span>=<span class="string">"200"</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">viewBox</span>=<span class="string">"0 0 100 100"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>上面的画板尺寸是<code>200px*200px</code>，画板展示区域是<code>100px*100px</code>，所以<code>100*100</code>的区域会在<code>200*200</code>的画布上展示。</p>
+<h1 id="svg基本形状"><a href="#svg基本形状" class="headerlink" title="svg基本形状"></a>svg基本形状</h1><h2 id="矩形-rect"><a href="#矩形-rect" class="headerlink" title="矩形 rect"></a>矩形 rect</h2><ul>
+<li>x 矩形左上角的x位置</li>
+<li>y 矩形左上角的y位置</li>
+<li>width 矩形的宽度</li>
+<li>height 矩形的高度</li>
+<li>rx 圆角的x方位的半径</li>
+<li>ry 圆角的y方位的半径</li>
+</ul>
+<h2 id="圆形-circle"><a href="#圆形-circle" class="headerlink" title="圆形 circle"></a>圆形 circle</h2><ul>
+<li>r 圆的半径</li>
+<li>cx 圆心的x位置</li>
+<li>cy 圆心的y位置</li>
+</ul>
+<h2 id="椭圆-ellipse"><a href="#椭圆-ellipse" class="headerlink" title="椭圆 ellipse"></a>椭圆 ellipse</h2><ul>
+<li>rx 椭圆的x半径</li>
+<li>ry 椭圆的y半径</li>
+<li>cx 椭圆中心的x位置</li>
+<li>cy 椭圆中心的y位置</li>
+</ul>
+<h2 id="线条-line"><a href="#线条-line" class="headerlink" title="线条 line"></a>线条 line</h2><ul>
+<li>x1 起点的x位置</li>
+<li>y1 起点的y位置</li>
+<li>x2 终点的x位置</li>
+<li>y2 终点的y位置</li>
+</ul>
+<h2 id="折线-polyline"><a href="#折线-polyline" class="headerlink" title="折线 polyline"></a>折线 polyline</h2><p>Polyline是一组连接在一起的直线。因为它可以有很多的点，折线的的所有点位置都放在一个points属性中：</p>
+<p><code>points</code> 点集数列。每个数字用空白、逗号、终止命令符或者换行符分隔开。每个点必须包含2个数字，一个是x坐标，一个是y坐标。所以点列表 (0,0), (1,1) 和(2,2)可以写成这样：“0 0, 1 1, 2 2”。</p>
+<h2 id="多边形-polygon"><a href="#多边形-polygon" class="headerlink" title="多边形 polygon"></a>多边形 polygon</h2><p>polygon和折线很像，它们都是由连接一组点集的直线构成。不同的是，polygon的路径在最后一个点处自动回到第一个点。</p>
+<p><code>points</code> 点集数列。每个数字用空白符、逗号、终止命令或者换行符分隔开。每个点必须包含2个数字，一个是x坐标，一个是y坐标。所以点列表 (0,0), (1,1) 和(2,2)可以写成这样：“0 0, 1 1, 2 2”。路径绘制完后闭合图形，所以最终的直线将从位置(2,2)连接到位置(0,0)。</p>
+<h1 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h1><p><code>&lt;path&gt;</code>元素是SVG基本形状中最强大的一个，path只需要少量的点就能创建和规划流畅的曲线</p>
+<p>path的形状通过属性<code>&#39;d&#39;</code>定义，属性d的值是一个“命令+参数”的序列。</p>
+<p>每一个命令都用一个关键字母来表示，每一个命令有两种形式。一种是<strong>大写字母</strong>，表示采用绝对定位。另一种是<strong>小写字母</strong>，表示采用相对定位。</p>
+<p>属性<code>d</code>采用的是用户坐标系统，所以不需标明单位。</p>
+<h2 id="直线命令"><a href="#直线命令" class="headerlink" title="直线命令"></a>直线命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M x y (or m dx dy)</td>
+<td>移动画笔坐标</td>
+</tr>
+<tr>
+<td>L x y (or l dx dy)</td>
+<td>L命令将会在当前位置和新位置（L前面画笔所在的点）之间画一条线段</td>
+</tr>
+<tr>
+<td>H x (or h dx)</td>
+<td>标明在x轴移动到的位置</td>
+</tr>
+<tr>
+<td>V y (or v dy)</td>
+<td>标明在y轴移动到的位置</td>
+</tr>
+<tr>
+<td>Z (or z)</td>
+<td>从当前点画一条直线到路径的起点</td>
+</tr>
+</tbody>
+</table>
+<h2 id="曲线命令"><a href="#曲线命令" class="headerlink" title="曲线命令"></a>曲线命令</h2><p>有三个命令：</p>
+<ul>
+<li>三次贝塞尔曲线</li>
+<li>二次贝塞尔曲线</li>
+<li>圆的一部分</li>
+</ul>
+<h3 id="三次贝塞尔曲线"><a href="#三次贝塞尔曲线" class="headerlink" title="三次贝塞尔曲线"></a>三次贝塞尔曲线</h3><p>三次贝塞尔曲线需要定义一个点和两个控制点，所以用C命令创建三次贝塞尔曲线，需要设置三组坐标参数：</p>
+<p><code>C x1 y1, x2 y2, x y (or c dx1 dy1, dx2 dy2, dx dy)</code></p>
+<p>最后一个坐标(x, y)表示的是曲线的终点，另外两个坐标是控制点，(x1, y1)是起点的控制点，(x2, y2)是终点的控制点。</p>
+<p>如何创建平滑的曲线呢？通常情况下，一个点是另一个点的控制点的堆成。这样，你就可以使用一个简写的贝塞尔曲线S:</p>
+<p><code>S x2 y2, x y (or s dx2 dy2, dx dy)</code></p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ShortCut_Cubic_Bezier.png" alt=""></p>
+<h3 id="二次贝塞尔曲线"><a href="#二次贝塞尔曲线" class="headerlink" title="二次贝塞尔曲线"></a>二次贝塞尔曲线</h3><p>二次贝塞尔曲线只需要一个控制点。</p>
+<p><code>Q x1 y1, x y (or q dx1 dy1, dx dy)</code></p>
+<p>二次贝塞尔曲线简写<code>T x y (or t dx dy)</code>。</p>
+<h3 id="弧形"><a href="#弧形" class="headerlink" title="弧形"></a>弧形</h3><p><code>A rx ry x-axis-rotation large-arc-flag sweep-flag x y</code></p>
+<p><code>a rx ry x-axis-rotation large-arc-flag sweep-flag dx dy</code></p>
+<p>x轴旋转角度（x轴旋转角度）, large-arc-flag（角度大小） 和sweep-flag（弧线方向）</p>
+<h2 id="Fill和Stroke属性"><a href="#Fill和Stroke属性" class="headerlink" title="Fill和Stroke属性"></a>Fill和Stroke属性</h2><p>这两个属性，可以用直接的css颜色，还有一个就是直接添加颜色的透明度。属性fill-opacity控制填充色的不透明度，属性stroke-opacity控制描边的不透明度。</p>
+<h3 id="描边"><a href="#描边" class="headerlink" title="描边"></a>描边</h3><p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/SVG_Stroke_Linecap_Example.png" alt=""></p>
+<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/SVG_Stroke_Linejoin_Example.png" alt=""></p>
+<h3 id="stroke-dasharray"><a href="#stroke-dasharray" class="headerlink" title="stroke-dasharray"></a>stroke-dasharray</h3><p>是一组用逗号分割的数字组成的数列</p>
+<ol>
+<li>第一个用来表示填色区域的长度</li>
+<li>第二个用来表示非填色区域的长度</li>
+<li>继续定义增加长度</li>
+</ol>
+<h3 id="使用css"><a href="#使用css" class="headerlink" title="使用css"></a>使用css</h3><p>除了定义对象的属性外，你也可以通过CSS来样式化填充和描边。语法和在html里使用CSS一样，只不过你要把background-color、border改成fill和stroke。注意，不是所有的属性都能用CSS来设置。上色和填充的部分一般是可以用CSS来设置的，比如fill，stroke，stroke-dasharray等，但是不包括下面会提到的渐变和图案等功能。另外，width、height，以及路径的命令等等，都不能用css设置。判断它们能不能用CSS设置还是比较容易的。</p>
+<p>可以利用<code>:hover</code>伪类完成触发效果。</p>
+<h2 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h2><p>线性渐变沿着直线改变颜色，要插入一个线性渐变，你需要在SVG文件的defs元素内部，创建一个<code>&lt;linearGradient&gt;</code> 节点。</p>
+<p>还有径向渐变也类似，创建径向渐变需要在文档的defs中添加一个<code>&lt;radialGradient&gt;</code>元素。</p>
+<h2 id="图案"><a href="#图案" class="headerlink" title="图案"></a>图案</h2><p>patterns（图案）是SVG中用到最让人混淆的填充类型。</p>
+<h2 id="剪切和遮罩"><a href="#剪切和遮罩" class="headerlink" title="剪切和遮罩"></a>剪切和遮罩</h2><p>Clipping用来移除在别处定义的元素的部分内容。在这里，任何半透明效果都是不行的。它只能要么显示要么不显示。</p>
+<p>Masking允许使用透明度和灰度值遮罩计算得的软边缘。</p>
+<p>Web开发工具箱中有一个很有用的工具是display:none。它虽然几无悬念，但是依然可以在SVG上使用该CSS属性，连同CSS2定义的visibility和clip属性。为了恢复以前设置的display:none，知道这一点很重要：所有的SVG元素的初始display值都是inline。</p>
+<h2 id="其它SVG内容"><a href="#其它SVG内容" class="headerlink" title="其它SVG内容"></a>其它SVG内容</h2><h3 id="嵌入光栅图像"><a href="#嵌入光栅图像" class="headerlink" title="嵌入光栅图像"></a>嵌入光栅图像</h3><pre><code>很像在HTML中的img元素，SVG有一个image元素，用于同样的目的。你可以利用它嵌入任意光栅（以及矢量）图像。它的规格要求应用至少支持PNG、JPG和SVG格式文件。
+嵌入的图像变成一个普通的SVG元素。这意味着，你可以在其内容上用剪切、遮罩、滤镜、旋转以及其它SVG工具：
+</code></pre><h3 id="嵌入任意XML"><a href="#嵌入任意XML" class="headerlink" title="嵌入任意XML"></a>嵌入任意XML</h3><p>因为SVG是一个XML应用，所以你总是可以在SVG文档的任何位置嵌入任意XML。但是你没有必要定义周围的SVG需要怎样反作用于这个内容。</p>
+<h2 id="滤镜效果"><a href="#滤镜效果" class="headerlink" title="滤镜效果"></a>滤镜效果</h2><p>有一种情况，基本形状不能提供你想要达到的效果的灵活性。投阴影、提供一个十分流行的示例，利用一个小变组合无法合理地创建它。滤镜是SVG的机制，允许创建精密的效果。</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>字体中需要了解的就是<a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/textPath" target="_blank" rel="noopener">text-path</a>,即tref样式化。</p>
+<h1 id="svg和canvas对比"><a href="#svg和canvas对比" class="headerlink" title="svg和canvas对比"></a>svg和canvas对比</h1><p>这部分参考W3school</p>
+<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><ul>
+<li>依赖分辨率</li>
+<li>不支持事件处理器</li>
+<li>弱的文本渲染能力</li>
+<li>能够以 .png 或 .jpg 格式保存结果图像</li>
+<li>最适合图像密集型的游戏，其中的许多对象会被频繁重绘</li>
+</ul>
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><ul>
+<li>不依赖分辨率</li>
+<li>支持事件处理器</li>
+<li>最适合带有大型渲染区域的应用程序（比如谷歌地图）</li>
+<li>复杂度高会减慢渲染速度（任何过度使用 DOM 的应用都不快）</li>
+<li>不适合游戏应用</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/html5/" rel="tag"># html5</a>
+          
+            <a href="/tags/svg/" rel="tag"># svg</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/28/canvas与svg的简单了解及应用/" rel="next" title="canvas的简单了解及应用">
+                <i class="fa fa-chevron-left"></i> canvas的简单了解及应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg"
+                alt="hddhyq" />
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hddhyq" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:brokenbonesdd@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SVG的基本应用"><span class="nav-text">SVG的基本应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#svg文件的基本属性"><span class="nav-text">svg文件的基本属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#svg渲染及压缩"><span class="nav-text">svg渲染及压缩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG的坐标定位及窗口"><span class="nav-text">SVG的坐标定位及窗口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#svg基本形状"><span class="nav-text">svg基本形状</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#矩形-rect"><span class="nav-text">矩形 rect</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圆形-circle"><span class="nav-text">圆形 circle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#椭圆-ellipse"><span class="nav-text">椭圆 ellipse</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线条-line"><span class="nav-text">线条 line</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#折线-polyline"><span class="nav-text">折线 polyline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多边形-polygon"><span class="nav-text">多边形 polygon</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路径"><span class="nav-text">路径</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#直线命令"><span class="nav-text">直线命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#曲线命令"><span class="nav-text">曲线命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三次贝塞尔曲线"><span class="nav-text">三次贝塞尔曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二次贝塞尔曲线"><span class="nav-text">二次贝塞尔曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#弧形"><span class="nav-text">弧形</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fill和Stroke属性"><span class="nav-text">Fill和Stroke属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#描边"><span class="nav-text">描边</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stroke-dasharray"><span class="nav-text">stroke-dasharray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用css"><span class="nav-text">使用css</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#渐变"><span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图案"><span class="nav-text">图案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪切和遮罩"><span class="nav-text">剪切和遮罩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它SVG内容"><span class="nav-text">其它SVG内容</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入光栅图像"><span class="nav-text">嵌入光栅图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入任意XML"><span class="nav-text">嵌入任意XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滤镜效果"><span class="nav-text">滤镜效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字体"><span class="nav-text">字体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#svg和canvas对比"><span class="nav-text">svg和canvas对比</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas"><span class="nav-text">Canvas</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVG"><span class="nav-text">SVG</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v6.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

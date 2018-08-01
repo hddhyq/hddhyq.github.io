@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ios_input.jpg">
 <meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/android_input.jpg">
-<meta property="og:updated_time" content="2018-07-31T15:49:59.347Z">
+<meta property="og:updated_time" content="2018-08-01T03:40:43.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端虚拟键盘和滚动穿透小结">
 <meta name="twitter:description" content="记录一下最近遇到的两个小bug，也不算小bug，可能在不同的移动端浏览器表现不同吧。一个是虚拟键盘顶起，一个是滚动穿透问题。">
@@ -419,6 +419,22 @@
 </ol>
 <h2 id="fixed加上js恢复记录位置"><a href="#fixed加上js恢复记录位置" class="headerlink" title="fixed加上js恢复记录位置"></a>fixed加上js恢复记录位置</h2><p>css<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span><span class="selector-class">.mask-open</span> &#123;</div><div class="line">  <span class="attribute">position</span>: fixed;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scrollTop = <span class="number">0</span>;</div><div class="line"></div><div class="line">open.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  scrollTop = <span class="built_in">document</span>.body.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop;</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.body.classList.add(<span class="string">'mask-open'</span>);</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.body.style.top = -scrollTop + <span class="string">'px'</span>; <span class="comment">// 脱离文档流后回到当前位置</span></div><div class="line"></div><div class="line">  mask.style.display = <span class="string">'block'</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">close.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  mask.style.display = <span class="string">'none'</span>;</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.body.classList.remove(<span class="string">'mask-open'</span>);</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.body.scrollTop = <span class="built_in">document</span>.documentElement.scrollTop = scrollTop <span class="comment">// 滚动到相应位置，确保兼容性</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p> 参考</p>
+<ul>
+<li>虚拟键盘<ul>
+<li><a href="https://cloud.tencent.com/developer/article/1004930" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1004930</a></li>
+<li><a href="http://www.cnblogs.com/wangyihong/p/7514304.html" target="_blank" rel="noopener">http://www.cnblogs.com/wangyihong/p/7514304.html</a></li>
+</ul>
+</li>
+<li>滚动穿透<ul>
+<li><a href="https://segmentfault.com/q/1010000002942948" target="_blank" rel="noopener">https://segmentfault.com/q/1010000002942948</a></li>
+<li><a href="https://github.com/pod4g/tool/wiki/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%BB%9A%E5%8A%A8%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">https://github.com/pod4g/tool/wiki/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%BB%9A%E5%8A%A8%E7%A9%BF%E9%80%8F%E9%97%AE%E9%A2%98</a></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+
       
     </div>
     

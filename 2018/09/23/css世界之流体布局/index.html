@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="CSS," />
+  <meta name="keywords" content="css," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="记一下上个月看的图解CSS的一些简单的知识点哈。">
-<meta name="keywords" content="CSS">
+<meta name="description" content="这将会把看到的css世界里面的知识点提取出来，可能会有5到6篇文章来做总结。 这是第一篇文章，css世界之流体布局。">
+<meta name="keywords" content="css">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于之前看看的一些css">
-<meta property="og:url" content="https://hddhyq.github.io/2018/06/12/关于之前看看的一些css/index.html">
+<meta property="og:title" content="css世界之流体布局">
+<meta property="og:url" content="https://hddhyq.github.io/2018/09/23/css世界之流体布局/index.html">
 <meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="记一下上个月看的图解CSS的一些简单的知识点哈。">
+<meta property="og:description" content="这将会把看到的css世界里面的知识点提取出来，可能会有5到6篇文章来做总结。 这是第一篇文章，css世界之流体布局。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-08T04:25:55.520Z">
+<meta property="og:updated_time" content="2018-09-24T07:55:41.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于之前看看的一些css">
-<meta name="twitter:description" content="记一下上个月看的图解CSS的一些简单的知识点哈。">
+<meta name="twitter:title" content="css世界之流体布局">
+<meta name="twitter:description" content="这将会把看到的css世界里面的知识点提取出来，可能会有5到6篇文章来做总结。 这是第一篇文章，css世界之流体布局。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://hddhyq.github.io/2018/06/12/关于之前看看的一些css/"/>
+  <link rel="canonical" href="https://hddhyq.github.io/2018/09/23/css世界之流体布局/"/>
 
 
 
 
 
-  <title>关于之前看看的一些css | hddhyq's blog</title>
+  <title>css世界之流体布局 | hddhyq's blog</title>
   
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/06/12/关于之前看看的一些css/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/09/23/css世界之流体布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hddhyq">
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于之前看看的一些css</h1>
+          <h1 class="post-title" itemprop="name headline">css世界之流体布局</h1>
         
 
         <div class="post-meta">
@@ -322,8 +322,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T14:44:28+08:00">
-                2018-06-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-23T18:23:00+08:00">
+                2018-09-23
               </time>
             
 
@@ -345,8 +345,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CSS/" itemprop="url" rel="index">
-                    <span itemprop="name">CSS</span>
+                  <a href="/categories/css世界/" itemprop="url" rel="index">
+                    <span itemprop="name">css世界</span>
                   </a>
                 </span>
 
@@ -387,273 +387,61 @@
       
 
       
-        <p>记一下上个月看的图解CSS的一些简单的知识点哈。<br><a id="more"></a></p>
-<h1 id="元素百分比的相对计算"><a href="#元素百分比的相对计算" class="headerlink" title="元素百分比的相对计算"></a>元素百分比的相对计算</h1><table>
-<thead>
-<tr>
-<th>相对的元素计算</th>
-<th>属性</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>父元素宽度</td>
-<td><code>width</code>, <code>left</code>, <code>right</code>, <code>text-indent</code>, <code>padding</code>, <code>margin</code>等</td>
-</tr>
-<tr>
-<td>父元素高度</td>
-<td><code>height</code>, <code>top</code>, <code>bottom</code>等</td>
-</tr>
-<tr>
-<td>主轴长度</td>
-<td><code>flex-basis</code></td>
-</tr>
-<tr>
-<td>继承字号</td>
-<td><code>flex-size</code></td>
-</tr>
-<tr>
-<td>自身字号</td>
-<td><code>line-height</code></td>
-</tr>
-<tr>
-<td>自身宽高</td>
-<td><code>vertical-align</code></td>
-</tr>
-<tr>
-<td>自身设置</td>
-<td><code>background-position</code>; <code>border-image-slice</code></td>
-</tr>
-<tr>
-<td>特殊算法</td>
-<td><code>position: absolute</code>，相对于父元素最近的<code>position</code>不为<code>static</code>的祖先元素。如果没有这样的元素，则相对于视口。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="结构伪类选择器"><a href="#结构伪类选择器" class="headerlink" title="结构伪类选择器"></a>结构伪类选择器</h1><table>
-<thead>
-<tr>
-<th>选择器</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>E:first-child</td>
-<td>作为父元素的第一个子元素E</td>
-</tr>
-<tr>
-<td>E:last-child</td>
-<td>作为父元素的最后一个子元素的元素E</td>
-</tr>
-<tr>
-<td>E:root</td>
-<td>选择匹配元素E所在文档的根元素</td>
-</tr>
-<tr>
-<td>E F:nth-child(n)</td>
-<td>选择父元素的第n个子元素F</td>
-</tr>
-<tr>
-<td>E F:nth-last-child(n)</td>
-<td>选择元素E的倒数第n个子元素F</td>
-</tr>
-<tr>
-<td>E:nth-of-type(n)</td>
-<td>选择父元素内具有指定类型的第n个E元素</td>
-</tr>
-<tr>
-<td>E:nth-last-of-type(n)</td>
-<td>选择父元素内具有指定类型的倒数第n个E元素</td>
-</tr>
-<tr>
-<td>E:first-of-type</td>
-<td>选择父元素内具有指定类型的的第一个E元素，与E:nth-of-type(1)相同</td>
-</tr>
-<tr>
-<td>E:last-of-type</td>
-<td>选择父元素内具有指定类型的的最后一个E元素，与E:nth-last-of-type(1)相同</td>
-</tr>
-<tr>
-<td>E:only-child</td>
-<td>选择父元素只包含一个字元素，且该子元素匹配E元素</td>
-</tr>
-<tr>
-<td>E:only-of-type</td>
-<td>选择父元素只包含一个同类型的子元素，且该子元素匹配E元素</td>
-</tr>
-<tr>
-<td>E:empty</td>
-<td>选择没有子类型的元素，而且该元素也不包含任何文本节点</td>
-</tr>
-</tbody>
-</table>
-<p>关于，伪类元素选择器中n的用法，也就是n取0到+∞，在子元素的个数范围内，取相对应的子元素。</p>
-<h1 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h1><p>伪类一般反映无法在CSS中轻松或可靠地检测到的某个元素的属性或状态；伪元素则表示DOM外部的某种元素。</p>
-<table>
-<thead>
-<tr>
-<th>伪元素</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>::first-letter</td>
-<td>选择文本块的第一个字母，除非在同一行中包含一些其他元素</td>
-</tr>
-<tr>
-<td>::first-line</td>
-<td>匹配元素的第一行文本</td>
-</tr>
-<tr>
-<td>::before和::after</td>
-<td>生成的内容不会成为DOM的一部分，但是可以设置样式</td>
-</tr>
-<tr>
-<td>::selection</td>
-<td>匹配突出显示的文本，可设置background和color</td>
-</tr>
-</tbody>
-</table>
-<h1 id="border相关"><a href="#border相关" class="headerlink" title="border相关"></a>border相关</h1><h2 id="border-shadow"><a href="#border-shadow" class="headerlink" title="border-shadow"></a>border-shadow</h2><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>功能描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>none</td>
-<td>默认值，元素没有任何阴影效果</td>
-</tr>
-<tr>
-<td>inset</td>
-<td>阴影类型，可选值。默认外投影</td>
-</tr>
-<tr>
-<td>x-offset</td>
-<td>阴影水平偏移量，其值可以是正负值。正值在元素右边</td>
-</tr>
-<tr>
-<td>y-offset</td>
-<td>阴影垂直偏移量，其值可以是正负值。正值在元素底部</td>
-</tr>
-<tr>
-<td>blur-radius</td>
-<td>阴影模糊半径，可选参数。取值为0，表示阴影不具有模糊效果，取值越大，阴影的边缘越模糊</td>
-</tr>
-<tr>
-<td>spread-radius</td>
-<td>阴影扩展半径，可选参数。正值整个阴影都延展扩大，负值，整个阴影缩小</td>
-</tr>
-<tr>
-<td>color</td>
-<td>阴影颜色，不取值则是默认色，各个浏览器的默认色不一样的。</td>
-</tr>
-</tbody>
-</table>
-<h1 id="css3背景"><a href="#css3背景" class="headerlink" title="css3背景"></a>css3背景</h1><p>主要有</p>
-<ul>
-<li>background-color 背景颜色</li>
-<li>background-image 背景图片</li>
-<li>background-repeat 背景图片展示方式</li>
-<li>background-attachment 背景图片是固定还是滚动</li>
-<li>background-position 背景图片位置</li>
-</ul>
-<p>CSS3新增属性</p>
-<ul>
-<li>background-origin 指定绘制背景图片的起点（padding-box||border-box||content-box）</li>
-<li>background-clip 指定背景图片的显示范围（padding-box||border-box||content-box）</li>
-<li>background-size 指定背景图片的尺寸大小（auto||percentage||cover||contain）</li>
-<li>background-break 指定内联元素的背景图片进行平铺时的循环方式</li>
-</ul>
-<h1 id="css文本类型"><a href="#css文本类型" class="headerlink" title="css文本类型"></a>css文本类型</h1><table>
-<thead>
-<tr>
-<th>属性</th>
-<th>功能描述</th>
-<th>取值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>word-spacing</td>
-<td>定义词与词之间的间距</td>
-<td>normal，length（设置词与词之间间距，可以是负数）</td>
-</tr>
-<tr>
-<td>letter-spacing</td>
-<td>定义字符之间的间距</td>
-<td>normal，length（设置词与词之间间距，可以是负数）</td>
-</tr>
-<tr>
-<td>vertiacl-align</td>
-<td>定义文本的垂直对齐方式</td>
-<td>baseline、sub（上标对齐）、super（下标对齐）、bottom（行框底端对齐）、text-bottom（行内文本底端对齐）、top（顶端对齐）、middle（居中对齐）、百分比数字、长度</td>
-</tr>
-<tr>
-<td>text-decoration</td>
-<td>定义文本的修饰线</td>
-<td>none、underline、overline、line-through、blink</td>
-</tr>
-<tr>
-<td>text-indent</td>
-<td>定义文本首行缩进</td>
-<td>length（长度单位）和百分比</td>
-</tr>
-<tr>
-<td>text-align</td>
-<td>定义文本水平对齐方式</td>
-<td>left（左对齐）、center（水平对齐）、right（右对齐）、justify（两端对齐）</td>
-</tr>
-<tr>
-<td>line-height</td>
-<td>定义文本行高</td>
-<td>normal、长度值、百分比值、数字</td>
-</tr>
-<tr>
-<td>text-transform</td>
-<td>定义文本大小写</td>
-<td>none、uppercase、lowercase、capitalize（首字母大写）</td>
-</tr>
-<tr>
-<td>text-shadow</td>
-<td>定义文本阴影效果</td>
-<td></td>
-</tr>
-<tr>
-<td>white-space</td>
-<td>定义文字之间和文本之间的空白符间距</td>
-<td>normal、nowrap（空白符合并，换行符忽略）、pre（空白符，换行符保留）、pre-wrap（空白符，换行符保留）、pre-line（空白符合，换行符保留）</td>
-</tr>
-<tr>
-<td>direction</td>
-<td>控制文本流入的方向</td>
-<td>ltr、rtl（文本从右到左流入）、inhert（文本流入方向有继承获得）</td>
-</tr>
-</tbody>
-</table>
-<p><code>text-overflow</code>：实现文本溢行处理，<code>word-break: break-all</code>来实现浏览器文本的换行</p>
-<p>多行文本怎么实现文本溢出…,在webkit内核<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">display: -webkit-box</div><div class="line">-webkit-line-clamp: 2</div><div class="line">-webkit-box-orient: vertical</div></pre></td></tr></table></figure></p>
-<h1 id="指定过渡属性transition-property"><a href="#指定过渡属性transition-property" class="headerlink" title="指定过渡属性transition-property"></a>指定过渡属性transition-property</h1><ul>
-<li>none： 没有指定任何样式。</li>
-<li>all：默认值，表示指定元素所有支持transition-property属性的样式。</li>
-<li><code>&lt;single-transition-property&gt;</code>：指定样式，其等于all或者<ident>。</ident></li>
-<li>颜色属性</li>
-<li>具有长度值</li>
-<li>integer（离散步骤，整个数字，在真实的数字空间，以及使用floor()转换为整数时发生，如outline-offset，z-index）</li>
-<li>number</li>
-<li>变形系列属性</li>
-<li>rectangle（通过x，y，width，height（转为数值）变换，如crop属性）</li>
-<li>visibility（离散步骤，在0~1范围内。0表示隐藏，1表示完全显示）</li>
-<li>阴影（shadow，如text-shadow）</li>
-<li>渐变（gradient）：通过每次停止时的位置和颜色进行变化。</li>
-<li>paint server(SVG)</li>
-<li>space-separated list of above</li>
-<li>缩写属性</li>
-</ul>
+        <p>这将会把看到的css世界里面的知识点提取出来，可能会有5到6篇文章来做总结。</p>
+<p>这是第一篇文章，css世界之流体布局。<br><a id="more"></a></p>
+<h1 id="文档流"><a href="#文档流" class="headerlink" title="文档流"></a>文档流</h1><p>想要了解文档流，我们需要关注普通元素默认的布局是怎样的。</p>
+<p>在MDN中<a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow" target="_blank" rel="noopener">normal flow</a>章节中有所描述。</p>
+<p>单个元素我们需要关注于它们的盒子模型，首先获取元素的content，然后是它们的padding，最后是border和margin。</p>
+<p>默认来说，块级元素的content是父级元素宽度的100%，高度是元素content的高度。内联元素的高度是content的高度，宽度也是content的宽度。你不能直接设置一个内联元素的高度或者宽度，内联元素的高度仅仅是坐落在块级元素的内容中。如果你想要控制内联元素的高度和宽度，你需要将它们设置为 <code>display: block;</code> 或 <code>display: inline-block;</code></p>
+<p>上面解释了单个元素。如果有多个元素，他们会怎么交互呢？在正常的浏览器布局中，默认来说，块级元素会根据文档的书写方式有关。每一个块级元素将会占据一个新行，他们还会根据所设置的margin值来分离。在英语中，或者其他水平，自上而下的书写的语言中，块级元素会根据垂直布局。</p>
+<p>内联元素的表现方式就有所不同，它们不会在新的一行出现，它们会在同一行一个接一个的排列，直到它们的长度超过父级元素的宽度就会换行。</p>
+<h1 id="width或height作用的具体细节"><a href="#width或height作用的具体细节" class="headerlink" title="width或height作用的具体细节"></a>width或height作用的具体细节</h1><p>由于块级元素的流体特性主要体现在水平上，所以首先讨论的就是宽度。</p>
+<h2 id="width-auto"><a href="#width-auto" class="headerlink" title="width: auto"></a>width: auto</h2><p>width的默认值就是auto。它有以下四种表现：</p>
+<ol>
+<li><p>充分利用可用空间。常见就是<code>&lt;div&gt;&lt;p&gt;</code>元素宽度是100%默认于父级容器的。</p>
+</li>
+<li><p>收缩于包裹。常见于浮动、绝对定位、inline-block元素或table元素。</p>
+</li>
+<li><p>收缩到最小。常见于table-layout为auto的表格中。</p>
+</li>
+<li><p>超出容器限制。上面三种元素都不会使元素超出容器宽度，除非设置了<code>white-space: nowrap</code>。</p>
+</li>
+</ol>
+<p>上述四种宽度情况中，除了第一种是由外部尺寸确定的宽度，其他都是内部尺寸决定的宽度。</p>
+<h3 id="外部尺寸与流体特性"><a href="#外部尺寸与流体特性" class="headerlink" title="外部尺寸与流体特性"></a>外部尺寸与流体特性</h3><ol>
+<li><p>正常流宽度。宽度会自动填充满父级容器。</p>
+</li>
+<li><p>格式化宽度。出现在‘绝对定位模型中’，也就是position为 <strong>absolute</strong> 和 <strong>fixed</strong> 元素中，</p>
+<p> 对于非替换元素，当left/right或者top/bottom对立方位的属性值同时存在的时候，元素的宽度表现为格式化宽度。同样的设置了宽度就会破坏了这种流体性。</p>
+</li>
+</ol>
+<h3 id="内部尺寸与流体特性"><a href="#内部尺寸与流体特性" class="headerlink" title="内部尺寸与流体特性"></a>内部尺寸与流体特性</h3><p>这里我仅仅记录了一个关于包裹性的利用，页面中某个文字内容是动态的，可能是几个字或多很多字，几个字的时候居中显示，多个字的时候居左显示。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.content</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">text-align</span>: left;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="height-auto"><a href="#height-auto" class="headerlink" title="height: auto"></a>height: auto</h2><p>如果父级元素的高度是100%，那么只要子元素在文档流之中，其百分比值完全被忽略。为什么高度的百分比计算会被忽略呢。在w3c规范中在就给出了答案，如果包含块的高度没有显式指定（即高度由内容决定），并且该元素不是绝对定位，则计算值为 <strong>auto</strong> 。父级容器的高度解释为了auto自然没法与百分比相乘了。</p>
+<p><strong>如何让元素支持height: 100%</strong></p>
+<ol>
+<li><p>设定显式的高度值。给html和body设定100%也是也可以的。</p>
+</li>
+<li><p>使用绝对定位。绝对元素的宽高百分比计算是相对于 <strong>padding box</strong> 计算的，非绝对定位的高度百分比计算则是相对于 <strong>content box</strong> 计算的。</p>
+</li>
+</ol>
+<h1 id="css-min-width-max-width和min-height-max-height"><a href="#css-min-width-max-width和min-height-max-height" class="headerlink" title="css min-width/max-width和min-height/max-height"></a><strong>css</strong> min-width/max-width和min-height/max-height</h1><p>下面简述一下min/max-width/height与width和height的不一样的地方。</p>
+<h2 id="关于初始值"><a href="#关于初始值" class="headerlink" title="关于初始值"></a>关于初始值</h2><p>既然是总结，直接放出来好了，max-*的初始值是none，min-*的初始值是auto。</p>
+<h2 id="覆盖规则"><a href="#覆盖规则" class="headerlink" title="覆盖规则"></a>覆盖规则</h2><p>当max-width小于width设置的时候，即使width加上了<code>!important</code>也没有用，max-width大于width的设置。</p>
+<p>当min-width大于max-width的时候，会以min-width为准则。</p>
+<p>根据覆盖原则，我们可以实现任意高度的展开收起技术。由于设置height为auto无法计算值，过渡和动画效果也无法完成。所以我们可以利用max-height实现。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.element</span> &#123;</div><div class="line">  <span class="attribute">max-height</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">  <span class="attribute">transition</span>: max-height .<span class="number">25s</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.element</span><span class="selector-class">.active</span> &#123;</div><div class="line">  <span class="attribute">max-height</span>: <span class="number">666px</span>; <span class="comment">/* 一个足够大的最大高度值 */</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="内联盒模型和幽灵空白节点"><a href="#内联盒模型和幽灵空白节点" class="headerlink" title="内联盒模型和幽灵空白节点"></a>内联盒模型和幽灵空白节点</h1><h2 id="内联盒模型的简易版"><a href="#内联盒模型的简易版" class="headerlink" title="内联盒模型的简易版"></a>内联盒模型的简易版</h2><ol>
+<li><p>内容区域。内容区域指一种围绕文字看不见的盒子，可以理解为em盒。</p>
+</li>
+<li><p>内联盒子。“内联盒子”不会让内容成块显示，而是排成一行。需要注意的是一段单独的文本不一定是“匿名内联盒子”，还有可能是“匿名块级盒子”，主要是看其前后标签是内联还是块级。</p>
+</li>
+<li><p>行框盒子。每一行就是一个行框盒子，每个行框盒子又是一个一个“内联盒子”组成的。</p>
+</li>
+<li><p>包含盒子。又称包含块，包括父级标签。</p>
+</li>
+</ol>
+<h2 id="幽灵空白节点"><a href="#幽灵空白节点" class="headerlink" title="幽灵空白节点"></a>幽灵空白节点</h2><p>“幽灵空白节点”是内联盒子模型的一个非常重要的概念。具体指，在HTML5的文档声明中，内联元素的所有解析盒渲染表现就如同每个行框盒子的前面有一个“空白节点”一样。这个节点永远透明，不占据任何宽度，看不见也无法通过脚本获取，就好像幽灵一样，但是又确确实实存在。</p>
 
       
     </div>
@@ -671,7 +459,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/CSS/" rel="tag"># CSS</a>
+            <a href="/tags/css/" rel="tag"># css</a>
           
         </div>
       
@@ -684,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/14/你不知道的JS-this和原型对象/" rel="next" title="你不知道的JS-this和原型对象">
-                <i class="fa fa-chevron-left"></i> 你不知道的JS-this和原型对象
+              <a href="/2018/07/31/移动端虚拟键盘和滚动穿透小结/" rel="next" title="移动端虚拟键盘和滚动穿透小结">
+                <i class="fa fa-chevron-left"></i> 移动端虚拟键盘和滚动穿透小结
               </a>
             
           </div>
@@ -693,10 +481,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/08/函数去抖debounce和函数节流throttle的应用/" rel="prev" title="函数去抖debounce和函数节流throttle的应用">
-                函数去抖debounce和函数节流throttle的应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -855,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#元素百分比的相对计算"><span class="nav-text">元素百分比的相对计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构伪类选择器"><span class="nav-text">结构伪类选择器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#伪元素"><span class="nav-text">伪元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#border相关"><span class="nav-text">border相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#border-shadow"><span class="nav-text">border-shadow</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css3背景"><span class="nav-text">css3背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css文本类型"><span class="nav-text">css文本类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指定过渡属性transition-property"><span class="nav-text">指定过渡属性transition-property</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#文档流"><span class="nav-text">文档流</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#width或height作用的具体细节"><span class="nav-text">width或height作用的具体细节</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#width-auto"><span class="nav-text">width: auto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#外部尺寸与流体特性"><span class="nav-text">外部尺寸与流体特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内部尺寸与流体特性"><span class="nav-text">内部尺寸与流体特性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#height-auto"><span class="nav-text">height: auto</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#css-min-width-max-width和min-height-max-height"><span class="nav-text">css min-width/max-width和min-height/max-height</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于初始值"><span class="nav-text">关于初始值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖规则"><span class="nav-text">覆盖规则</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内联盒模型和幽灵空白节点"><span class="nav-text">内联盒模型和幽灵空白节点</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内联盒模型的简易版"><span class="nav-text">内联盒模型的简易版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#幽灵空白节点"><span class="nav-text">幽灵空白节点</span></a></li></ol></li></ol></div>
             
 
           </div>

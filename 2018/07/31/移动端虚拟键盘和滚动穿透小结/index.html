@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="hddhyq&#39;s blog">
 <meta property="og:description" content="记录一下最近遇到的两个小bug，也不算小bug，可能在不同的移动端浏览器表现不同吧。一个是虚拟键盘顶起，一个是滚动穿透问题。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ios_input.jpg">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/android_input.jpg">
-<meta property="og:updated_time" content="2018-08-01T03:58:19.830Z">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/ios_input.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/android_input.jpg">
+<meta property="og:updated_time" content="2018-12-09T14:14:41.198Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="移动端虚拟键盘和滚动穿透小结">
 <meta name="twitter:description" content="记录一下最近遇到的两个小bug，也不算小bug，可能在不同的移动端浏览器表现不同吧。一个是虚拟键盘顶起，一个是滚动穿透问题。">
-<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ios_input.jpg">
+<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/ios_input.jpg">
 
 
 
@@ -405,8 +405,8 @@
 <p>这里就需要监听键盘顶起事件，并执行相应的给元素添加相关css的功能。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oHeight = $(<span class="built_in">document</span>).height();</div><div class="line"><span class="comment">// 监听键盘事件</span></div><div class="line">$(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> ($(<span class="built_in">document</span>).height() &lt; oHeight) &#123;</div><div class="line">    $(<span class="string">'footer'</span>).addClass(<span class="string">'hide'</span>);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    $(<span class="string">'footer'</span>).removeClass(<span class="string">'hide'</span>);</div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>另外，关于底部的输入框顶起的问题，我看了一下手机版微博的解决方案，在Android端，虚拟键盘顶起，应该直接是fixed在底部，在IOS端则是整个添加了一个评论的浮层，总来来说也是一个不错的方案。</p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/ios_input.jpg" alt=""></p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//little_tricks/android_input.jpg" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/ios_input.jpg" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/android_input.jpg" alt=""></p>
 <p>最后介绍一个神奇的东西<code>Element.scrollIntoView()</code>，这个东西能把底部的输入框提高到可视区域，不过经过测试，键盘顶起是需要时间的，我们需要确保，在键盘调起之后，确保元素调用<code>scrollIntoView()</code>。</p>
 <p>下面是我写的一段代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'#el'</span>).on(<span class="string">'focus'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="built_in">document</span>.querySelector(<span class="string">'#el'</span>).scrollIntoView();</div><div class="line">  &#125;, <span class="number">300</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <h1 id="滚动穿透"><a href="#滚动穿透" class="headerlink" title="滚动穿透"></a>滚动穿透</h1><p>在移动端中，滚动穿透问题很常见，处理起来也比较繁琐。下面我还是按照不同的方法进行分类：</p>
@@ -561,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -572,7 +572,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -583,7 +583,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

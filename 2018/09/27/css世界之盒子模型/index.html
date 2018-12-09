@@ -87,16 +87,16 @@
 <meta property="og:site_name" content="hddhyq&#39;s blog">
 <meta property="og:description" content="这是这个总结系列的第二篇文章，关于content、padding、margin、border的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/pipe_border.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/menu_dot.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_color.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_color_transparent.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_single.png">
-<meta property="og:updated_time" content="2018-10-01T05:14:50.054Z">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/pipe_border.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/menu_dot.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_color.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_color_transparent.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_single.png">
+<meta property="og:updated_time" content="2018-12-09T14:15:17.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css世界之盒子模型">
 <meta name="twitter:description" content="这是这个总结系列的第二篇文章，关于content、padding、margin、border的。">
-<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/pipe_border.png">
+<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/pipe_border.png">
 
 
 
@@ -509,7 +509,7 @@
 <p>区分的方式也很简单，如果父容器设置为<code>overflow: auto</code>，层叠区域超出父元素的时候，没有滚动条出现，则是纯视觉的；如果有滚动条出现，则会影响尺寸，影响布局。</p>
 <h2 id="内联padding的一点小应用"><a href="#内联padding的一点小应用" class="headerlink" title="内联padding的一点小应用"></a>内联padding的一点小应用</h2><h3 id="利用内联padding实现高度可控的“管道分隔符”"><a href="#利用内联padding实现高度可控的“管道分隔符”" class="headerlink" title="利用内联padding实现高度可控的“管道分隔符”"></a>利用内联padding实现高度可控的“管道分隔符”</h3><p><a href="http://demo.cssworld.cn/4/2-2.php" target="_blank" rel="noopener">查看链接</a></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span> + <span class="selector-tag">a</span><span class="selector-pseudo">::before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">3px</span> <span class="number">1px</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">6px</span>;</div><div class="line">  <span class="attribute">border-left</span>: <span class="number">1px</span> solid gray;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/pipe_border.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/pipe_border.png" alt=""></p>
 <h2 id="padding的百分比值及应用"><a href="#padding的百分比值及应用" class="headerlink" title="padding的百分比值及应用"></a>padding的百分比值及应用</h2><p>块级元素的话，有一个纯css实现宽高5:1的头图， <a href="http://demo.cssworld.cn/4/2-3.php" target="_blank" rel="noopener">效果图</a></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.box</span> &#123;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10%</span> <span class="number">50%</span>;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.box</span> &gt; <span class="selector-tag">img</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这里在讨论一下内联元素的padding百分比。</p>
@@ -525,7 +525,7 @@
 <p>双层圆心选中效果也可以直接模拟。</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.icon-menu</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">140px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">35px</span> <span class="number">0</span>;</div><div class="line">  <span class="attribute">border-top</span>: <span class="number">10px</span> solid;</div><div class="line">  <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid;</div><div class="line">  <span class="attribute">background-color</span>: currentColor;</div><div class="line">  <span class="attribute">background-clip</span>: content-box;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.icon-dot</span> &#123;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</div><div class="line">  <span class="attribute">background-color</span>: currentColor;</div><div class="line">  <span class="attribute">background-clip</span>: content-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><a href="http://demo.cssworld.cn/4/2-4.php" target="_blank" rel="noopener">效果图</a></p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/menu_dot.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/menu_dot.png" alt=""></p>
 <h1 id="margin"><a href="#margin" class="headerlink" title="margin"></a>margin</h1><h2 id="元素尺寸的相关概念"><a href="#元素尺寸的相关概念" class="headerlink" title="元素尺寸的相关概念"></a>元素尺寸的相关概念</h2><ul>
 <li><p>元素尺寸：对应jQuery的<code>$().outerWidth()</code>和<code>$().outerHeight()</code>方法，是元素的<strong>border box</strong>尺寸。在原生DOM API中写作offsetWidth和offsetHeight，所以有时也称作“元素偏移尺寸”。</p>
 </li>
@@ -582,9 +582,9 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">10px</span> solid;</div><div class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>首先我们需要知道border的绘制过程：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">100px</span> solid;</div><div class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> <span class="number">#00f</span> <span class="number">#396</span> <span class="number">#0f0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_color.png" alt=""> </p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_color.png" alt=""> </p>
 <p>所以其他三边透明和宽高为0的等宽三角想也就出来了：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 梯形 */</span></div><div class="line"></div><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">100px</span> solid;</div><div class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 三角形 */</span></div><div class="line"></div><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">border</span>: <span class="number">100px</span> solid;</div><div class="line">  <span class="attribute">border-color</span>: <span class="number">#f30</span> transparent transparent;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_color_transparent.png" alt=""> <img src="http://p1aqu3lsq.bkt.clouddn.com/little_tricks/border_single.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_color_transparent.png" alt=""> <img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/little_tricks/border_single.png" alt=""></p>
 <p>其他一些其他的三角形利用，则是利用两个倾斜度不同的三角形叠加。</p>
 
       
@@ -709,7 +709,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +720,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -731,7 +731,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

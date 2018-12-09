@@ -87,22 +87,22 @@
 <meta property="og:site_name" content="hddhyq&#39;s blog">
 <meta property="og:description" content="看《学习JavaScript数据结构与算法》，总结了下常用的排序，如冒泡排序、选择排序、插入排序、归并排序和快速排序，以及顺序搜索和二分搜索算法。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/冒泡算法.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/改进冒泡算法.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/选择排序.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/插入排序.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/归并排序.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排1.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排2.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排3.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排4.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排5.png">
-<meta property="og:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/排序时间复杂度.png">
-<meta property="og:updated_time" content="2018-07-08T04:25:55.512Z">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/冒泡算法.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/改进冒泡算法.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/选择排序.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/插入排序.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/归并排序.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排1.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排2.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排3.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排4.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排5.png">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/排序时间复杂度.png">
+<meta property="og:updated_time" content="2018-12-09T14:14:41.196Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS中排序和搜索算法">
 <meta name="twitter:description" content="看《学习JavaScript数据结构与算法》，总结了下常用的排序，如冒泡排序、选择排序、插入排序、归并排序和快速排序，以及顺序搜索和二分搜索算法。">
-<meta name="twitter:image" content="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/冒泡算法.png">
+<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/冒泡算法.png">
 
 
 
@@ -405,19 +405,19 @@
 <p>冒泡排序比较任何两个相邻的项，如果第一个比第二个大，则交换它们。元素项向上移动至正确的顺序，就好像气泡升至表面一样，冒泡排序因此得名。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.bubbleSort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> length = array.length; <span class="comment">//&#123;1&#125;</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;length; i++)&#123; <span class="comment">//&#123;2&#125;</span></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;length<span class="number">-1</span>; j++ )&#123; <span class="comment">//&#123;3&#125;</span></div><div class="line">      <span class="keyword">if</span> (array[j] &gt; array[j+<span class="number">1</span>])&#123; <span class="comment">//&#123;4&#125;</span></div><div class="line">        swap(array, j, j+<span class="number">1</span>); <span class="comment">//&#123;5&#125;</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;; </div><div class="line"></div><div class="line"><span class="keyword">var</span> swap = <span class="function"><span class="keyword">function</span>(<span class="params">array, index1, index2</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> aux = array[index1];</div><div class="line">  array[index1] = array[index2];</div><div class="line">  array[index2] = aux;</div><div class="line">&#125;; <span class="comment">// 一个私有函数，只能用在ArrayList类的内部代码中</span></div><div class="line"></div><div class="line"><span class="comment">// 可以用ES6的数组拓展</span></div><div class="line"><span class="comment">// [array[index1], array[index2]] = [array[index2], array[index1]];</span></div></pre></td></tr></table></figure>
 <p>首先，声明一个名为length的变量，用来存储数组的长度（行{1}）。这一步可选，它能帮助我们在行{2}和行{3}时直接使用数组的长度。接着，外循环（行{2}）会从数组的第一位迭代至最后一位，它控制了在数组中经过多少轮排序（应该是数组中每项都经过一轮，轮数和数组长度一致）。然后，内循环将从第一位迭代至倒数第二位，内循环实际上进行当前项和下一项的比较（行{4}）。如果这两项顺序不对（当前项比下一项大），则交换它们（行{5}），意思是位置为j+1的值将会被换置到位置j处，反之亦然。</p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/冒泡算法.png" alt=""></p>
-<p><strong>改进冒泡算法</strong><br>如果从内循环减去外循环中已跑过的轮数，就可以避免内循环中所有不必要的比较。<br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/改进冒泡算法.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/冒泡算法.png" alt=""></p>
+<p><strong>改进冒泡算法</strong><br>如果从内循环减去外循环中已跑过的轮数，就可以避免内循环中所有不必要的比较。<br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/改进冒泡算法.png" alt=""></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.modifiedBubbleSort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> length = array.length;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;length; i++)&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j=<span class="number">0</span>; j&lt;length<span class="number">-1</span>-i; j++ )&#123;</div><div class="line">      <span class="keyword">if</span> (array[j] &gt; array[j+<span class="number">1</span>])&#123;</div><div class="line">        swap(j, j+<span class="number">1</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>最后，这个排序的事件复杂度是O(n²)。</p>
 <h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>选择排序算法是一种原址比较排序算法。选择排序大致的思路是找到数据结构中的最小值并将其放置在第一位，接着找到第二小的值并将其放在第二位，以此类推。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.selectionSort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> length = array.length, <span class="comment">//&#123;1&#125;</span></div><div class="line">    indexMin;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;length<span class="number">-1</span>; i++)&#123; <span class="comment">//&#123;2&#125;</span></div><div class="line">      indexMin = i; <span class="comment">//&#123;3&#125;</span></div><div class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> j=i; j&lt;length; j++)&#123; <span class="comment">//&#123;4&#125;</span></div><div class="line">      <span class="keyword">if</span>(array[indexMin]&gt;array[j])&#123; <span class="comment">//&#123;5&#125;</span></div><div class="line">        indexMin = j; <span class="comment">//&#123;6&#125;</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (i !== indexMin)&#123; <span class="comment">//&#123;7&#125;</span></div><div class="line">    swap(i, indexMin);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>首先声明一些将在算法内使用的变量（行{1}）。接着，外循环（行{2}）迭代数组，并控制迭代轮次（数组的第n个值——下一个最小值）。我们假设本迭代轮次的第一个值为数组最小值（行{3}）。然后，从当前i的值开始至数组结束（行{4}），我们比较是否位置j的值比当前最小值小（行{5}）；如果是，则改变最小值至新最小值（行{6}）。当内循环结束（行{4}），将得出数组第n小的值。最后，如果该最小值和原最小值不同（行{7}），则交换其值。</p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/选择排序.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/选择排序.png" alt=""></p>
 <p>选择排序同样也是一个复杂度为O(n²)的算法。和冒泡排序一样，它包含有嵌套的两个循环，这导致了二次方的复杂度。</p>
 <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>插入排序每次排一个数组项，以此方式构建最后的排序数组。假定第一项已经排序了，接着，它和第二项进行比较，第二项是应该待在原位还是插到第一项之前呢？这样，头两项就已正确排序，接着和第三项比较（它是该插入到第一、第二还是第三的位置呢？），以此类推。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.insertionSort = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> length = array.length, <span class="comment">//&#123;1&#125;</span></div><div class="line">      j, temp;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;length; i++)&#123; <span class="comment">//&#123;2&#125;</span></div><div class="line">    j = i; <span class="comment">//&#123;3&#125;</span></div><div class="line">    temp = array[i]; <span class="comment">//&#123;4&#125;</span></div><div class="line">    <span class="keyword">while</span> (j&gt;<span class="number">0</span> &amp;&amp; array[j<span class="number">-1</span>] &gt; temp)&#123; <span class="comment">//&#123;5&#125;</span></div><div class="line">      array[j] = array[j<span class="number">-1</span>]; <span class="comment">//&#123;6&#125;</span></div><div class="line">      j--;</div><div class="line">    &#125;</div><div class="line">    array[j] = temp; <span class="comment">//&#123;7&#125;</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>算法的第一行用来声明代码中使用的变量（行{1}）。接着，迭代数组来给第i项找到正确的位置（行{2}）。注意，算法是从第二个位置（索引1）而不是0位置开始的（我们认为第一项已排序了）。然后，用i的值来初始化一个辅助变量（行{3}）并将其值亦存储于一临时变量中（行{4}），便于之后将其插入到正确的位置上。下一步是要找到正确的位置来插入项目。只要变量j比0大（因为数组的第一个索引是0——没有负值的索引）并且数组中前面的值比待比较的值大（行{5}），我们就把这个值移到当前位置上（行{6}）并减小j。最终，该项目能插入到正确的位置上。</p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/插入排序.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/插入排序.png" alt=""></p>
 <p>排序小型数组时，此算法比选择排序和冒泡排序性能要好。</p>
 <h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是第一个可以被实际使用的排序算法。，其复杂度为O(nlogⁿ)。</p>
 <blockquote>
@@ -431,7 +431,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> merge = <span class="function"><span class="keyword">function</span>(<span class="params">left, right</span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> result = [], <span class="comment">// &#123;7&#125;</span></div><div class="line">      il = <span class="number">0</span>,</div><div class="line">      ir = <span class="number">0</span>; </div><div class="line">  <span class="keyword">while</span>(il &lt; left.length &amp;&amp; ir &lt; right.length) &#123; <span class="comment">// &#123;8&#125;</span></div><div class="line">    <span class="keyword">if</span>(left[il] &lt; right[ir]) &#123;</div><div class="line">      result.push(left[il++]); <span class="comment">// &#123;9&#125;</span></div><div class="line">    &#125; <span class="keyword">else</span>&#123;</div><div class="line">      result.push(right[ir++]); <span class="comment">// &#123;10&#125;</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (il &lt; left.length)&#123; <span class="comment">// &#123;11&#125;</span></div><div class="line">    result.push(left[il++]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">while</span> (ir &lt; right.length)&#123; <span class="comment">// &#123;12&#125;</span></div><div class="line">    result.push(right[ir++]);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result; <span class="comment">// &#123;13&#125;</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>merge函数接受两个数组作为参数，并将它们归并至一个大数组。排序发生在归并过程中。首先，需要声明归并过程要创建的新数组以及用来迭代两个数组（left和right数组）所需的两个变量（行{7}）。迭代两个数组的过程中（行{8}），我们比较来自left数组的项是否比来自right数组的项小。如果是，将该项从left数组添加至归并结果数组，并递增迭代数组的控制变量（行{9}）；否则，从right数组添加项并递增相应的迭代数组的控制变量（行{10}）。</p>
 <p>接下来，将left数组或者right数组所有剩余的项添加到归并数组中（行{11}和行{12}）。最后，将归并数组作为结果返回（行{13}）。</p>
-<p>如果执行mergeSort函数，下图是具体的执行过程：<br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/归并排序.png" alt=""></p>
+<p>如果执行mergeSort函数，下图是具体的执行过程：<br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/归并排序.png" alt=""></p>
 <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快速排序也许是最常用的排序算法了。它的复杂度为O(nlogⁿ)，且它的性能通常比其他的复杂度为O(nlogⁿ)的排序算法要好。和归并排序一样，快速排序也使用分治的方法，将原始数组分为较小的数组（但它没有像归并排序那样将它们分割开）。</p>
 <p>快速排序比到目前为止你学过的其他排序算法要复杂一些。让我们一步步地来学习。</p>
 <ol>
@@ -449,7 +449,7 @@
 <p>只要left和right指针没有相互交错（行{11}），就执行划分操作。首先，移动left指针直到找到一个元素比主元大（行{12}）。对right指针，我们做同样的事情，移动right指针直到我们找到一个元素比主元小。</p>
 <p>当左指针指向的元素比主元大且右指针指向的元素比主元小，并且此时左指针索引没有右指针索引大（行{14}），意思是左项比右项大（值比较）。我们交换它们，然后移动两个指针，并重复此过程（从行{11}再次开始）。</p>
 <p>在划分操作结束后，返回左指针的索引，用来在行{3}处创建子数组。</p>
-<h3 id="2-快速排序实战"><a href="#2-快速排序实战" class="headerlink" title="2. 快速排序实战"></a>2. 快速排序实战</h3><p><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排1.png" alt=""><br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排2.png" alt=""><br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排3.png" alt=""><br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排4.png" alt=""><br><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/快排5.png" alt=""></p>
+<h3 id="2-快速排序实战"><a href="#2-快速排序实战" class="headerlink" title="2. 快速排序实战"></a>2. 快速排序实战</h3><p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排1.png" alt=""><br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排2.png" alt=""><br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排3.png" alt=""><br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排4.png" alt=""><br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/快排5.png" alt=""></p>
 <h1 id="搜索算法"><a href="#搜索算法" class="headerlink" title="搜索算法"></a>搜索算法</h1><h2 id="顺序搜索"><a href="#顺序搜索" class="headerlink" title="顺序搜索"></a>顺序搜索</h2><p>顺序或线性搜索是最基本的搜索算法。它的机制是，将每一个数据结构中的元素和我们要找的元素做比较。顺序搜索是最低效的一种搜索算法。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.sequentialSearch = <span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;array.length; i++)&#123;</div><div class="line">    <span class="keyword">if</span> (item === array[i])</div><div class="line">      <span class="keyword">return</span> i;</div><div class="line">  &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <h2 id="二分搜索"><a href="#二分搜索" class="headerlink" title="二分搜索"></a>二分搜索</h2><p>二分搜索算法的原理和猜数字游戏类似，就是那个有人说“我正想着一个1到100的数字”的游戏。我们每回应一个数字，那个人就会说这个数字是高了、低了还是对了。</p>
@@ -462,7 +462,7 @@
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.binarySearch = <span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.quickSort();</div><div class="line">  <span class="keyword">var</span> low = <span class="number">0</span>,</div><div class="line">    high = array.length - <span class="number">1</span>,</div><div class="line">    mid, element;</div><div class="line"></div><div class="line">  <span class="keyword">while</span> (low &lt;= high)&#123;</div><div class="line">    mid = <span class="built_in">Math</span>.floor((low + high) / <span class="number">2</span>);</div><div class="line">    element = array[mid];</div><div class="line">    <span class="keyword">if</span> (element &lt; item) &#123;</div><div class="line">      low = mid + <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (element &gt; item) &#123;</div><div class="line">      high = mid - <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">return</span> mid;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <p>开始前需要先将数组排序，我们可以选择快速排序等。</p>
-<p><img src="http://p1aqu3lsq.bkt.clouddn.com//sortWithJs/排序时间复杂度.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/sortWithJs/排序时间复杂度.png" alt=""></p>
 
       
     </div>
@@ -588,7 +588,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -599,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -610,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

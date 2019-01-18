@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
+
+
+  <link rel="mask-icon" href="/images/favicon.png?v=6.0.0" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css,mediaQuery,viewport," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="简单的从响应式布局的viewport介绍到读hexo博客的next主题的源码，来介绍下响应式布局。">
+<meta name="keywords" content="css,mediaQuery,viewport">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单聊下响应式布局">
+<meta property="og:url" content="https://hddhyq.github.io/2019/01/15/简单聊下响应式布局/index.html">
+<meta property="og:site_name" content="hddhyq&#39;s blog">
+<meta property="og:description" content="简单的从响应式布局的viewport介绍到读hexo博客的next主题的源码，来介绍下响应式布局。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mobile_visualviewport.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/desktop_htmlbehaviour.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_none.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_none_zoomed.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_html300.jpg">
+<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_yes.jpg">
+<meta property="og:updated_time" content="2019-01-18T03:24:52.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单聊下响应式布局">
+<meta name="twitter:description" content="简单的从响应式布局的viewport介绍到读hexo博客的next主题的源码，来介绍下响应式布局。">
+<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mobile_visualviewport.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://hddhyq.github.io/2019/01/15/简单聊下响应式布局/"/>
+
+
+
+
+
+  <title>简单聊下响应式布局 | hddhyq's blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?671b7357b676399cebda034766dfd8e8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">hddhyq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'asKTi5Nu4ER1aCCzJX1R','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/01/15/简单聊下响应式布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="hddhyq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hddhyq's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">简单聊下响应式布局</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-15T23:39:38+08:00">
+                2019-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>简单的从响应式布局的viewport介绍到读hexo博客的next主题的源码，来介绍下响应式布局。<br><a id="more"></a></p>
+<h1 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h1><p>谈到响应式，就离不开viewport。</p>
+<p>移动端浏览器在一个通常比屏幕更宽的虚拟“窗口”（视口）中渲染页面，用户从而无须将所有页面都压缩进一个小屏幕里（那样会把很多没有针对移动端进行优化的站点打乱）。用户可以通过平移和缩放来浏览页面的不同区域。</p>
+<h2 id="两种viewport"><a href="#两种viewport" class="headerlink" title="两种viewport"></a>两种viewport</h2><ul>
+<li>布局视口(layout viewport)</li>
+<li>视觉视口(visual viewport)</li>
+</ul>
+<p>想象一下布局视口是一个足够大的而且不会改变尺寸和形状的图片，现在想象你有一个很小的框，你通过这个框来看上面那个足够大的图片。小框周围布满了不透明的材料，通过小框看到的大图就是视觉视口。你可以将小框向后移来观看所有的大图，也可以将小框靠近大图来观看大图的一部分。你也可以改变小框的方向，不过你要知道大图（布局视口）的形状和大小是从来没有改变的。</p>
+<p>视觉视口（visual viewport）是在当前页面中显示屏幕的一部分。用户可能会滚动来改变他所看到的页面的一部分，或者通过缩放来改变视觉视口的尺寸。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mobile_visualviewport.jpg" alt=""></p>
+<p>然而，CSS布局，尤其是百分比宽度，是相对于<strong>布局视口</strong>计算的。布局视口比视觉视口宽的多。</p>
+<p>因此<code>&lt;html&gt;</code>元素最初获取布局视口的宽度，而且你的CSS被解释为宽度比手机宽的多，就相当于上面比喻中小框远离视觉视口的大图。这样可以确保你的页面布局的行为和桌面是一样的。</p>
+<h3 id="不同的浏览器用的默认layoutview的大小是多少呢"><a href="#不同的浏览器用的默认layoutview的大小是多少呢" class="headerlink" title="不同的浏览器用的默认layoutview的大小是多少呢?"></a>不同的浏览器用的默认layoutview的大小是多少呢?</h3><ul>
+<li>Safari iPhone 使用980px</li>
+<li>Opera 使用850px</li>
+<li>Android WebKit 使用800px</li>
+<li>IE 使用974px</li>
+</ul>
+<h3 id="在桌面端viewport"><a href="#在桌面端viewport" class="headerlink" title="在桌面端viewport"></a>在桌面端viewport</h3><p>桌面端有一个有趣的现象，如果我们定义body中的子元素<code>width:100%</code>，那么这100%相对于谁呢？对，相对于html，html的宽度又取决于<code>viewport</code>，<code>viewport</code>的宽度又相当于浏览器窗口的宽度。</p>
+<p>上面的情况在100%zoom的时候显示正常，当我们缩放窗口的时候，<code>viewport</code>小于页面的总宽度。页面本身没有关系，内容现在溢出超过<code>&lt;html&gt;</code>，但是元素属性设置了<code>overflow: visible</code>，这边是超出的内容也会展示出来。</p>
+<p>下例中，蓝色的顶部栏由于设置了<code>width: 100%</code>，所以浏览器会遵循<code>viewport</code>所设置的宽度。这样蓝色的顶部栏并不管现在它太狭窄了。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/desktop_htmlbehaviour.jpg" alt=""></p>
+<h2 id="缩放zooming"><a href="#缩放zooming" class="headerlink" title="缩放zooming"></a>缩放zooming</h2><p>两种视口都是用来测量CSS像素，但是显然视觉视口的尺寸是根据缩放改变的（如果你放大，屏幕上的像素就会变少）。如果布局视口没有一直保持不变，那么百分比计算的宽度将会回流和重新计算。</p>
+<h3 id="了解布局视口"><a href="#了解布局视口" class="headerlink" title="了解布局视口"></a>了解布局视口</h3><p>为了了解布局视口，我们需要关注一下页面完全缩小的情况。很多移动浏览器都是在完全缩放的情况下展示页面。这种情况下视觉视口等于布局视口。</p>
+<p>因此布局视口的宽度和高度等于我们在完全缩放模式看到的。即使当用户放大窗口，布局视口也保持不变。</p>
+<p>而且当你旋转手机到水平的时候，布局视口的内容也没有变，依旧是缩放到手机上面。这种情况有会导致一个问题，高度比横向少得多，不过网页开发者一般不关心页面的高度，只关心宽度。</p>
+<p>下面罗列几个布局视口的宽度<br>|属性|含义|<br>|—|—|<br>|<strong>document.documentElement.clientWidth/Height</strong>|布局视口尺寸|<br>|<strong>window.innerWidth/Height</strong>|视觉视口尺寸|<br>|<strong>screen.width and screen.height</strong>|屏幕尺寸|<br>|<strong>window.pageX/YOffset</strong>|滚动偏移，和视觉视口相对于布局视口的值相同|<br>|<strong>document. documentElement. offsetWidth / Height</strong>|<code>&lt;html&gt;</code>标签的尺寸|<br>|<strong>Media queries</strong>|测量<code>&lt;html&gt;</code>的宽度（width）或者设备的宽度(device-width)。|</p>
+<h2 id="viewport-Meta属性"><a href="#viewport-Meta属性" class="headerlink" title="viewport Meta属性"></a>viewport Meta属性</h2><p>这里让我们看一下<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=320&quot;&gt;</code>的意义，这表示调整布局视口的尺寸。为了了解为什么这个属性这么重要，我们需要退后一步讨论。</p>
+<p>假设你正在写一个简单的页面而且你没有设定你的元素的宽度。那么他们就会伸缩到布局视口宽度的100%。大多数浏览器都会将整个页面缩放来显示整个布局视口。像下图所示和缩放效果。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_none.jpg" alt=""><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_none_zoomed.jpg" alt=""></p>
+<p>现在设置<code>html {width: 320px}</code>的时候，<code>&lt;html&gt;</code>将会收缩，所有的元素都会取320px的100%，但是这种情况只有用户放大页的时候才能得到，并不是初始化的状态。当用户缩小页面的时候，将会有大片的空白区域。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_html300.jpg" alt=""><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/css/mq_yes.jpg" alt=""></p>
+<p>当你设置为<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=320&quot;&gt;</code>的时候，初始化也显示正常了。你也可以设置任何你想要的宽度，包括<code>device-width</code>。将会取得屏幕的宽度<code>screen.width</code>（在设备像素中），于是布局视口将会使用这个值。</p>
+<p>不过这里有一个问题，有时真正的<code>screen.width</code>并没有起多大的作用，因为像素树太高了。例如， Nexus One 的屏幕像素是480px，不过谷歌工程师觉得给480px的宽度作为<code>device-width</code>来说太大了。所以他们决定使用缩放到 2/3 ，所以<code>device-width</code>所表达的宽度就是320px。</p>
+<p>最后这里介绍下典型的针对移动端优化的viewport</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 添加用户缩放禁止 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=no"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>width</code>控制视口的宽度。可以设置width=600这样的固定值，或者device-width这类的特殊值来指导比例为100%时屏幕宽度的CSS像素数值。</p>
+<h2 id="像素并非像素"><a href="#像素并非像素" class="headerlink" title="像素并非像素"></a>像素并非像素</h2><p>许多手机都有物理像素都比页面的布局大得多，所以移动端将会以多个物理像素现已单个CSS像素。意味着<code>initial-scale=1</code>在安卓或者ios手机上，都能显示较为接近的物理尺寸。</p>
+<p>在240dpi及以上的屏幕上，<code>initial-scale=1</code>的页面实际上会被Android WebKit浏览器放大至150%。其中的文字会保持平滑锐利，但是位图图像在全屏模式下就会不尽人意。为了使图片在这些屏幕上变得清晰，web开发者会将图片甚至整个布局设计成最终尺寸的150%（或者200%从而支持像配备retina屏的iPhone那样的像素密度高达320 dpi及以上的设备），然后通过CSS或视口属性缩小。</p>
+<p>默认比例依赖于显示密度。在密度低于200dpi的显示设备上，比例为1.0。在密度介于200及300dpi之间的显示设备上，比例为1.5。对于具有300dpi以上密度的现实设备，比例为/150dpi向下取整。注意再有在视口比例为1时才会应用默认比例。否则，CSS像素与设备像素之间的关系依赖于当前的缩放等级。</p>
+<h1 id="next源码中响应式应用"><a href="#next源码中响应式应用" class="headerlink" title="next源码中响应式应用"></a>next源码中响应式应用</h1><p>hexo中的<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">next主题</a>是一个非常热门的blog主题，其中的相关源码是使用stylus书写的。</p>
+<p>首先在文件夹外面定义了尺寸，这部分尺寸定义在需要修改样式的地方会进行修改。<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">mobile-smallest</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">max-width</span>: <span class="number">413px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">mobile-small</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">max-width</span>: <span class="number">567px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">mobile</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">max-width</span>: <span class="number">767px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">tablet</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">min-width</span>: <span class="number">768px</span>) and (max-width: <span class="number">991px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">desktop</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">min-width</span>: <span class="number">992px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="title">desktop-large</span><span class="params">()</span></span> &#123;</div><div class="line">  @media (<span class="attribute">min-width</span>: <span class="number">1600px</span>) &#123;</div><div class="line">    &#123;block&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>博客的左侧的页面导航在小于767的时候会隐藏，在大于767px的时候会在左上显示。这里展示部分代码：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.site-nav-toggle</span> &#123;</div><div class="line">  <span class="attribute">display</span>: none;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">left</span>: <span class="number">10px</span>;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="selector-tag">button</span> &#123;</div><div class="line">    <span class="attribute">margin-top</span>: <span class="number">2px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">9px</span> <span class="number">10px</span>;</div><div class="line">    <span class="attribute">background</span>: transparent;</div><div class="line">    <span class="attribute">border</span>: none;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.site-nav</span> &#123;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span> -<span class="number">10px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">10px</span>;</div><div class="line">    <span class="attribute">clear</span>: both;</div><div class="line">    <span class="attribute">border-top</span>: <span class="number">1px</span> solid <span class="variable">$gray</span>-lighter;</div><div class="line">  &#125;</div><div class="line">  +tablet() &#123; <span class="attribute">display</span>: block !important; &#125;</div><div class="line">  +desktop() &#123; <span class="attribute">display</span>: block !important; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后放下layout的布局stylus：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.header</span> &#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$main</span>-desktop;</div><div class="line"></div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.header-inner</span> &#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">overflow</span>: hidden;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">240px</span>;</div><div class="line">  <span class="attribute">background</span>: white;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="variable">$box</span>-shadow-inner;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="variable">$border</span>-radius-inner;</div><div class="line"></div><div class="line">  +desktop-large() &#123;</div><div class="line">    <span class="selector-class">.container</span> &amp; &#123; <span class="attribute">width</span>: <span class="number">240px</span>; &#125;</div><div class="line">  &#125;</div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">    <span class="attribute">border-radius</span>: initial;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">position</span>: relative;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">    <span class="attribute">border-radius</span>: initial;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.main</span> &#123;</div><div class="line">  clearfix();</div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">padding-bottom</span>: <span class="number">100px</span>;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">padding-bottom</span>: <span class="number">100px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> <span class="selector-class">.main-inner</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$main</span>-desktop;</div><div class="line"></div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.content-wrap</span> &#123;</div><div class="line">  <span class="attribute">float</span>: right;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box;</div><div class="line">  <span class="attribute">padding</span>: <span class="variable">$content</span>-desktop-padding;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$content</span>-desktop;</div><div class="line">  <span class="attribute">background</span>: white;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">700px</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="variable">$box</span>-shadow-inner;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="variable">$border</span>-radius-inner;</div><div class="line"></div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">border-radius</span>: initial;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">    <span class="attribute">min-height</span>: auto;</div><div class="line">    <span class="attribute">border-radius</span>: initial;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar</span> &#123;</div><div class="line">  <span class="attribute">position</span>: static;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">  <span class="attribute">margin-top</span>: <span class="number">300px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$sidebar</span>-desktop;</div><div class="line">  <span class="attribute">background</span>: <span class="variable">$body</span>-bg-color;</div><div class="line">  <span class="attribute">box-shadow</span>: none;</div><div class="line"></div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">display</span>: none;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sidebar-toggle</span> &#123; <span class="attribute">display</span>: none; &#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-class">.footer-inner</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$main</span>-desktop;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">260px</span>;</div><div class="line"></div><div class="line">  +tablet() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">0</span> !important;</div><div class="line">    <span class="attribute">padding-right</span>: <span class="number">0</span> !important;</div><div class="line">  &#125;</div><div class="line">  +mobile() &#123;</div><div class="line">    <span class="attribute">width</span>: auto;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">0</span> !important;</div><div class="line">    <span class="attribute">padding-right</span>: <span class="number">0</span> !important;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-class">.sidebar-position-right</span> &#123;</div><div class="line">  <span class="selector-class">.header-inner</span> &#123; <span class="attribute">right</span>: <span class="number">0</span>; &#125;</div><div class="line">  <span class="selector-class">.content-wrap</span> &#123; <span class="attribute">float</span>: left; &#125;</div><div class="line">  <span class="selector-class">.sidebar</span> &#123; <span class="attribute">float</span>: right; &#125;</div><div class="line"></div><div class="line">  <span class="selector-class">.footer-inner</span> &#123;</div><div class="line">    <span class="attribute">padding-left</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding-right</span>: <span class="number">260px</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>因为blog的主要受众还是网页端，所以默认尺寸的填写时桌面端，再根据媒体查询开始往小尺寸开始。我看网上有说，页面优先从小尺寸开始写，这样比较适合响应式。不过我觉得应该根据页面的主要受众，来决定是优先移动端还是桌面端。太复杂的页面应该也不用写响应式，应该根据桌面端和移动端单独设计。</p>
+<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
+<li><a href="https://www.quirksmode.org/mobile/viewports.html" target="_blank" rel="noopener">A Tale of Two Viewports</a></li>
+<li><a href="https://www.quirksmode.org/mobile/viewports2.html" target="_blank" rel="noopener">A Tale of Two Viewports</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Mobile/Viewport_meta_tag" target="_blank" rel="noopener">在移动浏览器中使用viewport元标签控制布局</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media" target="_blank" rel="noopener">@media</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+            <a href="/tags/mediaQuery/" rel="tag"># mediaQuery</a>
+          
+            <a href="/tags/viewport/" rel="tag"># viewport</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/23/了解MV-模式/" rel="next" title="了解MV*模式">
+                <i class="fa fa-chevron-left"></i> 了解MV*模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg"
+                alt="hddhyq" />
+            
+              <p class="site-author-name" itemprop="name">hddhyq</p>
+              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hddhyq" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:brokenbonesdd@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#viewport"><span class="nav-text">viewport</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两种viewport"><span class="nav-text">两种viewport</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#不同的浏览器用的默认layoutview的大小是多少呢"><span class="nav-text">不同的浏览器用的默认layoutview的大小是多少呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在桌面端viewport"><span class="nav-text">在桌面端viewport</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缩放zooming"><span class="nav-text">缩放zooming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#了解布局视口"><span class="nav-text">了解布局视口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport-Meta属性"><span class="nav-text">viewport Meta属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#像素并非像素"><span class="nav-text">像素并非像素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#next源码中响应式应用"><span class="nav-text">next源码中响应式应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-text">引用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hddhyq</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v6.0.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,12 +29,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c" />
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
 
 
 
@@ -41,52 +46,66 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=6.0.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
-
-
-  <link rel="mask-icon" href="/images/favicon.png?v=6.0.0" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="HTTP安全,HTTPS," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
 
 
 
 
 
 
-<meta name="description" content="阅读的HTTP权威指南">
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","width":260,"display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="阅读的HTTP权威指南">
 <meta name="keywords" content="HTTP安全,HTTPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP识别、认证与安全(https)">
 <meta property="og:url" content="https://hddhyq.github.io/2017/12/10/HTTP识别、认证与安全-https/index.html">
 <meta property="og:site_name" content="hddhyq&#39;s blog">
 <meta property="og:description" content="阅读的HTTP权威指南">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://s8.sinaimg.cn/mw690/0020fPEhty6ZiTmP4J9e7">
 <meta property="og:image" content="http://s3.sinaimg.cn/mw690/0020fPEhty6ZiTpFhkKb2">
 <meta property="og:image" content="http://s13.sinaimg.cn/mw690/0020fPEhty6Zjxy92t60c">
@@ -105,37 +124,21 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.0.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://hddhyq.github.io/2017/12/10/HTTP识别、认证与安全-https/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
-
-
-
-  <link rel="canonical" href="https://hddhyq.github.io/2017/12/10/HTTP识别、认证与安全-https/"/>
-
-
-
-
 
   <title>HTTP识别、认证与安全(https) | hddhyq's blog</title>
   
@@ -144,22 +147,41 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?671b7357b676399cebda034766dfd8e8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -171,23 +193,22 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hddhyq's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -195,83 +216,113 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="st-search-show-outputs">
+            <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
   
 
   
+
+  
     <div class="site-search">
       
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'asKTi5Nu4ER1aCCzJX1R','2.0.0');
-</script>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -281,12 +332,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -299,6 +361,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -308,8 +372,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg">
+      <meta itemprop="description" content="落花人独立，微雨燕双飞">
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -321,11 +385,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP识别、认证与安全(https)</h1>
+          <h2 class="post-title" itemprop="name headline">HTTP识别、认证与安全(https)<a href="https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name_posts/HTTP识别、认证与安全-https.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -333,18 +406,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-10T22:00:56+08:00">
-                2017-12-10
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-10 22:00:56" itemprop="dateCreated datePublished" datetime="2017-12-10T22:00:56+08:00">2017-12-10</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-07-08 12:25:55" itemprop="dateModified" datetime="2018-07-08T12:25:55+08:00">2018-07-08</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -355,11 +445,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTTPS/" itemprop="url" rel="index">
-                    <span itemprop="name">HTTPS</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/HTTPS/" itemprop="url" rel="index"><span itemprop="name">HTTPS</span></a></span>
 
                 
                 
@@ -369,18 +455,66 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2017/12/10/HTTP识别、认证与安全-https/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2017/12/10/HTTP识别、认证与安全-https/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            <span id="/2017/12/10/HTTP识别、认证与安全-https/" class="leancloud_visitors" data-flag-title="HTTP识别、认证与安全(https)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
             </span>
           
 
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">3.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
           
 
           
@@ -469,8 +603,8 @@
 <p>有两种cookie类型，分别是：会话cookie和持久cookie。会话cookie是一种临时cookie，它记录了用户访问站点时的设置和偏好。用户退出浏览器时，会话cookie就删除了。持久cookie的生存时间更长一些，它们储存在硬盘上，计算器重启时，它们仍然存在。通常会用持久cookie维护某个用户会周期性访问的站点的配置文件或登录名。</p>
 <p>这里我们需要知道，cookie常见也就是键值对，如：<code>Cookie: name=&quot;Hdd&quot;</code></p>
 <h1 id="基本认证机制"><a href="#基本认证机制" class="headerlink" title=" 基本认证机制"></a><a id="basic-author"></a> 基本认证机制</h1><p>认证就是要给出一些身份证明。证明你是你。基本的：HTTP的质询/响应机制。</p>
-<h2 id="HTTP的质询-响应认证框架"><a href="#HTTP的质询-响应认证框架" class="headerlink" title=" HTTP的质询/响应认证框架"></a><a id="http-ask"></a> HTTP的质询/响应认证框架</h2><p><img src="http://s8.sinaimg.cn/mw690/0020fPEhty6ZiTmP4J9e7" alt=""></p>
-<h2 id="安全域"><a href="#安全域" class="headerlink" title=" 安全域"></a><a id="safe-area"></a> 安全域</h2><p>Web服务器会将受保护的文档组织成一个安全域。每个安全域可以有不同的授权用户集。<br>如下图：<br><img src="http://s3.sinaimg.cn/mw690/0020fPEhty6ZiTpFhkKb2" alt=""><br>下面是一个假想的基本认证质询：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 401 Unauthorized</div><div class="line">WWW-Authenticate: Basic realm = &quot;Corporate Financials&quot;</div></pre></td></tr></table></figure></p>
+<h2 id="HTTP的质询-响应认证框架"><a href="#HTTP的质询-响应认证框架" class="headerlink" title=" HTTP的质询/响应认证框架"></a><a id="http-ask"></a> HTTP的质询/响应认证框架</h2><p><img src="http://s8.sinaimg.cn/mw690/0020fPEhty6ZiTmP4J9e7" alt></p>
+<h2 id="安全域"><a href="#安全域" class="headerlink" title=" 安全域"></a><a id="safe-area"></a> 安全域</h2><p>Web服务器会将受保护的文档组织成一个安全域。每个安全域可以有不同的授权用户集。<br>如下图：<br><img src="http://s3.sinaimg.cn/mw690/0020fPEhty6ZiTpFhkKb2" alt><br>下面是一个假想的基本认证质询：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.0 401 Unauthorized</span><br><span class="line">WWW-Authenticate: Basic realm = &quot;Corporate Financials&quot;</span><br></pre></td></tr></table></figure></p>
 <h2 id="Base-64-用户名-密码编码"><a href="#Base-64-用户名-密码编码" class="headerlink" title=" Base-64 用户名/密码编码"></a><a id="base64-pwd"></a> Base-64 用户名/密码编码</h2><p>密码和账户名用Base-64编码能无需担心字符集，还有能防止管理员无意间看到用户名和密码。</p>
 <h2 id="基本认证的安全缺陷"><a href="#基本认证的安全缺陷" class="headerlink" title=" 基本认证的安全缺陷"></a><a id="base-authentication"></a> 基本认证的安全缺陷</h2><p>基本认证简单便捷，但并不安全。只能用它来防止非恶意用户无意间进行的访问，或将其与SSL这样的加密技术配合使用。<br>缺陷如下：</p>
 <ol>
@@ -486,7 +620,7 @@
 <p>发送的都是密码的摘要，而只有服务端和客户端是知道密码的，那密码第三方就不会知道了。</p>
 </li>
 <li><p>可以防止恶意用户捕获并重放认证的握手过程。</p>
-<p>服务器会生成一个随机数发送给客户端，在进行摘要计算，常见算法为MD5。这时会进行随机数和密码进行摘要处理，随机数和时间戳有关，这样第三方无法得知原始密码，也就无法对新的摘要进行计算。质询握手过程。<br><img src="http://s13.sinaimg.cn/mw690/0020fPEhty6Zjxy92t60c" alt=""></p>
+<p>服务器会生成一个随机数发送给客户端，在进行摘要计算，常见算法为MD5。这时会进行随机数和密码进行摘要处理，随机数和时间戳有关，这样第三方无法得知原始密码，也就无法对新的摘要进行计算。质询握手过程。<br><img src="http://s13.sinaimg.cn/mw690/0020fPEhty6Zjxy92t60c" alt></p>
 </li>
 <li><p>可以有选择的防止对报文内容的篡改</p>
 </li>
@@ -495,7 +629,7 @@
 <ul>
 <li>防范其他几种常见的攻击方式</li>
 </ul>
-<h2 id="预授权"><a href="#预授权" class="headerlink" title=" 预授权"></a><a id="pre-licensing"></a> 预授权</h2><p>在普通认证方式中，事务结束之前，每个请求都有一次请求/质询的循环，而预授权中，客户端知道了随机数就可以取消这一过程，减少报文数量。如图：<br><img src="http://s5.sinaimg.cn/mw690/0020fPEhty6ZjxA7cNe44" alt=""></p>
+<h2 id="预授权"><a href="#预授权" class="headerlink" title=" 预授权"></a><a id="pre-licensing"></a> 预授权</h2><p>在普通认证方式中，事务结束之前，每个请求都有一次请求/质询的循环，而预授权中，客户端知道了随机数就可以取消这一过程，减少报文数量。如图：<br><img src="http://s5.sinaimg.cn/mw690/0020fPEhty6ZjxA7cNe44" alt></p>
 <h2 id="安全性考虑"><a href="#安全性考虑" class="headerlink" title=" 安全性考虑"></a><a id="safe-thinking"></a> 安全性考虑</h2><p>要知道，摘要认证对于密码的保护确实厉害了很多，不过对于窃听报文内容等还是保护不够，真正的安全的事物只有通过SSL才能实现。</p>
 <h1 id="安全HTTP"><a href="#安全HTTP" class="headerlink" title=" 安全HTTP"></a><a id="safe-http"></a> 安全HTTP</h1><h2 id="HTTPS前瞻"><a href="#HTTPS前瞻" class="headerlink" title=" HTTPS前瞻"></a><a id="pre-hrrps"></a> HTTPS前瞻</h2><p>功能：</p>
 <ul>
@@ -510,12 +644,12 @@
 <li>社会可行性（满足社会的政治文化需求）</li>
 </ul>
 <p>关于HTTPS的传输：</p>
-<p><img src="http://s10.sinaimg.cn/mw690/0020fPEhty6ZmGGRt0J59" alt=""></p>
+<p><img src="http://s10.sinaimg.cn/mw690/0020fPEhty6ZmGGRt0J59" alt></p>
 <p>大部分困难的编码及解码工作都是在SSL库中完成的，所以Web客户端和服务器在使用安全HTTP时无需过多的修改其协议处理逻辑。在大多数情况下，只需要用SSL的输入输出来取代TCP的调用，再增加其他几个调用来配置和管理安全信息就行。</p>
 <h2 id="数字加密"><a href="#数字加密" class="headerlink" title=" 数字加密"></a><a id="digital-encryption"></a> 数字加密</h2><h3 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h3><p>对文本加密，使偷窥者无法识别的算法，明文经过密码编码变成密文，再解码为明文</p>
-<h3 id="密钥"><a href="#密钥" class="headerlink" title="密钥"></a>密钥</h3><p>改变密码行为的数字化参数。<br><img src="http://s4.sinaimg.cn/mw690/0020fPEhty6ZmGHSpYDd3" alt=""></p>
+<h3 id="密钥"><a href="#密钥" class="headerlink" title="密钥"></a>密钥</h3><p>改变密码行为的数字化参数。<br><img src="http://s4.sinaimg.cn/mw690/0020fPEhty6ZmGHSpYDd3" alt></p>
 <h3 id="对称密钥加密系统"><a href="#对称密钥加密系统" class="headerlink" title="对称密钥加密系统"></a>对称密钥加密系统</h3><p>在对称密钥加密系统，发送端和接收端要共享相同的密钥才能进行通信。<br>流行的对称密钥加密算法有：DES、Triple-DES、RC2、和RC4</p>
-<p>密钥长度和枚举攻击<br><img src="http://s6.sinaimg.cn/mw690/0020fPEhty6ZmGIAZZX55" alt=""></p>
+<p>密钥长度和枚举攻击<br><img src="http://s6.sinaimg.cn/mw690/0020fPEhty6ZmGIAZZX55" alt></p>
 <p>对于一台服务器，如果有成千上万的客户端进行加密通话，就需要成千上万的秘钥。<br>为了解决这个问题，可以采用公开密钥加密技术。</p>
 <h3 id="不对称密钥加密系统"><a href="#不对称密钥加密系统" class="headerlink" title="不对称密钥加密系统"></a>不对称密钥加密系统</h3><p>编/解码使用不同密钥的算法。</p>
 <h3 id="公开密钥加密技术"><a href="#公开密钥加密技术" class="headerlink" title="公开密钥加密技术"></a>公开密钥加密技术</h3><p>公开密钥加密技术没有为每台主机使用单独的加密/解密密钥，而是使用了两个非对称密钥：一个用来对主机报文编码，另一个用来对主机报文编码。编码密钥是大家都知道的，而主机密钥只有主机知道，也就是只有服务器才知道。</p>
@@ -528,9 +662,9 @@
 <h3 id="混合加密系统和会话密钥"><a href="#混合加密系统和会话密钥" class="headerlink" title="混合加密系统和会话密钥"></a>混合加密系统和会话密钥</h3><p>RSA加密满足了公开加密的技术，但计算的速度可能会很慢，所以比较常见的两个节点的通信采用了混合使用对称和非对称加密。</p>
 <p>两个节点通过便捷的公开密钥加密结束建立起安全的通信，然后再用那条安全的通道产生并发送临时的随机对称密钥，通过更快的对称加密技术对其余的数据进行加密。</p>
 <h3 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h3><p>数字签名就是加了密的校验和。</p>
-<p><img src="http://s13.sinaimg.cn/mw690/0020fPEhty6ZmGJK4rOec" alt=""></p>
+<p><img src="http://s13.sinaimg.cn/mw690/0020fPEhty6ZmGJK4rOec" alt></p>
 <p>数字签名在数字证书发布的用处就比较大了。</p>
-<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><p><img src="http://s11.sinaimg.cn/mw690/0020fPEhty6ZmGKFd2y2a" alt=""></p>
+<h3 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h3><p><img src="http://s11.sinaimg.cn/mw690/0020fPEhty6ZmGKFd2y2a" alt></p>
 <p>发布了的数字证书是需要相关机构认证的。</p>
 <h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title=" HTTPS"></a><a id="https"></a> HTTPS</h2><p>如果 URL是 HTTP，客户端就会打开一条到服务器端口 80 （默认的HTTP端口）的连接，发送 HTTP 命令。</p>
 <p>如果 URL是 HTTPS，客户端就会打开一条到服务器端口443（默认的HTTPS端口）的连接，然后与服务器握手，以二进制的格式与服务器交换一些 SSL 安全参数，握手完成之后 SSL 的初始化就完成了，客户端发送加密的 HTTP 命令。</p>
@@ -544,16 +678,22 @@
 <li>生成临时的会话密钥，用于加密信道</li>
 </ul>
 <p>简化版SSL握手：</p>
-<p><img src="http://s15.sinaimg.cn/mw690/0020fPEhgy6ZpeFqc5o3e" alt=""></p>
+<p><img src="http://s15.sinaimg.cn/mw690/0020fPEhgy6ZpeFqc5o3e" alt></p>
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -605,18 +745,15 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
-
-          
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -635,7 +772,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -651,54 +787,206 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg"
-                alt="hddhyq" />
+              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
-              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+              <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">38</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -710,49 +998,64 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/hddhyq" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:brokenbonesdd@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hddhyq" title="GitHub &rarr; https://github.com/hddhyq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:brokenbonesdd@gmail.com" title="E-Mail &rarr; mailto:brokenbonesdd@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
             </div>
           
 
           
-          
 
           
           
 
+          
+            
+          
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端识别与cookie机制"><span class="nav-text"> 客户端识别与cookie机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-text"> HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端IP地址"><span class="nav-text"> 客户端IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登录"><span class="nav-text"> 用户登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-text"> 胖URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-text"> cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本认证机制"><span class="nav-text"> 基本认证机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP的质询-响应认证框架"><span class="nav-text"> HTTP的质询/响应认证框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全域"><span class="nav-text"> 安全域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-64-用户名-密码编码"><span class="nav-text"> Base-64 用户名/密码编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本认证的安全缺陷"><span class="nav-text"> 基本认证的安全缺陷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要认证"><span class="nav-text"> 摘要认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要认证的改进"><span class="nav-text"> 摘要认证的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预授权"><span class="nav-text"> 预授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全性考虑"><span class="nav-text"> 安全性考虑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安全HTTP"><span class="nav-text"> 安全HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS前瞻"><span class="nav-text"> HTTPS前瞻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字加密"><span class="nav-text"> 数字加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密码"><span class="nav-text">密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥"><span class="nav-text">密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称密钥加密系统"><span class="nav-text">对称密钥加密系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不对称密钥加密系统"><span class="nav-text">不对称密钥加密系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公开密钥加密技术"><span class="nav-text">公开密钥加密技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合加密系统和会话密钥"><span class="nav-text">混合加密系统和会话密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字签名"><span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字证书"><span class="nav-text">数字证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-text"> HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL握手"><span class="nav-text"> SSL握手</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端识别与cookie机制"><span class="nav-number">1.</span> <span class="nav-text"> 客户端识别与cookie机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP首部"><span class="nav-number">1.1.</span> <span class="nav-text"> HTTP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#客户端IP地址"><span class="nav-number">1.2.</span> <span class="nav-text"> 客户端IP地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户登录"><span class="nav-number">1.3.</span> <span class="nav-text"> 用户登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#胖URL"><span class="nav-number">1.4.</span> <span class="nav-text"> 胖URL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">1.5.</span> <span class="nav-text"> cookie</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本认证机制"><span class="nav-number">2.</span> <span class="nav-text"> 基本认证机制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP的质询-响应认证框架"><span class="nav-number">2.1.</span> <span class="nav-text"> HTTP的质询/响应认证框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全域"><span class="nav-number">2.2.</span> <span class="nav-text"> 安全域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-64-用户名-密码编码"><span class="nav-number">2.3.</span> <span class="nav-text"> Base-64 用户名/密码编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本认证的安全缺陷"><span class="nav-number">2.4.</span> <span class="nav-text"> 基本认证的安全缺陷</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要认证"><span class="nav-number">3.</span> <span class="nav-text"> 摘要认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要认证的改进"><span class="nav-number">3.1.</span> <span class="nav-text"> 摘要认证的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预授权"><span class="nav-number">3.2.</span> <span class="nav-text"> 预授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全性考虑"><span class="nav-number">3.3.</span> <span class="nav-text"> 安全性考虑</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安全HTTP"><span class="nav-number">4.</span> <span class="nav-text"> 安全HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS前瞻"><span class="nav-number">4.1.</span> <span class="nav-text"> HTTPS前瞻</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字加密"><span class="nav-number">4.2.</span> <span class="nav-text"> 数字加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#密码"><span class="nav-number">4.2.1.</span> <span class="nav-text">密码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#密钥"><span class="nav-number">4.2.2.</span> <span class="nav-text">密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对称密钥加密系统"><span class="nav-number">4.2.3.</span> <span class="nav-text">对称密钥加密系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不对称密钥加密系统"><span class="nav-number">4.2.4.</span> <span class="nav-text">不对称密钥加密系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公开密钥加密技术"><span class="nav-number">4.2.5.</span> <span class="nav-text">公开密钥加密技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#混合加密系统和会话密钥"><span class="nav-number">4.2.6.</span> <span class="nav-text">混合加密系统和会话密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字签名"><span class="nav-number">4.2.7.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字证书"><span class="nav-number">4.2.8.</span> <span class="nav-text">数字证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">4.3.</span> <span class="nav-text"> HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL握手"><span class="nav-number">4.3.1.</span> <span class="nav-text"> SSL握手</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -760,6 +1063,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -769,41 +1073,34 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hddhyq</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v6.0.0</div>
 
 
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-</div>
 
 
 
 
 
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1276849494&web_id=1276849494"></script>
+  </div>
 
 
 
@@ -820,11 +1117,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -849,91 +1149,6 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -941,9 +1156,44 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
 
 
 
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
 
 
   
@@ -953,6 +1203,401 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
+    appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
+    placeholder: '留下你的回复吧',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
   
 
   

@@ -2,14 +2,23 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 
 
@@ -20,12 +29,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
 
-
-
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c" />
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
 
 
 
@@ -41,52 +46,66 @@
 
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.1">
 
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
 
 
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=6.0.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=6.0.0">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=6.0.0">
-
-
-  <link rel="mask-icon" href="/images/favicon.png?v=6.0.0" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="自动化,CircleCI," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml" />
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
 
 
 
 
 
 
-<meta name="description" content="又是关于前两个星期零零星星看的文章的总结，主要关于 CircleCI 。首先是CircleCI的介绍，然后下一篇文字介绍下部署一个vue项目到gh-pages的步骤。">
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.0.1',
+    sidebar: {"position":"left","width":260,"display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="又是关于前两个星期零零星星看的文章的总结，主要关于 CircleCI 。首先是CircleCI的介绍，然后下一篇文字介绍下部署一个vue项目到gh-pages的步骤。">
 <meta name="keywords" content="自动化,CircleCI">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CircleCI简单概念">
 <meta property="og:url" content="https://hddhyq.github.io/2019/01/25/CircleCI简单概念/index.html">
 <meta property="og:site_name" content="hddhyq&#39;s blog">
 <meta property="og:description" content="又是关于前两个星期零零星星看的文章的总结，主要关于 CircleCI 。首先是CircleCI的介绍，然后下一篇文字介绍下部署一个vue项目到gh-pages的步骤。">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/wf-header.png">
 <meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job.png">
 <meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job_dialog.png">
@@ -103,37 +122,21 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    version: '6.0.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
+  <link rel="alternate" href="/atom.xml" title="hddhyq's blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://hddhyq.github.io/2019/01/25/CircleCI简单概念/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
   };
 </script>
-
-
-
-  <link rel="canonical" href="https://hddhyq.github.io/2019/01/25/CircleCI简单概念/"/>
-
-
-
-
 
   <title>CircleCI简单概念 | hddhyq's blog</title>
   
@@ -142,22 +145,41 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?671b7357b676399cebda034766dfd8e8";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -169,23 +191,22 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">hddhyq's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -193,83 +214,113 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
 
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="st-search-show-outputs">
+            <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
         </li>
       
     </ul>
   
 
   
+
+  
     <div class="site-search">
       
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
-
-  _st('install', 'asKTi5Nu4ER1aCCzJX1R','2.0.0');
-</script>
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -279,12 +330,23 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -297,6 +359,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -306,8 +370,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg">
+      <meta itemprop="description" content="落花人独立，微雨燕双飞">
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -319,11 +383,20 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">CircleCI简单概念</h1>
+          <h2 class="post-title" itemprop="name headline">CircleCI简单概念<a href="https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name_posts/CircleCI简单概念.md" class="post-edit-link" title="编辑" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h2>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -331,18 +404,35 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-25T21:05:10+08:00">
-                2019-01-25
-              </time>
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-25 21:05:10" itemprop="dateCreated datePublished" datetime="2019-01-25T21:05:10+08:00">2019-01-25</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-31 23:03:13" itemprop="dateModified" datetime="2019-01-31T23:03:13+08:00">2019-01-31</time>
+              
             
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
             
               <span class="post-meta-divider">|</span>
             
@@ -353,11 +443,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CircleCI/" itemprop="url" rel="index">
-                    <span itemprop="name">CircleCI</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CircleCI/" itemprop="url" rel="index"><span itemprop="name">CircleCI</span></a></span>
 
                 
                 
@@ -367,18 +453,66 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/2019/01/25/CircleCI简单概念/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/25/CircleCI简单概念/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            <span id="/2019/01/25/CircleCI简单概念/" class="leancloud_visitors" data-flag-title="CircleCI简单概念">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
             </span>
           
 
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">13k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">24 分钟</span>
+              
+            </div>
           
 
           
@@ -399,17 +533,17 @@
         <p>又是关于前两个星期零零星星看的文章的总结，主要关于 CircleCI 。首先是CircleCI的介绍，然后下一篇文字介绍下部署一个vue项目到gh-pages的步骤。<br><a id="more"></a></p>
 <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><a href="https://circleci.com/docs/2.0/hello-world/" target="_blank" rel="noopener">导航</a>,<a href="https://circleci.com/docs/2.0/concepts/" target="_blank" rel="noopener">概念</a></p>
 <h2 id="步骤（Steps）"><a href="#步骤（Steps）" class="headerlink" title="步骤（Steps）"></a>步骤（Steps）</h2><p>步骤一般是可执行的命令组成的。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#...</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">checkout</span> <span class="comment"># Special step to checkout your source code</span></div><div class="line"><span class="attr">      - run:</span> <span class="comment"># Run step to execute commands, see</span></div><div class="line">      <span class="comment"># circleci.com/docs/2.0/configuration-reference/#run</span></div><div class="line"><span class="attr">          name:</span> <span class="string">Running</span> <span class="string">tests</span></div><div class="line"><span class="attr">          command:</span> <span class="string">make</span> <span class="string">test</span> <span class="comment"># executable command run in</span></div><div class="line">          <span class="comment"># non-login shell with /bin/bash -eo pipefail option</span></div><div class="line">          <span class="comment"># by default.</span></div><div class="line"><span class="comment">#...</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#...</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">checkout</span> <span class="comment"># Special step to checkout your source code</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="comment"># Run step to execute commands, see</span></span><br><span class="line">      <span class="comment"># circleci.com/docs/2.0/configuration-reference/#run</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">Running</span> <span class="string">tests</span></span><br><span class="line"><span class="attr">          command:</span> <span class="string">make</span> <span class="string">test</span> <span class="comment"># executable command run in</span></span><br><span class="line">          <span class="comment"># non-login shell with /bin/bash -eo pipefail option</span></span><br><span class="line">          <span class="comment"># by default.</span></span><br><span class="line"><span class="comment">#...</span></span><br></pre></td></tr></table></figure>
 <h2 id="镜像（Image）"><a href="#镜像（Image）" class="headerlink" title="镜像（Image）"></a>镜像（Image）</h2><p>指定确定的docker容器。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="string">version</span> <span class="number">2</span></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  build1:</span> <span class="comment"># job name</span></div><div class="line"><span class="attr">    docker:</span> <span class="comment"># Specifies the primary container image,</span></div><div class="line">    <span class="comment"># see circleci.com/docs/2.0/circleci-images/ for</span></div><div class="line">    <span class="comment"># the list of pre-built CircleCI images on dockerhub.</span></div><div class="line"><span class="attr">      - image:</span> <span class="attr">buildpack-deps:trusty</span></div><div class="line"></div><div class="line"><span class="attr">      - image:</span> <span class="attr">postgres:9.4.1</span> <span class="comment"># Specifies the database image</span></div><div class="line">      <span class="comment"># for the secondary or service container run in a common</span></div><div class="line">      <span class="comment"># network where ports exposed on the primary container are</span></div><div class="line">      <span class="comment"># available on localhost.</span></div><div class="line"><span class="attr">        environment:</span> <span class="comment"># Specifies the POSTGRES_USER authentication</span></div><div class="line">        <span class="comment"># environment variable, see circleci.com/docs/2.0/env-vars/</span></div><div class="line">        <span class="comment"># for instructions about using environment variables.</span></div><div class="line"><span class="attr">          POSTGRES_USER:</span> <span class="string">root</span></div><div class="line"><span class="string">...</span></div><div class="line"><span class="attr">  build2:</span></div><div class="line"><span class="attr">    machine:</span> <span class="comment"># Specifies a machine image that uses</span></div><div class="line">    <span class="comment"># an Ubuntu version 14.04 image with Docker 17.06.1-ce</span></div><div class="line">    <span class="comment"># and docker-compose 1.14.0, follow CircleCI Discuss Announcements</span></div><div class="line">    <span class="comment"># for new image releases.</span></div><div class="line"><span class="attr">      image:</span> <span class="string">circleci/classic:201708-01</span></div><div class="line"><span class="string">...</span>       </div><div class="line"><span class="attr">  build3:</span></div><div class="line"><span class="attr">    macos:</span> <span class="comment"># Specifies a macOS virtual machine with Xcode version 9.0</span></div><div class="line"><span class="attr">      xcode:</span> <span class="string">"9.0"</span>       </div><div class="line"><span class="string">...</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">version</span> <span class="number">2</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  build1:</span> <span class="comment"># job name</span></span><br><span class="line"><span class="attr">    docker:</span> <span class="comment"># Specifies the primary container image,</span></span><br><span class="line">    <span class="comment"># see circleci.com/docs/2.0/circleci-images/ for</span></span><br><span class="line">    <span class="comment"># the list of pre-built CircleCI images on dockerhub.</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="attr">buildpack-deps:trusty</span></span><br><span class="line"></span><br><span class="line"><span class="attr">      - image:</span> <span class="attr">postgres:9.4.1</span> <span class="comment"># Specifies the database image</span></span><br><span class="line">      <span class="comment"># for the secondary or service container run in a common</span></span><br><span class="line">      <span class="comment"># network where ports exposed on the primary container are</span></span><br><span class="line">      <span class="comment"># available on localhost.</span></span><br><span class="line"><span class="attr">        environment:</span> <span class="comment"># Specifies the POSTGRES_USER authentication</span></span><br><span class="line">        <span class="comment"># environment variable, see circleci.com/docs/2.0/env-vars/</span></span><br><span class="line">        <span class="comment"># for instructions about using environment variables.</span></span><br><span class="line"><span class="attr">          POSTGRES_USER:</span> <span class="string">root</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="attr">  build2:</span></span><br><span class="line"><span class="attr">    machine:</span> <span class="comment"># Specifies a machine image that uses</span></span><br><span class="line">    <span class="comment"># an Ubuntu version 14.04 image with Docker 17.06.1-ce</span></span><br><span class="line">    <span class="comment"># and docker-compose 1.14.0, follow CircleCI Discuss Announcements</span></span><br><span class="line">    <span class="comment"># for new image releases.</span></span><br><span class="line"><span class="attr">      image:</span> <span class="string">circleci/classic:201708-01</span></span><br><span class="line"><span class="string">...</span>       </span><br><span class="line"><span class="attr">  build3:</span></span><br><span class="line"><span class="attr">    macos:</span> <span class="comment"># Specifies a macOS virtual machine with Xcode version 9.0</span></span><br><span class="line"><span class="attr">      xcode:</span> <span class="string">"9.0"</span>       </span><br><span class="line"><span class="string">...</span></span><br></pre></td></tr></table></figure>
 <h2 id="任务（Jobs）"><a href="#任务（Jobs）" class="headerlink" title="任务（Jobs）"></a>任务（Jobs）</h2><p>任务是步骤的集合，单个任务必须指定<code>docker</code>，<code>machine</code>和<code>macos</code>。</p>
 <h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><p>可以缓存诸如项目中源代码的依赖的文件或者目录。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="number">2</span></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  build1:</span></div><div class="line"><span class="attr">    docker:</span> <span class="comment"># Each job requires specifying an executor</span></div><div class="line">    <span class="comment"># (either docker, macos, or machine), see</span></div><div class="line">    <span class="comment"># circleci.com/docs/2.0/executor-types/ for a comparison</span></div><div class="line">    <span class="comment"># and more examples.</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">checkout</span></div><div class="line"><span class="attr">      - save_cache:</span> <span class="comment"># Caches dependencies with a cache key</span></div><div class="line">      <span class="comment"># template for an environment variable,</span></div><div class="line">      <span class="comment"># see circleci.com/docs/2.0/caching/</span></div><div class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">          paths:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">~/circleci-demo-workflows</span></div><div class="line"></div><div class="line"><span class="attr">  build2:</span></div><div class="line"><span class="attr">    docker:</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></div><div class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  build1:</span></span><br><span class="line"><span class="attr">    docker:</span> <span class="comment"># Each job requires specifying an executor</span></span><br><span class="line">    <span class="comment"># (either docker, macos, or machine), see</span></span><br><span class="line">    <span class="comment"># circleci.com/docs/2.0/executor-types/ for a comparison</span></span><br><span class="line">    <span class="comment"># and more examples.</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">checkout</span></span><br><span class="line"><span class="attr">      - save_cache:</span> <span class="comment"># Caches dependencies with a cache key</span></span><br><span class="line">      <span class="comment"># template for an environment variable,</span></span><br><span class="line">      <span class="comment"># see circleci.com/docs/2.0/caching/</span></span><br><span class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">          paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">~/circleci-demo-workflows</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  build2:</span></span><br><span class="line"><span class="attr">    docker:</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></span><br><span class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h2><p>工作流定义了一系列的任务和他们的运行顺序。它可以使任务并行，穿行和按计划或者手动控制运行。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="number">2</span></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  build1:</span></div><div class="line"><span class="attr">    docker:</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">checkout</span></div><div class="line"><span class="attr">      - save_cache:</span> <span class="comment"># Caches dependencies with a cache key</span></div><div class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">          paths:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">~/circleci-demo-workflows</span></div><div class="line">      </div><div class="line"><span class="attr">  build2:</span></div><div class="line"><span class="attr">    docker:</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></div><div class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">      - run:</span></div><div class="line"><span class="attr">          name:</span> <span class="string">Running</span> <span class="string">tests</span></div><div class="line"><span class="attr">          command:</span> <span class="string">make</span> <span class="string">test</span></div><div class="line"><span class="attr">  build3:</span></div><div class="line"><span class="attr">    docker:</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></div><div class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">      - run:</span></div><div class="line"><span class="attr">          name:</span> <span class="string">Precompile</span> <span class="string">assets</span></div><div class="line"><span class="attr">          command:</span> <span class="string">bundle</span> <span class="string">exec</span> <span class="string">rake</span> <span class="attr">assets:precompile</span></div><div class="line"><span class="string">...</span>                          </div><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build_and_test:</span> <span class="comment"># name of your workflow</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build1</span></div><div class="line"><span class="attr">      - build2:</span></div><div class="line"><span class="attr">        requires:</span></div><div class="line"><span class="bullet">          -</span> <span class="string">build1</span> <span class="comment"># wait for build1 job to complete successfully before starting</span></div><div class="line">          <span class="comment"># see circleci.com/docs/2.0/workflows/ for more examples.</span></div><div class="line"><span class="attr">      - build3:</span></div><div class="line"><span class="attr">        requires:</span></div><div class="line"><span class="bullet">          -</span> <span class="string">build1</span> <span class="comment"># wait for build1 job to complete successfully before starting</span></div><div class="line">          <span class="comment"># run build2 and build3 in parallel to save time.</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  build1:</span></span><br><span class="line"><span class="attr">    docker:</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">checkout</span></span><br><span class="line"><span class="attr">      - save_cache:</span> <span class="comment"># Caches dependencies with a cache key</span></span><br><span class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">          paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">~/circleci-demo-workflows</span></span><br><span class="line">      </span><br><span class="line"><span class="attr">  build2:</span></span><br><span class="line"><span class="attr">    docker:</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></span><br><span class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">      - run:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">Running</span> <span class="string">tests</span></span><br><span class="line"><span class="attr">          command:</span> <span class="string">make</span> <span class="string">test</span></span><br><span class="line"><span class="attr">  build3:</span></span><br><span class="line"><span class="attr">    docker:</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/ruby:2.4-node</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="string">circleci/postgres:9.4.12-alpine</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># Restores the cached dependency.</span></span><br><span class="line"><span class="attr">          key:</span> <span class="string">v1-repo-&#123;&#123;</span> <span class="string">.Environment.CIRCLE_SHA1</span> <span class="string">&#125;&#125;</span></span><br><span class="line"><span class="attr">      - run:</span></span><br><span class="line"><span class="attr">          name:</span> <span class="string">Precompile</span> <span class="string">assets</span></span><br><span class="line"><span class="attr">          command:</span> <span class="string">bundle</span> <span class="string">exec</span> <span class="string">rake</span> <span class="attr">assets:precompile</span></span><br><span class="line"><span class="string">...</span>                          </span><br><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build_and_test:</span> <span class="comment"># name of your workflow</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build1</span></span><br><span class="line"><span class="attr">      - build2:</span></span><br><span class="line"><span class="attr">        requires:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">build1</span> <span class="comment"># wait for build1 job to complete successfully before starting</span></span><br><span class="line">          <span class="comment"># see circleci.com/docs/2.0/workflows/ for more examples.</span></span><br><span class="line"><span class="attr">      - build3:</span></span><br><span class="line"><span class="attr">        requires:</span></span><br><span class="line"><span class="bullet">          -</span> <span class="string">build1</span> <span class="comment"># wait for build1 job to complete successfully before starting</span></span><br><span class="line">          <span class="comment"># run build2 and build3 in parallel to save time.</span></span><br></pre></td></tr></table></figure>
 <h3 id="工作区域和文件"><a href="#工作区域和文件" class="headerlink" title="工作区域和文件"></a>工作区域和文件</h3><p>Artifacts， Workspaces，Caches的讨论看 <a href="https://circleci.com/blog/persisting-data-in-workflows-when-to-use-caching-artifacts-and-workspaces/" target="_blank" rel="noopener">Persisting Data in Workflows: When to Use Caching, Artifacts, and Workspaces</a></p>
 <p>也可以看看 <a href="https://circleci.com/docs/2.0/jobs-steps/" target="_blank" rel="noopener">Jobs and Steps</a>来查看更多。</p>
-<h1 id="工作流-1"><a href="#工作流-1" class="headerlink" title="工作流"></a><a href="https://circleci.com/docs/2.0/workflows" target="_blank" rel="noopener">工作流</a></h1><p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/wf-header.png" alt=""></p>
+<h1 id="工作流-1"><a href="#工作流-1" class="headerlink" title="工作流"></a><a href="https://circleci.com/docs/2.0/workflows" target="_blank" rel="noopener">工作流</a></h1><p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/wf-header.png" alt></p>
 <p>要通过更快的反馈，更短的重运行时间和更有效的资源使用来提高软件开发的速度，请配置工作流程。这个文档描述了工作流程的特性而且提供以下章节的用例：</p>
 <ul>
 <li>概述</li>
@@ -429,11 +563,11 @@
 <li>快速部署到多个不同的平台</li>
 </ul>
 <h3 id="平行任务"><a href="#平行任务" class="headerlink" title="平行任务"></a>平行任务</h3><p>在底部添加<code>workflows</code>，通过build_and_test 可看<a href="https://github.com/CircleCI-Public/circleci-demo-workflows/blob/parallel-jobs/.circleci/config.yml" target="_blank" rel="noopener"> Sample Parallel Workflow config</a></p>
-<h3 id="顺序任务"><a href="#顺序任务" class="headerlink" title="顺序任务"></a>顺序任务</h3><p>需要添加<code>require</code>关键字。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build-test-and-deploy:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - test1:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - test2:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test1</span></div><div class="line"><span class="attr">      - deploy:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test2</span></div></pre></td></tr></table></figure></p>
+<h3 id="顺序任务"><a href="#顺序任务" class="headerlink" title="顺序任务"></a>顺序任务</h3><p>需要添加<code>require</code>关键字。<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build-test-and-deploy:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - test1:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - test2:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test1</span></span><br><span class="line"><span class="attr">      - deploy:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test2</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="扇出-扇入工作流示例"><a href="#扇出-扇入工作流示例" class="headerlink" title="扇出/扇入工作流示例"></a>扇出/扇入工作流示例</h3><p>下面视图扇出一组工作流，然后扇入来运行公共的部署任务：<br><a href="https://github.com/CircleCI-Public/circleci-demo-workflows/tree/fan-in-fan-out" target="_blank" rel="noopener">Sample Fan-in/Fan-out Workflow config</a></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build_accept_deploy:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - acceptance_test_1:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - acceptance_test_2:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - acceptance_test_3:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - acceptance_test_4:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - deploy:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_1</span></div><div class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_2</span></div><div class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_3</span></div><div class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_4</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build_accept_deploy:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - acceptance_test_1:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - acceptance_test_2:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - acceptance_test_3:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - acceptance_test_4:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - deploy:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_1</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_2</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_3</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">acceptance_test_4</span></span><br></pre></td></tr></table></figure>
 <h3 id="通过手动批准来控制工作流"><a href="#通过手动批准来控制工作流" class="headerlink" title="通过手动批准来控制工作流"></a>通过手动批准来控制工作流</h3><p>工作流可以设置为需要手动批准再进行下一个任务。任何有权利访问代码库的人都可以继续工作流。为了做到这一点，在任务列表中添加<code>type: approval</code>。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build-test-and-approval-deploy:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build</span>  <span class="comment"># your custom job from your config, that builds your code</span></div><div class="line"><span class="attr">      - test1:</span> <span class="comment"># your custom job; runs test suite 1</span></div><div class="line"><span class="attr">          requires:</span> <span class="comment"># test1 will not run until the `build` job is completed.</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - test2:</span> <span class="comment"># another custom job; runs test suite 2,</span></div><div class="line"><span class="attr">          requires:</span> <span class="comment"># test2 is dependent on the succes of job `test1`</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test1</span></div><div class="line"><span class="attr">      - hold:</span> <span class="comment"># &lt;&lt;&lt; A job that will require manual approval in the CircleCI web application.</span></div><div class="line"><span class="attr">          type:</span> <span class="string">approval</span> <span class="comment"># &lt;&lt;&lt; This key-value pair will set your workflow to a status of "On Hold"</span></div><div class="line"><span class="attr">          requires:</span> <span class="comment"># We only run the "hold" job when test2 has succeeded</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test2</span></div><div class="line">      <span class="comment"># On approval of the `hold` job, any successive job that requires the `hold` job will run. </span></div><div class="line">      <span class="comment"># In this case, a user is manually triggering the deploy job.</span></div><div class="line"><span class="attr">      - deploy:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">hold</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build-test-and-approval-deploy:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build</span>  <span class="comment"># your custom job from your config, that builds your code</span></span><br><span class="line"><span class="attr">      - test1:</span> <span class="comment"># your custom job; runs test suite 1</span></span><br><span class="line"><span class="attr">          requires:</span> <span class="comment"># test1 will not run until the `build` job is completed.</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - test2:</span> <span class="comment"># another custom job; runs test suite 2,</span></span><br><span class="line"><span class="attr">          requires:</span> <span class="comment"># test2 is dependent on the succes of job `test1`</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test1</span></span><br><span class="line"><span class="attr">      - hold:</span> <span class="comment"># &lt;&lt;&lt; A job that will require manual approval in the CircleCI web application.</span></span><br><span class="line"><span class="attr">          type:</span> <span class="string">approval</span> <span class="comment"># &lt;&lt;&lt; This key-value pair will set your workflow to a status of "On Hold"</span></span><br><span class="line"><span class="attr">          requires:</span> <span class="comment"># We only run the "hold" job when test2 has succeeded</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test2</span></span><br><span class="line">      <span class="comment"># On approval of the `hold` job, any successive job that requires the `hold` job will run. </span></span><br><span class="line">      <span class="comment"># In this case, a user is manually triggering the deploy job.</span></span><br><span class="line"><span class="attr">      - deploy:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">hold</span></span><br></pre></td></tr></table></figure>
 <p>上例中举例，就是在最后需要手动批准hold才能进行部署任务。</p>
 <p>下面也有一些我们在工作流中需要注意的地方：</p>
 <ul>
@@ -446,41 +580,41 @@
 <li>在手动任务之后的任务都需要添加<code>require:</code>来依赖这个手动任务。</li>
 <li>任务按顺序执行，直到碰到了<code>type: approval</code>。</li>
 </ul>
-<p>下面展示一下截图<br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job.png" alt=""></p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job_dialog.png" alt=""></p>
+<p>下面展示一下截图<br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job.png" alt></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/approval_job_dialog.png" alt></p>
 <h2 id="安排工作流程"><a href="#安排工作流程" class="headerlink" title="安排工作流程"></a>安排工作流程</h2><p>手动书写每个分支的任务和流程十分的低效和耗时，所以我们能够在确定不同分支的运行时间。</p>
 <h3 id="在夜晚执行的任务"><a href="#在夜晚执行的任务" class="headerlink" title="在夜晚执行的任务"></a>在夜晚执行的任务</h3><p>默认工作流的触发依赖于每次<code>git push</code>，为了按照计划执行工作流，我们可以添加<code>triggers</code>键来特殊化工作调度。</p>
 <p>下面的例子中，我们将运行一个旨在夜晚12点后运行的工作流。使用POSIX <code>crontab</code>语法指定<code>cron</code>键。<a href="https://www.unix.com/man-page/POSIX/1posix/crontab/" target="_blank" rel="noopener">crontab man page</a>来查看基本语法。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  commit:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">test</span></div><div class="line"><span class="bullet">      -</span> <span class="string">deploy</span></div><div class="line"><span class="attr">  nightly:</span></div><div class="line"><span class="attr">    triggers:</span></div><div class="line"><span class="attr">      - schedule:</span></div><div class="line"><span class="attr">          cron:</span> <span class="string">"0 0 * * *"</span></div><div class="line"><span class="attr">          filters:</span></div><div class="line"><span class="attr">            branches:</span></div><div class="line"><span class="attr">              only:</span></div><div class="line"><span class="bullet">                -</span> <span class="string">master</span></div><div class="line"><span class="bullet">                -</span> <span class="string">beta</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">coverage</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  commit:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">test</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">  nightly:</span></span><br><span class="line"><span class="attr">    triggers:</span></span><br><span class="line"><span class="attr">      - schedule:</span></span><br><span class="line"><span class="attr">          cron:</span> <span class="string">"0 0 * * *"</span></span><br><span class="line"><span class="attr">          filters:</span></span><br><span class="line"><span class="attr">            branches:</span></span><br><span class="line"><span class="attr">              only:</span></span><br><span class="line"><span class="bullet">                -</span> <span class="string">master</span></span><br><span class="line"><span class="bullet">                -</span> <span class="string">beta</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">coverage</span></span><br></pre></td></tr></table></figure>
 <h3 id="制定有效的计划"><a href="#制定有效的计划" class="headerlink" title="制定有效的计划"></a>制定有效的计划</h3><p>一个有效的计划，需要<code>cron</code>键和<code>filter</code>键。<code>cron</code>的键值必须是一个有效的<code>vaild crontab entry</code>键。</p>
 <h3 id="使用任务上下文来分享环境变量"><a href="#使用任务上下文来分享环境变量" class="headerlink" title="使用任务上下文来分享环境变量"></a>使用任务上下文来分享环境变量</h3><p>下面的例子展示了如何使用上下文来在一个工作流的四个平行任务中分享环境变量。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build-test-and-deploy:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build</span></div><div class="line"><span class="attr">      - test1:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">          context:</span> <span class="string">org-global</span>  </div><div class="line"><span class="attr">      - test2:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test1</span></div><div class="line"><span class="attr">          context:</span> <span class="string">org-global</span>  </div><div class="line"><span class="attr">      - deploy:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test2</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build-test-and-deploy:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">      - test1:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">          context:</span> <span class="string">org-global</span>  </span><br><span class="line"><span class="attr">      - test2:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test1</span></span><br><span class="line"><span class="attr">          context:</span> <span class="string">org-global</span>  </span><br><span class="line"><span class="attr">      - deploy:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test2</span></span><br></pre></td></tr></table></figure>
 <h2 id="分支级别的任务执行"><a href="#分支级别的任务执行" class="headerlink" title="分支级别的任务执行"></a>分支级别的任务执行</h2><p>下面的例子会展示，如何在三个分支配置任务流。工作流会在忽略在任务底下的分支键，如果想在工作流中添加任务级别的分支，需要移除任务级别的分支，转而描述它。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/branch_level.png" alt=""></p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  dev_stage_pre-prod:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="attr">      - test_dev:</span></div><div class="line"><span class="attr">          filters:</span>  <span class="comment"># using regex filters requires the entire branch to match</span></div><div class="line"><span class="attr">            branches:</span></div><div class="line"><span class="attr">              only:</span>  <span class="comment"># only branches matching the below regex filters will run</span></div><div class="line"><span class="bullet">                -</span> <span class="string">dev</span></div><div class="line"><span class="bullet">                -</span> <span class="string">/user-.*/</span></div><div class="line"><span class="attr">      - test_stage:</span></div><div class="line"><span class="attr">          filters:</span></div><div class="line"><span class="attr">            branches:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">stage</span></div><div class="line"><span class="attr">      - test_pre-prod:</span></div><div class="line"><span class="attr">          filters:</span></div><div class="line"><span class="attr">            branches:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">/pre-prod(?:-.+)?$/</span></div></pre></td></tr></table></figure>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/branch_level.png" alt></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  dev_stage_pre-prod:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="attr">      - test_dev:</span></span><br><span class="line"><span class="attr">          filters:</span>  <span class="comment"># using regex filters requires the entire branch to match</span></span><br><span class="line"><span class="attr">            branches:</span></span><br><span class="line"><span class="attr">              only:</span>  <span class="comment"># only branches matching the below regex filters will run</span></span><br><span class="line"><span class="bullet">                -</span> <span class="string">dev</span></span><br><span class="line"><span class="bullet">                -</span> <span class="string">/user-.*/</span></span><br><span class="line"><span class="attr">      - test_stage:</span></span><br><span class="line"><span class="attr">          filters:</span></span><br><span class="line"><span class="attr">            branches:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">stage</span></span><br><span class="line"><span class="attr">      - test_pre-prod:</span></span><br><span class="line"><span class="attr">          filters:</span></span><br><span class="line"><span class="attr">            branches:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">/pre-prod(?:-.+)?$/</span></span><br></pre></td></tr></table></figure>
 <h2 id="执行Git-Tag的工作流"><a href="#执行Git-Tag的工作流" class="headerlink" title="执行Git Tag的工作流"></a>执行Git Tag的工作流</h2><p>circleci并不会主动执行 git tags 分支，除非你定义特定的tags过滤器。如果一个任务直接间接的需要另外一个任务，你必须指定正则表达式来制定任务的tag filter。轻量级和注释的tag都被支持。</p>
 <p>下面的例子展示了两种tag分支方式：</p>
 <ol>
 <li><code>untagged-build</code>为所有分支运行<code>build</code>任务。</li>
 <li><code>tagged-build</code>为所有分支和带<code>v</code>的标签运行<code>build</code>。</li>
 </ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  untagged-build:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">build</span></div><div class="line"><span class="attr">  tagged-build:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="attr">      - build:</span></div><div class="line"><span class="attr">          filters:</span></div><div class="line"><span class="attr">            tags:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">/^v.*/</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  untagged-build:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">  tagged-build:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="attr">      - build:</span></span><br><span class="line"><span class="attr">          filters:</span></span><br><span class="line"><span class="attr">            tags:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">/^v.*/</span></span><br></pre></td></tr></table></figure>
 <p>下面展示的三个例子就是workflow的步骤</p>
 <ul>
 <li>build跑所有分支和有<code>config-test</code>名称的tags。</li>
 <li>test跑所有分支和有<code>config-test</code>名称的tags。</li>
 <li>deploy不跑分支只跑有<code>config-test</code>的任务。</li>
 </ul>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2</span></div><div class="line"><span class="attr">  build-test-deploy:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="attr">      - build:</span></div><div class="line"><span class="attr">          filters:</span>  <span class="comment"># required since `test` has tag filters AND requires `build`</span></div><div class="line"><span class="attr">            tags:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></div><div class="line"><span class="attr">      - test:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">build</span></div><div class="line"><span class="attr">          filters:</span>  <span class="comment"># required since `deploy` has tag filters AND requires `test`</span></div><div class="line"><span class="attr">            tags:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></div><div class="line"><span class="attr">      - deploy:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">test</span></div><div class="line"><span class="attr">          filters:</span></div><div class="line"><span class="attr">            tags:</span></div><div class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></div><div class="line"><span class="attr">            branches:</span></div><div class="line"><span class="attr">              ignore:</span> <span class="string">/.*/</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">  build-test-deploy:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="attr">      - build:</span></span><br><span class="line"><span class="attr">          filters:</span>  <span class="comment"># required since `test` has tag filters AND requires `build`</span></span><br><span class="line"><span class="attr">            tags:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></span><br><span class="line"><span class="attr">      - test:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">build</span></span><br><span class="line"><span class="attr">          filters:</span>  <span class="comment"># required since `deploy` has tag filters AND requires `test`</span></span><br><span class="line"><span class="attr">            tags:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></span><br><span class="line"><span class="attr">      - deploy:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">test</span></span><br><span class="line"><span class="attr">          filters:</span></span><br><span class="line"><span class="attr">            tags:</span></span><br><span class="line"><span class="attr">              only:</span> <span class="string">/^config-test.*/</span></span><br><span class="line"><span class="attr">            branches:</span></span><br><span class="line"><span class="attr">              ignore:</span> <span class="string">/.*/</span></span><br></pre></td></tr></table></figure>
 <p>需要注意的是，GitHub的分支单词只能承受5MB和少于三个标签。意味着，如果你一次添加多个标签，那么CircleCi也许不会接受他们全部。</p>
 <h2 id="使用工作区来在任务中分享数据"><a href="#使用工作区来在任务中分享数据" class="headerlink" title="使用工作区来在任务中分享数据"></a>使用工作区来在任务中分享数据</h2><p>每个工作流都有一个相关的工作区，能够将文件转换为下游任务的工作流流程。工作区仅用来添加数据的储存。任务可以在工作区中持久化数据。此配置归档数据并在容器外存储中创建新层。下游文件可以通过文件系统的容器访问工作区。附加工作区会根据工作流程中上游作业的顺序下载并解压缩每个层。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/Diagram-v3-Workspaces.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/Diagram-v3-Workspaces.png" alt></p>
 <p>使用工作区来传递当前层及下层需要的特殊数据。工作流程的任务运行于多个分支，也许需要将数据分享到工作区中。工作区也可以用于在测试容器中比较数据。</p>
 <p>举个例子，Scala项目一般需要打来的CPU计算来完成build任务。相比之下，Scala测试任务不是CPU密集型的而且可以很好的跨容器并行化。使用一个大的容器来build任务，然后保存编译好的数据到工作区，能够让测试容器中使用到编译好的数据。</p>
 <p>第二个例子就是，一个能编译的项目，使用build好的包，然后保存到工作区。build任务扇出到的分支能够并行的使用打包好的文件。</p>
 <p>为了将一个任务中的数据持久化，并使它能够在其他的任务中使用。我们需要使用<code>persist_to_workspace</code>键。文件和目录中的带有<code>paths</code>的属性使用<code>persist_to_workspace</code>会被上传到工作区中的临时目录中，相对于<code>root</code>键定义的目录。文件和目录在这时上传之后，就可以在相应的子任务中使用。</p>
 <p>配置任务接收存储的数据，需要用到<code>attach_workspace</code>键。下面的例子中的<code>config.yml</code>文件中，定义了下游文件使用了流任务中的两个任务。这里的工作流是顺序的。所以<code>downstream</code>需要等到流文件结束才能开始。</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Note that the following stanza uses CircleCI 2.1 to make use of a Reusable Executor</span></div><div class="line"><span class="comment"># This allows defining a docker image to reuse across jobs.</span></div><div class="line"><span class="comment"># visit https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-executors to learn more.</span></div><div class="line"></div><div class="line"><span class="attr">version:</span> <span class="number">2.1</span></div><div class="line"></div><div class="line"><span class="attr">executors:</span></div><div class="line"><span class="attr">  my-executor:</span></div><div class="line"><span class="attr">    docker:</span></div><div class="line"><span class="attr">      - image:</span> <span class="attr">buildpack-deps:jessie</span></div><div class="line"><span class="attr">    working_directory:</span> <span class="string">/tmp</span></div><div class="line"></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  flow:</span></div><div class="line"><span class="attr">    executor:</span> <span class="string">my-executor</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - run:</span> <span class="string">mkdir</span> <span class="bullet">-p</span> <span class="string">workspace</span></div><div class="line"><span class="attr">      - run:</span> <span class="string">echo</span> <span class="string">"Hello, world!"</span> <span class="string">&gt; workspace/echo-output</span></div><div class="line"><span class="string">      </span></div><div class="line"><span class="string">      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job. </span></div><div class="line"><span class="string"></span><span class="attr">      - persist_to_workspace:</span></div><div class="line">          <span class="comment"># Must be an absolute path, or relative path from working_directory. This is a directory on the container which is </span></div><div class="line">          <span class="comment"># taken to be the root directory of the workspace.</span></div><div class="line"><span class="attr">          root:</span> <span class="string">workspace</span></div><div class="line">          <span class="comment"># Must be relative path from root</span></div><div class="line"><span class="attr">          paths:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">echo-output</span></div><div class="line"></div><div class="line"><span class="attr">  downstream:</span></div><div class="line"><span class="attr">    executor:</span> <span class="string">my-executor</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - attach_workspace:</span></div><div class="line">          <span class="comment"># Must be absolute path or relative path from working_directory</span></div><div class="line"><span class="attr">          at:</span> <span class="string">/tmp/workspace</span></div><div class="line"></div><div class="line"><span class="attr">      - run:</span> <span class="string">|</span></div><div class="line"><span class="string">          if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then</span></div><div class="line"><span class="string">            echo "It worked!";</span></div><div class="line"><span class="string">          else</span></div><div class="line"><span class="string">            echo "Nope!"; exit 1</span></div><div class="line"><span class="string">          fi</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string"></span><span class="attr">workflows:</span></div><div class="line"><span class="attr">  version:</span> <span class="number">2.1</span></div><div class="line"></div><div class="line"><span class="attr">  btd:</span></div><div class="line"><span class="attr">    jobs:</span></div><div class="line"><span class="bullet">      -</span> <span class="string">flow</span></div><div class="line"><span class="attr">      - downstream:</span></div><div class="line"><span class="attr">          requires:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">flow</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Note that the following stanza uses CircleCI 2.1 to make use of a Reusable Executor</span></span><br><span class="line"><span class="comment"># This allows defining a docker image to reuse across jobs.</span></span><br><span class="line"><span class="comment"># visit https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-executors to learn more.</span></span><br><span class="line"></span><br><span class="line"><span class="attr">version:</span> <span class="number">2.1</span></span><br><span class="line"></span><br><span class="line"><span class="attr">executors:</span></span><br><span class="line"><span class="attr">  my-executor:</span></span><br><span class="line"><span class="attr">    docker:</span></span><br><span class="line"><span class="attr">      - image:</span> <span class="attr">buildpack-deps:jessie</span></span><br><span class="line"><span class="attr">    working_directory:</span> <span class="string">/tmp</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line"><span class="attr">  flow:</span></span><br><span class="line"><span class="attr">    executor:</span> <span class="string">my-executor</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">mkdir</span> <span class="bullet">-p</span> <span class="string">workspace</span></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">echo</span> <span class="string">"Hello, world!"</span> <span class="string">&gt; workspace/echo-output</span></span><br><span class="line"><span class="string">      </span></span><br><span class="line"><span class="string">      # Persist the specified paths (workspace/echo-output) into the workspace for use in downstream job. </span></span><br><span class="line"><span class="string"></span><span class="attr">      - persist_to_workspace:</span></span><br><span class="line">          <span class="comment"># Must be an absolute path, or relative path from working_directory. This is a directory on the container which is </span></span><br><span class="line">          <span class="comment"># taken to be the root directory of the workspace.</span></span><br><span class="line"><span class="attr">          root:</span> <span class="string">workspace</span></span><br><span class="line">          <span class="comment"># Must be relative path from root</span></span><br><span class="line"><span class="attr">          paths:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">echo-output</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  downstream:</span></span><br><span class="line"><span class="attr">    executor:</span> <span class="string">my-executor</span></span><br><span class="line"><span class="attr">    steps:</span></span><br><span class="line"><span class="attr">      - attach_workspace:</span></span><br><span class="line">          <span class="comment"># Must be absolute path or relative path from working_directory</span></span><br><span class="line"><span class="attr">          at:</span> <span class="string">/tmp/workspace</span></span><br><span class="line"></span><br><span class="line"><span class="attr">      - run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          if [[ `cat /tmp/workspace/echo-output` == "Hello, world!" ]]; then</span></span><br><span class="line"><span class="string">            echo "It worked!";</span></span><br><span class="line"><span class="string">          else</span></span><br><span class="line"><span class="string">            echo "Nope!"; exit 1</span></span><br><span class="line"><span class="string">          fi</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span><span class="attr">workflows:</span></span><br><span class="line"><span class="attr">  version:</span> <span class="number">2.1</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  btd:</span></span><br><span class="line"><span class="attr">    jobs:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">flow</span></span><br><span class="line"><span class="attr">      - downstream:</span></span><br><span class="line"><span class="attr">          requires:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">flow</span></span><br></pre></td></tr></table></figure>
 <p>可通过<a href="https://circleci.com/blog/persisting-data-in-workflows-when-to-use-caching-artifacts-and-workspaces/" target="_blank" rel="noopener">Persisting Data in Workflows: When to Use Caching, Artifacts, and Workspaces</a>查看更多的关于使用workspaces, caching, and artifacts。</p>
 <h2 id="重运行失败的任务"><a href="#重运行失败的任务" class="headerlink" title="重运行失败的任务"></a>重运行失败的任务</h2><p>当你使用工作流的时候，你能增加你快速响应失败任务的能力。为了重运行工作流中失败的任务。你可以在<strong>Workflows</strong>中选择相应的工作流，选择<strong>Rerun</strong>按钮。</p>
 <p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/rerun-from-failed.png" alt="return"></p>
@@ -488,8 +622,8 @@
 <h3 id="工作流没有开始"><a href="#工作流没有开始" class="headerlink" title="工作流没有开始"></a>工作流没有开始</h3><p>如果你创建和修改了工作流的配置，如果你没看见新的任务，很有可能是你的配置文件<code>config.yml</code>出现了问题。</p>
 <p>通常情况下，如果你没看见你的工作流正常触发，配置错误阻止了工作流的启动。作为结论，工作流没有启动任何一个任务。</p>
 <p>在设置工作流程时，您当前必须检查CircleCI应用程序的工作流程页面（而不是作业页面）以查看配置错误。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/workflow-config-error.png" alt=""></p>
-<h3 id="工作流等待GitHub的状态。"><a href="#工作流等待GitHub的状态。" class="headerlink" title="工作流等待GitHub的状态。"></a>工作流等待GitHub的状态。</h3><p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/github_branches_status.png" alt=""></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/workflow-config-error.png" alt></p>
+<h3 id="工作流等待GitHub的状态。"><a href="#工作流等待GitHub的状态。" class="headerlink" title="工作流等待GitHub的状态。"></a>工作流等待GitHub的状态。</h3><p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/github_branches_status.png" alt></p>
 <h1 id="配置circleci"><a href="#配置circleci" class="headerlink" title="配置circleci"></a><a href="https://circleci.com/docs/2.0/configuration-reference/" target="_blank" rel="noopener">配置circleci</a></h1><h1 id="CircleCI-镜像"><a href="#CircleCI-镜像" class="headerlink" title="CircleCI 镜像"></a><a href="https://circleci.com/docs/2.0/circleci-images/" target="_blank" rel="noopener">CircleCI 镜像</a></h1><ul>
 <li><a href="https://hub.docker.com/r/circleci/" target="_blank" rel="noopener">https://hub.docker.com/r/circleci/</a></li>
 <li><a href="https://github.com/circleci/circleci-images" target="_blank" rel="noopener">https://github.com/circleci/circleci-images</a></li>
@@ -499,7 +633,7 @@
 <h3 id="使用镜像的便签来标注语言和操作系统"><a href="#使用镜像的便签来标注语言和操作系统" class="headerlink" title="使用镜像的便签来标注语言和操作系统"></a>使用镜像的便签来标注语言和操作系统</h3><p><code>circleci/golang:1.8.6-jessie</code></p>
 <p><strong>注意:</strong> 如果没有固定标签，Docker将会使用<code>latest</code>标签。<code>latest</code>引用的是最有一个稳定版本的镜像。这样的镜像时十分不稳定的，所以最佳时间推荐使用稳定的镜像。</p>
 <h3 id="使用Docker镜像ID将图像固定到固定版本"><a href="#使用Docker镜像ID将图像固定到固定版本" class="headerlink" title="使用Docker镜像ID将图像固定到固定版本"></a>使用Docker镜像ID将图像固定到固定版本</h3><p>每一个Docker都有唯一的ID。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sha256:df1808e61a9c32d0ec110960fed213ab2339451ca88941e9be01a03adc98396e</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sha256:df1808e61a9c32d0ec110960fed213ab2339451ca88941e9be01a03adc98396e</span><br></pre></td></tr></table></figure>
 <p>如何找到最近的镜像的ID</p>
 <ol>
 <li>在CircleCI应用程序中，转到最后使用该镜像的构建中。</li>
@@ -507,7 +641,7 @@
 <li>在日志输出中，找到镜像的摘要。</li>
 <li>将图像ID添加到图像名称，如下所示</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">circleci/ruby@sha256:df1808e61a9c32d0ec110960fed213ab2339451ca88941e9be01a03adc98396e</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">circleci/ruby@sha256:df1808e61a9c32d0ec110960fed213ab2339451ca88941e9be01a03adc98396e</span><br></pre></td></tr></table></figure>
 <h2 id="镜像类型"><a href="#镜像类型" class="headerlink" title="镜像类型"></a>镜像类型</h2><p>CircleCi为了便利，提供了两种镜像。语言镜像和服务器镜像。所有的镜像都需要添加<code>circleci</code>用户来作为系统用户。</p>
 <h3 id="镜像语言"><a href="#镜像语言" class="headerlink" title="镜像语言"></a>镜像语言</h3><ul>
 <li>Android</li>
@@ -565,12 +699,18 @@
 
       
     </div>
+
+    
+
     
     
     
 
     
 
+    
+      
+    
     
 
     
@@ -622,18 +762,15 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
-
-          
+  
+    <div class="comments" id="comments">
+    </div>
 
   
 
@@ -652,7 +789,6 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
-    
     <div class="sidebar-inner">
 
       
@@ -668,54 +804,206 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="https://tva3.sinaimg.cn/crop.0.0.1080.1080.180/a1f29c60jw8ewgu4migjjj20u00u077u.jpg"
-                alt="hddhyq" />
+              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
-              <p class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</p>
+              <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">38</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">22</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">46</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
+            </nav>
+          
 
           
             <div class="feed-link motion-element">
@@ -727,49 +1015,64 @@
           
 
           
+
+          
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/hddhyq" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:brokenbonesdd@gmail.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hddhyq" title="GitHub &rarr; https://github.com/hddhyq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:brokenbonesdd@gmail.com" title="E-Mail &rarr; mailto:brokenbonesdd@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
             </div>
           
 
           
-          
 
           
           
 
+          
+            
+          
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤（Steps）"><span class="nav-text">步骤（Steps）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像（Image）"><span class="nav-text">镜像（Image）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务（Jobs）"><span class="nav-text">任务（Jobs）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-text">缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流"><span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区域和文件"><span class="nav-text">工作区域和文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作流-1"><span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平行任务"><span class="nav-text">平行任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序任务"><span class="nav-text">顺序任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扇出-扇入工作流示例"><span class="nav-text">扇出/扇入工作流示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过手动批准来控制工作流"><span class="nav-text">通过手动批准来控制工作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安排工作流程"><span class="nav-text">安排工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在夜晚执行的任务"><span class="nav-text">在夜晚执行的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制定有效的计划"><span class="nav-text">制定有效的计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用任务上下文来分享环境变量"><span class="nav-text">使用任务上下文来分享环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支级别的任务执行"><span class="nav-text">分支级别的任务执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行Git-Tag的工作流"><span class="nav-text">执行Git Tag的工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用工作区来在任务中分享数据"><span class="nav-text">使用工作区来在任务中分享数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重运行失败的任务"><span class="nav-text">重运行失败的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障排除"><span class="nav-text">故障排除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流没有开始"><span class="nav-text">工作流没有开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流等待GitHub的状态。"><span class="nav-text">工作流等待GitHub的状态。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置circleci"><span class="nav-text">配置circleci</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CircleCI-镜像"><span class="nav-text">CircleCI 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最佳实践"><span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用镜像的便签来标注语言和操作系统"><span class="nav-text">使用镜像的便签来标注语言和操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Docker镜像ID将图像固定到固定版本"><span class="nav-text">使用Docker镜像ID将图像固定到固定版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像类型"><span class="nav-text">镜像类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像语言"><span class="nav-text">镜像语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语言镜像变体"><span class="nav-text">语言镜像变体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器镜像"><span class="nav-text">服务器镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务镜像变体"><span class="nav-text">服务镜像变体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预安装工具"><span class="nav-text">预安装工具</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤（Steps）"><span class="nav-number">1.1.</span> <span class="nav-text">步骤（Steps）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像（Image）"><span class="nav-number">1.2.</span> <span class="nav-text">镜像（Image）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务（Jobs）"><span class="nav-number">1.3.</span> <span class="nav-text">任务（Jobs）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存"><span class="nav-number">1.3.1.</span> <span class="nav-text">缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工作流"><span class="nav-number">1.4.</span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作区域和文件"><span class="nav-number">1.4.1.</span> <span class="nav-text">工作区域和文件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作流-1"><span class="nav-number">2.</span> <span class="nav-text">工作流</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">2.1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#平行任务"><span class="nav-number">2.1.1.</span> <span class="nav-text">平行任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序任务"><span class="nav-number">2.1.2.</span> <span class="nav-text">顺序任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扇出-扇入工作流示例"><span class="nav-number">2.1.3.</span> <span class="nav-text">扇出/扇入工作流示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过手动批准来控制工作流"><span class="nav-number">2.1.4.</span> <span class="nav-text">通过手动批准来控制工作流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安排工作流程"><span class="nav-number">2.2.</span> <span class="nav-text">安排工作流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在夜晚执行的任务"><span class="nav-number">2.2.1.</span> <span class="nav-text">在夜晚执行的任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#制定有效的计划"><span class="nav-number">2.2.2.</span> <span class="nav-text">制定有效的计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用任务上下文来分享环境变量"><span class="nav-number">2.2.3.</span> <span class="nav-text">使用任务上下文来分享环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分支级别的任务执行"><span class="nav-number">2.3.</span> <span class="nav-text">分支级别的任务执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行Git-Tag的工作流"><span class="nav-number">2.4.</span> <span class="nav-text">执行Git Tag的工作流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用工作区来在任务中分享数据"><span class="nav-number">2.5.</span> <span class="nav-text">使用工作区来在任务中分享数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重运行失败的任务"><span class="nav-number">2.6.</span> <span class="nav-text">重运行失败的任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#故障排除"><span class="nav-number">2.7.</span> <span class="nav-text">故障排除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流没有开始"><span class="nav-number">2.7.1.</span> <span class="nav-text">工作流没有开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工作流等待GitHub的状态。"><span class="nav-number">2.7.2.</span> <span class="nav-text">工作流等待GitHub的状态。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置circleci"><span class="nav-number">3.</span> <span class="nav-text">配置circleci</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CircleCI-镜像"><span class="nav-number">4.</span> <span class="nav-text">CircleCI 镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#最佳实践"><span class="nav-number">4.1.</span> <span class="nav-text">最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用镜像的便签来标注语言和操作系统"><span class="nav-number">4.1.1.</span> <span class="nav-text">使用镜像的便签来标注语言和操作系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Docker镜像ID将图像固定到固定版本"><span class="nav-number">4.1.2.</span> <span class="nav-text">使用Docker镜像ID将图像固定到固定版本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像类型"><span class="nav-number">4.2.</span> <span class="nav-text">镜像类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#镜像语言"><span class="nav-number">4.2.1.</span> <span class="nav-text">镜像语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语言镜像变体"><span class="nav-number">4.2.2.</span> <span class="nav-text">语言镜像变体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器镜像"><span class="nav-number">4.2.3.</span> <span class="nav-text">服务器镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务镜像变体"><span class="nav-number">4.2.4.</span> <span class="nav-text">服务镜像变体</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预安装工具"><span class="nav-number">4.3.</span> <span class="nav-text">预安装工具</span></a></li></ol></li></ol></div>
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -777,6 +1080,7 @@
 
     </div>
   </aside>
+  
 
 
         
@@ -786,41 +1090,34 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">hddhyq</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v6.0.0</div>
 
 
 
 
         
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-
-  
-</div>
 
 
 
 
 
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1276849494&web_id=1276849494"></script>
+  </div>
 
 
 
@@ -837,11 +1134,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -866,91 +1166,6 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.0.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.0"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -958,9 +1173,44 @@
 
 
   
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.1"></script>
+
+  <script src="/js/src/motion.js?v=7.0.1"></script>
 
 
 
+  
+  
+
+
+  <script src="/js/src/affix.js?v=7.0.1"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=7.0.1"></script>
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
+
+  
+
+
+  <script src="/js/src/next-boot.js?v=7.0.1"></script>
 
 
   
@@ -970,6 +1220,401 @@
   
 
   
+  
+
+<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
+
+
+
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
+    appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
+    placeholder: '留下你的回复吧',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script>pangu.spacingPage();</script>
+
+
   
 
   

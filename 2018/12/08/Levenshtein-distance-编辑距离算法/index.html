@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -118,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2018/12/08/Levenshtein-distance-编辑距离算法/">
+  <link rel="canonical" href="https://hddhyq.github.io/2018/12/08/Levenshtein-distance-编辑距离算法/"/>
 
 
 
@@ -224,7 +224,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -241,7 +241,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -258,7 +258,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -275,7 +275,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -292,7 +292,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -303,7 +303,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -326,7 +326,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -373,16 +375,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/12/08/Levenshtein-distance-编辑距离算法/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/12/08/Levenshtein-distance-编辑距离算法/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -503,7 +505,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -537,22 +539,24 @@
       
 
       
-        <p>这几天再看virtrual-dom，关于两个列表的对比，讲到了Levenshtein distance距离，周末抽空做一下总结。<br><a id="more"></a></p>
-<h1 id="Levenshtein-Distance-介绍"><a href="#Levenshtein-Distance-介绍" class="headerlink" title="Levenshtein Distance 介绍"></a>Levenshtein Distance 介绍</h1><p>在信息理论和计算机科学中，Levenshtein距离是用于测量两个序列之间的差异量（即编辑距离）的度量。两个字符串之间的Levenshtein距离定义为将一个字符串转换为另一个字符串所需的最小编辑数，允许的编辑操作是单个字符的插入，删除或替换。</p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>‘kitten’和’sitten’之间的 Levenshtein 距离是3，因为一下三个编辑将一个更改为另一个，并且没有办法用少于三个编辑来执行操作。</p>
-<ol>
-<li><code>k</code> itten <code>s</code>itten =&gt; 用’s’代替’k’</li>
-<li>sitt <code>e</code> n sitt <code>i</code> =&gt; 用’i’代替’e’</li>
-<li>sittin  sittin <code>g</code> 在结尾插入’g’</li>
+        <p>这几天再看virtrual-dom，关于两个列表的对比，讲到了Levenshtein distance距离，周末抽空做一下总结。 <a id="more"></a> # Levenshtein Distance 介绍 在信息理论和计算机科学中，Levenshtein距离是用于测量两个序列之间的差异量（即编辑距离）的度量。两个字符串之间的Levenshtein距离定义为将一个字符串转换为另一个字符串所需的最小编辑数，允许的编辑操作是单个字符的插入，删除或替换。</p>
+<h2 id="例子">例子</h2>
+<p>'kitten'和'sitten'之间的 Levenshtein 距离是3，因为一下三个编辑将一个更改为另一个，并且没有办法用少于三个编辑来执行操作。</p>
+<ol type="1">
+<li><code>k</code> itten <code>s</code>itten =&gt; 用's'代替'k'</li>
+<li>sitt <code>e</code> n sitt <code>i</code> =&gt; 用'i'代替'e'</li>
+<li>sittin sittin <code>g</code> 在结尾插入'g'</li>
 </ol>
-<h1 id="Levenshtein-Distance-编辑距离-算法详解"><a href="#Levenshtein-Distance-编辑距离-算法详解" class="headerlink" title="Levenshtein Distance (编辑距离) 算法详解"></a>Levenshtein Distance (编辑距离) 算法详解</h1><p>为了得到编辑距离，我们用 beauty 和 batyu 为例：</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/algorithm/ld.png" alt></p>
+<h1 id="levenshtein-distance-编辑距离-算法详解">Levenshtein Distance (编辑距离) 算法详解</h1>
+<p>为了得到编辑距离，我们用 beauty 和 batyu 为例：</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/algorithm/ld.png"></p>
 <p>图示如 <strong>①</strong> 单元位置是两个单词的第一个字符[b]比较得到的值，其的值有它的上方的值(1)、它左方的值(1)和它左上角的值(0)来决定。当单元格所在的行和列所对应的字符相等时，单元格的值为左上方的值。</p>
 <p>否则，单元格左上角的值与其上方和左方的值进行比较，它们之间的最小值+1即是单元格的值。</p>
 <p>图中 <strong>①</strong> 的值由于单元格行和列相等，所以取左上角值0。</p>
 <p>图中 <strong>②</strong> 的值由于单元格行列不相等，(1, 2, 0)取最小为0， 结果+1， 所以 <strong>②</strong> 值为1。</p>
 <p>图示 <strong>③</strong> 的值由于单元格行列不相等，(1, 0, 2)取最小0， 结果+1， 所以 <strong>③</strong> 值为1。</p>
-<h2 id="算法证明"><a href="#算法证明" class="headerlink" title="算法证明"></a>算法证明</h2><p>这个算法计算的是将s[1…i]转换为t[1…j]（例如将beauty转换为batyu）所需最少的操作数（也就是所谓的编辑距离），这个操作数被保存在d[i,j]（d代表的就是上图所示的二维数组）中。</p>
+<h2 id="算法证明">算法证明</h2>
+<p>这个算法计算的是将s[1…i]转换为t[1…j]（例如将beauty转换为batyu）所需最少的操作数（也就是所谓的编辑距离），这个操作数被保存在d[i,j]（d代表的就是上图所示的二维数组）中。</p>
 <ul>
 <li>在第一行与第一列肯定是正确的，这也很好理解，例如我们将beauty转换为空字符串，我们需要进行的操作数为beauty的长度（所进行的操作为将beauty所有的字符丢弃）。</li>
 <li>我们对字符的可能操作有三种：</li>
@@ -561,7 +565,8 @@
 <li>如果我们可以使用k个操作数把s[1…i-1]转换为t[1…j]，我们只需要把s[i]从最后删除就可以完成转换，操作数为k+1</li>
 <li>如果我们可以使用k个操作数把s[1…i-1]转换为t[1…j-1]，我们只需要在需要的情况下（s[i] != t[j]）把s[i]替换为t[j]，所需的操作数为k+cost（cost代表是否需要转换，如果s[i]==t[j]，则cost为0，否则为1）。</li>
 </ul>
-<h2 id="可能的改进"><a href="#可能的改进" class="headerlink" title="可能的改进"></a>可能的改进</h2><ul>
+<h2 id="可能的改进">可能的改进</h2>
+<ul>
 <li>现在的算法复杂度为O(m*n)，可以将其改进为O(m)。因为这个算法只需要上一行和当前行被存储下来就可以了。</li>
 <li>如果需要重现转换步骤，我们可以把每一步的位置和所进行的操作保存下来，进行重现。</li>
 <li>如果我们只需要比较转换步骤是否小于一个特定常数k，那么只计算高宽宽为2k+1的矩形就可以了，这样的话，算法复杂度可简化为O(kl)，l代表参加对比的最短string的长度。</li>
@@ -570,22 +575,25 @@
 <li>这个算法不支持并行计算，在处理超大字符串的时候会无法利用到并行计算的好处。但我们也可以并行的计算cost values（两个相同位置的字符是否相等），然后通过此算法来进行整体计算。</li>
 <li>如果只检查对角线而不是检查整行，并且使用延迟验证（lazy evaluation），此算法的时间复杂度可优化为O(m(1+d))（d代表结果）。这在两个字符串非常相似的情况下可以使对比速度速度大为增加。</li>
 </ul>
-<h2 id="字符串比较代码"><a href="#字符串比较代码" class="headerlink" title="字符串比较代码"></a>字符串比较代码</h2><p>这一部分的代码，参考了 <a href="https://rosettacode.org/wiki/Levenshtein_distance#ES5" target="_blank" rel="noopener">https://rosettacode.org/wiki/Levenshtein_distance#ES5</a> </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ld = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> t = [], u, i, j, m = a.length, n = b.length;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (!m) <span class="keyword">return</span> b;</span><br><span class="line">  <span class="keyword">if</span> (!n) <span class="keyword">return</span> a;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= m; j++) &#123;</span><br><span class="line">    t[j] = j;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(t);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (u = [i], j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">      u[j] = a[j - <span class="number">1</span>] === b[i - <span class="number">1</span>] ? t[j - <span class="number">1</span>] : <span class="built_in">Math</span>.min(t[j - <span class="number">1</span>], t[j], u[j - <span class="number">1</span>]) + <span class="number">1</span>  <span class="comment">// Levenshtein Distance 算法核心比较部分。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    t = u;</span><br><span class="line">    <span class="built_in">console</span>.log(t);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> u[m];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[[<span class="string">'beauty'</span>, <span class="string">'batyu'</span>, <span class="number">3</span>],</span><br><span class="line">].forEach(<span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> a = v[<span class="number">0</span>], b = v[<span class="number">1</span>], t = v[<span class="number">2</span>], d = ld(a, b);</span><br><span class="line">  <span class="keyword">if</span> (d !== t) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'levenstein("'</span> + a + <span class="string">'","'</span> + b + <span class="string">'") was '</span> + d + <span class="string">' should be '</span> + t);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打印出来</span></span><br><span class="line">[ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ]</span><br><span class="line">[ <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</span><br><span class="line">[ <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ]</span><br><span class="line">[ <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span> ]</span><br><span class="line">[ <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span> ]</span><br><span class="line">[ <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span> ]</span><br></pre></td></tr></table></figure>
-<h1 id="还原字符串"><a href="#还原字符串" class="headerlink" title="还原字符串"></a>还原字符串</h1><p>上面总结了传统的计算字符串之间的差距，那么当我们怎么能在计算的过程中，记录需要转换的步骤，并且进行还原呢。</p>
+<h2 id="字符串比较代码">字符串比较代码</h2>
+<p>这一部分的代码，参考了 https://rosettacode.org/wiki/Levenshtein_distance#ES5</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ld = <span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">let</span> t = [], u, i, j, m = a.length, n = b.length;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (!m) <span class="keyword">return</span> b;</div><div class="line">  <span class="keyword">if</span> (!n) <span class="keyword">return</span> a;</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= m; j++) &#123;</div><div class="line">    t[j] = j;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="built_in">console</span>.log(t);</div><div class="line"></div><div class="line">  <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++) &#123;</div><div class="line">    <span class="keyword">for</span> (u = [i], j = <span class="number">1</span>; j &lt;= m; j++) &#123;</div><div class="line">      u[j] = a[j - <span class="number">1</span>] === b[i - <span class="number">1</span>] ? t[j - <span class="number">1</span>] : <span class="built_in">Math</span>.min(t[j - <span class="number">1</span>], t[j], u[j - <span class="number">1</span>]) + <span class="number">1</span>  <span class="comment">// Levenshtein Distance 算法核心比较部分。</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    t = u;</div><div class="line">    <span class="built_in">console</span>.log(t);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> u[m];</div><div class="line">&#125;</div><div class="line"></div><div class="line">[[<span class="string">'beauty'</span>, <span class="string">'batyu'</span>, <span class="number">3</span>],</div><div class="line">].forEach(<span class="function"><span class="keyword">function</span> (<span class="params">v</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = v[<span class="number">0</span>], b = v[<span class="number">1</span>], t = v[<span class="number">2</span>], d = ld(a, b);</div><div class="line">  <span class="keyword">if</span> (d !== t) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'levenstein("'</span> + a + <span class="string">'","'</span> + b + <span class="string">'") was '</span> + d + <span class="string">' should be '</span> + t);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 打印出来</span></div><div class="line">[ <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span> ]</div><div class="line">[ <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> ]</div><div class="line">[ <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> ]</div><div class="line">[ <span class="number">3</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span> ]</div><div class="line">[ <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span> ]</div><div class="line">[ <span class="number">5</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span> ]</div></pre></td></tr></table></figure>
+<h1 id="还原字符串">还原字符串</h1>
+<p>上面总结了传统的计算字符串之间的差距，那么当我们怎么能在计算的过程中，记录需要转换的步骤，并且进行还原呢。</p>
 <p>这里我们需要对比较的每一位的步骤有一个了解。</p>
-<p>为了得到编辑距离，我们用 beauty 和 batyu 为例：<br>从上面一节的图中可以看到，<code>&#39;beauty&#39;</code> 转换为 <code>&#39;&#39;</code> ，对一个的第一行的 <code>[1，2，3，4，5，6]</code>，每一个步骤都相对与上一个元素新建一个元素，同理 <code>&#39;&#39;</code> 转换为 <code>&#39;batyu&#39;</code>，每一个值都是相对一上一个元素的删除步骤。</p>
+<p>为了得到编辑距离，我们用 beauty 和 batyu 为例： 从上面一节的图中可以看到，<code>'beauty'</code> 转换为 <code>''</code> ，对一个的第一行的 <code>[1，2，3，4，5，6]</code>，每一个步骤都相对与上一个元素新建一个元素，同理 <code>''</code> 转换为 <code>'batyu'</code>，每一个值都是相对一上一个元素的删除步骤。</p>
 <p>那么对角线也显而易见就是先相对于替换操作。那么我们现在需要做的就是，记录下相对应的索引和元素以及需要进行的操作，并将其保存为一个对象，每次新增的对象用数组来保存就可以了。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/algorithm/translate.png" alt></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> actionType = &#123;</span><br><span class="line">  TYPE_REPLACE: <span class="string">'TYPE_REPLACE'</span>,</span><br><span class="line">  TYPE_NEW: <span class="string">'TYPE_NEW'</span>,</span><br><span class="line">  TYPE_DELETE: <span class="string">'TYPE_DELETE'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成对象的方法</span></span><br><span class="line"><span class="keyword">const</span> patchObj = <span class="function">(<span class="params">index, type, item = <span class="string">''</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    index,</span><br><span class="line">    type,</span><br><span class="line">    item</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/algorithm/translate.png"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> actionType = &#123;</div><div class="line">  TYPE_REPLACE: <span class="string">'TYPE_REPLACE'</span>,</div><div class="line">  TYPE_NEW: <span class="string">'TYPE_NEW'</span>,</div><div class="line">  TYPE_DELETE: <span class="string">'TYPE_DELETE'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 生成对象的方法</span></div><div class="line"><span class="keyword">const</span> patchObj = <span class="function">(<span class="params">index, type, item = <span class="string">''</span></span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    index,</div><div class="line">    type,</div><div class="line">    item</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面是compare方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param &#123; array &#125; r 替换操作 replace</span></span><br><span class="line"><span class="comment"> * @param &#123; array &#125; n 新建操作 new</span></span><br><span class="line"><span class="comment"> * @param &#123; array &#125; d 删除操作 delete</span></span><br><span class="line"><span class="comment"> * @param &#123; number &#125; i 需要转换元素的 index</span></span><br><span class="line"><span class="comment"> * @param &#123; number &#125; j 需要删除元素的 index</span></span><br><span class="line"><span class="comment"> * @param &#123; string &#125; b 比较字符串</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> compare = <span class="function">(<span class="params">r, n, d, i, j, b</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> min = <span class="built_in">Math</span>.min(r.length, n.length, d.length);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (min) &#123;</span><br><span class="line">    <span class="keyword">case</span> r.length:</span><br><span class="line">      <span class="keyword">return</span> [...r, patchObj(i, actionType.TYPE_REPLACE, b[i])];</span><br><span class="line">    <span class="keyword">case</span> n.length:</span><br><span class="line">      <span class="keyword">return</span> [...n, patchObj(i, actionType.TYPE_NEW, b[i])];</span><br><span class="line">    <span class="keyword">case</span> d.length:</span><br><span class="line">      <span class="keyword">return</span> [...d, patchObj(j, actionType.TYPE_DELETE)];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * @param &#123; array &#125; r 替换操作 replace</span></div><div class="line"><span class="comment"> * @param &#123; array &#125; n 新建操作 new</span></div><div class="line"><span class="comment"> * @param &#123; array &#125; d 删除操作 delete</span></div><div class="line"><span class="comment"> * @param &#123; number &#125; i 需要转换元素的 index</span></div><div class="line"><span class="comment"> * @param &#123; number &#125; j 需要删除元素的 index</span></div><div class="line"><span class="comment"> * @param &#123; string &#125; b 比较字符串</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">const</span> compare = <span class="function">(<span class="params">r, n, d, i, j, b</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> min = <span class="built_in">Math</span>.min(r.length, n.length, d.length);</div><div class="line"></div><div class="line">  <span class="keyword">switch</span> (min) &#123;</div><div class="line">    <span class="keyword">case</span> r.length:</div><div class="line">      <span class="keyword">return</span> [...r, patchObj(i, actionType.TYPE_REPLACE, b[i])];</div><div class="line">    <span class="keyword">case</span> n.length:</div><div class="line">      <span class="keyword">return</span> [...n, patchObj(i, actionType.TYPE_NEW, b[i])];</div><div class="line">    <span class="keyword">case</span> d.length:</div><div class="line">      <span class="keyword">return</span> [...d, patchObj(j, actionType.TYPE_DELETE)];</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>上面需要注意的是，我们一组保存了多个数组对象，不要对原数组进行操作，每一次操作我们都需要拷贝一个新的数组对象。</p>
 <p>具体的的diff代码参考<a href="https://github.com/hddhyq/Levenshtein-distance/blob/master/diff.js" target="_blank" rel="noopener">diff代码</a></p>
 <p>得到了，patches对象，剩下的我们就需要patch了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> patch = <span class="function">(<span class="params">a, diffs</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> aList = a.split(<span class="string">''</span>);</span><br><span class="line">  <span class="keyword">let</span> delCount = <span class="number">0</span>; <span class="comment">// 删除之后，后续的index计算需要加上之前删除的数量</span></span><br><span class="line">  diffs.forEach(<span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">switch</span> (diff.type) &#123;</span><br><span class="line">      <span class="keyword">case</span> actionType.TYPE_DELETE:</span><br><span class="line">        aList.splice(diff.index - delCount, <span class="number">1</span>);</span><br><span class="line">        delCount++</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> actionType.TYPE_NEW:</span><br><span class="line">        aList.splice(diff.index, <span class="number">0</span>, diff.item);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> actionType.TYPE_REPLACE:</span><br><span class="line">        aList.splice(diff.index, <span class="number">1</span>, diff.item);</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">default</span>:</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// console.log(aList.join(''))</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> aList.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> patch = <span class="function">(<span class="params">a, diffs</span>) =&gt;</span> &#123;</div><div class="line">  <span class="keyword">let</span> aList = a.split(<span class="string">''</span>);</div><div class="line">  <span class="keyword">let</span> delCount = <span class="number">0</span>; <span class="comment">// 删除之后，后续的index计算需要加上之前删除的数量</span></div><div class="line">  diffs.forEach(<span class="function">(<span class="params">diff</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">switch</span> (diff.type) &#123;</div><div class="line">      <span class="keyword">case</span> actionType.TYPE_DELETE:</div><div class="line">        aList.splice(diff.index - delCount, <span class="number">1</span>);</div><div class="line">        delCount++</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> actionType.TYPE_NEW:</div><div class="line">        aList.splice(diff.index, <span class="number">0</span>, diff.item);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">case</span> actionType.TYPE_REPLACE:</div><div class="line">        aList.splice(diff.index, <span class="number">1</span>, diff.item);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">default</span>:</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line"></div><div class="line">  <span class="comment">// console.log(aList.join(''))</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> aList.join(<span class="string">''</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>具体代码参考<a href="https://github.com/hddhyq/Levenshtein-distance" target="_blank" rel="noopener">代码地址</a></p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<h1 id="参考资料">参考资料</h1>
+<ul>
 <li><a href="http://www.cnblogs.com/zhoug2020/p/4224866.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhoug2020/p/4224866.html</a></li>
 <li><a href="https://rosettacode.org/wiki/Levenshtein_distance#ES5" target="_blank" rel="noopener">https://rosettacode.org/wiki/Levenshtein_distance#ES5</a></li>
 </ul>
@@ -701,7 +709,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -714,7 +724,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -781,7 +791,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -900,7 +912,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -924,6 +940,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -959,10 +979,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -1019,7 +1035,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Levenshtein-Distance-介绍"><span class="nav-number">1.</span> <span class="nav-text">Levenshtein Distance 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Levenshtein-Distance-编辑距离-算法详解"><span class="nav-number">2.</span> <span class="nav-text">Levenshtein Distance (编辑距离) 算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法证明"><span class="nav-number">2.1.</span> <span class="nav-text">算法证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能的改进"><span class="nav-number">2.2.</span> <span class="nav-text">可能的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较代码"><span class="nav-number">2.3.</span> <span class="nav-text">字符串比较代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还原字符串"><span class="nav-number">3.</span> <span class="nav-text">还原字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#levenshtein-distance-编辑距离-算法详解"><span class="nav-number"></span> <span class="nav-text">Levenshtein Distance (编辑距离) 算法详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法证明"><span class="nav-number">1.</span> <span class="nav-text">算法证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能的改进"><span class="nav-number">2.</span> <span class="nav-text">可能的改进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串比较代码"><span class="nav-number">3.</span> <span class="nav-text">字符串比较代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#还原字符串"><span class="nav-number"></span> <span class="nav-text">还原字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number"></span> <span class="nav-text">参考资料</span></a></div>
             
 
           </div>
@@ -1541,6 +1557,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

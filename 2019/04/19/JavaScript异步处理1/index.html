@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
+  <meta name="description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
 <meta name="keywords" content="async,JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript异步处理(一)：Parallel VS Async &amp;&amp; Callbacks">
 <meta property="og:url" content="https://hddhyq.github.io/2019/04/19/JavaScript异步处理1/index.html">
 <meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
+<meta property="og:description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/js/callbackhell.png">
 <meta property="og:updated_time" content="2019-04-19T15:12:53.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript异步处理(一)：Parallel VS Async &amp;&amp; Callbacks">
-<meta name="twitter:description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
+<meta name="twitter:description" content="总结 JavaScript 中的五种异步方式及比较。  Parallel VS Async Callbacks Thunks Promises Generators/Coroutines Event Reactive （Obervables） CSP (channel-oriented cocurrency)">
 <meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/js/callbackhell.png">
 
 
@@ -117,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2019/04/19/JavaScript异步处理1/">
+  <link rel="canonical" href="https://hddhyq.github.io/2019/04/19/JavaScript异步处理1/"/>
 
 
 
@@ -223,7 +223,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -240,7 +240,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -257,7 +257,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -274,7 +274,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -291,7 +291,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -302,7 +302,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -325,7 +325,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -372,16 +374,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/04/19/JavaScript异步处理1/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/04/19/JavaScript异步处理1/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -490,7 +492,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.9k</span>
+                <span title="本文字数">6k</span>
               
 
               
@@ -532,10 +534,10 @@
 <li><a href="#">Promises</a></li>
 <li><a href="#">Generators/Coroutines</a></li>
 <li><a href="#">Event Reactive （Obervables）</a></li>
-<li><a href="#">CSP (channel-oriented cocurrency)</a><a id="more"></a>
-</li>
+<li><a href="#">CSP (channel-oriented cocurrency)</a> <a id="more"></a></li>
 </ul>
-<h2 id="Parallel-VS-Async"><a href="#Parallel-VS-Async" class="headerlink" title="Parallel VS Async"></a>Parallel VS Async</h2><p>并行编程（parallel programming）的编程语言，大致方向都在 CPU 的多核调用、线程的创建和拆除。JavaScript 则是异步调用的方式。</p>
+<h2 id="parallel-vs-async">Parallel VS Async</h2>
+<p>并行编程（parallel programming）的编程语言，大致方向都在 CPU 的多核调用、线程的创建和拆除。JavaScript 则是异步调用的方式。</p>
 <p>异步调用（asynchronous） 主要就是避免程序调用中的阻塞发生。举个例子，当你需要对数据库运行查询或从本地磁盘中提取文件，这时通常需要使用异步调用。这个调用将从现存的线程中（例如I/O线程）分离，并在可能的情况下执行它。异步调用可以在同一台电脑上调用，也可以在其他地方的其他电脑上调用（例如访问网上其他服务器的API），它可以有效地防止用户界面不被 “卡住” 或对操作无响应。</p>
 <p>在并行编程中，你仍然可以分解工作或者任务，但关键区别在你可以问每个任务块（chunk）启动新的线程，并且每个线程都可以到达公共变量池。在大多数的情况下，并行编程仅在本地计算器上进行，并且永远不会发送到其他计算机。同样，这是因为对并行任务的每次调用都会创建一个和全新的线程来执行。并行编程也可以保持用户界面快速，并且在运行挑战性的任务时不会感到 “卡住” 。</p>
 <p>也许你现在觉得并行和异步看起来似乎像在做同一件事，事实上，他们完全是两种机制。使用异步调用意味着你将无法控制线程或者线程池（线程的集合），并且依赖系统来处理请求。使用并行编程，你可以很好的控制任务块，甚至可以创建许多线程，来充分利用处理器中可用核心来处理。然而，每次调用创建和拆除线程都是非常系统密集型的，因此编程的时候都需要十分小心。</p>
@@ -543,96 +545,87 @@
 <blockquote>
 <p>在browser环境下，可以通过使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Using_web_workers" target="_blank" rel="noopener">Web Workers</a> 来创建新的线程，这样可以不占用 主UI线程。</p>
 </blockquote>
-<h2 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h2><p>说到回调编写异步程序 ，一定会谈到的就是 <strong>callback hell</strong>。</p>
-<h3 id="什么是-“回调地狱”？"><a href="#什么是-“回调地狱”？" class="headerlink" title="什么是 “回调地狱”？"></a>什么是 “回调地狱”？</h3><p>它就是使用回调来执行的异步 JavaScript ，是很难凭直觉取得正确的执行顺序和结果的。大多数的代码就像这样：<br><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/js/callbackhell.png" alt></p>
+<h2 id="callbacks">Callbacks</h2>
+<p>说到回调编写异步程序 ，一定会谈到的就是 <strong>callback hell</strong>。</p>
+<h3 id="什么是-回调地狱">什么是 "回调地狱"？</h3>
+<p>它就是使用回调来执行的异步 JavaScript ，是很难凭直觉取得正确的执行顺序和结果的。大多数的代码就像这样： <img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/js/callbackhell.png"></p>
 <p>可以看到结尾处的 <code>})</code> 和类似金字塔的结构。这被称作 回调地狱 。</p>
 <p>造成回调地狱的原因是大家试图按照执行的顺序从头到尾的书写 JavaScript 。 JavScript 不像 C ，Ruby，或Python一样需要一行一行的执行代码。</p>
-<h3 id="什么是回调？"><a href="#什么是回调？" class="headerlink" title="什么是回调？"></a>什么是回调？</h3><p>回调只是对使用 JavaScript 函数的便利的说法。JavaScript 并没有特殊的称作 “callback” 的东西。函数使用回调在一定时间后产出结果，而不是直接获取函数执行的返回值。异步表达的是，“需要一些时间” 或者是 “在将来发生”。通常使用回调的例子诸如，I/O 操作，下载东西，读文件，访问数据库等、</p>
+<h3 id="什么是回调">什么是回调？</h3>
+<p>回调只是对使用 JavaScript 函数的便利的说法。JavaScript 并没有特殊的称作 “callback” 的东西。函数使用回调在一定时间后产出结果，而不是直接获取函数执行的返回值。异步表达的是，“需要一些时间” 或者是 “在将来发生”。通常使用回调的例子诸如，I/O 操作，下载东西，读文件，访问数据库等、</p>
 <p>当你使用一个和正常的函数：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result = multiplyTwoNumbers(<span class="number">5</span>, <span class="number">10</span>)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br><span class="line"><span class="comment">// 50 gets printed out</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> result = multiplyTwoNumbers(<span class="number">5</span>, <span class="number">10</span>)</div><div class="line"><span class="built_in">console</span>.log(result)</div><div class="line"><span class="comment">// 50 gets printed out</span></div></pre></td></tr></table></figure>
 <p>异步调用</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> photo = downloadPhoto(<span class="string">'http://coolcats.com/cat.gif'</span>)</span><br><span class="line"><span class="comment">// photo is "undefined"!</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> photo = downloadPhoto(<span class="string">'http://coolcats.com/cat.gif'</span>)</div><div class="line"><span class="comment">// photo is "undefined"!</span></div></pre></td></tr></table></figure>
 <p>上面的例子中，可能这个 gif 图需要很久才能下载下来，你不想你的程序暂停（阻塞）等待图片的下载完成。而是在函数中储存下载完成后应该运行的代码，这就是回调。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">downloadPhoto(<span class="string">'http://coolcats.com/cat.gif'</span>, handlePhoto)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handlePhoto</span> (<span class="params">error, photo</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="built_in">console</span>.error(<span class="string">'Download error!'</span>, error)</span><br><span class="line">  <span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'Download finished'</span>, photo)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Download started'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">downloadPhoto(<span class="string">'http://coolcats.com/cat.gif'</span>, handlePhoto)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handlePhoto</span> (<span class="params">error, photo</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="built_in">console</span>.error(<span class="string">'Download error!'</span>, error)</div><div class="line">  <span class="keyword">else</span> <span class="built_in">console</span>.log(<span class="string">'Download finished'</span>, photo)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Download started'</span>)</div></pre></td></tr></table></figure>
 <p>大家试图理解回调最困难的部分就是理解程序执行的顺序。上面下载图片中的例子中，程序执行了三件事，分别是首先打印了 <code>handlePhoto</code> 函数， 然后调用 <code>downloadPhoto</code> 函数，并将 <code>handlePhoto</code> 作为其回调传递，最后打印出 <code>“Download started”</code> 。</p>
 <p>我们需要留意到，<code>handlePhoto</code> 并没有被调用，它只是作为回调被创建和传递到 <code>downloadPhoto</code>。它在 <code>downloadPhoto</code> 任务完成之前都不会被调用。它所调用取决的时间依赖于网络的连接速度。</p>
 <p>这个例子有两个核心的概念：</p>
 <ul>
-<li><p><code>handlePhoto</code> 回调只是一种在以后存储之后会调用的函数。</p>
-</li>
-<li><p>事件的执行顺序不是从上到下来理解的，而是根据时间完成的时机来跳转。</p>
-</li>
+<li><p><code>handlePhoto</code> 回调只是一种在以后存储之后会调用的函数。</p></li>
+<li><p>事件的执行顺序不是从上到下来理解的，而是根据时间完成的时机来跳转。</p></li>
 </ul>
-<h3 id="如何修复回调地狱"><a href="#如何修复回调地狱" class="headerlink" title="如何修复回调地狱"></a>如何修复回调地狱</h3><p>回调地狱来源于编码经验不足所书写的代码，幸运的是书写好的代码并不是很难。你需要遵守下列三点：</p>
-<h4 id="避免你的代码过度嵌套"><a href="#避免你的代码过度嵌套" class="headerlink" title="避免你的代码过度嵌套"></a>避免你的代码过度嵌套</h4><p>这里有一些混乱的在浏览器中运行的请求代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">'form'</span>)</span><br><span class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> (<span class="params">submitEvent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</span><br><span class="line">    statusMessage.value = body</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何修复回调地狱">如何修复回调地狱</h3>
+<p>回调地狱来源于编码经验不足所书写的代码，幸运的是书写好的代码并不是很难。你需要遵守下列三点：</p>
+<h4 id="避免你的代码过度嵌套">避免你的代码过度嵌套</h4>
+<p>这里有一些混乱的在浏览器中运行的请求代码： <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">'form'</span>)</div><div class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> (<span class="params">submitEvent</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</div><div class="line">  request(&#123;</div><div class="line">    uri: <span class="string">"http://example.com/upload"</span>,</div><div class="line">    body: name,</div><div class="line">    method: <span class="string">"POST"</span></div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, response, body</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</div><div class="line">    statusMessage.value = body</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>现在让我们给这两个匿名函数命名，</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">'form'</span>)</span><br><span class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</span><br><span class="line">    statusMessage.value = body</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.querySelector(<span class="string">'form'</span>)</div><div class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</div><div class="line">  request(&#123;</div><div class="line">    uri: <span class="string">"http://example.com/upload"</span>,</div><div class="line">    body: name,</div><div class="line">    method: <span class="string">"POST"</span></div><div class="line">  &#125;, <span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</div><div class="line">    <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</div><div class="line">    statusMessage.value = body</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看到给具名函数有直观的一些好处：</p>
 <ul>
-<li><p>由于描述性的函数名称，使代码更容易阅读。</p>
-</li>
-<li><p>当异常发生时，您将获得引用实际函数名称而不是“匿名”的堆栈跟踪。</p>
-</li>
-<li><p>允许你移动函数并按名称引用它们。</p>
-</li>
+<li><p>由于描述性的函数名称，使代码更容易阅读。</p></li>
+<li><p>当异常发生时，您将获得引用实际函数名称而不是“匿名”的堆栈跟踪。</p></li>
+<li><p>允许你移动函数并按名称引用它们。</p></li>
 </ul>
 <p>由于函数声明，我们甚至能随意改变函数的位置，放到文件的底部。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'form'</span>).onsubmit = formSubmit</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, postResponse)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</span><br><span class="line">  statusMessage.value = body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>这是最重要的一部分，任何人都能够创建模块（即 库 ）。引用 <a href="http://twitter.com/izs" target="_blank" rel="noopener">Isaac Schlueter</a> (node.js项目):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'form'</span>).onsubmit = formSubmit</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</div><div class="line">  request(&#123;</div><div class="line">    uri: <span class="string">"http://example.com/upload"</span>,</div><div class="line">    body: name,</div><div class="line">    method: <span class="string">"POST"</span></div><div class="line">  &#125;, postResponse)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</div><div class="line">  statusMessage.value = body</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="模块化">模块化</h4>
+<p>这是最重要的一部分，任何人都能够创建模块（即 库 ）。引用 <a href="http://twitter.com/izs" target="_blank" rel="noopener">Isaac Schlueter</a> (node.js项目):</p>
 <blockquote>
 <p>编写小模块来，每个模块都只做一件事，并将它们组装成其他模块来做更大的事。如果你这么做，你永远都不会进入到回调地狱。</p>
 </blockquote>
 <p>我们接着看上面那个例子，然后将其分成多个文件转换成模块。下面将展示适用于浏览器或服务器的模块模式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 新建一个文件 formupload.js */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, postResponse)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</span><br><span class="line">  statusMessage.value = body</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports.submit = formSubmit</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/** 新建一个文件 formupload.js */</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">formSubmit</span> (<span class="params">submitEvent</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> name = <span class="built_in">document</span>.querySelector(<span class="string">'input'</span>).value</div><div class="line">  request(&#123;</div><div class="line">    uri: <span class="string">"http://example.com/upload"</span>,</div><div class="line">    body: name,</div><div class="line">    method: <span class="string">"POST"</span></div><div class="line">  &#125;, postResponse)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">postResponse</span> (<span class="params">err, response, body</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> statusMessage = <span class="built_in">document</span>.querySelector(<span class="string">'.status'</span>)</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> statusMessage.value = err</div><div class="line">  statusMessage.value = body</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports.submit = formSubmit</div></pre></td></tr></table></figure>
 <p>现在我们能在别处引用代码了：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formUpload = <span class="built_in">require</span>(<span class="string">'formuploader'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'form'</span>).onsubmit = formUploader.submit</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> formUpload = <span class="built_in">require</span>(<span class="string">'formuploader'</span>)</div><div class="line"></div><div class="line"><span class="built_in">document</span>.querySelector(<span class="string">'form'</span>).onsubmit = formUploader.submit</div></pre></td></tr></table></figure>
 <p>我们的主程序调用仅仅只需要两行代码了，而且还有以下的一些好处：</p>
 <ul>
-<li><p>新来的开发者更容易理解，不会因为需要去读冗长的回调代码产生疑惑。</p>
-</li>
-<li><p><code>formUploader</code> 可以再其他地方使用而无需复制代码，可以在 github 或 npm 上轻松共享。</p>
-</li>
+<li><p>新来的开发者更容易理解，不会因为需要去读冗长的回调代码产生疑惑。</p></li>
+<li><p><code>formUploader</code> 可以再其他地方使用而无需复制代码，可以在 github 或 npm 上轻松共享。</p></li>
 </ul>
-<h4 id="处理每一个错误"><a href="#处理每一个错误" class="headerlink" title="处理每一个错误"></a>处理每一个错误</h4><p>程序运行中，会产生许多错误：语法错误，运行时错误等等。</p>
+<h4 id="处理每一个错误">处理每一个错误</h4>
+<p>程序运行中，会产生许多错误：语法错误，运行时错误等等。</p>
 <p>前两条准则是保持你的程序更加可读，这条规则则是保证你的程序的可靠性。处理回调时，你可以根据定义处理每一个已分配任务，可以在后台执行某些操作，来监测程序成功完成或者因为错误终止。有经验的开发者常常会告诉你，你不可能知道错误什么时候发生，所以你要做的就是假想他们已经发生。</p>
 <p>Node.js 中常用的处理错误的方式就是 <strong>error-first</strong> 风格，其回调的第一个参数始终为错误保留。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(<span class="string">'/Does/not/exist'</span>, handleFile)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFile</span> (<span class="params">error, file</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="built_in">console</span>.error(<span class="string">'Uhoh, there was an error'</span>, error)</span><br><span class="line">  <span class="comment">// otherwise, continue on and use `file` in your code</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</div><div class="line"></div><div class="line">fs.readFile(<span class="string">'/Does/not/exist'</span>, handleFile)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleFile</span> (<span class="params">error, file</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (error) <span class="keyword">return</span> <span class="built_in">console</span>.error(<span class="string">'Uhoh, there was an error'</span>, error)</div><div class="line">  <span class="comment">// otherwise, continue on and use `file` in your code</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>让第一个参数成为错误是一种简单的约定，鼓励你记住处理错误，如果是第二个参数来作为错误处理，就很容易忘记。</p>
 <p>使用一个代码检查工具也能够很好的避免处理错误。</p>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><ol>
-<li><p>不要嵌套函数，为函数命名并将它们放到程序顶层。</p>
-</li>
-<li><p>使用 函数提升（function hoisting），有利于你将函数转移到程序底部。</p>
-</li>
-<li><p>处理回调中 <strong>每一个错误</strong> 。使用 <a href="http://standardjs.com/" target="_blank" rel="noopener">standard</a> 帮助你来处理。</p>
-</li>
-<li><p>创建可重用的函数并将它们放在一个模块中，以减少理解代码所需的认知负担。将代码拆分成这样的小块也可以帮助您处理错误，编写测试，强制你为代码创建稳定且记录的公共API，并有助于重构。</p>
-</li>
+<h4 id="小结">小结</h4>
+<ol type="1">
+<li><p>不要嵌套函数，为函数命名并将它们放到程序顶层。</p></li>
+<li><p>使用 函数提升（function hoisting），有利于你将函数转移到程序底部。</p></li>
+<li><p>处理回调中 <strong>每一个错误</strong> 。使用 <a href="http://standardjs.com/" target="_blank" rel="noopener">standard</a> 帮助你来处理。</p></li>
+<li><p>创建可重用的函数并将它们放在一个模块中，以减少理解代码所需的认知负担。将代码拆分成这样的小块也可以帮助您处理错误，编写测试，强制你为代码创建稳定且记录的公共API，并有助于重构。</p></li>
 </ol>
 <p>避免回调地狱最有效的方式就是将函数分离出来。这样程序流程可以更易于理解，新接手程序的人不必去了解功能的所有模块也能尝试理解函数正在做什么。</p>
 <p>你可以将函数移到文件底部，或者创建成模块来引用。</p>
 <p>关于创建模块也有一些建议：</p>
 <ul>
-<li><p>将重复使用的代码移到一个函数中。</p>
-</li>
-<li><p>当你的函数（或者相关的函数）变得足够大时，将它们移到另一个文件并使用 module.exports 公开它们，以便于在其他地方加载它们。</p>
-</li>
-<li><p>如果你有一些代码需要在多个项目中使用，请为它书写 readme， tests 和 package.json，并将它发布到 github 和 npm 上。</p>
-</li>
-<li><p>一个好的模块是足够小并且关注于解决一个问题。</p>
-</li>
-<li><p>模块中的单个文件建议不超过150行。</p>
-</li>
-<li><p>一个模块最好不具有超过一层以上的 JavaScript 文件的文件夹，如果超过了，或许它做了过多的事情。</p>
-</li>
-<li><p>了解更多经验丰富的程序员所书写的代码。简洁的模块都是易于理解的。</p>
-</li>
+<li><p>将重复使用的代码移到一个函数中。</p></li>
+<li><p>当你的函数（或者相关的函数）变得足够大时，将它们移到另一个文件并使用 module.exports 公开它们，以便于在其他地方加载它们。</p></li>
+<li><p>如果你有一些代码需要在多个项目中使用，请为它书写 readme， tests 和 package.json，并将它发布到 github 和 npm 上。</p></li>
+<li><p>一个好的模块是足够小并且关注于解决一个问题。</p></li>
+<li><p>模块中的单个文件建议不超过150行。</p></li>
+<li><p>一个模块最好不具有超过一层以上的 JavaScript 文件的文件夹，如果超过了，或许它做了过多的事情。</p></li>
+<li><p>了解更多经验丰富的程序员所书写的代码。简洁的模块都是易于理解的。</p></li>
 </ul>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a href="https://frontendmasters.com/courses/rethinking-async-js/" target="_blank" rel="noopener">https://frontendmasters.com/courses/rethinking-async-js/</a></li>
+<h2 id="引用">引用</h2>
+<ul>
+<li>https://frontendmasters.com/courses/rethinking-async-js/</li>
 <li><a href="https://frontendmasters.com/assets/resources/kylesimpson/async.zip" target="_blank" rel="noopener">slides&amp;code</a></li>
 <li><a href="http://urda.com/blog/2010/10/04/asynchronous-versus-parallel-programming" target="_blank" rel="noopener">asynchronous-versus-parallel-programming</a></li>
-<li><a href="http://callbackhell.com/" target="_blank" rel="noopener">http://callbackhell.com/</a></li>
+<li>http://callbackhell.com/</li>
 </ul>
 
       
@@ -746,7 +739,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -759,7 +754,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -826,7 +821,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -945,7 +942,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -969,6 +970,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -1004,10 +1009,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -1064,7 +1065,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Parallel-VS-Async"><span class="nav-number">1.</span> <span class="nav-text">Parallel VS Async</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Callbacks"><span class="nav-number">2.</span> <span class="nav-text">Callbacks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-“回调地狱”？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是 “回调地狱”？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是回调？"><span class="nav-number">2.2.</span> <span class="nav-text">什么是回调？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何修复回调地狱"><span class="nav-number">2.3.</span> <span class="nav-text">如何修复回调地狱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#避免你的代码过度嵌套"><span class="nav-number">2.3.1.</span> <span class="nav-text">避免你的代码过度嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块化"><span class="nav-number">2.3.2.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理每一个错误"><span class="nav-number">2.3.3.</span> <span class="nav-text">处理每一个错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">2.3.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#parallel-vs-async"><span class="nav-number">1.</span> <span class="nav-text">Parallel VS Async</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#callbacks"><span class="nav-number">2.</span> <span class="nav-text">Callbacks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-回调地狱"><span class="nav-number">2.1.</span> <span class="nav-text">什么是 &quot;回调地狱&quot;？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是回调"><span class="nav-number">2.2.</span> <span class="nav-text">什么是回调？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何修复回调地狱"><span class="nav-number">2.3.</span> <span class="nav-text">如何修复回调地狱</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#避免你的代码过度嵌套"><span class="nav-number">2.3.1.</span> <span class="nav-text">避免你的代码过度嵌套</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模块化"><span class="nav-number">2.3.2.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#处理每一个错误"><span class="nav-number">2.3.3.</span> <span class="nav-text">处理每一个错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">2.3.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用"><span class="nav-number">3.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
 
           </div>
@@ -1586,6 +1587,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

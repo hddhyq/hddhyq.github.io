@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -123,7 +123,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2018/12/23/了解MV-模式/">
+  <link rel="canonical" href="https://hddhyq.github.io/2018/12/23/了解MV-模式/"/>
 
 
 
@@ -229,7 +229,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -246,7 +246,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -263,7 +263,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -280,7 +280,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -297,7 +297,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -308,7 +308,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -331,7 +331,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -378,16 +380,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/12/23/了解MV-模式/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/12/23/了解MV-模式/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -508,7 +510,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">3.5k</span>
+                <span title="本文字数">3.6k</span>
               
 
               
@@ -542,77 +544,60 @@
       
 
       
-        <p>找了和看了许多关于MVC、MVP、MVVM的资料，趁着周末同样是做一下总结。<br><a id="more"></a></p>
-<h1 id="MV-需要解决的问题"><a href="#MV-需要解决的问题" class="headerlink" title="MV*需要解决的问题"></a>MV*需要解决的问题</h1><p>在传统的GUI程序中，图形界面展示数据和信息，用户的输入行为会触发一些应用逻辑（application logic）可能会触发一些业务逻辑（business logic），业务逻辑会对数据进行相关的变更操作。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/gui.png" alt></p>
+        <p>找了和看了许多关于MVC、MVP、MVVM的资料，趁着周末同样是做一下总结。 <a id="more"></a> # MV*需要解决的问题 在传统的GUI程序中，图形界面展示数据和信息，用户的输入行为会触发一些应用逻辑（application logic）可能会触发一些业务逻辑（business logic），业务逻辑会对数据进行相关的变更操作。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/gui.png"></p>
 <p>所以这里需要解决的问题有：View如何同步Model的变更，View和Model之间如何粘合在一起。</p>
-<h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><p>MVC把应用程序分为了view、model层以及controller层， <strong>controller</strong> 的主要职责是 <strong>进行Model和View</strong> 之间的协作（路由、输入预处理等）应用逻辑； <strong>model</strong> 进行处理业务逻辑。它们的如下：</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc.png" alt></p>
-<h2 id="MVC的调用关系"><a href="#MVC的调用关系" class="headerlink" title="MVC的调用关系"></a>MVC的调用关系</h2><p>一般来说网页上用户的的调用关系如下图所示：</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc1.png" alt></p>
+<h1 id="mvc">MVC</h1>
+<p>MVC把应用程序分为了view、model层以及controller层， <strong>controller</strong> 的主要职责是 <strong>进行Model和View</strong> 之间的协作（路由、输入预处理等）应用逻辑； <strong>model</strong> 进行处理业务逻辑。它们的如下：</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc.png"></p>
+<h2 id="mvc的调用关系">MVC的调用关系</h2>
+<p>一般来说网页上用户的的调用关系如下图所示：</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc1.png"></p>
 <p>用户对View操作后，View捕获到这个操作，会把处理权给Controller；Controller会对来自View的数据进行预处理，决定调用哪一个Model的接口；然后由Model执行相关的业务逻辑；当Model变更之后，会通过 <strong>观察者模式（Observer Pattern）通知View</strong> ； <strong>View通过观察者模式</strong> 收到Model变更的消息后，会向Model请求最新的数据，然后重新更新界面。</p>
 <p>需要注意的点：</p>
-<ol>
-<li><p>View把控制权交给Controller，Controller执行应用程序相关的应用逻辑（对来自View数据进行预处理、决定调用哪个Model的接口等等）。</p>
-</li>
-<li><p>Controller操作Model，Model执行业务逻辑对数据进行处理。Controller不会直接操作View，它并不用了解View。</p>
-</li>
-<li><p>View和Model的同步消息是通过观察者模式进行，而同步操作是由View自己请求Model的数据然后对视图进行更新。</p>
-</li>
+<ol type="1">
+<li><p>View把控制权交给Controller，Controller执行应用程序相关的应用逻辑（对来自View数据进行预处理、决定调用哪个Model的接口等等）。</p></li>
+<li><p>Controller操作Model，Model执行业务逻辑对数据进行处理。Controller不会直接操作View，它并不用了解View。</p></li>
+<li><p>View和Model的同步消息是通过观察者模式进行，而同步操作是由View自己请求Model的数据然后对视图进行更新。</p></li>
 </ol>
-<h2 id="MVC的优缺点"><a href="#MVC的优缺点" class="headerlink" title="MVC的优缺点"></a>MVC的优缺点</h2><p>优点：</p>
-<ol>
-<li>把业务逻辑和展示逻辑分离，模块化程度高。且当应用逻辑需要变更的时候，不需要变更业务逻辑和展示逻辑，只需要Controller换成另外一个Controller就行了（Swappable Controller）。</li>
-<li>观察者模式可以做到多视图同时更新。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>Controller测试困难。因为视图同步操作是由View自己执行，而View只能在有UI的环境下运行。在没有UI环境下对Controller进行单元测试的时候，应用逻辑正确性是无法验证的：Model更新的时候，无法对View的更新操作进行断言。</li>
-<li>View无法组件化。View是强依赖特定的Model的，如果需要把这个View抽出来作为一个另外一个应用程序可复用的组件就困难了。因为不同程序的的Domain Model是不一样的。</li>
-</ol>
-<h3 id="MVC在服务端调用"><a href="#MVC在服务端调用" class="headerlink" title="MVC在服务端调用"></a>MVC在服务端调用</h3><p>服务端接收到来自客户端的请求，服务端通过路由规则把这个请求交由给特定的Controller进行处理，Controller执行相应的应用逻辑，对Model进行操作，Model执行业务逻辑以后；然后用数据去渲染特定的模版，返回给客户端。</p>
+<h2 id="mvc的优缺点">MVC的优缺点</h2>
+<p>优点： 1. 把业务逻辑和展示逻辑分离，模块化程度高。且当应用逻辑需要变更的时候，不需要变更业务逻辑和展示逻辑，只需要Controller换成另外一个Controller就行了（Swappable Controller）。 2. 观察者模式可以做到多视图同时更新。</p>
+<p>缺点： 1. Controller测试困难。因为视图同步操作是由View自己执行，而View只能在有UI的环境下运行。在没有UI环境下对Controller进行单元测试的时候，应用逻辑正确性是无法验证的：Model更新的时候，无法对View的更新操作进行断言。 2. View无法组件化。View是强依赖特定的Model的，如果需要把这个View抽出来作为一个另外一个应用程序可复用的组件就困难了。因为不同程序的的Domain Model是不一样的。</p>
+<h3 id="mvc在服务端调用">MVC在服务端调用</h3>
+<p>服务端接收到来自客户端的请求，服务端通过路由规则把这个请求交由给特定的Controller进行处理，Controller执行相应的应用逻辑，对Model进行操作，Model执行业务逻辑以后；然后用数据去渲染特定的模版，返回给客户端。</p>
 <p>相对于MVC中的输入就是Controller：</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc2.png" alt></p>
-<h1 id="MVP"><a href="#MVP" class="headerlink" title="MVP"></a>MVP</h1><p>MVP模式将Controller改名为 Presenter，同时改变了通信方向：</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvp.png" alt></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvc2.png"></p>
+<h1 id="mvp">MVP</h1>
+<p>MVP模式将Controller改名为 Presenter，同时改变了通信方向：</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvp.png"></p>
 <p>和MVC模式一样，用户对View的操作都会从View交移给Presenter。Presenter会执行相应的应用程序逻辑，并且对Model进行相应的操作；而这时候Model执行完业务逻辑以后，也是通过观察者模式把自己变更的消息传递出去，但是是传给Presenter而不是View。Presenter获取到Model变更的消息以后，<strong>通过View提供的接口更新界面</strong>。</p>
-<p>关键点：</p>
-<ol>
-<li>View不再负责同步的逻辑，而是由Presenter负责。Presenter中既有应用程序逻辑也有同步逻辑。</li>
-<li>View需要提供操作界面的接口给Presenter进行调用。（关键）</li>
-</ol>
+<p>关键点： 1. View不再负责同步的逻辑，而是由Presenter负责。Presenter中既有应用程序逻辑也有同步逻辑。 2. View需要提供操作界面的接口给Presenter进行调用。（关键）</p>
 <p>对比在MVC中，Controller是不能操作View的，View也没有提供相应的接口；而在MVP当中，Presenter可以操作View，View需要提供一组对界面操作的接口给Presenter进行调用；Model仍然通过事件广播自己的变更，但由Presenter监听而不是View。</p>
-<p>这里 View 非常薄，不部署任何业务逻辑，称为”被动视图”（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里</p>
-<h2 id="MVP优缺点"><a href="#MVP优缺点" class="headerlink" title="MVP优缺点"></a>MVP优缺点</h2><p>优点：</p>
-<ol>
-<li>便于测试。Presenter对View是通过接口进行，在对Presenter进行不依赖UI环境的单元测试的时候。可以通过Mock一个View对象，这个对象只需要实现了View的接口即可。然后依赖注入到Presenter中，单元测试的时候就可以完整的测试Presenter应用逻辑的正确性。</li>
-<li>View可以进行组件化。在MVP当中，View不依赖Model。这样就可以让View从特定的业务场景中脱离出来，可以说View可以做到对业务完全无知。它只需要提供一系列接口提供给上层操作。这样就可以做到高度可复用的View组件。</li>
-</ol>
-<p>缺点：</p>
-<ol>
-<li>Presenter中除了应用逻辑以外，还有大量的View-&gt;Model，Model-&gt;View的手动同步逻辑，造成Presenter比较笨重，维护起来会比较困难。</li>
-</ol>
-<h1 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h1><p>MVVM 模式将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致。ViewModel的含义就是 “Model of View”，视图的模型。它的含义包含了领域模型（Domain Model）和视图的状态（State）。 在图形界面应用程序当中，界面所提供的信息可能不仅仅包含应用程序的领域模型。还可能包含一些领域模型不包含的视图状态，例如电子表格程序上需要显示当前排序的状态是顺序的还是逆序的，而这是Domain Model所不包含的，但也是需要显示的信息。</p>
+<p>这里 View 非常薄，不部署任何业务逻辑，称为"被动视图"（Passive View），即没有任何主动性，而 Presenter非常厚，所有逻辑都部署在那里</p>
+<h2 id="mvp优缺点">MVP优缺点</h2>
+<p>优点： 1. 便于测试。Presenter对View是通过接口进行，在对Presenter进行不依赖UI环境的单元测试的时候。可以通过Mock一个View对象，这个对象只需要实现了View的接口即可。然后依赖注入到Presenter中，单元测试的时候就可以完整的测试Presenter应用逻辑的正确性。 2. View可以进行组件化。在MVP当中，View不依赖Model。这样就可以让View从特定的业务场景中脱离出来，可以说View可以做到对业务完全无知。它只需要提供一系列接口提供给上层操作。这样就可以做到高度可复用的View组件。</p>
+<p>缺点： 1. Presenter中除了应用逻辑以外，还有大量的View-&gt;Model，Model-&gt;View的手动同步逻辑，造成Presenter比较笨重，维护起来会比较困难。</p>
+<h1 id="mvvm">MVVM</h1>
+<p>MVVM 模式将 Presenter 改名为 ViewModel，基本上与 MVP 模式完全一致。ViewModel的含义就是 "Model of View"，视图的模型。它的含义包含了领域模型（Domain Model）和视图的状态（State）。 在图形界面应用程序当中，界面所提供的信息可能不仅仅包含应用程序的领域模型。还可能包含一些领域模型不包含的视图状态，例如电子表格程序上需要显示当前排序的状态是顺序的还是逆序的，而这是Domain Model所不包含的，但也是需要显示的信息。</p>
 <p>可以简单把ViewModel理解为页面上所显示内容的数据抽象，和Domain Model不一样，ViewModel更适合用来描述View。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvvm.png" alt></p>
-<h2 id="MVVM的调用关系"><a href="#MVVM的调用关系" class="headerlink" title="MVVM的调用关系"></a>MVVM的调用关系</h2><p>MVVM的调用关系和MVP一样。但是，在ViewModel当中会有一个叫Binder，或者是Data-binding engine的东西。以前全部由Presenter负责的View和Model之间数据同步操作交由给Binder处理。你只需要在View的模版语法当中，指令式地声明View上的显示的内容是和Model的哪一块数据绑定的。当ViewModel对进行Model更新的时候，Binder会自动把数据更新到View上去，当用户对View进行操作（例如表单输入），Binder也会自动把数据更新到Model上去。这种方式称为：Two-way data-binding，双向数据绑定。可以简单而不恰当地理解为一个模版引擎，但是会根据数据变更实时渲染。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvvm1.png" alt></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvvm.png"></p>
+<h2 id="mvvm的调用关系">MVVM的调用关系</h2>
+<p>MVVM的调用关系和MVP一样。但是，在ViewModel当中会有一个叫Binder，或者是Data-binding engine的东西。以前全部由Presenter负责的View和Model之间数据同步操作交由给Binder处理。你只需要在View的模版语法当中，指令式地声明View上的显示的内容是和Model的哪一块数据绑定的。当ViewModel对进行Model更新的时候，Binder会自动把数据更新到View上去，当用户对View进行操作（例如表单输入），Binder也会自动把数据更新到Model上去。这种方式称为：Two-way data-binding，双向数据绑定。可以简单而不恰当地理解为一个模版引擎，但是会根据数据变更实时渲染。</p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/basic_knowledge/mvvm1.png"></p>
 <p>也就是说，MVVM把View和Model的同步逻辑自动化了。以前Presenter负责的View和Model同步不再手动地进行操作，而是交由框架所提供的Binder进行负责。只需要告诉Binder，View显示的数据对应的是Model哪一部分即可。</p>
-<h2 id="MVVM的优缺点"><a href="#MVVM的优缺点" class="headerlink" title="MVVM的优缺点"></a>MVVM的优缺点</h2><p>优点：</p>
-<ol>
+<h2 id="mvvm的优缺点">MVVM的优缺点</h2>
+<p>优点：</p>
+<ol type="1">
 <li>提高可维护性。解决了MVP大量的手动View和Model同步的问题，提供双向绑定机制。提高了代码的可维护性。</li>
 <li>简化测试。因为同步逻辑是交由Binder做的，View跟着Model同时变更，所以只需要保证Model的正确性，View就正确。大大减少了对View同步更新的测试。</li>
 </ol>
-<p>缺点：</p>
-<ol>
-<li>对于大型的图形应用程序，视图状态较多，ViewModel的构建和维护的成本都会比较高。</li>
-<li>数据绑定的声明是指令式地写在View的模版当中的，这些内容是没办法去打断点debug的。</li>
-</ol>
-<h1 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h1><ul>
-<li><a href="https://github.com/livoras/blog/issues/11" target="_blank" rel="noopener">https://github.com/livoras/blog/issues/11</a></li>
-<li><a href="https://stackoverflow.com/questions/4415904/business-logic-in-mvc" target="_blank" rel="noopener">https://stackoverflow.com/questions/4415904/business-logic-in-mvc</a></li>
-<li><a href="https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp" target="_blank" rel="noopener">https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html</a></li>
+<p>缺点： 1. 对于大型的图形应用程序，视图状态较多，ViewModel的构建和维护的成本都会比较高。 2. 数据绑定的声明是指令式地写在View的模版当中的，这些内容是没办法去打断点debug的。</p>
+<h1 id="引用">引用</h1>
+<ul>
+<li>https://github.com/livoras/blog/issues/11</li>
+<li>https://stackoverflow.com/questions/4415904/business-logic-in-mvc</li>
+<li>https://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp</li>
+<li>http://www.ruanyifeng.com/blog/2015/02/mvcmvp_mvvm.html</li>
 </ul>
 
       
@@ -730,7 +715,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -743,7 +730,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -810,7 +797,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -929,7 +918,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -953,6 +946,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -988,10 +985,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -1048,7 +1041,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MV-需要解决的问题"><span class="nav-number">1.</span> <span class="nav-text">MV*需要解决的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVC"><span class="nav-number">2.</span> <span class="nav-text">MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC的调用关系"><span class="nav-number">2.1.</span> <span class="nav-text">MVC的调用关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC的优缺点"><span class="nav-number">2.2.</span> <span class="nav-text">MVC的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC在服务端调用"><span class="nav-number">2.2.1.</span> <span class="nav-text">MVC在服务端调用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVP"><span class="nav-number">3.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP优缺点"><span class="nav-number">3.1.</span> <span class="nav-text">MVP优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MVVM"><span class="nav-number">4.</span> <span class="nav-text">MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM的调用关系"><span class="nav-number">4.1.</span> <span class="nav-text">MVVM的调用关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVVM的优缺点"><span class="nav-number">4.2.</span> <span class="nav-text">MVVM的优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">5.</span> <span class="nav-text">引用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mvc"><span class="nav-number">1.</span> <span class="nav-text">MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mvc的调用关系"><span class="nav-number">1.1.</span> <span class="nav-text">MVC的调用关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mvc的优缺点"><span class="nav-number">1.2.</span> <span class="nav-text">MVC的优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mvc在服务端调用"><span class="nav-number">1.2.1.</span> <span class="nav-text">MVC在服务端调用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvp"><span class="nav-number">2.</span> <span class="nav-text">MVP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mvp优缺点"><span class="nav-number">2.1.</span> <span class="nav-text">MVP优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mvvm"><span class="nav-number">3.</span> <span class="nav-text">MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mvvm的调用关系"><span class="nav-number">3.1.</span> <span class="nav-text">MVVM的调用关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mvvm的优缺点"><span class="nav-number">3.2.</span> <span class="nav-text">MVVM的优缺点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用"><span class="nav-number">4.</span> <span class="nav-text">引用</span></a></li></ol></div>
             
 
           </div>
@@ -1570,6 +1563,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

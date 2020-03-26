@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="介绍Socket.ioSocket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
+  <meta name="description" content="介绍Socket.io Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
 <meta name="keywords" content="node,socket.io">
 <meta property="og:type" content="article">
 <meta property="og:title" content="socket.io简易用法">
 <meta property="og:url" content="https://hddhyq.github.io/2017/11/06/socket.io简易用法/index.html">
 <meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="介绍Socket.ioSocket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
+<meta property="og:description" content="介绍Socket.io Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-07-08T04:25:55.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="socket.io简易用法">
-<meta name="twitter:description" content="介绍Socket.ioSocket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
+<meta name="twitter:description" content="介绍Socket.io Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2017/11/06/socket.io简易用法/">
+  <link rel="canonical" href="https://hddhyq.github.io/2017/11/06/socket.io简易用法/"/>
 
 
 
@@ -221,7 +221,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -238,7 +238,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -255,7 +255,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -272,7 +272,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -289,7 +289,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -300,7 +300,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -323,7 +323,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -370,16 +372,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/11/06/socket.io简易用法/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/11/06/socket.io简易用法/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -500,7 +502,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">5.7k</span>
+                <span title="本文字数">5.8k</span>
               
 
               
@@ -514,7 +516,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">10 分钟</span>
+                <span title="阅读时长">11 分钟</span>
               
             </div>
           
@@ -534,31 +536,43 @@
       
 
       
-        <h1 id="介绍Socket-io"><a href="#介绍Socket-io" class="headerlink" title=" 介绍Socket.io"></a><a id="toc-introduce"></a> 介绍Socket.io</h1><p>Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的.<br><a id="more"></a></p>
+        <h1 id="介绍socket.io"><a id="toc-introduce"></a> 介绍Socket.io</h1>
+<p>Socket.IO 是一个面向实时 web 应用的 JavaScript 库。它使得服务器和客户端之间实时双向的通信成为可能。他有两个部分：在浏览器中运行的客户端库，和一个面向Node.js的服务端库。两者有着几乎一样的API。像Node.js一样，它也是事件驱动的. <a id="more"></a></p>
 <p>Socket.IO主要使用WebSocket协议。但是如果需要的话，Socket.io可以回退到几种其它方法，例如Adobe Flash Sockets，JSONP拉取，或是传统的AJAX拉取，[2]并且在同时提供完全相同的接口。尽管它可以被用作WebSocket的包装库，它还是提供了许多其它功能，比如广播至多个套接字，存储与不同客户有关的数据，和异步IO操作。</p>
 <p>可以使用npm（node 软件包）工具来安装。</p>
-<h3 id="优势"><a href="#优势" class="headerlink" title=" 优势"></a><a id="toc-advantage"></a> 优势</h3><p>Socket.IO会自动选择合适双向通信协议，仅仅需要程序员对套接字的概念有所了解。</p>
-<h3 id="劣势"><a href="#劣势" class="headerlink" title=" 劣势"></a><a id="toc-disadvantage"></a> 劣势</h3><p>Socket.io并不是一个基本的、独立的、能够回退到其它实时协议的WebSocket库，它实际上是一个依赖于其它实时传输协议的自定义实时传输协议的实现。该协议的协商部分使得支持标准WebSocket的客户端不能直接连接到Socket.io服务器，并且支持Socket.io的客户端也不能与非Socket.io框架的WebSocket或Comet服务器通信。因而，Socket.io要求客户端与服务器端均须使用该框架。</p>
-<h1 id="使用Socket-io"><a href="#使用Socket-io" class="headerlink" title=" 使用Socket.io"></a><a id="toc-use"></a> 使用Socket.io</h1><h3 id="安装"><a href="#安装" class="headerlink" title=" 安装"></a><a id="toc-install"></a> 安装</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install socket.io</span><br></pre></td></tr></table></figure>
-<h3 id="直接node服务中使用"><a href="#直接node服务中使用" class="headerlink" title=" 直接node服务中使用"></a><a id="toc-use-node"></a> 直接node服务中使用</h3><p>Server(app.js)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(handler)</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(app);</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  fs.readFile(__dirname + <span class="string">'/index.html'</span>,</span><br><span class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (err) &#123;</span><br><span class="line">      res.writeHead(<span class="number">500</span>);</span><br><span class="line">      <span class="keyword">return</span> res.end(<span class="string">'Error loading index.html'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    res.writeHead(<span class="number">200</span>);</span><br><span class="line">    res.end(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;); <span class="comment">// 派发事件“news”</span></span><br><span class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;); <span class="comment">// 接受Client派发的事件</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>Client (index.html)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> socket = io(<span class="string">'http://localhost'</span>);</span><br><span class="line">  socket.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">    socket.emit(<span class="string">'my other event'</span>, &#123; <span class="attr">my</span>: <span class="string">'data'</span> &#125;); <span class="comment">// 接受完“new” 事件之后 派发事件"my other event"</span></span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="使用Express-3-4-和-Express-2-x"><a href="#使用Express-3-4-和-Express-2-x" class="headerlink" title=" 使用Express 3/4 和 Express 2.x"></a><a id="toc-use-express"></a> 使用Express 3/4 和 Express 2.x</h3><p>Server (app.js) 使用Express 3/4<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</span><br><span class="line"><span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).Server(app);</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(server);</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.sendfile(__dirname + <span class="string">'/index.html'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;);</span><br><span class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>Server (app.js) 使用Express 2.x<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>).createServer();</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(app);</span><br><span class="line"></span><br><span class="line">app.listen(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.sendFile(__dirname + <span class="string">'/index.html'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;);</span><br><span class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>Client 都是一样的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> socket = io.connect(<span class="string">'http://localhost'</span>);</span><br><span class="line">  socket.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data);</span><br><span class="line">    socket.emit(<span class="string">'my other event'</span>, &#123; <span class="attr">my</span>: <span class="string">'data'</span> &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="发送和接受事件"><a href="#发送和接受事件" class="headerlink" title=" 发送和接受事件"></a><a id="toc-emit-on"></a> 发送和接受事件</h3><p>Socket.io允许我们派发和接受自定义事件。除此之外，<code>connect</code>,<code>message</code>和<code>disconnect</code>， 你可一发送自定义事件</p>
-<p>Server<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意io(&lt;port&gt;) 会为你创建一个http服务</span></span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  io.emit(<span class="string">'this'</span>, &#123; <span class="attr">will</span>: <span class="string">'be received by everyone'</span>&#125;);</span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">'private message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">from, msg</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'I received a private message by '</span>, <span class="keyword">from</span>, <span class="string">' saying '</span>, msg);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    io.emit(<span class="string">'user disconnected'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<h3 id="限制你自己的命名空间"><a href="#限制你自己的命名空间" class="headerlink" title=" 限制你自己的命名空间"></a><a id="toc-namespace"></a> 限制你自己的命名空间</h3><p>如果您需要控制特定应用程序所以发出的消息和事件，可以使用默认或者命名空间来工作。如果你想用第三方代码或者产生代码来分享给他人使用，socket.io提供了命名一个<code>socket</code>的方法。</p>
+<h3 id="优势"><a id="toc-advantage"></a> 优势</h3>
+<p>Socket.IO会自动选择合适双向通信协议，仅仅需要程序员对套接字的概念有所了解。</p>
+<h3 id="劣势"><a id="toc-disadvantage"></a> 劣势</h3>
+<p>Socket.io并不是一个基本的、独立的、能够回退到其它实时协议的WebSocket库，它实际上是一个依赖于其它实时传输协议的自定义实时传输协议的实现。该协议的协商部分使得支持标准WebSocket的客户端不能直接连接到Socket.io服务器，并且支持Socket.io的客户端也不能与非Socket.io框架的WebSocket或Comet服务器通信。因而，Socket.io要求客户端与服务器端均须使用该框架。</p>
+<h1 id="使用socket.io"><a id="toc-use"></a> 使用Socket.io</h1>
+<h3 id="安装"><a id="toc-install"></a> 安装</h3>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install socket.io</div></pre></td></tr></table></figure>
+<h3 id="直接node服务中使用"><a id="toc-use-node"></a> 直接node服务中使用</h3>
+<p>Server(app.js) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'http'</span>).createServer(handler)</div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(app);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line">app.listen(<span class="number">80</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  fs.readFile(__dirname + <span class="string">'/index.html'</span>,</div><div class="line">  <span class="function"><span class="keyword">function</span> (<span class="params">err, data</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      res.writeHead(<span class="number">500</span>);</div><div class="line">      <span class="keyword">return</span> res.end(<span class="string">'Error loading index.html'</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    res.writeHead(<span class="number">200</span>);</div><div class="line">    res.end(data);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;); <span class="comment">// 派发事件“news”</span></div><div class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">  &#125;); <span class="comment">// 接受Client派发的事件</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Client (index.html) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">var</span> socket = io(<span class="string">'http://localhost'</span>);</div><div class="line">  socket.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">    socket.emit(<span class="string">'my other event'</span>, &#123; <span class="attr">my</span>: <span class="string">'data'</span> &#125;); <span class="comment">// 接受完“new” 事件之后 派发事件"my other event"</span></div><div class="line">  &#125;);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用express-34-和-express-2.x"><a id="toc-use-express"></a> 使用Express 3/4 和 Express 2.x</h3>
+<p>Server (app.js) 使用Express 3/4 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</div><div class="line"><span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">'http'</span>).Server(app);</div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(server);</div><div class="line"></div><div class="line">server.listen(<span class="number">80</span>);</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.sendfile(__dirname + <span class="string">'/index.html'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;);</div><div class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Server (app.js) 使用Express 2.x <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>).createServer();</div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(app);</div><div class="line"></div><div class="line">app.listen(<span class="number">80</span>);</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req, res</span>) </span>&#123;</div><div class="line">  res.sendFile(__dirname + <span class="string">'/index.html'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  socket.emit(<span class="string">'news'</span>, &#123; <span class="attr">hello</span>: <span class="string">'world'</span> &#125;);</div><div class="line">  socket.on(<span class="string">'my other event'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Client 都是一样的 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script src=<span class="string">"/socket.io/socket.io.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">var</span> socket = io.connect(<span class="string">'http://localhost'</span>);</div><div class="line">  socket.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">    socket.emit(<span class="string">'my other event'</span>, &#123; <span class="attr">my</span>: <span class="string">'data'</span> &#125;);</div><div class="line">  &#125;);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="发送和接受事件"><a id="toc-emit-on"></a> 发送和接受事件</h3>
+<p>Socket.io允许我们派发和接受自定义事件。除此之外，<code>connect</code>,<code>message</code>和<code>disconnect</code>， 你可一发送自定义事件</p>
+<p>Server <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 注意io(&lt;port&gt;) 会为你创建一个http服务</span></div><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  io.emit(<span class="string">'this'</span>, &#123; <span class="attr">will</span>: <span class="string">'be received by everyone'</span>&#125;);</div><div class="line"></div><div class="line">  socket.on(<span class="string">'private message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">from, msg</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'I received a private message by '</span>, <span class="keyword">from</span>, <span class="string">' saying '</span>, msg);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  socket.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    io.emit(<span class="string">'user disconnected'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="限制你自己的命名空间"><a id="toc-namespace"></a> 限制你自己的命名空间</h3>
+<p>如果您需要控制特定应用程序所以发出的消息和事件，可以使用默认或者命名空间来工作。如果你想用第三方代码或者产生代码来分享给他人使用，socket.io提供了命名一个<code>socket</code>的方法。</p>
 <p>单个连接使用<code>multiplexing</code>是有好处的。一个socket连接来代替使用两个<code>WebSocket</code>连接。</p>
-<p>Server (app.js)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</span><br><span class="line"><span class="keyword">var</span> chat = io</span><br><span class="line">  .of(<span class="string">'/chat'</span>)</span><br><span class="line">  .on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.emit(<span class="string">'a message'</span>, &#123;</span><br><span class="line">        that: <span class="string">'only'</span></span><br><span class="line">      , <span class="string">'/chat'</span>: <span class="string">'will get'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    chat.emit(<span class="string">'a message'</span>, &#123;</span><br><span class="line">        everyone: <span class="string">'in'</span></span><br><span class="line">      , <span class="string">'/chat'</span>: <span class="string">'will get'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;); <span class="comment">// 空间１</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> news = io</span><br><span class="line">  .of(<span class="string">'/news'</span>)</span><br><span class="line">  .on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">    socket.emit(<span class="string">'item'</span>, &#123; <span class="attr">news</span>: <span class="string">'item'</span> &#125;);</span><br><span class="line">  &#125;); <span class="comment">// 空间２</span></span><br></pre></td></tr></table></figure></p>
-<p>Client (index.html)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> chat = io.connect(<span class="string">'http://localhost/chat'</span>)</span><br><span class="line">    , news = io.connect(<span class="string">'http://localhost/news'</span>); <span class="comment">// 分别链接两个命名空间</span></span><br><span class="line">  </span><br><span class="line">  chat.on(<span class="string">'connect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    chat.emit(<span class="string">'hi!'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  </span><br><span class="line">  news.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    news.emit(<span class="string">'woot'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="发送不稳定的消息"><a href="#发送不稳定的消息" class="headerlink" title=" 发送不稳定的消息"></a><a id="toc-volatile"></a> 发送不稳定的消息</h3><p>有时，有些消息会被丢失。比如说，你有一个应用程序，显示实时连接的关键字<code>bieber</code></p>
+<p>Server (app.js) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</div><div class="line"><span class="keyword">var</span> chat = io</div><div class="line">  .of(<span class="string">'/chat'</span>)</div><div class="line">  .on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">    socket.emit(<span class="string">'a message'</span>, &#123;</div><div class="line">        that: <span class="string">'only'</span></div><div class="line">      , <span class="string">'/chat'</span>: <span class="string">'will get'</span></div><div class="line">    &#125;);</div><div class="line">    chat.emit(<span class="string">'a message'</span>, &#123;</div><div class="line">        everyone: <span class="string">'in'</span></div><div class="line">      , <span class="string">'/chat'</span>: <span class="string">'will get'</span></div><div class="line">    &#125;);</div><div class="line">  &#125;); <span class="comment">// 空间１</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> news = io</div><div class="line">  .of(<span class="string">'/news'</span>)</div><div class="line">  .on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">    socket.emit(<span class="string">'item'</span>, &#123; <span class="attr">news</span>: <span class="string">'item'</span> &#125;);</div><div class="line">  &#125;); <span class="comment">// 空间２</span></div></pre></td></tr></table></figure></p>
+<p>Client (index.html) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">var</span> chat = io.connect(<span class="string">'http://localhost/chat'</span>)</div><div class="line">    , news = io.connect(<span class="string">'http://localhost/news'</span>); <span class="comment">// 分别链接两个命名空间</span></div><div class="line">  </div><div class="line">  chat.on(<span class="string">'connect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    chat.emit(<span class="string">'hi!'</span>);</div><div class="line">  &#125;);</div><div class="line">  </div><div class="line">  news.on(<span class="string">'news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    news.emit(<span class="string">'woot'</span>);</div><div class="line">  &#125;);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="发送不稳定的消息"><a id="toc-volatile"></a> 发送不稳定的消息</h3>
+<p>有时，有些消息会被丢失。比如说，你有一个应用程序，显示实时连接的关键字<code>bieber</code></p>
 <p>如果某个客户端没有准备好接收消息（可能是网络缓慢或其他问题， 或者他们处于长轮询连接并且处于请求阶段）。如果他没有收到所有消息，你的程序如何不受影响呢？</p>
-<p>在这种情况下，你也许需要发送一些不稳定信息<br>Server<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> tweets = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    getBieberTweet(<span class="function"><span class="keyword">function</span> (<span class="params">tweet</span>) </span>&#123;</span><br><span class="line">      socket.volatile.emit(<span class="string">'bieber tweet'</span>, tweet);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">  socket.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    clearInterval(tweets);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 就是一个定时器。。。加上volatila 客户端接收到了的话，肯定会有一个回调like: clearInterval(tweets)</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="发送和获取数据（确认）"><a href="#发送和获取数据（确认）" class="headerlink" title=" 发送和获取数据（确认）"></a><a id="toc-callback"></a> 发送和获取数据（确认）</h3><p>有时，你也许想要客户端接收到消息发送一个回调来确认小安溪接收到了。OK，可以做到这一点</p>
-<p>只需在<code>.send</code>， <code>.emit</code>后面添加一个回调函数fn<br>Server (app.js)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  socket.on(<span class="string">'ferret'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">name, fn</span>) </span>&#123;</span><br><span class="line">    fn(<span class="string">'woot'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>Client (index.html)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> socket = io(); <span class="comment">// TIP: io() with no args does auto-discovery</span></span><br><span class="line">  socket.on(<span class="string">'connect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// TIP: you can avoid listening on `connect` and listen on events directly too!</span></span><br><span class="line">    socket.emit(<span class="string">'ferret'</span>, <span class="string">'tobi'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(data); <span class="comment">// data will be 'woot'</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="广播消息"><a href="#广播消息" class="headerlink" title=" 广播消息"></a><a id="toc-broadcast"></a> 广播消息</h3><p>要广播，直接在<code>emit</code>和<code>send</code>前面添加<code>broadcast</code>就可以了。广播意味着除了消息发送者，所有人都将获得这个消息</p>
-<p>Server<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</span><br><span class="line">  socket.broadcast.emit(<span class="string">'user connected'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在这种情况下，你也许需要发送一些不稳定信息 Server <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> tweets = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    getBieberTweet(<span class="function"><span class="keyword">function</span> (<span class="params">tweet</span>) </span>&#123;</div><div class="line">      socket.volatile.emit(<span class="string">'bieber tweet'</span>, tweet);</div><div class="line">    &#125;);</div><div class="line">  &#125;, <span class="number">100</span>);</div><div class="line"></div><div class="line">  socket.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    clearInterval(tweets);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 就是一个定时器。。。加上volatila 客户端接收到了的话，肯定会有一个回调like: clearInterval(tweets)</span></div></pre></td></tr></table></figure></p>
+<h3 id="发送和获取数据确认"><a id="toc-callback"></a> 发送和获取数据（确认）</h3>
+<p>有时，你也许想要客户端接收到消息发送一个回调来确认小安溪接收到了。OK，可以做到这一点</p>
+<p>只需在<code>.send</code>， <code>.emit</code>后面添加一个回调函数fn Server (app.js) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  socket.on(<span class="string">'ferret'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">name, fn</span>) </span>&#123;</div><div class="line">    fn(<span class="string">'woot'</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>Client (index.html) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">  <span class="keyword">var</span> socket = io(); <span class="comment">// TIP: io() with no args does auto-discovery</span></div><div class="line">  socket.on(<span class="string">'connect'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// TIP: you can avoid listening on `connect` and listen on events directly too!</span></div><div class="line">    socket.emit(<span class="string">'ferret'</span>, <span class="string">'tobi'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(data); <span class="comment">// data will be 'woot'</span></div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="广播消息"><a id="toc-broadcast"></a> 广播消息</h3>
+<p>要广播，直接在<code>emit</code>和<code>send</code>前面添加<code>broadcast</code>就可以了。广播意味着除了消息发送者，所有人都将获得这个消息</p>
+<p>Server <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(<span class="number">80</span>);</div><div class="line"></div><div class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">socket</span>) </span>&#123;</div><div class="line">  socket.broadcast.emit(<span class="string">'user connected'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -671,7 +685,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -684,7 +700,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -751,7 +767,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -870,7 +888,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -894,6 +916,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -929,10 +955,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -989,7 +1011,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍Socket-io"><span class="nav-number">1.</span> <span class="nav-text"> 介绍Socket.io</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优势"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#劣势"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 劣势</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Socket-io"><span class="nav-number">2.</span> <span class="nav-text"> 使用Socket.io</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接node服务中使用"><span class="nav-number">2.0.2.</span> <span class="nav-text"> 直接node服务中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Express-3-4-和-Express-2-x"><span class="nav-number">2.0.3.</span> <span class="nav-text"> 使用Express 3/4 和 Express 2.x</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送和接受事件"><span class="nav-number">2.0.4.</span> <span class="nav-text"> 发送和接受事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制你自己的命名空间"><span class="nav-number">2.0.5.</span> <span class="nav-text"> 限制你自己的命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送不稳定的消息"><span class="nav-number">2.0.6.</span> <span class="nav-text"> 发送不稳定的消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送和获取数据（确认）"><span class="nav-number">2.0.7.</span> <span class="nav-text"> 发送和获取数据（确认）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播消息"><span class="nav-number">2.0.8.</span> <span class="nav-text"> 广播消息</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍socket.io"><span class="nav-number">1.</span> <span class="nav-text"> 介绍Socket.io</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优势"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#劣势"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 劣势</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用socket.io"><span class="nav-number">2.</span> <span class="nav-text"> 使用Socket.io</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接node服务中使用"><span class="nav-number">2.0.2.</span> <span class="nav-text"> 直接node服务中使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用express-34-和-express-2.x"><span class="nav-number">2.0.3.</span> <span class="nav-text"> 使用Express 3/4 和 Express 2.x</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送和接受事件"><span class="nav-number">2.0.4.</span> <span class="nav-text"> 发送和接受事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#限制你自己的命名空间"><span class="nav-number">2.0.5.</span> <span class="nav-text"> 限制你自己的命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送不稳定的消息"><span class="nav-number">2.0.6.</span> <span class="nav-text"> 发送不稳定的消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送和获取数据确认"><span class="nav-number">2.0.7.</span> <span class="nav-text"> 发送和获取数据（确认）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播消息"><span class="nav-number">2.0.8.</span> <span class="nav-text"> 广播消息</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1511,6 +1533,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

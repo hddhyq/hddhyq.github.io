@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2018/07/08/函数去抖debounce和函数节流throttle的应用/">
+  <link rel="canonical" href="https://hddhyq.github.io/2018/07/08/函数去抖debounce和函数节流throttle的应用/"/>
 
 
 
@@ -221,7 +221,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -238,7 +238,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -255,7 +255,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -272,7 +272,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -289,7 +289,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -300,7 +300,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -323,7 +323,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -370,16 +372,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/07/08/函数去抖debounce和函数节流throttle的应用/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/07/08/函数去抖debounce和函数节流throttle的应用/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -488,7 +490,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2k</span>
+                <span title="本文字数">2.1k</span>
               
 
               
@@ -522,25 +524,29 @@
       
 
       
-        <p>开始以为只有节流函数，原来还有去抖函数啊。两个概念第一次听的话肯定比较容易混淆，接下来就来研究一下它们吧。<br><a id="more"></a></p>
-<h1 id="函数去抖debounce"><a href="#函数去抖debounce" class="headerlink" title="函数去抖debounce"></a>函数去抖debounce</h1><p>在一段时间内执行该动作，在单位时间内重新调用该动作，会重新计算时间。</p>
+        <p>开始以为只有节流函数，原来还有去抖函数啊。两个概念第一次听的话肯定比较容易混淆，接下来就来研究一下它们吧。 <a id="more"></a> # 函数去抖debounce 在一段时间内执行该动作，在单位时间内重新调用该动作，会重新计算时间。</p>
 <p>我的理解就是，只要触发的够快，函数就追不上我，哈哈哈。</p>
 <p>当我停下来的时候，函数会触发最后一次。所以其中肯定有一个定时器哈，下面展示一下简单实现的代码。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 定义一个定时器</span></span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 绑定函数调用时上下文及参数</span></span><br><span class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>;</span><br><span class="line">        args = <span class="built_in">arguments</span>;</span><br><span class="line">        clearTimeout(timer);</span><br><span class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'debounce被触发了'</span>);</span><br><span class="line">            fn.apply(context, args);</span><br><span class="line">        &#125;, delay);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义一个btn，然后去点它来测试</span></span><br><span class="line">$(<span class="string">'.btn-click-debounce'</span>).on(<span class="string">'click'</span>, debounce(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'200ms一次'</span>)</span><br><span class="line">&#125;, <span class="number">200</span>))</span><br></pre></td></tr></table></figure>
-<h1 id="函数节流throttle"><a href="#函数节流throttle" class="headerlink" title="函数节流throttle"></a>函数节流throttle</h1><p>将倾斜而出的水流，一点一点的流出，这就是节流。放在函数触发中，就是本来快速l连续触发的事件以单位时间为间隔来触发。简单实现的源码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, threshhold</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> last = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</span><br><span class="line">    threshhold || (threshhold = <span class="number">200</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>;</span><br><span class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">        <span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// Date.now();</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(last &amp;&amp; ((now &lt; last + threshhold)) &#123;</span><br><span class="line">            <span class="comment">// 判断时间间隔，以及是否第一次触发</span></span><br><span class="line">            clearTimeout(timer);</span><br><span class="line">            timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">                last = now;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'throttle被触发了'</span>);</span><br><span class="line">                fn.apply(context, args);</span><br><span class="line">            &#125;, threshhold)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            last = now;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'throttle被触发了'</span>);</span><br><span class="line">            fn.apply(context, args);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$(<span class="string">'.btn-click-throttle'</span>).on(<span class="string">'click'</span>, throttle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'200ms一次'</span>)</span><br><span class="line">&#125;, <span class="number">200</span>))</span><br></pre></td></tr></table></figure></p>
-<h1 id="使用的场景"><a href="#使用的场景" class="headerlink" title="使用的场景"></a>使用的场景</h1><h2 id="throttle函数节流"><a href="#throttle函数节流" class="headerlink" title="throttle函数节流"></a>throttle函数节流</h2><ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, delay</span>) </span>&#123;</div><div class="line">    <span class="comment">// 定义一个定时器</span></div><div class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 绑定函数调用时上下文及参数</span></div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>;</div><div class="line">        args = <span class="built_in">arguments</span>;</div><div class="line">        clearTimeout(timer);</div><div class="line">        timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'debounce被触发了'</span>);</div><div class="line">            fn.apply(context, args);</div><div class="line">        &#125;, delay);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// 定义一个btn，然后去点它来测试</span></div><div class="line">$(<span class="string">'.btn-click-debounce'</span>).on(<span class="string">'click'</span>, debounce(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'200ms一次'</span>)</div><div class="line">&#125;, <span class="number">200</span>))</div></pre></td></tr></table></figure>
+<h1 id="函数节流throttle">函数节流throttle</h1>
+<p>将倾斜而出的水流，一点一点的流出，这就是节流。放在函数触发中，就是本来快速l连续触发的事件以单位时间为间隔来触发。简单实现的源码： <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn, threshhold</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> last = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">    threshhold || (threshhold = <span class="number">200</span>);</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> context = <span class="keyword">this</span>;</div><div class="line">        <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</div><div class="line">        <span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// Date.now();</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span>(last &amp;&amp; ((now &lt; last + threshhold)) &#123;</div><div class="line">            <span class="comment">// 判断时间间隔，以及是否第一次触发</span></div><div class="line">            clearTimeout(timer);</div><div class="line">            timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                last = now;</div><div class="line">                <span class="built_in">console</span>.log(<span class="string">'throttle被触发了'</span>);</div><div class="line">                fn.apply(context, args);</div><div class="line">            &#125;, threshhold)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            last = now;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'throttle被触发了'</span>);</div><div class="line">            fn.apply(context, args);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$(<span class="string">'.btn-click-throttle'</span>).on(<span class="string">'click'</span>, throttle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'200ms一次'</span>)</div><div class="line">&#125;, <span class="number">200</span>))</div></pre></td></tr></table></figure></p>
+<h1 id="使用的场景">使用的场景</h1>
+<h2 id="throttle函数节流">throttle函数节流</h2>
+<ul>
 <li>Dom元素的拖拽实现（mousemove）</li>
 <li>射击游戏的mousedown/keydown事件（单位时间只能发射一颗子弹）</li>
 <li>计算鼠标移动的距离（mousemove）</li>
 <li>Canvas模拟画板功能</li>
 <li>搜索联想（keyup）</li>
-<li>监听滚动事件是否到底部自动加载更多（<br>监听滚动事件判断是否到页面底部自动加载更多：给 scroll 加了 debounce 后，只有用户停止滚动后，才会判断是否到了页面底部；如果是 throttle 的话，只要页面滚动就会间隔一段时间判断一次）</li>
+<li>监听滚动事件是否到底部自动加载更多（ 监听滚动事件判断是否到页面底部自动加载更多：给 scroll 加了 debounce 后，只有用户停止滚动后，才会判断是否到了页面底部；如果是 throttle 的话，只要页面滚动就会间隔一段时间判断一次）</li>
 </ul>
-<h2 id="debounce应用场景"><a href="#debounce应用场景" class="headerlink" title="debounce应用场景"></a>debounce应用场景</h2><ul>
+<h2 id="debounce应用场景">debounce应用场景</h2>
+<ul>
 <li>每次resize/scroll触发统计</li>
 <li>文本输入的验证（连续输入文字后发送ajax进行验证，验证一次就好）</li>
 </ul>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/zichi/p/5948936.html" target="_blank" rel="noopener">http://www.cnblogs.com/zichi/p/5948936.html</a></p>
+<h1 id="参考">参考</h1>
+<p><a href="http://www.cnblogs.com/zichi/p/5948936.html" target="_blank" rel="noopener">http://www.cnblogs.com/zichi/p/5948936.html</a></p>
 <p><a href="https://www.cnblogs.com/fsjohnhuang/p/4147810.html" target="_blank" rel="noopener">https://www.cnblogs.com/fsjohnhuang/p/4147810.html</a></p>
 
       
@@ -654,7 +660,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -667,7 +675,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -734,7 +742,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -853,7 +863,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -877,6 +891,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -912,10 +930,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -972,7 +986,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数去抖debounce"><span class="nav-number">1.</span> <span class="nav-text">函数去抖debounce</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数节流throttle"><span class="nav-number">2.</span> <span class="nav-text">函数节流throttle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用的场景"><span class="nav-number">3.</span> <span class="nav-text">使用的场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#throttle函数节流"><span class="nav-number">3.1.</span> <span class="nav-text">throttle函数节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debounce应用场景"><span class="nav-number">3.2.</span> <span class="nav-text">debounce应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数节流throttle"><span class="nav-number">1.</span> <span class="nav-text">函数节流throttle</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用的场景"><span class="nav-number">2.</span> <span class="nav-text">使用的场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#throttle函数节流"><span class="nav-number">2.1.</span> <span class="nav-text">throttle函数节流</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debounce应用场景"><span class="nav-number">2.2.</span> <span class="nav-text">debounce应用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -1494,6 +1508,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

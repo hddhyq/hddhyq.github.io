@@ -13,11 +13,11 @@
 
 
 <html class="theme-next mist" lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c">
+  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
 
 
 
@@ -44,9 +44,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
@@ -118,7 +118,7 @@
 
   
   
-  <link rel="canonical" href="https://hddhyq.github.io/2019/04/07/Webpack基础3/">
+  <link rel="canonical" href="https://hddhyq.github.io/2019/04/07/Webpack基础3/"/>
 
 
 
@@ -224,7 +224,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
 
   </li>
         
@@ -241,7 +241,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
 
   </li>
         
@@ -258,7 +258,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
 
   </li>
         
@@ -275,7 +275,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
 
   </li>
         
@@ -292,7 +292,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
 
   </li>
 
@@ -303,7 +303,7 @@
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
         </li>
       
     </ul>
@@ -326,7 +326,9 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -373,16 +375,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/04/07/Webpack基础3/">
+    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/04/07/Webpack基础3/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq">
-      <meta itemprop="description" content="落花人独立，微雨燕双飞">
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro">
+      <meta itemprop="name" content="hddhyq"/>
+      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
+      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog">
+      <meta itemprop="name" content="hddhyq's blog"/>
     </span>
 
     
@@ -491,7 +493,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.9k</span>
+                <span title="本文字数">5k</span>
               
 
               
@@ -525,45 +527,47 @@
       
 
       
-        <p>这篇主要谈一下Webpack核心概念<br><a id="more"></a></p>
-<h2 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h2><p>entry会根据入口文件分析依赖生成依赖关系图。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/webpack/webpack_entry.png" alt="webpack_entry"></p>
-<h2 id="Ouput"><a href="#Ouput" class="headerlink" title="Ouput"></a>Ouput</h2><p>告诉 Webpack 如何及在哪里分发 bundles (编译后文件)，和 Entry 一起工作。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/webpack/webpack_output.png" alt="webpack_output"></p>
-<h2 id="Loader-Rules"><a href="#Loader-Rules" class="headerlink" title="Loader+Rules"></a>Loader+Rules</h2><h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><p>Webpack 4.0 中将每一个依赖都当作一个JavaScript Module处理。所以我们需要定义一个规则，如何把一个文件当作JavaScript文件处理。Webpack处理文件依赖的时候，遇到这些文件就会去rules中寻找相对应的loader，处理后将文件加入依赖关系图。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">  rules: &#123;</span><br><span class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.ts$/</span>, <span class="attr">use</span>: <span class="string">'ts-loader'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, <span class="attr">use</span>: <span class="string">'babel-loader'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">use</span>: <span class="string">'css-loader'</span>&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// module: &#123;</span></span><br><span class="line"><span class="comment">//   rules: [</span></span><br><span class="line">    &#123;</span><br><span class="line">      test: regex,</span><br><span class="line">      use: (<span class="built_in">Array</span>|<span class="built_in">String</span>|<span class="built_in">Function</span>),</span><br><span class="line">      include: <span class="built_in">RegExp</span>[],</span><br><span class="line">      exclude: <span class="built_in">RegExp</span>[],</span><br><span class="line">      issuer: (<span class="built_in">RegExp</span>|<span class="built_in">String</span>)[],</span><br><span class="line">      enforce: <span class="string">"pre"</span>|<span class="string">"post"</span></span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">//   ]</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+        <p>这篇主要谈一下Webpack核心概念 <a id="more"></a></p>
+<h2 id="entry">Entry</h2>
+<p>entry会根据入口文件分析依赖生成依赖关系图。</p>
+<figure>
+<img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/webpack/webpack_entry.png" alt=""><figcaption>webpack_entry</figcaption>
+</figure>
+<h2 id="ouput">Ouput</h2>
+<p>告诉 Webpack 如何及在哪里分发 bundles (编译后文件)，和 Entry 一起工作。</p>
+<figure>
+<img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/webpack/webpack_output.png" alt=""><figcaption>webpack_output</figcaption>
+</figure>
+<h2 id="loaderrules">Loader+Rules</h2>
+<h3 id="loaders">loaders</h3>
+<p>Webpack 4.0 中将每一个依赖都当作一个JavaScript Module处理。所以我们需要定义一个规则，如何把一个文件当作JavaScript文件处理。Webpack处理文件依赖的时候，遇到这些文件就会去rules中寻找相对应的loader，处理后将文件加入依赖关系图。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  rules: &#123;</div><div class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.ts$/</span>, <span class="attr">use</span>: <span class="string">'ts-loader'</span>&#125;,</div><div class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.js$/</span>, <span class="attr">use</span>: <span class="string">'babel-loader'</span>&#125;,</div><div class="line">    &#123;<span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">use</span>: <span class="string">'css-loader'</span>&#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// module: &#123;</span></div><div class="line"><span class="comment">//   rules: [</span></div><div class="line">    &#123;</div><div class="line">      test: regex,</div><div class="line">      use: (<span class="built_in">Array</span>|<span class="built_in">String</span>|<span class="built_in">Function</span>),</div><div class="line">      include: <span class="built_in">RegExp</span>[],</div><div class="line">      exclude: <span class="built_in">RegExp</span>[],</div><div class="line">      issuer: (<span class="built_in">RegExp</span>|<span class="built_in">String</span>)[],</div><div class="line">      enforce: <span class="string">"pre"</span>|<span class="string">"post"</span></div><div class="line">    &#125;</div><div class="line"><span class="comment">//   ]</span></div><div class="line"><span class="comment">// &#125;</span></div></pre></td></tr></table></figure>
 <ul>
-<li><p><strong>test</strong>: 一个正则表达式，指定compiler运行loader的文件格式</p>
-</li>
-<li><p><strong>use</strong>: 使用loader对象的array/string/function</p>
-</li>
-<li><p><strong>enforce</strong>: 可以是”pre”or”post”，告诉Webpack这条规则在所有其他规则前面或者后面。</p>
-</li>
-<li><p><strong>include</strong>: 一个正则表达式数组，用来指示compiler哪些文件或者文件夹被包含。complier将仅搜索提供的路径。</p>
-</li>
-<li><p><strong>exclude</strong>: 一个正则表达式数组，用来指示compiler哪些文件或者文件夹被忽略。</p>
-</li>
+<li><p><strong>test</strong>: 一个正则表达式，指定compiler运行loader的文件格式</p></li>
+<li><p><strong>use</strong>: 使用loader对象的array/string/function</p></li>
+<li><p><strong>enforce</strong>: 可以是"pre"or"post"，告诉Webpack这条规则在所有其他规则前面或者后面。</p></li>
+<li><p><strong>include</strong>: 一个正则表达式数组，用来指示compiler哪些文件或者文件夹被包含。complier将仅搜索提供的路径。</p></li>
+<li><p><strong>exclude</strong>: 一个正则表达式数组，用来指示compiler哪些文件或者文件夹被忽略。</p></li>
 </ul>
-<h3 id="链式loaders-chaining-loaders"><a href="#链式loaders-chaining-loaders" class="headerlink" title="(链式loaders)chaining loaders"></a>(链式loaders)chaining loaders</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">  &#123;</span><br><span class="line">    test: <span class="regexp">/\.less$/</span>,</span><br><span class="line">    use: [<span class="string">'style'</span>, <span class="string">'css'</span>, <span class="string">'less'</span>]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment">// 调用方法顺序展示</span></span><br><span class="line"><span class="comment">// style(css(less()))</span></span><br></pre></td></tr></table></figure>
+<h3 id="链式loaderschaining-loaders">(链式loaders)chaining loaders</h3>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">rules: [</div><div class="line">  &#123;</div><div class="line">    test: <span class="regexp">/\.less$/</span>,</div><div class="line">    use: [<span class="string">'style'</span>, <span class="string">'css'</span>, <span class="string">'less'</span>]</div><div class="line">  &#125;</div><div class="line">]</div><div class="line"><span class="comment">// 调用方法顺序展示</span></div><div class="line"><span class="comment">// style(css(less()))</span></div></pre></td></tr></table></figure>
 <p>假设我们有一个style.less文件，那么它的调用顺序就是 <strong>style.less</strong> =&gt; less-loader =&gt; css-loader =&gt; style-loader =&gt; <strong>inlineStyleBrowser.js</strong>。</p>
 <p>当然Webpack能通过loader处理大量的文件，如下所示：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">son, hson, raw, val, to-string, imports, exports, expose, script, apply, callback, ifdef-loader, source-map, sourceMappingURL,</span><br><span class="line">checksum, cowsay, dsv, glsl, glsl-template, render-placement, xml, svg-react, svg-url, svg-as-symbol, symbol, base64, ng-annotate,</span><br><span class="line">node, required, icons, markup-inline, block-loader, bundler-configuration, console, solc, .sol, web3, includes, combine,</span><br><span class="line">regexp-replace, file, url, extract, worker, shared-worker, serviceworker, bundle, require.ensure, promise, async-module, bundle,</span><br><span class="line">require.ensure, react-proxy, react-hot, image, file, url, img, base64-image, responsive, srcset, svgo, svg-sprite, symbol,</span><br><span class="line">svg-fill, fill, line-art, baggage, polymer, uglify, html-minify, vue, tojson, zip-it, file, lzstring, modernizr, s3, path-replace,</span><br><span class="line">react-intl, require.ensure, font-subset, w3c-manifest, web-app-manifest, manifest-scope, coffee, coffee-jsx, coffee-redux, json5,</span><br><span class="line">es6, esnext, babel, regenerator, livescript, sweetjs, traceur, ts, typescript, awesome-typescript, webpack-typescript, purs, oj,</span><br><span class="line">elm-webpack, miel, wisp, sibilant, ion, html, dom, riot, pug, jade-html, jade-react, virtual-jade, virtual-dom, template-html,</span><br><span class="line">handlebars, handlebars-template-loader, dust, ractive, jsx, react-templates, em, ejs, ejs-html, mustache, yaml, yml,</span><br><span class="line">react-markdown, front-matter, markdown, remarkable, markdown-it, markdownattrs, ng-cache, ngtemplate, hamlc, haml, jinja, nunjucks,</span><br><span class="line">soy, smarty, swagger, template-string, ect, tmodjs, layout, swig, twig, mjml-, bootstrap-webpack, font-awesome-webpack,</span><br><span class="line">bootstrap-sass, bootstrap, bootstrap, font-awesome, style, isomorphic-style, style-loader, css, cess, less, sass, stylus, csso,</span><br><span class="line">rework, postcss, autoprefixer, namespace-css, fontgen, classnames, theo, bulma, css-to-string, css-loader, po, po2mo,</span><br><span class="line">format-message, jsxlate, angular-gettext, json, angular-gettext, webpack-angular-translate, angular-gettext-extract, .pot,</span><br><span class="line">gettext, preprocessor, amdi18n-loader, .json, .js, .coffee, sprockets-preloader, properties, transifex, mocha, coverjs,</span><br><span class="line">istanbul-instrumenter, ibrik-instrumenter, eslint, jshint, jscs, standard, inject, transform, falafel, image-size, csslint,</span><br><span class="line">coffeelint, tslint, parker, sjsp, amdcheck, manifest, gulp-rev, html-test, stylelint, stylefmt, scsslint, htmlhint, documentation,</span><br><span class="line">sassdoc, performance-loader</span><br></pre></td></tr></table></figure>
-<h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><p>首先Plugin是一个带有apply属性的对象，它能允许挂载到整个编译生命周期。Webpack本身拥有丰富的内置插件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">son, hson, raw, val, to-string, imports, exports, expose, script, apply, callback, ifdef-loader, source-map, sourceMappingURL,</div><div class="line">checksum, cowsay, dsv, glsl, glsl-template, render-placement, xml, svg-react, svg-url, svg-as-symbol, symbol, base64, ng-annotate,</div><div class="line">node, required, icons, markup-inline, block-loader, bundler-configuration, console, solc, .sol, web3, includes, combine,</div><div class="line">regexp-replace, file, url, extract, worker, shared-worker, serviceworker, bundle, require.ensure, promise, async-module, bundle,</div><div class="line">require.ensure, react-proxy, react-hot, image, file, url, img, base64-image, responsive, srcset, svgo, svg-sprite, symbol,</div><div class="line">svg-fill, fill, line-art, baggage, polymer, uglify, html-minify, vue, tojson, zip-it, file, lzstring, modernizr, s3, path-replace,</div><div class="line">react-intl, require.ensure, font-subset, w3c-manifest, web-app-manifest, manifest-scope, coffee, coffee-jsx, coffee-redux, json5,</div><div class="line">es6, esnext, babel, regenerator, livescript, sweetjs, traceur, ts, typescript, awesome-typescript, webpack-typescript, purs, oj,</div><div class="line">elm-webpack, miel, wisp, sibilant, ion, html, dom, riot, pug, jade-html, jade-react, virtual-jade, virtual-dom, template-html,</div><div class="line">handlebars, handlebars-template-loader, dust, ractive, jsx, react-templates, em, ejs, ejs-html, mustache, yaml, yml,</div><div class="line">react-markdown, front-matter, markdown, remarkable, markdown-it, markdownattrs, ng-cache, ngtemplate, hamlc, haml, jinja, nunjucks,</div><div class="line">soy, smarty, swagger, template-string, ect, tmodjs, layout, swig, twig, mjml-, bootstrap-webpack, font-awesome-webpack,</div><div class="line">bootstrap-sass, bootstrap, bootstrap, font-awesome, style, isomorphic-style, style-loader, css, cess, less, sass, stylus, csso,</div><div class="line">rework, postcss, autoprefixer, namespace-css, fontgen, classnames, theo, bulma, css-to-string, css-loader, po, po2mo,</div><div class="line">format-message, jsxlate, angular-gettext, json, angular-gettext, webpack-angular-translate, angular-gettext-extract, .pot,</div><div class="line">gettext, preprocessor, amdi18n-loader, .json, .js, .coffee, sprockets-preloader, properties, transifex, mocha, coverjs,</div><div class="line">istanbul-instrumenter, ibrik-instrumenter, eslint, jshint, jscs, standard, inject, transform, falafel, image-size, csslint,</div><div class="line">coffeelint, tslint, parker, sjsp, amdcheck, manifest, gulp-rev, html-test, stylelint, stylefmt, scsslint, htmlhint, documentation,</div><div class="line">sassdoc, performance-loader</div></pre></td></tr></table></figure>
+<h2 id="plugins">Plugins</h2>
+<p>首先Plugin是一个带有apply属性的对象，它能允许挂载到整个编译生命周期。Webpack本身拥有丰富的内置插件。</p>
 <p>首先来看一个插件例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webpack 3.0 api</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BellOnBundlerErrorPlugin</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">BellOnBundlerErrorPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span>(process) !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Compiler events that are emitted and handled</span></span><br><span class="line">    compiler.plugin(<span class="string">'done'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">stats</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (stats.hasErrors()) &#123;</span><br><span class="line">        process.stderr.write(<span class="string">'\x07'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    compiler.plugin(<span class="string">'failed'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">      process.stderr.write(<span class="string">'\x07'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = BellOnBundlerErrorPlugin;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// webpack 3.0 api</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">BellOnBundlerErrorPlugin</span> (<span class="params"></span>) </span>&#123; &#125;</div><div class="line"></div><div class="line">BellOnBundlerErrorPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span>(process) !== <span class="string">'undefined'</span>) &#123;</div><div class="line"></div><div class="line">    <span class="comment">// Compiler events that are emitted and handled</span></div><div class="line">    compiler.plugin(<span class="string">'done'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">stats</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (stats.hasErrors()) &#123;</div><div class="line">        process.stderr.write(<span class="string">'\x07'</span>);</div><div class="line">      &#125;</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    compiler.plugin(<span class="string">'failed'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">      process.stderr.write(<span class="string">'\x07'</span>);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = BellOnBundlerErrorPlugin;</div></pre></td></tr></table></figure>
 <p>我们需要做的就是 new 一个新的实例放到plugins里面。这样有一些基础的插件也能够被复用和修改。</p>
 <p>下面是调用的例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BellOnBundlerErrorPlugin = <span class="built_in">require</span>(‘bell-on-error’);</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(‘webpack’);</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">  plugins: [</span><br><span class="line">	<span class="keyword">new</span> BellOnBundlerErrorPlugin(),</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Just a few of the built in plugins</span></span><br><span class="line">	<span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(‘vendors’),</span><br><span class="line">	<span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</span><br><span class="line">  ]</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> BellOnBundlerErrorPlugin = <span class="built_in">require</span>(‘bell-on-error’);</div><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(‘webpack’);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">//...</span></div><div class="line">  plugins: [</div><div class="line">	<span class="keyword">new</span> BellOnBundlerErrorPlugin(),</div><div class="line"></div><div class="line">	<span class="comment">// Just a few of the built in plugins</span></div><div class="line">	<span class="keyword">new</span> webpack.optimize.CommonsChunkPlugin(‘vendors’),</div><div class="line">	<span class="keyword">new</span> webpack.optimize.UglifyJsPlugin()</div><div class="line">  ]</div><div class="line">  <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Webpack的80%都是由它自己的插件系统构成的。相较于loader知识处理文件转换成模块，plugin能做的更多。它能访问ComplierAPI，在编译期间做一些事情。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li><p><strong>Entry</strong>: 告诉 Webpack 哪些文件需要加载到浏览器；编译输出到 output 属性中。</p>
-</li>
-<li><p><strong>Output</strong>: 告诉 Webpack 如何及在哪里分发 bundles (编译后文件)，和 Entry 一起工作。</p>
-</li>
-<li><p><strong>Loaders</strong>: 告诉Webpack如何解释和翻译文件。再将文件添加到依赖关系图之前，对每个文件进行转换。</p>
-</li>
-<li><p><strong>Plugins</strong>: 为编译过程添加更多的功能模块。又有更强大的访问ComplierAPI的能力。</p>
-</li>
+<h2 id="总结">总结</h2>
+<ul>
+<li><p><strong>Entry</strong>: 告诉 Webpack 哪些文件需要加载到浏览器；编译输出到 output 属性中。</p></li>
+<li><p><strong>Output</strong>: 告诉 Webpack 如何及在哪里分发 bundles (编译后文件)，和 Entry 一起工作。</p></li>
+<li><p><strong>Loaders</strong>: 告诉Webpack如何解释和翻译文件。再将文件添加到依赖关系图之前，对每个文件进行转换。</p></li>
+<li><p><strong>Plugins</strong>: 为编译过程添加更多的功能模块。又有更强大的访问ComplierAPI的能力。</p></li>
 </ul>
 
       
@@ -677,7 +681,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro" alt="hddhyq">
+              <img class="site-author-image" itemprop="image"
+                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
+                alt="hddhyq"/>
             
               <p class="site-author-name" itemprop="name">hddhyq</p>
               <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
@@ -690,7 +696,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -757,7 +763,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -876,7 +884,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">51</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -900,6 +912,10 @@
                 </div>
                 <ul class="links-of-blogroll-list">
                   
+                  
+                    <li>
+                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
+                    </li>
                   
                     <li>
                       <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
@@ -935,10 +951,6 @@
                   
                     <li>
                       <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/15/简单聊下响应式布局/" title="简单聊下响应式布局" target="_blank">简单聊下响应式布局</a>
                     </li>
                   
                 </ul>
@@ -995,7 +1007,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Entry"><span class="nav-number">1.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ouput"><span class="nav-number">2.</span> <span class="nav-text">Ouput</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Loader-Rules"><span class="nav-number">3.</span> <span class="nav-text">Loader+Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loaders"><span class="nav-number">3.1.</span> <span class="nav-text">loaders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式loaders-chaining-loaders"><span class="nav-number">3.2.</span> <span class="nav-text">(链式loaders)chaining loaders</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugins"><span class="nav-number">4.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#entry"><span class="nav-number">1.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ouput"><span class="nav-number">2.</span> <span class="nav-text">Ouput</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#loaderrules"><span class="nav-number">3.</span> <span class="nav-text">Loader+Rules</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#loaders"><span class="nav-number">3.1.</span> <span class="nav-text">loaders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链式loaderschaining-loaders"><span class="nav-number">3.2.</span> <span class="nav-text">(链式loaders)chaining loaders</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#plugins"><span class="nav-number">4.</span> <span class="nav-text">Plugins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1517,6 +1529,13 @@
   
 
   
+  
+
+  
+  
+
+  
+
 
   
 

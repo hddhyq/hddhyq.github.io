@@ -1,545 +1,5 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next mist" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
-
-
-
-
-
-
-
-
-
-
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.0.1',
-    sidebar: {"position":"right","width":320,"display":"always","offset":12,"onmobile":true,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结">
-<meta name="keywords" content="JS,你不知道的JS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="你不知道的JS总结-作用域和闭包(一)">
-<meta property="og:url" content="https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/index.html">
-<meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/作用域.png">
-<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/wordScope.png">
-<meta property="og:updated_time" content="2018-12-09T14:14:41.197Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="你不知道的JS总结-作用域和闭包(一)">
-<meta name="twitter:description" content="这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结">
-<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/作用域.png">
-
-
-
-
-
-  
-  
-  <link rel="canonical" href="https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/"/>
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>你不知道的JS总结-作用域和闭包(一) | hddhyq's blog</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hddhyq's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq"/>
-      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">你不知道的JS总结-作用域和闭包(一)
-
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-02-05 16:37:10" itemprop="dateCreated datePublished" datetime="2018-02-05T16:37:10+08:00">2018-02-05</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-12-09 22:14:41" itemprop="dateModified" datetime="2018-12-09T22:14:41+08:00">2018-12-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JS/" itemprop="url" rel="index"><span itemprop="name">JS</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2018/02/05/你不知道的JS总结-作用域和闭包(一)/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/02/05/你不知道的JS总结-作用域和闭包(一)/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2018/02/05/你不知道的JS总结-作用域和闭包(一)/" class="leancloud_visitors" data-flag-title="你不知道的JS总结-作用域和闭包(一)">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">8.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">16 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>这几天读了下《你不知道的JavaScript（上卷）》,对于书中<strong>作用域和闭包</strong>的知识点做一下总结 <a id="more"></a> # 第 1 章 作用域是什么 要了解作用域的规则，首先需要了解简单的编译原理。 ## 编译原理 尽管通常将 JavaScript 归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。</p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>你不知道的JS总结-作用域和闭包(一) - hddhyq&#039;s blog</title><meta description="这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结"><meta property="og:type" content="article"><meta property="og:title" content="你不知道的JS总结-作用域和闭包(一)"><meta property="og:url" content="https://hddhyq.github.io/2018/02/05/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS%E6%80%BB%E7%BB%93-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85(%E4%B8%80)/"><meta property="og:site_name" content="hddhyq&#039;s blog"><meta property="og:description" content="这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><meta property="article:published_time" content="2018-02-05T08:37:10.000Z"><meta property="article:modified_time" content="2020-03-27T08:06:33.234Z"><meta property="article:author" content="hddhyq"><meta property="article:tag" content="JS"><meta property="article:tag" content="你不知道的JS"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hddhyq.github.io/2018/02/05/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS%E6%80%BB%E7%BB%93-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85(%E4%B8%80)/"},"headline":"你不知道的JS总结-作用域和闭包(一)","image":[],"datePublished":"2018-02-05T08:37:10.000Z","dateModified":"2020-03-27T08:06:33.234Z","author":{"@type":"Person","name":"hddhyq"},"description":"这几天读了下《你不知道的JavaScript（上卷）》,对于书中作用域和闭包的知识点做一下总结"}</script><link rel="alternative" href="/atom.xml" title="hddhyq&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2018-02-05T08:37:10.000Z">2018-02-05</time><span class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/JS/">JS</a></span><span class="level-item">40 分钟 读完 (大约 5936 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">你不知道的JS总结-作用域和闭包(一)</h1><div class="content"><p>这几天读了下《你不知道的JavaScript（上卷）》,对于书中<strong>作用域和闭包</strong>的知识点做一下总结 <a id="more"></a> # 第 1 章 作用域是什么 要了解作用域的规则，首先需要了解简单的编译原理。 ## 编译原理 尽管通常将 JavaScript 归类为“动态”或“解释执行”语言，但事实上它是一门编译语言。</p>
 <p>在传统编译语言的流程中，程序中的一段源代码在执行之前会经历三个步骤，统称为“编译”。 * 分词/词法分析（Tokenizing/Lexing）</p>
 <p>这个过程会将由字符组成的字符串分解成（对编程语言来说）有意义的代码块，这些代码块被称为词法单元（token）。 如：var a = 2; =&gt; var、a、=、2 、; * 解析/语法分析（Parsing）</p>
 <p>这个过程是将词法单元流（数组）转换成一个由元素逐级嵌套所组成的代表了程序语法结构的树。这个树被称为“抽象语法树”（Abstract Syntax Tree，AST）。</p>
@@ -559,7 +19,7 @@
 <p>你可以将 <strong>RHS</strong> 理解成 retrieve his source value（取到它的源值）。</p>
 <h2 id="作用域嵌套">作用域嵌套</h2>
 <p>当一个块或函数嵌套在另一个块或函数中时，就发生了作用域的嵌套。因此，在当前作用域中无法找到某个变量时引擎就会在外层嵌套的作用域中继续查找，直到找到该变量，或抵达最外层的作用域（也就是全局作用域）为止。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/作用域.png"></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/作用域.png" /></p>
 <p>不管是<strong>LHS</strong> 和 <strong>RHS</strong>都需要对作用域按照上图进行查找。一旦抵达全局作用域，无论你有没有找到所需变量，查找过程都会终止。</p>
 <h2 id="异常">异常</h2>
 <p><strong>LHS</strong>和<strong>RHS</strong>,在最终没有找到变量的时候处理方式会有差异: * <strong>RHS</strong> 抛出异常<code>ReferenceError</code> * <strong>LHS</strong> 在严格模式，抛出异常<code>ReferenceError</code>,正常模式，会创建一个具有该名称的变量，并将其返还给引擎。</p>
@@ -574,8 +34,8 @@
 <h2 id="词法阶段">词法阶段</h2>
 <p>第 1 章介绍过，大部分标准语言编译器的第一个工作阶段叫作词法化（也叫单词化）。回忆一下，词法化的过程会对源代码中的字符进行检查，如果是有状态的解析过程，还会赋予单词语义。</p>
 <p>简单地说，词法作用域就是定义在词法阶段的作用域。换句话说，词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的，因此当词法分析器处理代码时会保持作用域不变（大部分情况下是这样的）。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> b = a * <span class="number">2</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log( a, b, c );</div><div class="line">  &#125;</div><div class="line">  bar( b * <span class="number">3</span> );</div><div class="line">&#125;</div><div class="line">foo( <span class="number">2</span> ); <span class="comment">// 2, 4, 12</span></div></pre></td></tr></table></figure>
-<p>这个例子中有三个逐级嵌套的作用域。为了帮助理解，可以将它们想象成几个逐级包含 的气泡。 <img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/wordScope.png"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = a * <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( a, b, c );</span><br><span class="line">  &#125;</span><br><span class="line">  bar( b * <span class="number">3</span> );</span><br><span class="line">&#125;</span><br><span class="line">foo( <span class="number">2</span> ); <span class="comment">// 2, 4, 12</span></span><br></pre></td></tr></table></figure>
+<p>这个例子中有三个逐级嵌套的作用域。为了帮助理解，可以将它们想象成几个逐级包含 的气泡。 <img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/UDntKnowJS/wordScope.png" /></p>
 <ol type="1">
 <li>包含着整个全局作用域，其中只有一个标识符：foo。</li>
 <li>包含着 foo 所创建的作用域，其中有三个标识符：a、bar 和 b。</li>
@@ -596,24 +56,22 @@
 <h2 id="小结-1">小结</h2>
 <p>词法作用域意味着作用域是由书写代码时函数声明的位置来决定的。编译的词法分析阶段基本能够知道全部标识符在哪里以及是如何声明的，从而能够预测在执行过程中如何对它们进行查找。</p>
 <p>JavaScript 中有两个机制可以“欺骗”词法作用域：eval(..) 和 with。前者可以对一段包含一个或多个声明的“代码”字符串进行演算，并借此来修改已经存在的词法作用域（在运行时）。后者本质上是通过将一个对象的引用当作作用域来处理，将对象的属性当作作用域中的标识符来处理，从而创建了一个新的词法作用域（同样是在运行时）。</p>
-<p>这两个机制的副作用是引擎无法在编译时对作用域查找进行优化，因为引擎只能谨慎地认为这样的优化是无效的。使用这其中任何一个机制都将导致代码运行变慢。不要使用它们。 # 第 3 章 函数作用域和块作用域 ## 函数中的作用域 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line">  <span class="comment">// 一些代码</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 更多的代码</span></div><div class="line">  <span class="keyword">var</span> c = <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>无论标识符声明出现在作用域中的何处，这个标识符所代表的变量或函数都将附属于所处作用域的气泡。 在下一章<strong>提升</strong>中会着重介绍。</p>
+<p>这两个机制的副作用是引擎无法在编译时对作用域查找进行优化，因为引擎只能谨慎地认为这样的优化是无效的。使用这其中任何一个机制都将导致代码运行变慢。不要使用它们。 # 第 3 章 函数作用域和块作用域 ## 函数中的作用域 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">// 一些代码</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 更多的代码</span></span><br><span class="line">  <span class="keyword">var</span> c = <span class="number">3</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 无论标识符声明出现在作用域中的何处，这个标识符所代表的变量或函数都将附属于所处作用域的气泡。 在下一章<strong>提升</strong>中会着重介绍。</p>
 <p>函数作用域的含义是指，属于这个函数的全部变量都可以在整个函数的范围内使用及复用（事实上在嵌套的作用域中也可以使用）。这种设计方案是非常有用的，能充分利用JavaScript 变量可以根据需要改变值类型的“动态”特性。</p>
 <h2 id="隐藏内部实现">隐藏内部实现</h2>
 <p>对函数的传统认知就是先声明一个函数，然后再向里面添加代码。但反过来想也可以带来一些启示：从所写的代码中挑选出一个任意的片段，然后用函数声明对它进行包装，实际上就是把这些代码“隐藏”起来了。</p>
 <p>有很多原因促成了这种基于作用域的隐藏方法。它们大都是从最小特权原则中引申出来的，也叫最小授权或最小暴露原则。这个原则是指在软件设计中，应该最小限度地暴露必要内容，而将其他内容都“隐藏”起来，比如某个模块或对象的 API 设计。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  b = a + doSomethingElse( a * <span class="number">2</span> );</div><div class="line">  <span class="built_in">console</span>.log( b * <span class="number">3</span> );</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a - <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b;</div><div class="line">doSomething( <span class="number">2</span> ); <span class="comment">// 15</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  b = a + doSomethingElse( a * <span class="number">2</span> );</span><br><span class="line">  <span class="built_in">console</span>.log( b * <span class="number">3</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line">doSomething( <span class="number">2</span> ); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
 <p>上述的例子中，就是一个反例，将应该私有的变量b和函数doSomethingElse(..)暴露给了外部作用域。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a - <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> b;</div><div class="line">  b = a + doSomethingElse( a * <span class="number">2</span> );</div><div class="line">  <span class="built_in">console</span>.log( b * <span class="number">3</span> );</div><div class="line">&#125;</div><div class="line">doSomething( <span class="number">2</span> ); <span class="comment">// 15</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomethingElse</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> b;</span><br><span class="line">  b = a + doSomethingElse( a * <span class="number">2</span> );</span><br><span class="line">  <span class="built_in">console</span>.log( b * <span class="number">3</span> );</span><br><span class="line">&#125;</span><br><span class="line">doSomething( <span class="number">2</span> ); <span class="comment">// 15</span></span><br></pre></td></tr></table></figure>
 <p>修改后的代码，b和 <code>doSomethingElse(..)</code>都无法从外部被访问。</p>
-<p><strong>规避冲突</strong> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    i = <span class="number">3</span>; <span class="comment">// 修改 for 循环所属作用域中的 i</span></div><div class="line">    <span class="built_in">console</span>.log( a + i );</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</div><div class="line">    bar( i * <span class="number">2</span> ); <span class="comment">// 糟糕，无限循环了！</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">foo();</div></pre></td></tr></table></figure></p>
-<p>bar(..) 内部的赋值表达式 i = 3 意外地覆盖了声明在 foo(..) 内部 for 循环中的 i。在这个例子中将会导致无限循环，因为 i 被固定设置为 3，永远满足小于 10 这个条件。</p>
+<p><strong>规避冲突</strong> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    i = <span class="number">3</span>; <span class="comment">// 修改 for 循环所属作用域中的 i</span></span><br><span class="line">    <span class="built_in">console</span>.log( a + i );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">    bar( i * <span class="number">2</span> ); <span class="comment">// 糟糕，无限循环了！</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure> bar(..) 内部的赋值表达式 i = 3 意外地覆盖了声明在 foo(..) 内部 for 循环中的 i。在这个例子中将会导致无限循环，因为 i 被固定设置为 3，永远满足小于 10 这个条件。</p>
 <p>这里我们能选用两种方法，一种新声明一个本地变量，<code>var i = 3;</code>。另一种，新添加一个标识符名称，比如 <code>var j = 3</code>。</p>
 <p>软件设计在某种情况下可能自然而然地要求使用同样的标识符名称，所以通过作用域来“隐藏”内部声明是唯一的最佳选择。</p>
 <ol type="1">
 <li>全局命名空间 变量冲突的一个典型例子存在于全局作用域中。当程序中加载了多个第三方库时，如果它们没有妥善地将内部私有的函数或变量隐藏起来，就会很容易引发冲突。</li>
 </ol>
-<p>这些库通常会在全局作用域中声明一个名字足够独特的变量，通常是一个对象。这个对象被用作库的命名空间，所有需要暴露给外界的功能都会成为这个对象（命名空间）的属性，而不是将自己的标识符暴漏在顶级的词法作用域中。 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MyReallyCoolLibrary = &#123;</div><div class="line">  awesome: <span class="string">"stuff"</span>,</div><div class="line">  doSomething: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;,</div><div class="line">  doAnotherThing: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>这些库通常会在全局作用域中声明一个名字足够独特的变量，通常是一个对象。这个对象被用作库的命名空间，所有需要暴露给外界的功能都会成为这个对象（命名空间）的属性，而不是将自己的标识符暴漏在顶级的词法作用域中。 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MyReallyCoolLibrary = &#123;</span><br><span class="line">  awesome: <span class="string">"stuff"</span>,</span><br><span class="line">  doSomething: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;,</span><br><span class="line">  doAnotherThing: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <ol start="2" type="1">
 <li>模块管理 这种避免冲突的方法和现代的木块机制很接近，从众多的模块管理器挑选一个使用。使用这些工具，任何库都无需将标识符加入到全局作用域中，而是通过依赖管理器的机制将库的标识符显式地导入到另外一个特定的作用域中。</li>
 </ol>
@@ -622,7 +80,7 @@
 <p>在前面我们知道了，在任意代码片段外部添加包装函数，可以讲变量和函数定义“隐藏”起来，外部作用域无法访问包装函数内部的任何内容。</p>
 <p>这个方法也有不理想之处。我们必须声明一个具名函数，这也就意味着，这个具名函数的名称已经“污染”了所在作用域。其次，必须显示的调用这个具名函数，才能运行其中的代码。</p>
 <p>如果函数不需要函数名（或者至少函数名可以不污染所在作用域），并且能够自动运行，这将会更加理想。</p>
-<p>JS中的同时解决两种问题的方案： <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123; <span class="comment">// &lt;-- 添加这一行</span></div><div class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</div><div class="line">  <span class="built_in">console</span>.log( a ); <span class="comment">// 3</span></div><div class="line">&#125;)(); <span class="comment">// &lt;-- 以及这一行</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log( a ); <span class="comment">// 2</span></div></pre></td></tr></table></figure></p>
+<p>JS中的同时解决两种问题的方案： <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">2</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123; <span class="comment">// &lt;-- 添加这一行</span></span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log( a ); <span class="comment">// 3</span></span><br><span class="line">&#125;)(); <span class="comment">// &lt;-- 以及这一行</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( a ); <span class="comment">// 2</span></span><br></pre></td></tr></table></figure></p>
 <p>包装函数的声明以 (function... 而不仅是以 function... 开始。尽管看上去这并不是一个很显眼的细节，但实际上却是非常重要的区别。函数会被当作函数表达式而不是一个标准的函数声明来处理。其实就是立即执行了。</p>
 <blockquote>
 <p>区分函数声明和表达式最简单的方法是看 function 关键字出现在声明中的位 置（不仅仅是一行代码，而是整个声明中的位置）。如果 function 是声明中 的第一个词，那么就是一个函数声明，否则就是一个函数表达式。</p>
@@ -630,25 +88,23 @@
 <p><strong>函数声明</strong> 和 <strong>函数表达式</strong> 之间最重要的区别是它们的名称标识符将会绑定在何处。</p>
 <p>(function foo(){ .. }) 作为函数表达式意味着 foo 只能在 .. 所代表的位置中被访问，外部作用域则不行。foo 变量名被隐藏在自身中意味着不会非必要地污染外部作用域。</p>
 <h3 id="匿名和具名">匿名和具名</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"I waited 1 second!"</span>);</div><div class="line">&#125;, <span class="number">1000</span> );</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout( <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"I waited 1 second!"</span>);</span><br><span class="line">&#125;, <span class="number">1000</span> );</span><br></pre></td></tr></table></figure>
 <p>上述的定时的代码片段，我们很熟悉，这就是 <strong>匿名函数表达式</strong> , 因为<code>function()</code>.. 没有名称标识符。</p>
 <p>匿名函数书写起来简单便捷，不过有几个缺点需要考虑。 1. 匿名函数在栈追踪中不会显示出有意义的函数名，使得调试很困难。 2. 如果没有函数名，当函数需要引用自身时只能使用已经过期的 arguments.callee 引用，比如在递归中。另一个函数需要引用自身的例子，是在事件触发后事件监听器需要解绑自身。 3. 匿名函数省略了对于代码可读性 / 可理解性很重要的函数名。一个描述性的名称可以让代码不言自明。</p>
 <h3 id="立即执行函数表达式">立即执行函数表达式</h3>
 <p><strong>IIFE</strong>, 代表立即执行函数表达式（Immediately Invoked Function Expression）；</p>
 <p>函数名对于<strong>IIFE</strong>不是必需的，IIFE 最常见的用法是使用一个匿名函数表达式。 * <strong>IIFE</strong> 的一个非常普遍的进阶用法是把它们当作函数调用并传递参数进去。 * <strong>IIFE</strong> 另一个场景，解决undefined 标识符的默认值被错误覆盖导致的异常（虽然不常见）。 * <strong>IIFE</strong> 是倒置代码的运行顺序，将需要运行的函数放在第二位，在 IIFE执行之后当作参数传递进去。</p>
 <h2 id="块作用域">块作用域</h2>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log( i );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log( i );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们在 for 循环的头部直接定义了变量 i，通常是因为只想在 for 循环内部的上下文中使用 i，而忽略了 i 会被绑定在外部作用域（函数或全局）中的事实。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (foo) &#123;</div><div class="line">  <span class="keyword">var</span> bar = foo * <span class="number">2</span>;</div><div class="line">  bar = something( bar );</div><div class="line">  <span class="built_in">console</span>.log( bar );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">  <span class="keyword">var</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">  bar = something( bar );</span><br><span class="line">  <span class="built_in">console</span>.log( bar );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用 var 声明变量时，它写在哪里都是一样的，因为它们最终都会属于外部作用域。这段代码是为了风格更易读而伪装出的形式上的块作用域，如果使用这种形式，要确保没在作用域其他地方意外地使用 bar 只能依靠自觉性。</p>
 <p>块作用域是一个用来对之前的最小授权原则进行扩展的工具，将代码从在函数中隐藏信息扩展为在块中隐藏信息。实现方法： 1. with 2. try/catch catch分句会创建一个块作用域，其中声明的变量仅在 catch 内部有效。 3. let</p>
 <h3 id="let">let</h3>
 <p>这里我们着重介绍下，let的实现原理。</p>
-<p>let关键字可以将变量绑定到所在的任意作用域中，通常是{ .. } 内部.换句话说，let为其声明的变量隐式地了所在的块作用域。 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (foo) &#123;</div><div class="line">  <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</div><div class="line">  bar = something( bar );</div><div class="line">  <span class="built_in">console</span>.log( bar );</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( bar ); <span class="comment">// ReferenceError</span></div></pre></td></tr></table></figure></p>
-<p>用 let 将变量附加在一个已经存在的块作用域上的行为是隐式的。</p>
+<p>let关键字可以将变量绑定到所在的任意作用域中，通常是{ .. } 内部.换句话说，let为其声明的变量隐式地了所在的块作用域。 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">  <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">  bar = something( bar );</span><br><span class="line">  <span class="built_in">console</span>.log( bar );</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( bar ); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure> 用 let 将变量附加在一个已经存在的块作用域上的行为是隐式的。</p>
 <p>在开发和修改代码的过程中，如果没有密切关注哪些块作用域中有绑定的变量，并且习惯性地移动这些块或者将其包含在其他的块中，就会导致代码变得混乱。</p>
-<p>显示的块作用域，可以解决上述问题。 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</div><div class="line"><span class="keyword">if</span> (foo) &#123;</div><div class="line">  &#123; <span class="comment">// &lt;-- 显式的快</span></div><div class="line">    <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</div><div class="line">    bar = something( bar );</div><div class="line">    <span class="built_in">console</span>.log( bar );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( bar ); <span class="comment">// ReferenceError</span></div></pre></td></tr></table></figure></p>
-<p>例子中，我们在 if 声明内部显式地创建了一个块，如果需要对其进行重构，整个块都可以被方便地移动而不会对外部 if 声明的位置和语义产生任何影响</p>
+<p>显示的块作用域，可以解决上述问题。 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span> (foo) &#123;</span><br><span class="line">  &#123; <span class="comment">// &lt;-- 显式的快</span></span><br><span class="line">    <span class="keyword">let</span> bar = foo * <span class="number">2</span>;</span><br><span class="line">    bar = something( bar );</span><br><span class="line">    <span class="built_in">console</span>.log( bar );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( bar ); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure> 例子中，我们在 if 声明内部显式地创建了一个块，如果需要对其进行重构，整个块都可以被方便地移动而不会对外部 if 声明的位置和语义产生任何影响</p>
 <ol type="1">
 <li>垃圾收集</li>
 </ol>
@@ -656,10 +112,10 @@
 <ol start="2" type="1">
 <li>let循环</li>
 </ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</div><div class="line">  <span class="built_in">console</span>.log( i );</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log( i ); <span class="comment">// ReferenceError</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">10</span>; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log( i );</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( i ); <span class="comment">// ReferenceError</span></span><br></pre></td></tr></table></figure>
 <p>for 循环头部的 let 不仅将 i 绑定到了 for 循环的块中，事实上它将其重新绑定到了循环的每一个迭代中，确保使用上一个循环迭代结束时的值重新进行赋值。</p>
 <p>下面通过另一种方式来说明每次迭代时进行重新绑定的行为：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="keyword">let</span> j;</div><div class="line">  <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;<span class="number">10</span>; j++) &#123;</div><div class="line">    <span class="keyword">let</span> i = j; <span class="comment">// 每个迭代重新绑定！</span></div><div class="line">    <span class="built_in">console</span>.log( i );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> j;</span><br><span class="line">  <span class="keyword">for</span> (j=<span class="number">0</span>; j&lt;<span class="number">10</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">let</span> i = j; <span class="comment">// 每个迭代重新绑定！</span></span><br><span class="line">    <span class="built_in">console</span>.log( i );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>const</strong></p>
 <p>同样可以用来创建块作用域变量，但其值是固定的（常量）。</p>
 <h2 id="小结-2">小结</h2>
@@ -668,1010 +124,88 @@
 <p>从 ES3 开始，try/catch 结构在 catch 分句中具有块作用域。</p>
 <p>在 ES6 中引入了 let 关键字（var 关键字的表亲），用来在任意代码块中声明变量。if(..) { let a = 2; } 会声明一个劫持了 if 的 { .. } 块的变量，并且将变量添加到这个块中。</p>
 <p>有些人认为块作用域不应该完全作为函数作用域的替代方案。两种功能应该同时存在，开发者可以并且也应该根据需要选择使用何种作用域，创造可读、可维护的优良代码。</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/JS/" rel="tag"># JS</a>
-          
-            <a href="/tags/你不知道的JS/" rel="tag"># 你不知道的JS</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/01/08/《Web性能权威指南》读书总结/" rel="next" title="《Web性能权威指南》读书总结">
-                <i class="fa fa-chevron-left"></i> 《Web性能权威指南》读书总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/02/05/你不知道的JS总结-作用域和闭包-二/" rel="prev" title="你不知道的JS总结-作用域和闭包(二)">
-                你不知道的JS总结-作用域和闭包(二) <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-
-  
-
-
-
-        </div>
+</div><div class="article-tags size-small is-uppercase mb-4"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted mr-2" rel="tag" href="/tags/JS/">JS</a><a class="link-muted mr-2" rel="tag" href="/tags/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS/">你不知道的JS</a><p class="text-right font1_1"><time datetime="2020-03-27T08:06:33.234Z"><strong><em> 本文最后修改于: 2020-03-27.</em></strong></time></p></div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/">你不知道的JS总结-作用域和闭包(一)</a></li><li><strong>本文作者：</strong><a href="https://hddhyq.github.io">hddhyq</a></li><li><strong>本文链接：</strong><a href="https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/">https://hddhyq.github.io/2018/02/05/你不知道的JS总结-作用域和闭包(一)/</a></li><li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/2018/07/12/touch%E4%BA%8B%E4%BB%B6-mouse%E4%BA%8B%E4%BB%B6-PC%E7%AB%AF-%E7%A7%BB%E5%8A%A8%E7%AB%AF%E6%80%BB%E7%BB%93/" target="_blank">touch事件&amp;&amp;mouse事件&amp;&amp;PC端&amp;&amp;移动端总结</a><br></span><span>  2.<a class="is-size-6" href="/2018/05/14/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS-this%E5%92%8C%E5%8E%9F%E5%9E%8B%E5%AF%B9%E8%B1%A1/" target="_blank">你不知道的JS-this和原型对象</a><br></span><span>  3.<a class="is-size-6" href="/2018/05/02/JavaScript%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%8E%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank">JavaScript设计模式与开发实践（一）</a><br></span><span>  4.<a class="is-size-6" href="/2018/02/23/JS%E4%B8%AD%E6%8E%92%E5%BA%8F%E5%92%8C%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" target="_blank">JS中排序和搜索算法</a><br></span><span>  5.<a class="is-size-6" href="/2018/02/05/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS%E6%80%BB%E7%BB%93-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85-%E4%BA%8C/" target="_blank">你不知道的JS总结-作用域和闭包(二)</a><br></span></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2018/02/05/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS%E6%80%BB%E7%BB%93-%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E9%97%AD%E5%8C%85-%E4%BA%8C/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">你不知道的JS总结-作用域和闭包(二)</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2018/01/08/%E3%80%8AWeb%E6%80%A7%E8%83%BD%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/"><span class="level-item">《Web性能权威指南》读书总结</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: true,
+            verify: true,
+            appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
+            appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
+            placeholder: '留下你的回复吧~',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: true,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><ul class="menu-list"><li><a class="is-flex" id="toc-item-理解作用域" href="#理解作用域"><span>理解作用域</span></a></li><li><a class="is-flex" id="toc-item-作用域嵌套" href="#作用域嵌套"><span>作用域嵌套</span></a></li><li><a class="is-flex" id="toc-item-异常" href="#异常"><span>异常</span></a></li><li><a class="is-flex" id="toc-item-小结" href="#小结"><span>小结</span></a></li></ul><li><a class="is-flex" id="toc-item-第-2-章-词法作用域" href="#第-2-章-词法作用域"><span>第 2 章 词法作用域</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-词法阶段" href="#词法阶段"><span>词法阶段</span></a></li><li><a class="is-flex" id="toc-item-欺骗词法" href="#欺骗词法"><span>欺骗词法</span></a></li><li><a class="is-flex" id="toc-item-性能" href="#性能"><span>性能</span></a></li><li><a class="is-flex" id="toc-item-小结-1" href="#小结-1"><span>小结</span></a></li><li><a class="is-flex" id="toc-item-隐藏内部实现" href="#隐藏内部实现"><span>隐藏内部实现</span></a></li><li><a class="is-flex" id="toc-item-函数作用域" href="#函数作用域"><span>函数作用域</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-匿名和具名" href="#匿名和具名"><span>匿名和具名</span></a></li><li><a class="is-flex" id="toc-item-立即执行函数表达式" href="#立即执行函数表达式"><span>立即执行函数表达式</span></a></li></ul></li><li><a class="is-flex" id="toc-item-块作用域" href="#块作用域"><span>块作用域</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-let" href="#let"><span>let</span></a></li></ul></li><li><a class="is-flex" id="toc-item-小结-2" href="#小结-2"><span>小结</span></a></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
-                alt="hddhyq"/>
-            
-              <p class="site-author-name" itemprop="name">hddhyq</p>
-              <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">26</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-              <div class="links-of-blogroll motion-element links-of-blogroll-block">
-                <div class="links-of-blogroll-title">
-                  <!-- modify icon to fire by szw -->
-                  <i class="fa fa-history fa-" aria-hidden="true"></i>
-                  近期文章
-                </div>
-                <ul class="links-of-blogroll-list">
-                  
-                  
-                    <li>
-                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/11/18/你所需要了解的CSS变量知识点/" title="你所需要了解的CSS变量知识点" target="_blank">你所需要了解的CSS变量知识点</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/19/JavaScript异步处理1/" title="JavaScript异步处理(一)：Parallel VS Async && Callbacks" target="_blank">JavaScript异步处理(一)：Parallel VS Async && Callbacks</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/18/webpack基础4/" title="webpack 基础(四)： 简单配置" target="_blank">webpack 基础(四)： 简单配置</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/07/Webpack基础3/" title="webpack 基础(三)： 核心概念" target="_blank">webpack 基础(三)： 核心概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/03/webpack基础2/" title="webpack基础(二):认识Webpack" target="_blank">webpack基础(二):认识Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/03/30/webpack基础-1/" title="webpack基础(一)：为什么选择Webpack" target="_blank">webpack基础(一)：为什么选择Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/31/CircleCI实践gh-pages部署/" title="CircleCI实践gh-pages部署" target="_blank">CircleCI实践gh-pages部署</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                </ul>
-              </div>
-          
-
-          
-
-        
-         
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hddhyq" title="GitHub &rarr; https://github.com/hddhyq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:brokenbonesdd@gmail.com" title="E-Mail &rarr; mailto:brokenbonesdd@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解作用域"><span class="nav-number">1.</span> <span class="nav-text">理解作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域嵌套"><span class="nav-number">2.</span> <span class="nav-text">作用域嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">3.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第-2-章-词法作用域"><span class="nav-number"></span> <span class="nav-text">第 2 章 词法作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#词法阶段"><span class="nav-number">1.</span> <span class="nav-text">词法阶段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欺骗词法"><span class="nav-number">2.</span> <span class="nav-text">欺骗词法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能"><span class="nav-number">3.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结-1"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏内部实现"><span class="nav-number">5.</span> <span class="nav-text">隐藏内部实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数作用域"><span class="nav-number">6.</span> <span class="nav-text">函数作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名和具名"><span class="nav-number">6.1.</span> <span class="nav-text">匿名和具名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#立即执行函数表达式"><span class="nav-number">6.2.</span> <span class="nav-text">立即执行函数表达式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#块作用域"><span class="nav-number">7.</span> <span class="nav-text">块作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">7.1.</span> <span class="nav-text">let</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结-2"><span class="nav-number">8.</span> <span class="nav-text">小结</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hddhyq</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
-
-
-
-
-        
-
-
-
-
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1276849494&web_id=1276849494"></script>
-  </div>
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-
-  
-
-  
-
-  
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
-    appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
-    placeholder: '留下你的回复吧',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn'
-  });
-</script>
-
-
-
-
-  
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
             }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
                 }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
                 } else {
-                  return resultRight.id - resultLeft.id;
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
                 }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
             }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://www.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?s=128" alt="hddhyq"></figure><p class="title is-size-4 is-block line-height-inherit">hddhyq</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">46</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">53</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/hddhyq" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:brokenbonesdd@gmail.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-03-24T09:30:16.000Z">2020-03-24</time></p><p class="title is-6"><a class="link-muted" href="/2020/03/24/%E6%9E%84%E5%BB%BA%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8/">构建简易网页浏览器</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Browser/">Browser</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-02-06T11:48:22.000Z">2020-02-06</time></p><p class="title is-6"><a class="link-muted" href="/2020/02/06/%E6%8A%BD%E8%B1%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A4%9A%E9%87%8D%E8%A1%A8%E7%A4%BA/">抽象系统的多重表示</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/sicp/">sicp</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-11-18T15:29:10.000Z">2019-11-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/11/18/%E4%BD%A0%E6%89%80%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84CSS%E5%8F%98%E9%87%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">你所需要了解的CSS变量知识点</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/CSS/">CSS</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-19T15:03:11.000Z">2019-04-19</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/19/JavaScript%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%861/">JavaScript异步处理(一)：Parallel VS Async &amp;&amp; Callbacks</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/asynchronous/">asynchronous</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-18T14:46:08.000Z">2019-04-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/18/webpack%E5%9F%BA%E7%A1%804/">webpack 基础(四)： 简单配置</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Webpack/">Webpack</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Browser/"><span class="level-start"><span class="level-item">Browser</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CSS/"><span class="level-start"><span class="level-item">CSS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CircleCI/"><span class="level-start"><span class="level-item">CircleCI</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTML%E5%9F%BA%E7%A1%80/"><span class="level-start"><span class="level-item">HTML基础</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTTPS/"><span class="level-start"><span class="level-item">HTTPS</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JS/"><span class="level-start"><span class="level-item">JS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JStricks/"><span class="level-start"><span class="level-item">JStricks</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Puppeteer/"><span class="level-start"><span class="level-item">Puppeteer</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Webpack/"><span class="level-start"><span class="level-item">Webpack</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/asynchronous/"><span class="level-start"><span class="level-item">asynchronous</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/02/"><span class="level-start"><span class="level-item">二月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/11/"><span class="level-start"><span class="level-item">十一月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/04/"><span class="level-start"><span class="level-item">四月 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/03/"><span class="level-start"><span class="level-item">三月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/node/"><span class="tag">node</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS/"><span class="tag">JS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/foundation/"><span class="tag">foundation</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Webpack/"><span class="tag">Webpack</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS/"><span class="tag">你不知道的JS</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CircleCI/"><span class="tag">CircleCI</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html5/"><span class="tag">html5</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/express/"><span class="tag">express</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"><span class="tag">自动化</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sicp/"><span class="tag">sicp</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Puppeteer/"><span class="tag">Puppeteer</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web%E6%80%A7%E8%83%BD/"><span class="tag">Web性能</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/async/"><span class="tag">async</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/babel/"><span class="tag">babel</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bug/"><span class="tag">bug</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 hddhyq</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br>    方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br><div class="size-small"><span id="busuanzi_container_site_uv">❤️感谢<strong> <span id="busuanzi_value_site_uv">99+</span> </strong></span>小伙伴的<strong> <span id="busuanzi_value_site_pv">99+</span> </strong>次光临，查看💐</div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://hddhyq.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
             });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-  
-
-  
-
-  
-
-  
-  
-  
-  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
-  <script>pangu.spacingPage();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+        });</script><!--!--><script src="/js/main.js" defer></script><script src="/js/comment-issue-data.js" defer></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>

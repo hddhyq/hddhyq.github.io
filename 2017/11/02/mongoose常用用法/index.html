@@ -1,552 +1,10 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next mist" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
-
-
-
-
-
-
-
-
-
-
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.0.1',
-    sidebar: {"position":"right","width":320,"display":"always","offset":12,"onmobile":true,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="参考链接 讲的非常好，推荐！">
-<meta name="keywords" content="node,mongodb,mongoose">
-<meta property="og:type" content="article">
-<meta property="og:title" content="mongoose常用用法">
-<meta property="og:url" content="https://hddhyq.github.io/2017/11/02/mongoose常用用法/index.html">
-<meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="参考链接 讲的非常好，推荐！">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/24287224.jpg">
-<meta property="og:image" content="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/98685367.jpg">
-<meta property="og:image" content="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-30/64475521.jpg">
-<meta property="og:updated_time" content="2018-07-08T04:25:55.516Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mongoose常用用法">
-<meta name="twitter:description" content="参考链接 讲的非常好，推荐！">
-<meta name="twitter:image" content="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/24287224.jpg">
-
-
-
-
-
-  
-  
-  <link rel="canonical" href="https://hddhyq.github.io/2017/11/02/mongoose常用用法/"/>
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>mongoose常用用法 | hddhyq's blog</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hddhyq's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2017/11/02/mongoose常用用法/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq"/>
-      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">mongoose常用用法
-
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-11-02 15:28:37" itemprop="dateCreated datePublished" datetime="2017-11-02T15:28:37+08:00">2017-11-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-07-08 12:25:55" itemprop="dateModified" datetime="2018-07-08T12:25:55+08:00">2018-07-08</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/mongodb/" itemprop="url" rel="index"><span itemprop="name">mongodb</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2017/11/02/mongoose常用用法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2017/11/02/mongoose常用用法/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2017/11/02/mongoose常用用法/" class="leancloud_visitors" data-flag-title="mongoose常用用法">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">19k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">34 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p><a href="https://www.villainhr.com/page/2016/05/11/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAmongoose" target="_blank" rel="noopener">参考链接</a></p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>mongoose常用用法 - hddhyq&#039;s blog</title><meta description="参考链接 讲的非常好，推荐！"><meta property="og:type" content="article"><meta property="og:title" content="mongoose常用用法"><meta property="og:url" content="https://hddhyq.github.io/2017/11/02/mongoose%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95/"><meta property="og:site_name" content="hddhyq&#039;s blog"><meta property="og:description" content="参考链接 讲的非常好，推荐！"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><meta property="article:published_time" content="2017-11-02T07:28:37.000Z"><meta property="article:modified_time" content="2020-03-27T08:06:33.234Z"><meta property="article:author" content="hddhyq"><meta property="article:tag" content="node"><meta property="article:tag" content="mongodb"><meta property="article:tag" content="mongoose"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hddhyq.github.io/2017/11/02/mongoose%E5%B8%B8%E7%94%A8%E7%94%A8%E6%B3%95/"},"headline":"mongoose常用用法","image":[],"datePublished":"2017-11-02T07:28:37.000Z","dateModified":"2020-03-27T08:06:33.234Z","author":{"@type":"Person","name":"hddhyq"},"description":"参考链接\r 讲的非常好，推荐！"}</script><link rel="alternative" href="/atom.xml" title="hddhyq&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2017-11-02T07:28:37.000Z">2017-11-02</time><span class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/mongodb/">mongodb</a></span><span class="level-item">36 分钟 读完 (大约 5393 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">mongoose常用用法</h1><div class="content"><p><a href="https://www.villainhr.com/page/2016/05/11/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAmongoose">参考链接</a></p>
 <p>讲的非常好，推荐！ <a id="more"></a> # <a id="toc-meet-mongoose"></a> 初识mongoose ## <a id="toc-install-mongoose"></a> install mongoose</p>
-<p>安装mongodb可以看一下另一篇文章<a href="https://hddhyq.github.io/2017/10/29/mongodb%E7%94%A8%E6%B3%95%E5%88%9D%E8%AF%86/">mongodb用法初识</a> 这里我们开启mongodb服务 <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo service mongod start</div></pre></td></tr></table></figure></p>
-<p>接下来下载安装mongoose <figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install mongoose --save</div></pre></td></tr></table></figure></p>
+<p>安装mongodb可以看一下另一篇文章<a href="https://hddhyq.github.io/2017/10/29/mongodb%E7%94%A8%E6%B3%95%E5%88%9D%E8%AF%86/">mongodb用法初识</a> 这里我们开启mongodb服务 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod start</span><br></pre></td></tr></table></figure></p>
+<p>接下来下载安装mongoose <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mongoose --save</span><br></pre></td></tr></table></figure></p>
 <h2 id="connect-mongoose"><a id="toc-connect-mongoose"></a> connect mongoose</h2>
-<p>下载好之后，我们需要连接database.在js文件写入: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"></div><div class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>, &#123;</div><div class="line">  useMongoClient: <span class="literal">true</span> <span class="comment">// 新版本需要使用解决旧版本升级问题，可以查阅官网</span></div><div class="line">&#125;);</div><div class="line"><span class="keyword">const</span> db = mongoose.connection;</div><div class="line"></div><div class="line">db.on(<span class="string">'error'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'连接失败'</span>)</div><div class="line">&#125;);</div><div class="line">con.once(<span class="string">'open'</span>, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'连接成功'</span>)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>如果不出什么问题，我们的第一次连接会在命令行上显示<strong>连接成功</strong>。</p>
+<p>下载好之后，我们需要连接database.在js文件写入: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>, &#123;</span><br><span class="line">  useMongoClient: <span class="literal">true</span> <span class="comment">// 新版本需要使用解决旧版本升级问题，可以查阅官网</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> db = mongoose.connection;</span><br><span class="line"></span><br><span class="line">db.on(<span class="string">'error'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'连接失败'</span>)</span><br><span class="line">&#125;);</span><br><span class="line">con.once(<span class="string">'open'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'连接成功'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure> 如果不出什么问题，我们的第一次连接会在命令行上显示<strong>连接成功</strong>。</p>
 <h1 id="mongoose的基本概念"><a id="toc-understand-mongoose"></a> Mongoose的基本概念</h1>
 <ul>
 <li><strong>Schema:</strong> 相当于一个数据库的模板. Model可以通过mongoose.model 集成其基本属性内容. 当然也可以选择不继承.</li>
@@ -554,63 +12,57 @@
 <li><strong>instance:</strong> 这就是实实在在的数据了. 通过 new Model()初始化得到.</li>
 </ul>
 <figure>
-<img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/24287224.jpg" alt=""><figcaption>mongoose</figcaption>
+<img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/24287224.jpg" alt="" /><figcaption>mongoose</figcaption>
 </figure>
-<p>demo: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"></div><div class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>, &#123;</div><div class="line">   useMongoClient: <span class="literal">true</span></div><div class="line">&#125;);</div><div class="line"><span class="keyword">const</span> db = mongoose.connection;</div><div class="line">db.on(<span class="string">'error'</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>, <span class="string">'连接数据库失败'</span>));</div><div class="line">db.once(<span class="string">'open'</span>,()=&gt;&#123;</div><div class="line">    <span class="comment">//定义一个schema</span></div><div class="line">    <span class="keyword">let</span> Schema = mongoose.Schema(&#123;</div><div class="line">        category: <span class="built_in">String</span>,</div><div class="line">        name: <span class="built_in">String</span></div><div class="line">    &#125;);</div><div class="line">    Schema.methods.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"I've eatten one "</span>+<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//继承一个schema</span></div><div class="line">    <span class="keyword">let</span> Model = mongoose.model(<span class="string">"fruit"</span>,Schema);</div><div class="line">    <span class="comment">//生成一个document</span></div><div class="line">    <span class="keyword">let</span> apple = <span class="keyword">new</span> Model(&#123;</div><div class="line">        category:<span class="string">'apple'</span>,</div><div class="line">        name:<span class="string">'apple'</span></div><div class="line">    &#125;);</div><div class="line">    <span class="comment">//存放数据</span></div><div class="line">    apple.save(<span class="function">(<span class="params">err,apple</span>)=&gt;</span>&#123;</div><div class="line">        <span class="keyword">if</span>(err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</div><div class="line">        apple.eat();</div><div class="line">        <span class="comment">//查找数据</span></div><div class="line">        Model.find(&#123;<span class="attr">name</span>:<span class="string">'apple'</span>&#125;,(err,data)=&gt;&#123;</div><div class="line">            <span class="built_in">console</span>.log(data);</div><div class="line">        &#125;)</div><div class="line">    &#125;);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>demo: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>, &#123;</span><br><span class="line">   useMongoClient: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> db = mongoose.connection;</span><br><span class="line">db.on(<span class="string">'error'</span>, <span class="built_in">console</span>.error.bind(<span class="built_in">console</span>, <span class="string">'连接数据库失败'</span>));</span><br><span class="line">db.once(<span class="string">'open'</span>,()=&gt;&#123;</span><br><span class="line">    <span class="comment">//定义一个schema</span></span><br><span class="line">    <span class="keyword">let</span> Schema = mongoose.Schema(&#123;</span><br><span class="line">        category: <span class="built_in">String</span>,</span><br><span class="line">        name: <span class="built_in">String</span></span><br><span class="line">    &#125;);</span><br><span class="line">    Schema.methods.eat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"I've eatten one "</span>+<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//继承一个schema</span></span><br><span class="line">    <span class="keyword">let</span> Model = mongoose.model(<span class="string">"fruit"</span>,Schema);</span><br><span class="line">    <span class="comment">//生成一个document</span></span><br><span class="line">    <span class="keyword">let</span> apple = <span class="keyword">new</span> Model(&#123;</span><br><span class="line">        category:<span class="string">'apple'</span>,</span><br><span class="line">        name:<span class="string">'apple'</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//存放数据</span></span><br><span class="line">    apple.save(<span class="function">(<span class="params">err,apple</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err);</span><br><span class="line">        apple.eat();</span><br><span class="line">        <span class="comment">//查找数据</span></span><br><span class="line">        Model.find(&#123;<span class="attr">name</span>:<span class="string">'apple'</span>&#125;,(err,data)=&gt;&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(data);</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <h1 id="深入浅出mongoose"><a id="toc-more-mongoose"></a> 深入浅出mongoose</h1>
 <p>从三个基本概念深入展开 ## <a id="toc-Schema"></a> Schema 这实际上是,mongoose中最重要的一个theroy. schema 是用来定义 documents的基本字段和集合的. 在mongoose中,提供了Schema的类。 我们可以通过实例化他, 来实现创建 Schema的效果. 而不需要每次调用 mongoose.Schema()这个丑陋的API.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// from mongoose author</span></div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"></div><div class="line"><span class="keyword">var</span> blogSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">  title:  <span class="built_in">String</span>,</div><div class="line">  author: <span class="built_in">String</span>,</div><div class="line">  body:   <span class="built_in">String</span>,</div><div class="line">  comments: [&#123; <span class="attr">body</span>: <span class="built_in">String</span>, <span class="attr">date</span>: <span class="built_in">Date</span> &#125;],</div><div class="line">  date: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;,</div><div class="line">  hidden: <span class="built_in">Boolean</span>,</div><div class="line">  meta: &#123;</div><div class="line">    votes: <span class="built_in">Number</span>,</div><div class="line">    favs:  <span class="built_in">Number</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// from mongoose author</span></span><br><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> blogSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  title:  <span class="built_in">String</span>,</span><br><span class="line">  author: <span class="built_in">String</span>,</span><br><span class="line">  body:   <span class="built_in">String</span>,</span><br><span class="line">  comments: [&#123; <span class="attr">body</span>: <span class="built_in">String</span>, <span class="attr">date</span>: <span class="built_in">Date</span> &#125;],</span><br><span class="line">  date: &#123; <span class="attr">type</span>: <span class="built_in">Date</span>, <span class="attr">default</span>: <span class="built_in">Date</span>.now &#125;,</span><br><span class="line">  hidden: <span class="built_in">Boolean</span>,</span><br><span class="line">  meta: &#123;</span><br><span class="line">    votes: <span class="built_in">Number</span>,</span><br><span class="line">    favs:  <span class="built_in">Number</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>Schema 之所以能够定义documents, 是因为他可以限制你输入的字段及其类型. mongoose支持的基本类型有: * String * Number * Date * Buffer * Boolean * Mixed * ObjectId * Array</p>
 <p>其中, Mixed和ObjectId是mongoose中特有的,ObjectId实际上就是_<strong>id</strong>的一个映射. 同样,mongoose里面有着和所有大众数据库一样的东西. <strong>索引</strong> – indexs</p>
 <h3 id="mongoose-设置索引">mongoose 设置索引</h3>
-<p>这里设置索引分两种,一种设在Schema filed, 另外一种设在 Schema.index 里. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> animalSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">  name: <span class="built_in">String</span>,</div><div class="line">  type: <span class="built_in">String</span>,</div><div class="line">  tags: &#123; <span class="attr">type</span>: [<span class="built_in">String</span>], <span class="attr">index</span>: <span class="literal">true</span> &#125; </div><div class="line">&#125;);</div><div class="line"><span class="comment">// 在Schema.index中设置.</span></div><div class="line">animalSchema.index(&#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">type</span>: <span class="number">-1</span> &#125;); </div><div class="line"></div><div class="line"><span class="comment">// 1 表示正序, -1 表示逆序</span></div></pre></td></tr></table></figure></p>
-<p>实际上,两者效果是一样的. 看每个人的喜好了. 不过推荐直接在Schema level中设置, 这样分开能够增加可读性. 不过,官方给出了一个建议, 因为在创建字段时, 数据库会自动根据自动排序(ensureIndex)排序. 有可能严重拖慢查询或者创建速度,所以一般而言,我们需要将该option 关闭. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">mongoose.connect(<span class="string">'mongodb://user:pass@localhost:port/database'</span>, &#123; <span class="attr">config</span>: &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125; &#125;);  <span class="comment">//真心推荐</span></div><div class="line"><span class="comment">// or  </span></div><div class="line">mongoose.createConnection(<span class="string">'mongodb://user:pass@localhost:port/database'</span>, &#123; <span class="attr">config</span>: &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125; &#125;);  <span class="comment">//不推荐</span></div><div class="line"><span class="comment">// or</span></div><div class="line">animalSchema.set(<span class="string">'autoIndex'</span>, <span class="literal">false</span>);  <span class="comment">//推荐</span></div><div class="line"><span class="comment">// or</span></div><div class="line"><span class="keyword">new</span> Schema(&#123;..&#125;, &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125;); <span class="comment">//懒癌不推荐</span></div></pre></td></tr></table></figure></p>
-<p>另外, Schema 另一大特色就是其methods. 我们可以通过定义其methods,访问到实际上的所有内容.</p>
+<p>这里设置索引分两种,一种设在Schema filed, 另外一种设在 Schema.index 里. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animalSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  name: <span class="built_in">String</span>,</span><br><span class="line">  type: <span class="built_in">String</span>,</span><br><span class="line">  tags: &#123; <span class="attr">type</span>: [<span class="built_in">String</span>], <span class="attr">index</span>: <span class="literal">true</span> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 在Schema.index中设置.</span></span><br><span class="line">animalSchema.index(&#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">type</span>: <span class="number">-1</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1 表示正序, -1 表示逆序</span></span><br></pre></td></tr></table></figure> 实际上,两者效果是一样的. 看每个人的喜好了. 不过推荐直接在Schema level中设置, 这样分开能够增加可读性. 不过,官方给出了一个建议, 因为在创建字段时, 数据库会自动根据自动排序(ensureIndex)排序. 有可能严重拖慢查询或者创建速度,所以一般而言,我们需要将该option 关闭. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mongoose.connect(<span class="string">'mongodb://user:pass@localhost:port/database'</span>, &#123; <span class="attr">config</span>: &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125; &#125;);  <span class="comment">//真心推荐</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">mongoose.createConnection(<span class="string">'mongodb://user:pass@localhost:port/database'</span>, &#123; <span class="attr">config</span>: &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125; &#125;);  <span class="comment">//不推荐</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">animalSchema.set(<span class="string">'autoIndex'</span>, <span class="literal">false</span>);  <span class="comment">//推荐</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="keyword">new</span> Schema(&#123;..&#125;, &#123; <span class="attr">autoIndex</span>: <span class="literal">false</span> &#125;); <span class="comment">//懒癌不推荐</span></span><br></pre></td></tr></table></figure> 另外, Schema 另一大特色就是其methods. 我们可以通过定义其methods,访问到实际上的所有内容.</p>
 <h3 id="定义schema.methods">定义Schema.methods</h3>
-<p>使用的方法很简单,就是使用 .methods即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个schema</span></div><div class="line"><span class="keyword">var</span> freshSchema = <span class="keyword">new</span> Schema(&#123; <span class="attr">name</span>: <span class="built_in">String</span>, <span class="attr">type</span>: <span class="built_in">String</span> &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 添加一个fn. </span></div><div class="line">animalSchema.methods.findSimilarTypes = <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</div><div class="line">  <span class="comment">//这里的this指的是具体document上的this</span></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.model(<span class="string">'Animal'</span>).find(&#123; <span class="attr">type</span>: <span class="keyword">this</span>.type &#125;, cb);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 实际上,我们可以通过schema绑定上,数据库操作的所有方法.</span></div><div class="line"><span class="comment">// 该method实际上是绑定在 实例的 doc</span></div></pre></td></tr></table></figure></p>
-<p>定义完methods和property之后, 就到了生成Model的阶段了. ### 实例Model 这里同样很简单,只需要 mongoose.model() 即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 生成,model 类. 实际上就相当于我们的一个collection</span></div><div class="line"><span class="keyword">var</span> Animal = mongoose.model(<span class="string">'Animal'</span>, animalSchema);</div><div class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal(&#123; <span class="attr">type</span>: <span class="string">'dog'</span> &#125;);</div></pre></td></tr></table></figure></p>
-<p>但是, 这里有个问题. 我们在Schema.methods.fn 上定义的方法,只能在 new Model() 得到的实例中才能访问. 那如果我们想,直接在Model上调用 相关的查询或者删除呢？</p>
+<p>使用的方法很简单,就是使用 .methods即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个schema</span></span><br><span class="line"><span class="keyword">var</span> freshSchema = <span class="keyword">new</span> Schema(&#123; <span class="attr">name</span>: <span class="built_in">String</span>, <span class="attr">type</span>: <span class="built_in">String</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加一个fn.</span></span><br><span class="line">animalSchema.methods.findSimilarTypes = <span class="function"><span class="keyword">function</span> (<span class="params">cb</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//这里的this指的是具体document上的this</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.model(<span class="string">'Animal'</span>).find(&#123; <span class="attr">type</span>: <span class="keyword">this</span>.type &#125;, cb);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 实际上,我们可以通过schema绑定上,数据库操作的所有方法.</span></span><br><span class="line"><span class="comment">// 该method实际上是绑定在 实例的 doc</span></span><br></pre></td></tr></table></figure> 定义完methods和property之后, 就到了生成Model的阶段了. ### 实例Model 这里同样很简单,只需要 mongoose.model() 即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成,model 类. 实际上就相当于我们的一个collection</span></span><br><span class="line"><span class="keyword">var</span> Animal = mongoose.model(<span class="string">'Animal'</span>, animalSchema);</span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Animal(&#123; <span class="attr">type</span>: <span class="string">'dog'</span> &#125;);</span><br></pre></td></tr></table></figure> 但是, 这里有个问题. 我们在Schema.methods.fn 上定义的方法,只能在 new Model() 得到的实例中才能访问. 那如果我们想,直接在Model上调用 相关的查询或者删除呢？</p>
 <h3 id="绑定model方法">绑定Model方法</h3>
-<p>同样很简单,使用 statics 即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 给model添加一个findByName方法</span></div><div class="line">animalSchema.statics.findByName = <span class="function"><span class="keyword">function</span> (<span class="params">name, cb</span>) </span>&#123;</div><div class="line">  <span class="comment">// 这里的this 指的就是Model</span></div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.find(&#123; <span class="attr">name</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(name, <span class="string">'i'</span>) &#125;, cb);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Animal = mongoose.model(<span class="string">'Animal'</span>, animalSchema);</div><div class="line">Animal.findByName(<span class="string">'fido'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, animals</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(animals);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>Mongoose 还有一个super featrue-- virtual property 该属性是直接设置在Schema上的. 但是,需要注意的是,VR 并不会真正的存放在db中. 他只是一个提取数据的方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//schema基本内容</span></div><div class="line"><span class="keyword">var</span> personSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">  name: &#123;</div><div class="line">    first: <span class="built_in">String</span>,</div><div class="line">    last: <span class="built_in">String</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 生成Model</span></div><div class="line"><span class="keyword">var</span> Person = mongoose.model(<span class="string">'Person'</span>, personSchema);</div><div class="line"></div><div class="line"><span class="comment">//现在我们有个需求,即,需要将first和last结合输出.</span></div><div class="line"><span class="comment">//一种方法是,使用methods来实现</span></div><div class="line"><span class="comment">//schema 添加方法</span></div><div class="line">personSchema.methods.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.first+<span class="string">" "</span>+<span class="keyword">this</span>.last;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 生成一个doc</span></div><div class="line"><span class="keyword">var</span> bad = <span class="keyword">new</span> Person(&#123;</div><div class="line">    name: &#123; <span class="attr">first</span>: <span class="string">'jimmy'</span>, <span class="attr">last</span>: <span class="string">'Gay'</span> &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//调用</span></div><div class="line">bad.getName();</div></pre></td></tr></table></figure></p>
-<p>但是,像这样,仅仅这是为了获取一个属性, 实际上完全可以使用虚拟属性来实现. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// schema 添加虚拟属性</span></div><div class="line">personSchema.virtual(<span class="string">'fullName'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.first+<span class="string">" "</span>+<span class="keyword">this</span>.last;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 调用</span></div><div class="line">bad.fullName;  <span class="comment">// 和上面的方法的结果是完全一致的</span></div></pre></td></tr></table></figure></p>
-<p>而且,经过测试, 使用fn实现的返回,比VR 要慢几十倍. 一下是测试结果: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.time(<span class="number">1</span>);</div><div class="line">    bad.getName();</div><div class="line">    <span class="built_in">console</span>.timeEnd(<span class="number">1</span>);</div><div class="line">    <span class="built_in">console</span>.time(<span class="number">2</span>);</div><div class="line">    bad.fullName;</div><div class="line">    <span class="built_in">console</span>.timeEnd(<span class="number">2</span>);</div><div class="line">    </div><div class="line">    <span class="comment">//结果为:</span></div><div class="line">    <span class="number">1</span>: <span class="number">4.323</span>ms; <span class="comment">// method</span></div><div class="line">    <span class="number">2</span>: <span class="number">0.253</span>ms  <span class="comment">// VR</span></div></pre></td></tr></table></figure></p>
+<p>同样很简单,使用 statics 即可. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给model添加一个findByName方法</span></span><br><span class="line">animalSchema.statics.findByName = <span class="function"><span class="keyword">function</span> (<span class="params">name, cb</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 这里的this 指的就是Model</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.find(&#123; <span class="attr">name</span>: <span class="keyword">new</span> <span class="built_in">RegExp</span>(name, <span class="string">'i'</span>) &#125;, cb);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Animal = mongoose.model(<span class="string">'Animal'</span>, animalSchema);</span><br><span class="line">Animal.findByName(<span class="string">'fido'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, animals</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(animals);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> Mongoose 还有一个super featrue-- virtual property 该属性是直接设置在Schema上的. 但是,需要注意的是,VR 并不会真正的存放在db中. 他只是一个提取数据的方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//schema基本内容</span></span><br><span class="line"><span class="keyword">var</span> personSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  name: &#123;</span><br><span class="line">    first: <span class="built_in">String</span>,</span><br><span class="line">    last: <span class="built_in">String</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成Model</span></span><br><span class="line"><span class="keyword">var</span> Person = mongoose.model(<span class="string">'Person'</span>, personSchema);</span><br><span class="line"></span><br><span class="line"><span class="comment">//现在我们有个需求,即,需要将first和last结合输出.</span></span><br><span class="line"><span class="comment">//一种方法是,使用methods来实现</span></span><br><span class="line"><span class="comment">//schema 添加方法</span></span><br><span class="line">personSchema.methods.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.first+<span class="string">" "</span>+<span class="keyword">this</span>.last;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成一个doc</span></span><br><span class="line"><span class="keyword">var</span> bad = <span class="keyword">new</span> Person(&#123;</span><br><span class="line">    name: &#123; <span class="attr">first</span>: <span class="string">'jimmy'</span>, <span class="attr">last</span>: <span class="string">'Gay'</span> &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">bad.getName();</span><br></pre></td></tr></table></figure></p>
+<p>但是,像这样,仅仅这是为了获取一个属性, 实际上完全可以使用虚拟属性来实现. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// schema 添加虚拟属性</span></span><br><span class="line">personSchema.virtual(<span class="string">'fullName'</span>).get(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.first+<span class="string">" "</span>+<span class="keyword">this</span>.last;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line">bad.fullName;  <span class="comment">// 和上面的方法的结果是完全一致的</span></span><br></pre></td></tr></table></figure> 而且,经过测试, 使用fn实现的返回,比VR 要慢几十倍. 一下是测试结果: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.time(<span class="number">1</span>);</span><br><span class="line">    bad.getName();</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="number">1</span>);</span><br><span class="line">    <span class="built_in">console</span>.time(<span class="number">2</span>);</span><br><span class="line">    bad.fullName;</span><br><span class="line">    <span class="built_in">console</span>.timeEnd(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//结果为:</span></span><br><span class="line">    <span class="number">1</span>: <span class="number">4.323</span>ms; <span class="comment">// method</span></span><br><span class="line">    <span class="number">2</span>: <span class="number">0.253</span>ms  <span class="comment">// VR</span></span><br></pre></td></tr></table></figure></p>
 <p>最后再补充一下,Schema中初始化的相关参数.</p>
-<p><strong>Schema参数</strong> 在 <code>new Schema([options])</code> 中,我们需要设置一些相关的参数. * <strong>safe:</strong> 用来设置安全模式. 实际上,就是定义入库时数据的写入限制. 比如写入时限等. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 使用安全模式. 表示在写入操作时,如果发生错误,也需要返回信息.</span></div><div class="line"><span class="keyword">var</span> safe = <span class="literal">true</span>;</div><div class="line"><span class="keyword">new</span> Schema(&#123; .. &#125;, &#123; <span class="attr">safe</span>: safe &#125;);</div><div class="line"></div><div class="line"><span class="comment">// 自定义安全模式. w为写入的大小范围. wtimeout设置写入时限. 如果超出10s则返回error</span></div><div class="line"><span class="keyword">var</span> safe = &#123; <span class="attr">w</span>: <span class="string">"majority"</span>, <span class="attr">wtimeout</span>: <span class="number">10000</span> &#125;;</div><div class="line"><span class="keyword">new</span> Schema(&#123; .. &#125;, &#123; <span class="attr">safe</span>: safe &#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>Schema参数</strong> 在 <code>new Schema([options])</code> 中,我们需要设置一些相关的参数. * <strong>safe:</strong> 用来设置安全模式. 实际上,就是定义入库时数据的写入限制. 比如写入时限等. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用安全模式. 表示在写入操作时,如果发生错误,也需要返回信息.</span></span><br><span class="line"><span class="keyword">var</span> safe = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">new</span> Schema(&#123; .. &#125;, &#123; <span class="attr">safe</span>: safe &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 自定义安全模式. w为写入的大小范围. wtimeout设置写入时限. 如果超出10s则返回error</span></span><br><span class="line"><span class="keyword">var</span> safe = &#123; <span class="attr">w</span>: <span class="string">"majority"</span>, <span class="attr">wtimeout</span>: <span class="number">10000</span> &#125;;</span><br><span class="line"><span class="keyword">new</span> Schema(&#123; .. &#125;, &#123; <span class="attr">safe</span>: safe &#125;);</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p><strong>toObject:</strong> 用来表示在提取数据的时候, 把documents 内容转化为Object内容输出. 一般而言只需要设置getters为true即可. <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">schema.set(&apos;toObject&apos;, &#123; getters: true &#125;);</div><div class="line">var M = mongoose.model(&apos;Person&apos;, schema);</div><div class="line">var m = new M(&#123; name: &apos;Max Headroom&apos; &#125;);</div><div class="line">//实际打印出来的就是一个Object类型</div><div class="line">console.log(m); // &#123; _id: 504e0cd7dd992d9be2f20b6f, name: &apos;Max Headroom is my name&apos; &#125;</div></pre></td></tr></table></figure></p></li>
-<li><p><strong>toJSON:</strong> 该是和toObject一样的使用. 通常用来把 documents 转化为Object. 但是, 需要显示使用toJSON()方法,否则,不会起作用。实际上,没什么卵用… 看一下总结图谱: <img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/98685367.jpg"></p></li>
+<li><p><strong>toObject:</strong> 用来表示在提取数据的时候, 把documents 内容转化为Object内容输出. 一般而言只需要设置getters为true即可. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">schema.set(&#39;toObject&#39;, &#123; getters: true &#125;);</span><br><span class="line">var M &#x3D; mongoose.model(&#39;Person&#39;, schema);</span><br><span class="line">var m &#x3D; new M(&#123; name: &#39;Max Headroom&#39; &#125;);</span><br><span class="line">&#x2F;&#x2F;实际打印出来的就是一个Object类型</span><br><span class="line">console.log(m); &#x2F;&#x2F; &#123; _id: 504e0cd7dd992d9be2f20b6f, name: &#39;Max Headroom is my name&#39; &#125;</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>toJSON:</strong> 该是和toObject一样的使用. 通常用来把 documents 转化为Object. 但是, 需要显示使用toJSON()方法,否则,不会起作用。实际上,没什么卵用… 看一下总结图谱: <img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-29/98685367.jpg" /></p></li>
 </ul>
 <p>看完schema之后,我们需要了解一下 model的内容.</p>
 <h2 id="model"><a id="toc-Model"></a> Model</h2>
-<p>实际上,Model才是操作数据库最直接的一块内容. 我们所有的CRUD就是围绕着Model 展开的. ok. 还记得,我们是怎样创建一个model的吗？ <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//from mongoosejs</span></div><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span>, <span class="attr">size</span>: <span class="string">'string'</span> &#125;);</div><div class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, schema);</div></pre></td></tr></table></figure></p>
+<p>实际上,Model才是操作数据库最直接的一块内容. 我们所有的CRUD就是围绕着Model 展开的. ok. 还记得,我们是怎样创建一个model的吗？ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//from mongoosejs</span></span><br><span class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span>, <span class="attr">size</span>: <span class="string">'string'</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, schema);</span><br></pre></td></tr></table></figure></p>
 <p>这里,我们一定要搞清楚一个东西. 实际上, mongoose.model里面定义的第一个参数,比如’Tank’, 并不是数据库中的, collection. 他只是collection的单数形式, 实际上在db中的collection是’Tanks’.</p>
 <p>ok, 我们现在已经有了一个基本的Model. 但并没有什么x用. 接下来, 正式到了 dry goods(干货) 时间.</p>
-<p><strong>model 的子文档操作</strong> 这个就厉害了. 本来mongodb是没有关系的. 但是, mongoose提供了children字段. 让我们能够轻松的在表间建立关系. 现在,我们来创建一个子域: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> childSchema = <span class="keyword">new</span> Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span> &#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> parentSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">  children: [childSchema]   <span class="comment">//指明sub-doc的schema</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">//在创建中指明doc</span></div><div class="line"><span class="keyword">var</span> Parent = mongoose.model(<span class="string">'Parent'</span>, parentSchema);</div><div class="line"><span class="keyword">var</span> parent = <span class="keyword">new</span> Parent(&#123; <span class="attr">children</span>: [&#123; <span class="attr">name</span>: <span class="string">'Matt'</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'Sarah'</span> &#125;] &#125;)</div><div class="line">parent.children[<span class="number">0</span>].name = <span class="string">'Matthew'</span>;</div><div class="line">parent.save(callback);</div></pre></td></tr></table></figure></p>
-<p>现在, 我们就已经创建了3个table. 一个parent 包含了 两个child 另外,如果我们想要查询指定的doc。 则可以使用 id()方法 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doc = parent.children.id(id);</div></pre></td></tr></table></figure></p>
-<p>子文档的CRUD, 实际上就是数组的操作, 比如push,unshift,remove,pop,shift等 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parent.children.push(&#123; <span class="attr">name</span>: <span class="string">'Liesl'</span> &#125;);</div></pre></td></tr></table></figure></p>
-<p>mongoose还给移除提供了另外一个方法–remove: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> doc = parent.children.id(id).remove();</div></pre></td></tr></table></figure></p>
-<p>如果你忘记添加子文档的话，可以在外围添加, 但是字段必须在Schema中指定 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> newdoc = parent.children.create(&#123; <span class="attr">name</span>: <span class="string">'Aaron'</span> &#125;);</div></pre></td></tr></table></figure></p>
+<p><strong>model 的子文档操作</strong> 这个就厉害了. 本来mongodb是没有关系的. 但是, mongoose提供了children字段. 让我们能够轻松的在表间建立关系. 现在,我们来创建一个子域: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> childSchema = <span class="keyword">new</span> Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> parentSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">  children: [childSchema]   <span class="comment">//指明sub-doc的schema</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//在创建中指明doc</span></span><br><span class="line"><span class="keyword">var</span> Parent = mongoose.model(<span class="string">'Parent'</span>, parentSchema);</span><br><span class="line"><span class="keyword">var</span> parent = <span class="keyword">new</span> Parent(&#123; <span class="attr">children</span>: [&#123; <span class="attr">name</span>: <span class="string">'Matt'</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">'Sarah'</span> &#125;] &#125;)</span><br><span class="line">parent.children[<span class="number">0</span>].name = <span class="string">'Matthew'</span>;</span><br><span class="line">parent.save(callback);</span><br></pre></td></tr></table></figure></p>
+<p>现在, 我们就已经创建了3个table. 一个parent 包含了 两个child 另外,如果我们想要查询指定的doc。 则可以使用 id()方法 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> doc = parent.children.id(id);</span><br></pre></td></tr></table></figure></p>
+<p>子文档的CRUD, 实际上就是数组的操作, 比如push,unshift,remove,pop,shift等 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent.children.push(&#123; <span class="attr">name</span>: <span class="string">'Liesl'</span> &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>mongoose还给移除提供了另外一个方法–remove: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> doc = parent.children.id(id).remove();</span><br></pre></td></tr></table></figure></p>
+<p>如果你忘记添加子文档的话，可以在外围添加, 但是字段必须在Schema中指定 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> newdoc = parent.children.create(&#123; <span class="attr">name</span>: <span class="string">'Aaron'</span> &#125;);</span><br></pre></td></tr></table></figure></p>
 <h3 id="model的crud操作">model的CRUD操作</h3>
-<p><strong>model的创建</strong> 关于model的创建,有两种方法, 一种是使用实例创建,另外一种是使用Model类创建. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, yourSchema);</div><div class="line"></div><div class="line"><span class="keyword">var</span> small = <span class="keyword">new</span> Tank(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;);</div><div class="line"><span class="comment">//使用实例创建</span></div><div class="line">small.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="comment">// saved!</span></div><div class="line">&#125;)</div><div class="line"></div><div class="line"><span class="comment">//使用Model类创建</span></div><div class="line">Tank.create(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, small</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="comment">// saved!</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p><strong>model的创建</strong> 关于model的创建,有两种方法, 一种是使用实例创建,另外一种是使用Model类创建. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, yourSchema);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> small = <span class="keyword">new</span> Tank(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;);</span><br><span class="line"><span class="comment">//使用实例创建</span></span><br><span class="line">small.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line">  <span class="comment">// saved!</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用Model类创建</span></span><br><span class="line">Tank.create(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, small</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line">  <span class="comment">// saved!</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>上面已经完美的介绍创建的方法了. 另外,官方给出一个提醒: 由于mongoose, 会自身连接数据库并断开. 如果你手动连接, 则创建model的方式需要改变.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 自己并没有打开连接:</span></div><div class="line"><span class="comment">// 注意,这里只是连接,并没有创建connection</span></div><div class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>); </div><div class="line"></div><div class="line"><span class="comment">// 手动创建连接:</span></div><div class="line"><span class="keyword">var</span> connection = mongoose.createConnection(<span class="string">'mongodb://localhost:27017/test'</span>);</div><div class="line"><span class="keyword">var</span> Tank = connection.model(<span class="string">'Tank'</span>, yourSchema);</div></pre></td></tr></table></figure>
-<p>然后, 下面的API还是一样的. 实际上,我们一般常用的写法为: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</div><div class="line"><span class="comment">//设置连接位置</span></div><div class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>);</div><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span>, <span class="attr">size</span>: <span class="string">'string'</span> &#125;);</div><div class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, schema);</div><div class="line"><span class="keyword">var</span> small = <span class="keyword">new</span> Tank(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;);</div><div class="line"><span class="comment">//使用实例创建</span></div><div class="line">small.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'创建成功'</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>这样,就不用自己去手动管连接的问题了. 如果你,在后面想手动添加字段的话,可以使用.set方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一个key/valye</span></div><div class="line">doc.set(path, value)</div><div class="line"><span class="comment">//很多key/value</span></div><div class="line">doc.set(&#123;</div><div class="line">    path  : value,</div><div class="line">    path2 : &#123;</div><div class="line">       path  : value</div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自己并没有打开连接:</span></span><br><span class="line"><span class="comment">// 注意,这里只是连接,并没有创建connection</span></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 手动创建连接:</span></span><br><span class="line"><span class="keyword">var</span> connection = mongoose.createConnection(<span class="string">'mongodb://localhost:27017/test'</span>);</span><br><span class="line"><span class="keyword">var</span> Tank = connection.model(<span class="string">'Tank'</span>, yourSchema);</span><br></pre></td></tr></table></figure>
+<p>然后, 下面的API还是一样的. 实际上,我们一般常用的写法为: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</span><br><span class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</span><br><span class="line"><span class="comment">//设置连接位置</span></span><br><span class="line">mongoose.connect(<span class="string">'mongodb://localhost:27017/test'</span>);</span><br><span class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> mongoose.Schema(&#123; <span class="attr">name</span>: <span class="string">'string'</span>, <span class="attr">size</span>: <span class="string">'string'</span> &#125;);</span><br><span class="line"><span class="keyword">var</span> Tank = mongoose.model(<span class="string">'Tank'</span>, schema);</span><br><span class="line"><span class="keyword">var</span> small = <span class="keyword">new</span> Tank(&#123; <span class="attr">size</span>: <span class="string">'small'</span> &#125;);</span><br><span class="line"><span class="comment">//使用实例创建</span></span><br><span class="line">small.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'创建成功'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样,就不用自己去手动管连接的问题了. 如果你,在后面想手动添加字段的话,可以使用.set方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个key/valye</span></span><br><span class="line">doc.set(path, value)</span><br><span class="line"><span class="comment">//很多key/value</span></span><br><span class="line">doc.set(&#123;</span><br><span class="line">    path  : value,</span><br><span class="line">    path2 : &#123;</span><br><span class="line">       path  : value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p><strong>model</strong>的<strong>query</strong> model的查找主要提供了以下的API,给我们进行操作. <strong>find</strong>, <strong>findById</strong>, <strong>findOne</strong>, or <strong>where</strong> 在mongodb中, query返回的数据格式一般都是为JSON的. 这点需要注意.</p>
 <p>事实上,在mongoose中,query数据 提供了两种方式.</p>
 <ul>
-<li><p><strong>callback:</strong> 使用回调函数, 即, query会立即执行,然后返回到回调函数中. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Person.findOne(&#123; <span class="string">'name.last'</span>: <span class="string">'Ghost'</span> &#125;, <span class="string">'name occupation'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, person</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line"> <span class="comment">// get data</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p></li>
-<li><p><strong>query:</strong> 使用查询方法,返回的对象. 该对象是一个Promise, 所以可以使用 chain 进行调用.最后必须使用exec(cb)传入回调进行处理. cb 是一个套路, 第一个参数永远是err. 第二个就是返回的数据。 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Person.</div><div class="line">  find(&#123;</div><div class="line">    occupation: <span class="regexp">/host/</span>,</div><div class="line">    <span class="string">'name.last'</span>: <span class="string">'Ghost'</span>,</div><div class="line">    age: &#123; <span class="attr">$gt</span>: <span class="number">17</span>, <span class="attr">$lt</span>: <span class="number">66</span> &#125;,</div><div class="line">    likes: &#123; <span class="attr">$in</span>: [<span class="string">'vaporizing'</span>, <span class="string">'talking'</span>] &#125;</div><div class="line">  &#125;).</div><div class="line">  limit(<span class="number">10</span>).</div><div class="line">  sort(&#123; <span class="attr">occupation</span>: <span class="number">-1</span> &#125;).</div><div class="line">  select(&#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">occupation</span>: <span class="number">1</span> &#125;).</div><div class="line">  exec(callback);</div><div class="line">  </div><div class="line"><span class="comment">//如果没有查询到,则返回[] (空数组)</span></div><div class="line"><span class="comment">// 如果你使用findOne, 没有的话则会返回 null</span></div></pre></td></tr></table></figure></p></li>
+<li><p><strong>callback:</strong> 使用回调函数, 即, query会立即执行,然后返回到回调函数中. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person.findOne(&#123; <span class="string">'name.last'</span>: <span class="string">'Ghost'</span> &#125;, <span class="string">'name occupation'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, person</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line"> <span class="comment">// get data</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>query:</strong> 使用查询方法,返回的对象. 该对象是一个Promise, 所以可以使用 chain 进行调用.最后必须使用exec(cb)传入回调进行处理. cb 是一个套路, 第一个参数永远是err. 第二个就是返回的数据。 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Person.</span><br><span class="line">  find(&#123;</span><br><span class="line">    occupation: <span class="regexp">/host/</span>,</span><br><span class="line">    <span class="string">'name.last'</span>: <span class="string">'Ghost'</span>,</span><br><span class="line">    age: &#123; <span class="attr">$gt</span>: <span class="number">17</span>, <span class="attr">$lt</span>: <span class="number">66</span> &#125;,</span><br><span class="line">    likes: &#123; <span class="attr">$in</span>: [<span class="string">'vaporizing'</span>, <span class="string">'talking'</span>] &#125;</span><br><span class="line">  &#125;).</span><br><span class="line">  limit(<span class="number">10</span>).</span><br><span class="line">  sort(&#123; <span class="attr">occupation</span>: <span class="number">-1</span> &#125;).</span><br><span class="line">  select(&#123; <span class="attr">name</span>: <span class="number">1</span>, <span class="attr">occupation</span>: <span class="number">1</span> &#125;).</span><br><span class="line">  exec(callback);</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果没有查询到,则返回[] (空数组)</span></span><br><span class="line"><span class="comment">// 如果你使用findOne, 没有的话则会返回 null</span></span><br></pre></td></tr></table></figure></p></li>
 </ul>
 <p>童鞋, 你觉得我会推荐哪种呢？</p>
 <p>上面4个API, 3个使用方式都是一样的, 另外一个不同的是where. 他一样是用来进行query. 只是,写法和find系列略有不同</p>
-<p><strong>where简介</strong> where的API为: <code>Model.where(path, [val])</code> path实际上就是字段, 第二个参数.val表示可以用来指定,path = val的数据内容, 你也可以不写, 交给后面进行筛选. 看一下对比demo吧: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">User.find(&#123;<span class="attr">age</span>: &#123;<span class="attr">$gte</span>: <span class="number">21</span>, <span class="attr">$lte</span>: <span class="number">65</span>&#125;&#125;, callback);</div><div class="line"><span class="comment">//等价于:</span></div><div class="line">User.where(<span class="string">'age'</span>).gte(<span class="number">21</span>).lte(<span class="number">65</span>).exec(callback);</div></pre></td></tr></table></figure></p>
-<p>从上面的query中,我们可以看到有许多fn, 比如gte,lte,<span class="math inline">\(gte,\)</span>lte. 这些是db提供给我们用来查询的快捷函数. 我们可以参考, mongoose给的参考: <a href="http://mongoosejs.com/docs/api.html#query-js" target="_blank" rel="noopener">query Helper</a> fn 这里,我们简要的了解下,基本的快捷函数.</p>
+<p><strong>where简介</strong> where的API为: <code>Model.where(path, [val])</code> path实际上就是字段, 第二个参数.val表示可以用来指定,path = val的数据内容, 你也可以不写, 交给后面进行筛选. 看一下对比demo吧: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User.find(&#123;<span class="attr">age</span>: &#123;<span class="attr">$gte</span>: <span class="number">21</span>, <span class="attr">$lte</span>: <span class="number">65</span>&#125;&#125;, callback);</span><br><span class="line"><span class="comment">//等价于:</span></span><br><span class="line">User.where(<span class="string">'age'</span>).gte(<span class="number">21</span>).lte(<span class="number">65</span>).exec(callback);</span><br></pre></td></tr></table></figure></p>
+<p>从上面的query中,我们可以看到有许多fn, 比如gte,lte,<span class="math inline">\(gte,\)</span>lte. 这些是db提供给我们用来查询的快捷函数. 我们可以参考, mongoose给的参考: <a href="http://mongoosejs.com/docs/api.html#query-js">query Helper</a> fn 这里,我们简要的了解下,基本的快捷函数.</p>
 <table>
 <colgroup>
-<col style="width: 40%">
-<col style="width: 60%">
+<col style="width: 40%" />
+<col style="width: 60%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -621,27 +73,27 @@
 <tbody>
 <tr class="odd">
 <td>select</td>
-<td>添加需要显示的字段,需要的字段在字段后加上:1,不需要的加上0;<br>query.select({ a: 1, b: 0 }); //显示a字段, 隐藏b字段<br>不能和distinct方法一起使用</td>
+<td>添加需要显示的字段,需要的字段在字段后加上:1,不需要的加上0;<br/>query.select({ a: 1, b: 0 }); //显示a字段, 隐藏b字段<br/>不能和distinct方法一起使用</td>
 </tr>
 <tr class="even">
 <td>distinct</td>
-<td>用来筛选不重复的值或者字段<br>distinct(field). //筛选指定不重复字段的数据</td>
+<td>用来筛选不重复的值或者字段<br/>distinct(field). //筛选指定不重复字段的数据</td>
 </tr>
 <tr class="odd">
 <td><span class="math inline">\(lt,\)</span>lte,<span class="math inline">\(gt,\)</span>gte</td>
-<td>分别对应: &lt;,&lt;=,&gt;,&gt;=. 该字段是用在condition中的.如果,你想要链式调用,则需要使用<br>lt,lte,ge,gte.<br>eg:<br> model.find({num:{<span class="math inline">\(gt:12}},cb)&lt;br/&gt;model.where(‘num’).gt(12).exec(cb)| |\)</span>in</td>
+<td>分别对应: &lt;,&lt;=,&gt;,&gt;=. 该字段是用在condition中的.如果,你想要链式调用,则需要使用<br/>lt,lte,ge,gte.<br/>eg:<br/> model.find({num:{<span class="math inline">\(gt:12}},cb)&lt;br/&gt;model.where(‘num’).gt(12).exec(cb)| |\)</span>in</td>
 </tr>
 </tbody>
 </table>
 <p>ok~ 这上面就是比较常用的快捷函数. 另外还有一些游标集合的处理方法: 常用的就3个, limit,skip,sort.</p>
 <ul>
-<li><p><strong>limit:</strong> 用来获取限定长度的内容. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query.limit(<span class="number">20</span>); <span class="comment">//只返回前20个内容</span></div></pre></td></tr></table></figure></p></li>
-<li><p><strong>skip:</strong> 返回，跳过指定doc后的值. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query.skip(<span class="number">2</span>);</div></pre></td></tr></table></figure></p></li>
-<li><p><strong>sort:</strong> 用来设置根据指定字段排序. 可以设置为1:升序, -1:降序. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">query.sort(&#123;<span class="attr">name</span>:<span class="number">1</span>,<span class="attr">age</span>:<span class="number">-1</span>&#125;);</div></pre></td></tr></table></figure></p></li>
+<li><p><strong>limit:</strong> 用来获取限定长度的内容. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query.limit(<span class="number">20</span>); <span class="comment">//只返回前20个内容</span></span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>skip:</strong> 返回，跳过指定doc后的值. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query.skip(<span class="number">2</span>);</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>sort:</strong> 用来设置根据指定字段排序. 可以设置为1:升序, -1:降序. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query.sort(&#123;<span class="attr">name</span>:<span class="number">1</span>,<span class="attr">age</span>:<span class="number">-1</span>&#125;);</span><br></pre></td></tr></table></figure></p></li>
 </ul>
 <p>实际上, 关于query,我们需要了解的也就差不多了.</p>
-<p>我们接下来,来看一下remove. <strong>mongoose remove 操作</strong> <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Model.find().remove(&#123; <span class="attr">name</span>: <span class="string">'Anne Murray'</span> &#125;).remove(fn);</div><div class="line"><span class="comment">//或者直接添加回调</span></div><div class="line">Model.find().remove(&#123; <span class="attr">name</span>: <span class="string">'Anne Murray'</span> &#125;,cb)</div></pre></td></tr></table></figure></p>
-<p>另外,我们可以直接在Model上调用. 因为remove也是Schema定义的statics方法. 而且, remove返回一个Promise对象 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">product.remove().then(<span class="function"><span class="keyword">function</span> (<span class="params">product</span>) </span>&#123;</div><div class="line">   ...</div><div class="line">&#125;);</div><div class="line"><span class="comment">//或者直接传入回调</span></div><div class="line">Tank.remove(&#123; <span class="attr">size</span>: <span class="string">'large'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="comment">// removed!</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>我们接下来,来看一下remove. <strong>mongoose remove 操作</strong> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model.find().remove(&#123; <span class="attr">name</span>: <span class="string">'Anne Murray'</span> &#125;).remove(fn);</span><br><span class="line"><span class="comment">//或者直接添加回调</span></span><br><span class="line">Model.find().remove(&#123; <span class="attr">name</span>: <span class="string">'Anne Murray'</span> &#125;,cb)</span><br></pre></td></tr></table></figure></p>
+<p>另外,我们可以直接在Model上调用. 因为remove也是Schema定义的statics方法. 而且, remove返回一个Promise对象 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">product.remove().then(<span class="function"><span class="keyword">function</span> (<span class="params">product</span>) </span>&#123;</span><br><span class="line">   ...</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//或者直接传入回调</span></span><br><span class="line">Tank.remove(&#123; <span class="attr">size</span>: <span class="string">'large'</span> &#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line">  <span class="comment">// removed!</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>最后,我们再看一下 update. 然后mongoose就基本结束了 <strong>update操作:</strong> 这里,我只说一下API就好. 因为update 比起上面来说,还是比较简单的. <code>Model.update(conditions, doc, [options], [callback])</code></p>
 <ul>
 <li><strong>conditions:</strong> 就是query. 通过query获取到指定doc</li>
@@ -653,1052 +105,120 @@
 <li>multi (boolean) 如果有多个doc,匹配到,是否一起更改 ( default for false)</li>
 <li>strict (boolean) 使用严格模式(default for false)</li>
 <li>overwrite (boolean) 匹配到指定doc,是否覆盖 (default for false)</li>
-<li>unValidators (boolean): 表示是否用来启用验证. 实际上,你首先需要写一个验证. 关于如果书写,验证大家可以参考下文, validate篇(default for false) <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Model.update(&#123;<span class="attr">age</span>:<span class="number">18</span>&#125;, &#123; <span class="attr">$set</span>: &#123; <span class="attr">name</span>: <span class="string">'jason borne'</span> &#125;&#125;, &#123;<span class="attr">multi</span>:<span class="literal">true</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, raw</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'raw 就是mongodb返回的更改状态的falg '</span>, raw);</div><div class="line">  <span class="comment">//比如: &#123; ok: 1, nModified: 2, n: 2 &#125;</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+<li>unValidators (boolean): 表示是否用来启用验证. 实际上,你首先需要写一个验证. 关于如果书写,验证大家可以参考下文, validate篇(default for false) <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Model.update(&#123;<span class="attr">age</span>:<span class="number">18</span>&#125;, &#123; <span class="attr">$set</span>: &#123; <span class="attr">name</span>: <span class="string">'jason borne'</span> &#125;&#125;, &#123;<span class="attr">multi</span>:<span class="literal">true</span>&#125;, <span class="function"><span class="keyword">function</span> (<span class="params">err, raw</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="keyword">return</span> handleError(err);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'raw 就是mongodb返回的更改状态的falg '</span>, raw);</span><br><span class="line">  <span class="comment">//比如: &#123; ok: 1, nModified: 2, n: 2 &#125;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 其中的$set是,用来指明更新的字段.另外,mongoose还提供了一个:findByIdAndUpdate(id,doc[,options][,callback]); 方法. 关于mongoose的更新helper 函数. 童鞋们可以参考一下.mongoose官方文档.</li>
 </ul></li>
 </ul>
-<p>其中的$set是,用来指明更新的字段.另外,mongoose还提供了一个:findByIdAndUpdate(id,doc[,options][,callback]); 方法. 关于mongoose的更新helper 函数. 童鞋们可以参考一下.mongoose官方文档.</p>
 <h2 id="validation"><a id="toc-validation"></a> validation</h2>
-<p>说完了,mongoose的body之后. 我们接着来看一下,官方给mongoose穿上的漂亮的衣服. 其中一件,比较吸引人的是–validation. 在你save数据之前, 你可以对数据进行一些列的validation. 来防止某天你傻不拉几的把数据完整性给破坏了. mongoose贴心的提供了几个built-in的验证函数. * <strong>required:</strong> 表示必填字段. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Schema(&#123;</div><div class="line"> name: &#123;</div><div class="line">    type:<span class="built_in">String</span>,</div><div class="line">    required:[<span class="literal">true</span>,<span class="string">"name 是必须的"</span>] <span class="comment">//第二个参数是错误提示信息</span></div><div class="line"> &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>说完了,mongoose的body之后. 我们接着来看一下,官方给mongoose穿上的漂亮的衣服. 其中一件,比较吸引人的是–validation. 在你save数据之前, 你可以对数据进行一些列的validation. 来防止某天你傻不拉几的把数据完整性给破坏了. mongoose贴心的提供了几个built-in的验证函数. * <strong>required:</strong> 表示必填字段. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Schema(&#123;</span><br><span class="line"> name: &#123;</span><br><span class="line">    type:<span class="built_in">String</span>,</span><br><span class="line">    required:[<span class="literal">true</span>,<span class="string">"name 是必须的"</span>] <span class="comment">//第二个参数是错误提示信息</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p><strong>min,max:</strong> 用来给Number类型的数据设置限制. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> breakfastSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">      eggs: &#123;</div><div class="line">        type: <span class="built_in">Number</span>,</div><div class="line">        min: [<span class="number">6</span>, <span class="string">'Too few eggs'</span>],</div><div class="line">        max: <span class="number">12</span></div><div class="line">      &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p></li>
-<li><p><strong>enum,match,maxlength,minlength:</strong> 这些验证是给string类型的. enum 就是枚举,表示该属性值,只能出席那那些. match是用来匹配正则表达式的. maxlength&amp;minlength 显示字符串的长度. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Schema(&#123;</div><div class="line">    drink: &#123;</div><div class="line">        type: <span class="built_in">String</span>,</div><div class="line">        enum: [<span class="string">'Coffee'</span>, <span class="string">'Tea'</span>]</div><div class="line">      &#125;,</div><div class="line">     food:&#123;</div><div class="line">        type: <span class="built_in">String</span>,</div><div class="line">        match:<span class="regexp">/^a/</span>,</div><div class="line">        maxlength:<span class="number">12</span>,</div><div class="line">        minlength:<span class="number">6</span></div><div class="line">    &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p></li>
+<li><p><strong>min,max:</strong> 用来给Number类型的数据设置限制. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> breakfastSchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">      eggs: &#123;</span><br><span class="line">        type: <span class="built_in">Number</span>,</span><br><span class="line">        min: [<span class="number">6</span>, <span class="string">'Too few eggs'</span>],</span><br><span class="line">        max: <span class="number">12</span></span><br><span class="line">      &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p></li>
+<li><p><strong>enum,match,maxlength,minlength:</strong> 这些验证是给string类型的. enum 就是枚举,表示该属性值,只能出席那那些. match是用来匹配正则表达式的. maxlength&amp;minlength 显示字符串的长度. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    drink: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        enum: [<span class="string">'Coffee'</span>, <span class="string">'Tea'</span>]</span><br><span class="line">      &#125;,</span><br><span class="line">     food:&#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        match:<span class="regexp">/^a/</span>,</span><br><span class="line">        maxlength:<span class="number">12</span>,</span><br><span class="line">        minlength:<span class="number">6</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p></li>
 </ul>
-<p>mongoose提供的helper fn就是这几种, 如果你想定制化验证. 可以使用custom validation. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Schema(&#123;</div><div class="line"> phone: &#123;</div><div class="line">        type: <span class="built_in">String</span>,</div><div class="line">        validate: &#123;</div><div class="line">          validator: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="regexp">/\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;/</span>.test(data);</div><div class="line">          &#125;,</div><div class="line">          message: <span class="string">'&#123;VALUE&#125; is not a valid phone number!'</span> <span class="comment">//VALUE代表phone存放的值</span></div><div class="line">        &#125;,</div><div class="line">        required: [<span class="literal">true</span>, <span class="string">'User phone number required'</span>]</div><div class="line">      &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p>另外,还可以额外添加验证. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toySchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    color: <span class="built_in">String</span>,</div><div class="line">    name: <span class="built_in">String</span></div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  <span class="keyword">var</span> validator = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/blue|green|white|red|orange|periwinkle/i</span>.test(value);</div><div class="line">  &#125;;</div><div class="line">  toySchema.path(<span class="string">'color'</span>).validate(validator,</div><div class="line">    <span class="string">'Color `&#123;VALUE&#125;` not valid'</span>, <span class="string">'Invalid color'</span>);</div></pre></td></tr></table></figure></p>
-<p>现在,我们已经设置了validation. 但是你不启用,一样没有什么卵用. 实际上, 我们也可以把validation当做一个中间件使用. mongoose 提供了两种调用方式. 一种是内置调用, 当你使用.save方法时,他会首先执行一次存储方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cat.save(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line"><span class="comment">//自动执行,validation</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>另外一种是,手动验证–指定validate方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//上面已经设置好user的字段内容.</span></div><div class="line">  user.validate(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">    <span class="comment">//error 就是验证不通过返回的错误信息</span></div><div class="line">     assert.equal(error.errors[<span class="string">'phone'</span>].message,</div><div class="line">        <span class="string">'555.0123 is not a valid phone number!'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>事实上, 在validate时, 错误的返回信息有以下4个字段: kind, path, value, and message;</p>
+<p>mongoose提供的helper fn就是这几种, 如果你想定制化验证. 可以使用custom validation. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Schema(&#123;</span><br><span class="line"> phone: &#123;</span><br><span class="line">        type: <span class="built_in">String</span>,</span><br><span class="line">        validate: &#123;</span><br><span class="line">          validator: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="regexp">/\d&#123;3&#125;-\d&#123;3&#125;-\d&#123;4&#125;/</span>.test(data);</span><br><span class="line">          &#125;,</span><br><span class="line">          message: <span class="string">'&#123;VALUE&#125; is not a valid phone number!'</span> <span class="comment">//VALUE代表phone存放的值</span></span><br><span class="line">        &#125;,</span><br><span class="line">        required: [<span class="literal">true</span>, <span class="string">'User phone number required'</span>]</span><br><span class="line">      &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>另外,还可以额外添加验证. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toySchema = <span class="keyword">new</span> Schema(&#123;</span><br><span class="line">    color: <span class="built_in">String</span>,</span><br><span class="line">    name: <span class="built_in">String</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> validator = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="regexp">/blue|green|white|red|orange|periwinkle/i</span>.test(value);</span><br><span class="line">  &#125;;</span><br><span class="line">  toySchema.path(<span class="string">'color'</span>).validate(validator,</span><br><span class="line">    <span class="string">'Color `&#123;VALUE&#125;` not valid'</span>, <span class="string">'Invalid color'</span>);</span><br></pre></td></tr></table></figure> 现在,我们已经设置了validation. 但是你不启用,一样没有什么卵用. 实际上, 我们也可以把validation当做一个中间件使用. mongoose 提供了两种调用方式. 一种是内置调用, 当你使用.save方法时,他会首先执行一次存储方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat.save(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line"><span class="comment">//自动执行,validation</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 另外一种是,手动验证–指定validate方法. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上面已经设置好user的字段内容.</span></span><br><span class="line">  user.validate(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//error 就是验证不通过返回的错误信息</span></span><br><span class="line">     assert.equal(error.errors[<span class="string">'phone'</span>].message,</span><br><span class="line">        <span class="string">'555.0123 is not a valid phone number!'</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 事实上, 在validate时, 错误的返回信息有以下4个字段: kind, path, value, and message;</p>
 <ul>
 <li><strong>kind:</strong> 用来表示验证设置的第二个参数. 一般不用</li>
 <li><strong>path:</strong> 就是字段名</li>
 <li><strong>value:</strong> 你设置的错误内容</li>
-<li><strong>message:</strong> 提示错误信息 看一个整体demo吧: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> validator = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="regexp">/blue|green|white|red|orange|periwinkle/i</span>.test(value);</div><div class="line">  &#125;;</div><div class="line">  Toy.schema.path(<span class="string">'color'</span>).validate(validator,</div><div class="line">    <span class="string">'Color `&#123;VALUE&#125;` not valid'</span>, <span class="string">'Invalid color'</span>); <span class="comment">//设置了message &amp;&amp; kind</span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> toy = <span class="keyword">new</span> Toy(&#123; <span class="attr">color</span>: <span class="string">'grease'</span>&#125;);</div><div class="line"></div><div class="line">  toy.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="comment">// err is our ValidationError object</span></div><div class="line">    <span class="comment">// err.errors.color is a ValidatorError object</span></div><div class="line">    assert.equal(err.errors.color.message, <span class="string">'Color `grease` not valid'</span>); <span class="comment">//返回message</span></div><div class="line">    assert.equal(err.errors.color.kind, <span class="string">'Invalid color'</span>);</div><div class="line">    assert.equal(err.errors.color.path, <span class="string">'color'</span>);</div><div class="line">    assert.equal(err.errors.color.value, <span class="string">'grease'</span>);</div><div class="line">    assert.equal(err.name, <span class="string">'ValidationError'</span>);</div><div class="line">    <span class="comment">//访问color 也可以直接上 errors["color"]进行访问.</span></div><div class="line">  &#125;);</div></pre></td></tr></table></figure></li>
+<li><strong>message:</strong> 提示错误信息 看一个整体demo吧: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> validator = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="regexp">/blue|green|white|red|orange|periwinkle/i</span>.test(value);</span><br><span class="line">  &#125;;</span><br><span class="line">  Toy.schema.path(<span class="string">'color'</span>).validate(validator,</span><br><span class="line">    <span class="string">'Color `&#123;VALUE&#125;` not valid'</span>, <span class="string">'Invalid color'</span>); <span class="comment">//设置了message &amp;&amp; kind</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> toy = <span class="keyword">new</span> Toy(&#123; <span class="attr">color</span>: <span class="string">'grease'</span>&#125;);</span><br><span class="line"></span><br><span class="line">  toy.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// err is our ValidationError object</span></span><br><span class="line">    <span class="comment">// err.errors.color is a ValidatorError object</span></span><br><span class="line">    assert.equal(err.errors.color.message, <span class="string">'Color `grease` not valid'</span>); <span class="comment">//返回message</span></span><br><span class="line">    assert.equal(err.errors.color.kind, <span class="string">'Invalid color'</span>);</span><br><span class="line">    assert.equal(err.errors.color.path, <span class="string">'color'</span>);</span><br><span class="line">    assert.equal(err.errors.color.value, <span class="string">'grease'</span>);</span><br><span class="line">    assert.equal(err.name, <span class="string">'ValidationError'</span>);</span><br><span class="line">    <span class="comment">//访问color 也可以直接上 errors["color"]进行访问.</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>在Model.update那一节有个参数–runValidators. 还没有详细说. 这里, 展开一下. 实际上, validate一般只会应用在save上, 如果你想在update使用的话, 需要额外的trick，而runValidators就是这个trick. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> opts = &#123; <span class="attr">runValidators</span>: <span class="literal">true</span> &#125;;</div><div class="line">    Test.update(&#123;&#125;, update, opts, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;  <span class="comment">//额外开启runValidators的验证</span></div><div class="line">      <span class="comment">// There will never be a validation error here</span></div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
-<p>我们来看一下基本总结吧: <img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-30/64475521.jpg"></p>
+<p>在Model.update那一节有个参数–runValidators. 还没有详细说. 这里, 展开一下. 实际上, validate一般只会应用在save上, 如果你想在update使用的话, 需要额外的trick，而runValidators就是这个trick. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> opts = &#123; <span class="attr">runValidators</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    Test.update(&#123;&#125;, update, opts, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;  <span class="comment">//额外开启runValidators的验证</span></span><br><span class="line">      <span class="comment">// There will never be a validation error here</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure> 我们来看一下基本总结吧: <img src="http://7xpsmd.com1.z0.glb.clouddn.com/16-4-30/64475521.jpg" /></p>
 <h2 id="population"><a id="toc-population"></a> population</h2>
-<p>originally, mongodb 本来就是一门非关系型数据库。 但有时候,我们又需要联合其他的table进行数据查找。 这时候, 一般的做法就是实现两次查询，效率我就呵呵了. 此时, mongoose 说了一句: 麻麻, 我已经都把脏活帮你做好了. 感动~ 有木有~ 这就是mongoose提供的 population. 用来连接多表数据查询. 一般而言, 我们只要提供某一个collection的_id , 就可以实现完美的联合查询. population 用到的关键字是: ref 用来指明外联的数据库的名字. 一般,我们需要在schema中就定义好. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</div><div class="line">  , Schema = mongoose.Schema</div><div class="line">  </div><div class="line"><span class="keyword">var</span> personSchema = Schema(&#123;</div><div class="line">  _id     : <span class="built_in">Number</span>,</div><div class="line">  name    : <span class="built_in">String</span>,</div><div class="line">  age     : <span class="built_in">Number</span>,</div><div class="line">  stories : [&#123; <span class="attr">type</span>: Schema.Types.ObjectId, <span class="attr">ref</span>: <span class="string">'Story'</span> &#125;]</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> storySchema = Schema(&#123;</div><div class="line">  _creator : &#123; <span class="attr">type</span>: Schema.Types.ObjectId, <span class="attr">ref</span>: <span class="string">'Person'</span> &#125;,</div><div class="line">  title    : <span class="built_in">String</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>这里就指明了, 外联数据表的应用关系 personSchema <stories> By _id =&gt; Story storySchema &lt;_creator&gt; By _id =&gt; Person 实际上, 就是通过_id的相互索引即可. 这里需要说明的是, _id 应该是某个具体model的id.</stories></p>
-<p>我们来看一下, 接下来应该如何利用population实现外联查询. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> sam = <span class="keyword">new</span> Person(&#123;</div><div class="line">    name: <span class="string">'sam'</span>,</div><div class="line">    _id: <span class="number">1</span>,</div><div class="line">    age: <span class="number">18</span>,</div><div class="line">    stories: []</div><div class="line">&#125;);</div><div class="line">sam.save(<span class="function">(<span class="params">err,sam</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span> err;</div><div class="line">    <span class="keyword">let</span> story = <span class="keyword">new</span> Story(&#123;</div><div class="line">        _creator:sam._id,</div><div class="line">        title:<span class="string">"喜剧之王"</span></div><div class="line">    &#125;)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Story.findOne(&#123;<span class="attr">title</span>:<span class="string">"喜剧之王"</span>&#125;).populate(<span class="string">'_creator'</span>).exec(<span class="function">(<span class="params">err,story</span>)=&gt;</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err)<span class="built_in">console</span>.log(err);</div><div class="line">    <span class="built_in">console</span>.log(story._creator.name);</div><div class="line">&#125;)</div><div class="line"><span class="comment">//使用populate来指定,外联查询的字段, 而且该值必须是_id才行</span></div></pre></td></tr></table></figure></p>
-<p>现在es6时代的来临, generator , async/await 盛行. 也带来另外一种书写方式–middleware. 在mongoose也有这个hook, 给我们使用. (说实话, 有点像AOP)</p>
+<p>originally, mongodb 本来就是一门非关系型数据库。 但有时候,我们又需要联合其他的table进行数据查找。 这时候, 一般的做法就是实现两次查询，效率我就呵呵了. 此时, mongoose 说了一句: 麻麻, 我已经都把脏活帮你做好了. 感动~ 有木有~ 这就是mongoose提供的 population. 用来连接多表数据查询. 一般而言, 我们只要提供某一个collection的_id , 就可以实现完美的联合查询. population 用到的关键字是: ref 用来指明外联的数据库的名字. 一般,我们需要在schema中就定义好. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>)</span><br><span class="line">  , Schema = mongoose.Schema</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> personSchema = Schema(&#123;</span><br><span class="line">  _id     : <span class="built_in">Number</span>,</span><br><span class="line">  name    : <span class="built_in">String</span>,</span><br><span class="line">  age     : <span class="built_in">Number</span>,</span><br><span class="line">  stories : [&#123; <span class="attr">type</span>: Schema.Types.ObjectId, <span class="attr">ref</span>: <span class="string">'Story'</span> &#125;]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> storySchema = Schema(&#123;</span><br><span class="line">  _creator : &#123; <span class="attr">type</span>: Schema.Types.ObjectId, <span class="attr">ref</span>: <span class="string">'Person'</span> &#125;,</span><br><span class="line">  title    : <span class="built_in">String</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 这里就指明了, 外联数据表的应用关系 personSchema <stories> By _id =&gt; Story storySchema &lt;_creator&gt; By _id =&gt; Person 实际上, 就是通过_id的相互索引即可. 这里需要说明的是, _id 应该是某个具体model的id.</p>
+<p>我们来看一下, 接下来应该如何利用population实现外联查询. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sam = <span class="keyword">new</span> Person(&#123;</span><br><span class="line">    name: <span class="string">'sam'</span>,</span><br><span class="line">    _id: <span class="number">1</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    stories: []</span><br><span class="line">&#125;);</span><br><span class="line">sam.save(<span class="function">(<span class="params">err,sam</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span> err;</span><br><span class="line">    <span class="keyword">let</span> story = <span class="keyword">new</span> Story(&#123;</span><br><span class="line">        _creator:sam._id,</span><br><span class="line">        title:<span class="string">"喜剧之王"</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">Story.findOne(&#123;<span class="attr">title</span>:<span class="string">"喜剧之王"</span>&#125;).populate(<span class="string">'_creator'</span>).exec(<span class="function">(<span class="params">err,story</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)<span class="built_in">console</span>.log(err);</span><br><span class="line">    <span class="built_in">console</span>.log(story._creator.name);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//使用populate来指定,外联查询的字段, 而且该值必须是_id才行</span></span><br></pre></td></tr></table></figure> 现在es6时代的来临, generator , async/await 盛行. 也带来另外一种书写方式–middleware. 在mongoose也有这个hook, 给我们使用. (说实话, 有点像AOP)</p>
 <h2 id="mongoose-middleware"><a id="toc-mongoose-middleware"></a> mongoose &amp;&amp; middleware</h2>
 <p>mongoose里的中间件,有两个, 一个是pre, 一个是post. * <strong>pre:</strong> 在指定方法执行之前绑定。 中间件的状态分为 parallel和series. * <strong>post:</strong> 相当于事件监听的绑定</p>
 <p>这里需要说明一下, 中间件一般仅仅只能限于在几个方法中使用. (但感觉就已经是全部了) * doc 方法上: init,validate,save,remove; * model方法上: count,find,findOne,findOneAndRemove,findOneAndUpdate,update</p>
 <h3 id="pre">pre</h3>
-<p>我们来看一下,pre中间件是如何绑定的. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// series执行, 串行</span></div><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> Schema(..);</div><div class="line">schema.pre(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">next</span>) </span>&#123;</div><div class="line"> <span class="comment">// exe some operations</span></div><div class="line"> <span class="keyword">this</span>.model.</div><div class="line">  next();  <span class="comment">//  这里的next()相当于间执行权给下一个pre</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在你调用 model.save方法时, 他会自动执行pre. 如果你想并行执行中间件, 可以设置为: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">schema.pre(<span class="string">'save'</span>, <span class="literal">true</span>, <span class="function"><span class="keyword">function</span>(<span class="params">next, done</span>) </span>&#123;</div><div class="line">  <span class="comment">// 并行执行下一个中间件</span></div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>我们来看一下,pre中间件是如何绑定的. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// series执行, 串行</span></span><br><span class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> Schema(..);</span><br><span class="line">schema.pre(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">next</span>) </span>&#123;</span><br><span class="line"> <span class="comment">// exe some operations</span></span><br><span class="line"> <span class="keyword">this</span>.model.</span><br><span class="line">  next();  <span class="comment">//  这里的next()相当于间执行权给下一个pre</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>在你调用 model.save方法时, 他会自动执行pre. 如果你想并行执行中间件, 可以设置为: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">schema.pre(<span class="string">'save'</span>, <span class="literal">true</span>, <span class="function"><span class="keyword">function</span>(<span class="params">next, done</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 并行执行下一个中间件</span></span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <h3 id="post">post</h3>
-<p>相当于绑定啦~ post会在指定事件后触发 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc</span>) </span>&#123;</div><div class="line"> <span class="comment">//在save完成后 触发.</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'%s has been saved'</span>, doc._id);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>当save方法调用时, 便会触发post绑定的save事件. 如果你绑定了多个post。 则需要指定一下中间件顺序. <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc, next</span>) </span>&#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'post1'</span>);</div><div class="line">    next();</div><div class="line">  &#125;, <span class="number">10</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc, next</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'post2'</span>);</div><div class="line">  next();</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>实际上,post触发的时间为: <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> Schema(..);</div><div class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">doc</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'this fired after a document was saved'</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> Model = mongoose.model(<span class="string">'Model'</span>, schema);</div><div class="line"></div><div class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> Model(..);</div><div class="line">m.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'this fires after the `post` hook'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>另外,在post和find中, 是不能直接修改doc上的属性的. 即,像下面一样的,没有效果 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">articleSchema.post(<span class="string">'find'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">docs</span>)</span>&#123;</div><div class="line">    docs[<span class="number">1</span>].date = <span class="number">1</span></div><div class="line">&#125;)</div><div class="line">docs[<span class="number">1</span>].date 的值还是不变</div></pre></td></tr></table></figure></p>
-<p>不过可以使用虚拟属性,进行操作.</p>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/node/" rel="tag"># node</a>
-          
-            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
-          
-            <a href="/tags/mongoose/" rel="tag"># mongoose</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/29/mongodb用法初识/" rel="next" title="mongodb用法初识">
-                <i class="fa fa-chevron-left"></i> mongodb用法初识
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/06/socket.io简易用法/" rel="prev" title="socket.io简易用法">
-                socket.io简易用法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-
-  
-
-
-
-        </div>
+<p>相当于绑定啦~ post会在指定事件后触发 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc</span>) </span>&#123;</span><br><span class="line"> <span class="comment">//在save完成后 触发.</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'%s has been saved'</span>, doc._id);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>当save方法调用时, 便会触发post绑定的save事件. 如果你绑定了多个post。 则需要指定一下中间件顺序. <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc, next</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'post1'</span>);</span><br><span class="line">    next();</span><br><span class="line">  &#125;, <span class="number">10</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">doc, next</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'post2'</span>);</span><br><span class="line">  next();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>实际上,post触发的时间为: <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> schema = <span class="keyword">new</span> Schema(..);</span><br><span class="line">schema.post(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">doc</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'this fired after a document was saved'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Model = mongoose.model(<span class="string">'Model'</span>, schema);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> m = <span class="keyword">new</span> Model(..);</span><br><span class="line">m.save(<span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'this fires after the `post` hook'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>另外,在post和find中, 是不能直接修改doc上的属性的. 即,像下面一样的,没有效果 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">articleSchema.post(<span class="string">'find'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">docs</span>)</span>&#123;</span><br><span class="line">    docs[<span class="number">1</span>].date = <span class="number">1</span></span><br><span class="line">&#125;)</span><br><span class="line">docs[<span class="number">1</span>].date 的值还是不变</span><br></pre></td></tr></table></figure> 不过可以使用虚拟属性,进行操作.</p>
+</div><div class="article-tags size-small is-uppercase mb-4"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted mr-2" rel="tag" href="/tags/node/">node</a><a class="link-muted mr-2" rel="tag" href="/tags/mongodb/">mongodb</a><a class="link-muted mr-2" rel="tag" href="/tags/mongoose/">mongoose</a><p class="text-right font1_1"><time datetime="2020-03-27T08:06:33.234Z"><strong><em> 本文最后修改于: 2020-03-27.</em></strong></time></p></div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://hddhyq.github.io/2017/11/02/mongoose常用用法/">mongoose常用用法</a></li><li><strong>本文作者：</strong><a href="https://hddhyq.github.io">hddhyq</a></li><li><strong>本文链接：</strong><a href="https://hddhyq.github.io/2017/11/02/mongoose常用用法/">https://hddhyq.github.io/2017/11/02/mongoose常用用法/</a></li><li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/2017/10/29/mongodb%E7%94%A8%E6%B3%95%E5%88%9D%E8%AF%86/" target="_blank">mongodb用法初识</a><br></span></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2017/11/06/socket.io%E7%AE%80%E6%98%93%E7%94%A8%E6%B3%95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">socket.io简易用法</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2017/10/29/mongodb%E7%94%A8%E6%B3%95%E5%88%9D%E8%AF%86/"><span class="level-item">mongodb用法初识</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: true,
+            verify: true,
+            appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
+            appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
+            placeholder: '留下你的回复吧~',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: true,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><ul class="menu-list"><li><a class="is-flex" id="toc-item-connect-mongoose" href="#connect-mongoose"><span> connect mongoose</span></a></li></ul><li><a class="is-flex" id="toc-item-mongoose的基本概念" href="#mongoose的基本概念"><span> Mongoose的基本概念</span></a></li><li><a class="is-flex" id="toc-item-深入浅出mongoose" href="#深入浅出mongoose"><span> 深入浅出mongoose</span></a><ul class="menu-list"><ul class="menu-list"><li><a class="is-flex" id="toc-item-mongoose-设置索引" href="#mongoose-设置索引"><span>mongoose 设置索引</span></a></li><li><a class="is-flex" id="toc-item-定义schema.methods" href="#定义schema.methods"><span>定义Schema.methods</span></a></li><li><a class="is-flex" id="toc-item-绑定model方法" href="#绑定model方法"><span>绑定Model方法</span></a></li></ul><li><a class="is-flex" id="toc-item-model" href="#model"><span> Model</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-model的crud操作" href="#model的crud操作"><span>model的CRUD操作</span></a></li></ul></li><li><a class="is-flex" id="toc-item-validation" href="#validation"><span> validation</span></a></li><li><a class="is-flex" id="toc-item-population" href="#population"><span> population</span></a></li><li><a class="is-flex" id="toc-item-mongoose-middleware" href="#mongoose-middleware"><span> mongoose &amp;amp;&amp;amp; middleware</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-pre" href="#pre"><span>pre</span></a></li><li><a class="is-flex" id="toc-item-post" href="#post"><span>post</span></a></li></ul></li></ul></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
-                alt="hddhyq"/>
-            
-              <p class="site-author-name" itemprop="name">hddhyq</p>
-              <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">26</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-              <div class="links-of-blogroll motion-element links-of-blogroll-block">
-                <div class="links-of-blogroll-title">
-                  <!-- modify icon to fire by szw -->
-                  <i class="fa fa-history fa-" aria-hidden="true"></i>
-                  近期文章
-                </div>
-                <ul class="links-of-blogroll-list">
-                  
-                  
-                    <li>
-                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/11/18/你所需要了解的CSS变量知识点/" title="你所需要了解的CSS变量知识点" target="_blank">你所需要了解的CSS变量知识点</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/19/JavaScript异步处理1/" title="JavaScript异步处理(一)：Parallel VS Async && Callbacks" target="_blank">JavaScript异步处理(一)：Parallel VS Async && Callbacks</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/18/webpack基础4/" title="webpack 基础(四)： 简单配置" target="_blank">webpack 基础(四)： 简单配置</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/07/Webpack基础3/" title="webpack 基础(三)： 核心概念" target="_blank">webpack 基础(三)： 核心概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/03/webpack基础2/" title="webpack基础(二):认识Webpack" target="_blank">webpack基础(二):认识Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/03/30/webpack基础-1/" title="webpack基础(一)：为什么选择Webpack" target="_blank">webpack基础(一)：为什么选择Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/31/CircleCI实践gh-pages部署/" title="CircleCI实践gh-pages部署" target="_blank">CircleCI实践gh-pages部署</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                </ul>
-              </div>
-          
-
-          
-
-        
-         
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hddhyq" title="GitHub &rarr; https://github.com/hddhyq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:brokenbonesdd@gmail.com" title="E-Mail &rarr; mailto:brokenbonesdd@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#connect-mongoose"><span class="nav-number">1.</span> <span class="nav-text"> connect mongoose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongoose的基本概念"><span class="nav-number"></span> <span class="nav-text"> Mongoose的基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#深入浅出mongoose"><span class="nav-number"></span> <span class="nav-text"> 深入浅出mongoose</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mongoose-设置索引"><span class="nav-number">0.1.</span> <span class="nav-text">mongoose 设置索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义schema.methods"><span class="nav-number">0.2.</span> <span class="nav-text">定义Schema.methods</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定model方法"><span class="nav-number">0.3.</span> <span class="nav-text">绑定Model方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#model"><span class="nav-number">1.</span> <span class="nav-text"> Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#model的crud操作"><span class="nav-number">1.1.</span> <span class="nav-text">model的CRUD操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#validation"><span class="nav-number">2.</span> <span class="nav-text"> validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#population"><span class="nav-number">3.</span> <span class="nav-text"> population</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongoose-middleware"><span class="nav-number">4.</span> <span class="nav-text"> mongoose &amp;&amp; middleware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre"><span class="nav-number">4.1.</span> <span class="nav-text">pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post"><span class="nav-number">4.2.</span> <span class="nav-text">post</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hddhyq</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
-
-
-
-
-        
-
-
-
-
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1276849494&web_id=1276849494"></script>
-  </div>
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-
-  
-
-  
-
-  
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
-    appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
-    placeholder: '留下你的回复吧',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn'
-  });
-</script>
-
-
-
-
-  
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
             }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
                 }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
                 } else {
-                  return resultRight.id - resultLeft.id;
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
                 }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
             }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://www.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?s=128" alt="hddhyq"></figure><p class="title is-size-4 is-block line-height-inherit">hddhyq</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">46</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">53</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/hddhyq" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:brokenbonesdd@gmail.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-03-24T09:30:16.000Z">2020-03-24</time></p><p class="title is-6"><a class="link-muted" href="/2020/03/24/%E6%9E%84%E5%BB%BA%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8/">构建简易网页浏览器</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Browser/">Browser</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-02-06T11:48:22.000Z">2020-02-06</time></p><p class="title is-6"><a class="link-muted" href="/2020/02/06/%E6%8A%BD%E8%B1%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A4%9A%E9%87%8D%E8%A1%A8%E7%A4%BA/">抽象系统的多重表示</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/sicp/">sicp</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-11-18T15:29:10.000Z">2019-11-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/11/18/%E4%BD%A0%E6%89%80%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84CSS%E5%8F%98%E9%87%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">你所需要了解的CSS变量知识点</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/CSS/">CSS</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-19T15:03:11.000Z">2019-04-19</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/19/JavaScript%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%861/">JavaScript异步处理(一)：Parallel VS Async &amp;&amp; Callbacks</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/asynchronous/">asynchronous</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-18T14:46:08.000Z">2019-04-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/18/webpack%E5%9F%BA%E7%A1%804/">webpack 基础(四)： 简单配置</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Webpack/">Webpack</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Browser/"><span class="level-start"><span class="level-item">Browser</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CSS/"><span class="level-start"><span class="level-item">CSS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CircleCI/"><span class="level-start"><span class="level-item">CircleCI</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTML%E5%9F%BA%E7%A1%80/"><span class="level-start"><span class="level-item">HTML基础</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTTPS/"><span class="level-start"><span class="level-item">HTTPS</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JS/"><span class="level-start"><span class="level-item">JS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JStricks/"><span class="level-start"><span class="level-item">JStricks</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Puppeteer/"><span class="level-start"><span class="level-item">Puppeteer</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Webpack/"><span class="level-start"><span class="level-item">Webpack</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/asynchronous/"><span class="level-start"><span class="level-item">asynchronous</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/02/"><span class="level-start"><span class="level-item">二月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/11/"><span class="level-start"><span class="level-item">十一月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/04/"><span class="level-start"><span class="level-item">四月 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/03/"><span class="level-start"><span class="level-item">三月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/node/"><span class="tag">node</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS/"><span class="tag">JS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/foundation/"><span class="tag">foundation</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Webpack/"><span class="tag">Webpack</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS/"><span class="tag">你不知道的JS</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"><span class="tag">自动化</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CircleCI/"><span class="tag">CircleCI</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html5/"><span class="tag">html5</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/express/"><span class="tag">express</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sicp/"><span class="tag">sicp</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Puppeteer/"><span class="tag">Puppeteer</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web%E6%80%A7%E8%83%BD/"><span class="tag">Web性能</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/async/"><span class="tag">async</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/babel/"><span class="tag">babel</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bug/"><span class="tag">bug</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 hddhyq</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br>    方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br><div class="size-small"><span id="busuanzi_container_site_uv">❤️感谢<strong> <span id="busuanzi_value_site_uv">99+</span> </strong></span>小伙伴的<strong> <span id="busuanzi_value_site_pv">99+</span> </strong>次光临，查看💐</div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://hddhyq.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
             });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-  
-
-  
-
-  
-
-  
-  
-  
-  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
-  <script>pangu.spacingPage();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+        });</script><!--!--><script src="/js/main.js" defer></script><script src="/js/comment-issue-data.js" defer></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>

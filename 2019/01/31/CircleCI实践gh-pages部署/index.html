@@ -1,532 +1,5 @@
-<!DOCTYPE html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<html class="theme-next mist" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
-<meta name="theme-color" content="#222"/>
-
-
-
-
-
-
-
-
-
-
-  <meta name="google-site-verification" content="google0d6f72050fc22a0c"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/favicon.ico?v=7.0.1" color="#222">
-
-
-
-
-
-
-
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '7.0.1',
-    sidebar: {"position":"right","width":320,"display":"always","offset":12,"onmobile":true,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-  
-
-
-
-
-  <meta name="description" content="这里展示一下CircleCI集成与github之间联系。">
-<meta name="keywords" content="自动化,git,GitHub,CircleCI">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CircleCI实践gh-pages部署">
-<meta property="og:url" content="https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/index.html">
-<meta property="og:site_name" content="hddhyq&#39;s blog">
-<meta property="og:description" content="这里展示一下CircleCI集成与github之间联系。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/status_check.png">
-<meta property="og:updated_time" content="2019-01-31T15:44:16.116Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CircleCI实践gh-pages部署">
-<meta name="twitter:description" content="这里展示一下CircleCI集成与github之间联系。">
-<meta name="twitter:image" content="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/status_check.png">
-
-
-
-
-
-  
-  
-  <link rel="canonical" href="https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/"/>
-
-
-
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
-
-  <title>CircleCI实践gh-pages部署 | hddhyq's blog</title>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-right page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">hddhyq's blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-    
-    
-  </div>
-
-  <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  
-    <ul id="menu" class="menu">
-      
-        
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>首页</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>归档</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>分类</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>标签</a>
-
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-
-    
-    
-    
-      
-    
-
-    
-
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>关于</a>
-
-  </li>
-
-      
-      
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br/>搜索</a>
-        </li>
-      
-    </ul>
-  
-
-  
-    
-
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
-</nav>
-
-
-
-  
-
-
-
-</div>
-    </header>
-
-    
-
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="hddhyq"/>
-      <meta itemprop="description" content="落花人独立，微雨燕双飞"/>
-      <meta itemprop="image" content="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="hddhyq's blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">CircleCI实践gh-pages部署
-
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-01-31 22:22:35 / 修改时间：23:44:16" itemprop="dateCreated datePublished" datetime="2019-01-31T22:22:35+08:00">2019-01-31</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CircleCI/" itemprop="url" rel="index"><span itemprop="name">CircleCI</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">评论数：</span>
-                <a href="/2019/01/31/CircleCI实践gh-pages部署/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/31/CircleCI实践gh-pages部署/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/01/31/CircleCI实践gh-pages部署/" class="leancloud_visitors" data-flag-title="CircleCI实践gh-pages部署">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">阅读次数：</span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">6.9k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">13 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>这里展示一下CircleCI集成与github之间联系。 <a id="more"></a></p>
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.0"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CircleCI实践gh-pages部署 - hddhyq&#039;s blog</title><meta description="这里展示一下CircleCI集成与github之间联系。"><meta property="og:type" content="article"><meta property="og:title" content="CircleCI实践gh-pages部署"><meta property="og:url" content="https://hddhyq.github.io/2019/01/31/CircleCI%E5%AE%9E%E8%B7%B5gh-pages%E9%83%A8%E7%BD%B2/"><meta property="og:site_name" content="hddhyq&#039;s blog"><meta property="og:description" content="这里展示一下CircleCI集成与github之间联系。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><meta property="article:published_time" content="2019-01-31T14:22:35.000Z"><meta property="article:modified_time" content="2020-03-27T08:06:33.234Z"><meta property="article:author" content="hddhyq"><meta property="article:tag" content="自动化"><meta property="article:tag" content="git"><meta property="article:tag" content="GitHub"><meta property="article:tag" content="CircleCI"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://en.gravatar.com/userimage/154887614/195fa361a4d6896c0a6115026aefb041.png?size=300"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://hddhyq.github.io/2019/01/31/CircleCI%E5%AE%9E%E8%B7%B5gh-pages%E9%83%A8%E7%BD%B2/"},"headline":"CircleCI实践gh-pages部署","image":[],"datePublished":"2019-01-31T14:22:35.000Z","dateModified":"2020-03-27T08:06:33.234Z","author":{"@type":"Person","name":"hddhyq"},"description":"这里展示一下CircleCI集成与github之间联系。"}</script><link rel="alternative" href="/atom.xml" title="hddhyq&#039;s blog" type="application/atom+xml"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro|Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Microsoft YaHei:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&amp;amp;subset=latin,latin-ext|Inconsolata|Itim|Lobster.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="/css/style.css"><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="/js/globalUtils.js"></script></head><body class="is-3-column has-navbar-fixed-top"><nav class="navbar navbar-main is-fixed-top"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/message">留言</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><script type="text/javascript" src="/js/theme-setting.js"></script><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2019-01-31T14:22:35.000Z">2019-01-31</time><span class="level-item"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/CircleCI/">CircleCI</a></span><span class="level-item">24 分钟 读完 (大约 3629 个字)</span><span class="level-item" id="busuanzi_container_page_pv"><i class="far fa-eye"></i>&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CircleCI实践gh-pages部署</h1><div class="content"><p>这里展示一下CircleCI集成与github之间联系。 <a id="more"></a></p>
 <p>当你在Circle中添加一个项目时。相关的 GitHub 设置中将会使用您在注册时为CircleCI提供的权限。</p>
 <ul>
 <li><code>deloy key</code> 用来从 GitHub 中查看项目源代码。</li>
@@ -534,11 +7,11 @@
 </ul>
 <p>常见 push hooks：</p>
 <p>另外 两个钩子： * 提供PR hooks，用来储存 PR 请求。 * 如果PR钩子在forked的项目中，CircleCI将会在PRs在分支仓库创建时提交。</p>
-<p>详见 <a href="https://circleci.com/docs/2.0/workflows/#using-contexts-and-filtering-in-your-workflows" target="_blank" rel="noopener">workflows filters</a></p>
+<p>详见 <a href="https://circleci.com/docs/2.0/workflows/#using-contexts-and-filtering-in-your-workflows">workflows filters</a></p>
 <p>CircleCI在每次测试都会清理容器。你的 github 的仪表盘中也会有显示。</p>
-<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/status_check.png"></p>
+<p><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/circleci/status_check.png" /></p>
 <h1 id="使你circleci的项目能够检出私有仓库">使你CircleCI的项目能够检出私有仓库</h1>
-<p>如果你的测试过程涉及多个存储库，除了部署密钥之外，CircleCI还需要GitHub用户密钥，因为每个部署密钥仅对一个储存库有效，而GitHub用户莫要可以访问所有GitHub储存库。查看<a href="https://circleci.com/docs/2.0/add-ssh-key" target="_blank" rel="noopener">adding ssh keys</a>章节来查看更多。</p>
+<p>如果你的测试过程涉及多个存储库，除了部署密钥之外，CircleCI还需要GitHub用户密钥，因为每个部署密钥仅对一个储存库有效，而GitHub用户莫要可以访问所有GitHub储存库。查看<a href="https://circleci.com/docs/2.0/add-ssh-key">adding ssh keys</a>章节来查看更多。</p>
 <p>在 <strong>Project Settings &gt; Checkout SSH keys</strong> 页面提供给 CircleCI GitHub用户私钥。CircleCI创建和关联新的SSH密钥来访问你的所有的仓库。</p>
 <h2 id="用户密钥安全">用户密钥安全</h2>
 <p>CircleCI 绝对不会公开你的SSH密钥。</p>
@@ -546,24 +19,24 @@
 <h2 id="用户密钥访问相关错误信息">用户密钥访问相关错误信息</h2>
 <p>下面的错误表明你需要添加用户密钥</p>
 <p><strong>Python</strong>: 在 <code>pip install</code>步骤期间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ERROR: Repository not found.</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR: Repository not found.</span><br></pre></td></tr></table></figure>
 <p><strong>Ruby</strong>: 在<code>bundle install</code>步骤期间</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
 <h1 id="创建机器用户">创建机器用户</h1>
 <p>要对多个存储库进行细粒度访问，请考虑为CircleCI项目创建机器用户。一个机器用户是你为运行自动化任务而创建的GitHub用户。通过使用机器用户的SSH密钥，你可以允许任何人对仓库进行，构造，测试和部署项目。创建机器用户还可以降低丢失与单个用户关联的凭据的风险。</p>
 <p>要为机器用户使用SSH密钥，请遵循下列步骤：</p>
 <p><strong>注意</strong>: 要执行下列步骤，机器用户必须拥有管理员权限。完成项目添加后，可以将机器用户权限设为只读。</p>
 <ol type="1">
-<li>根据<a href="https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users" target="_blank" rel="noopener">instructions on GitHub</a>，创建机器用户权限。</li>
+<li>根据<a href="https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users">instructions on GitHub</a>，创建机器用户权限。</li>
 <li>作为机器用户登陆Github。</li>
-<li><a href="https://circleci.com/login" target="_blank" rel="noopener">登陆CircleCI</a>。当GitHub提醒你需要授权给CircleCI的时候，点击 <strong>Authorize application</strong> 按钮。</li>
-<li>在<a href="https://circleci.com/add-projects" target="_blank" rel="noopener">添加项目</a>, follow你希望使用机器用户访问的项目。</li>
+<li><a href="https://circleci.com/login">登陆CircleCI</a>。当GitHub提醒你需要授权给CircleCI的时候，点击 <strong>Authorize application</strong> 按钮。</li>
+<li>在<a href="https://circleci.com/add-projects">添加项目</a>, follow你希望使用机器用户访问的项目。</li>
 <li>在 <strong>Project Settings &gt; Checkout SSH keys</strong>页面，点击 <strong>Authorize With GitHub</strong> 按钮。这将给CircleCI权限作为机器用户去创造和上传SSH密钥。</li>
 <li>点击 <strong>Create and add XXXX user Key</strong> 按钮。</li>
 </ol>
 <p>现在Circle将使用机器用户的SSH密钥来使用Git命令行运行你的构建。</p>
 <h1 id="权限概述">权限概述</h1>
-<p>CircleCI要求你的版本控制系统（VCS）提供以下权限，<a href="http://developer.github.com/v3/oauth/#scopes" target="_blank" rel="noopener">GitHub permissions model</a></p>
+<p>CircleCI要求你的版本控制系统（VCS）提供以下权限，<a href="http://developer.github.com/v3/oauth/#scopes">GitHub permissions model</a></p>
 <h2 id="读权限">读权限</h2>
 <ul>
 <li>获取用户的邮件地址</li>
@@ -581,7 +54,7 @@
 <p>本节概述了可用于满足各种业务需求的团队和个人帐户选择：</p>
 <ol type="1">
 <li><p>如果单个用户拥有个人GitHub账户，他会使用它登录CircleCI然后在CircleCI里follow任务。GitHub中该存储库上的每个“协作者”也能够跟踪项目并在推送提交时构建在CircleCI上。由于GitHub储存协作者的方式，CircleCI不会显示完整的列表。有关合作者的完整列表需要参阅GitHub。</p></li>
-<li><p>如果一个个人用户升级到团队用户，他们将被允许添加用户，甚至给那些运行构建任务的合作者管理者权限。团队用户的拥有者必须到CircleCI的<a href="https://circleci.com/add-projects" target="_blank" rel="noopener">Add Project</a>，点击链接到GitHub应用权限界面，选择授权CircleCI来使组织的成员通过他们的账户follow项目。拥有两名成员的团队帐户每月25美元，而不是个人帐户每月7美元。</p></li>
+<li><p>如果一个个人用户升级到团队用户，他们将被允许添加用户，甚至给那些运行构建任务的合作者管理者权限。团队用户的拥有者必须到CircleCI的<a href="https://circleci.com/add-projects">Add Project</a>，点击链接到GitHub应用权限界面，选择授权CircleCI来使组织的成员通过他们的账户follow项目。拥有两名成员的团队帐户每月25美元，而不是个人帐户每月7美元。</p></li>
 <li><p>对于最多五人的团队，个人Bitbucket账户可免费用于私人回购。个人可以创建Bitbucket团队，添加成员并根据需要为需要构建的人员提供管理员权限。该项目将出现在CircleCI中，供会员遵循，无需额外费用。</p></li>
 </ol>
 <h2 id="如何为github组织重新启用circleci">如何为GitHub组织重新启用CircleCI</h2>
@@ -602,17 +75,17 @@
 <h2 id="什么是用户密钥">什么是用户密钥？</h2>
 <p>一个用户密钥是用户专属的SSH密钥。你的VCS拥有公钥，CircleCi存储私钥。拥有私钥能够给予你模仿用户的能力，像使用<code>git</code>访问项目。</p>
 <h2 id="创建github用户密钥">创建GitHub用户密钥</h2>
-<p>在下面的例子中，GitHub仓库是<code>https://github.com/you/test-repo</code>，你的CircleCi项目是<a href="https://circleci.com/gh/you/test-repo" target="_blank" rel="noopener">https://circleci.com/gh/you/test-repo</a>。</p>
+<p>在下面的例子中，GitHub仓库是<code>https://github.com/you/test-repo</code>，你的CircleCi项目是<a href="https://circleci.com/gh/you/test-repo">https://circleci.com/gh/you/test-repo</a>。</p>
 <ol type="1">
-<li>根据<a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">GitHub instructions</a>创建SSH密钥。当提示输入密码的时候，一定不要输入密码。</li>
+<li>根据<a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/">GitHub instructions</a>创建SSH密钥。当提示输入密码的时候，一定不要输入密码。</li>
 </ol>
 <p><strong>警告</strong>：默认情况下，ssh-keygen中的最新更新不会以PEM格式生成密钥。如果你的密钥不是以<code>-----BEGIN RSA PRIVATE KEY-----</code>开始，通过使用<code>ssh-keygen -m PEM -t rsa -C "your_email@example.com"</code>来强制生成密钥。</p>
 <ol type="1">
 <li><p>到<code>https://github.com/you/test-repo/settings/keys</code>，点击"Add deploy key"。在 Title 输入框写下标题，复制粘贴你在第一步创建的密钥，点击"Allow write access"，然后点击"Add key"。</p></li>
-<li><p>到 <a href="https://circleci.com/gh/you/test-repo/edit#ssh" target="_blank" rel="noopener">https://circleci.com/gh/you/test-repo/edit#ssh</a>，添加在上面创建的密钥到"Hostname"输入框，输入"github.com"，添加提交按钮</p></li>
+<li><p>到 <a href="https://circleci.com/gh/you/test-repo/edit#ssh">https://circleci.com/gh/you/test-repo/edit#ssh</a>，添加在上面创建的密钥到"Hostname"输入框，输入"github.com"，添加提交按钮</p></li>
 <li><p>在你的 config.yml ，添加指纹到<code>add_ssh_keys</code>。</p></li>
 </ol>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="number">2</span></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  deploy-job:</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - add_ssh_keys:</span></div><div class="line"><span class="attr">          fingerprints:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">"SO:ME:FIN:G:ER:PR:IN:T"</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">deploy-job:</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">add_ssh_keys:</span></span><br><span class="line">          <span class="attr">fingerprints:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">"SO:ME:FIN:G:ER:PR:IN:T"</span></span><br></pre></td></tr></table></figure>
 <h2 id="这些键是怎么用的">这些键是怎么用的？</h2>
 <p>当CircleCi构建你的项目的时候，私有秘钥会被创建到<code>.ssh</code>目录，随后将SSH配置为与您的版本控制提供程序进行通信。此后，私有秘钥会给用户提供下列权限：</p>
 <ul>
@@ -645,1030 +118,104 @@
 </ul>
 <h2 id="创建">创建</h2>
 <ol type="1">
-<li><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key" target="_blank" rel="noopener">运行ssh-keygen过程</a>在你的服务器上,然后通过机器用户连接公钥.</li>
+<li><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key">运行ssh-keygen过程</a>在你的服务器上,然后通过机器用户连接公钥.</li>
 <li>给及其用户你想自动化的仓库.你可以通过添加账户作为合作者,作为一个外界合作者,或者组织的一个团队.</li>
 </ol>
 <h1 id="gh-pages实践步骤">gh-pages实践步骤</h1>
 <h2 id="创建机器用户-1">1. 创建机器用户</h2>
 <p>经过上面的介绍，基本上应该知道。<code>push</code> dist 目录到相应的分支，这里需要用到<code>push</code>的权限。我们必不可少的就是需要一个用户密钥。使用用户密钥的方法就是利用新创建一个git用户，下面我创建了一个<code>hddMachine</code>的用户。然后原仓库的管理者将机器用户添加到合作者中，然后在CircleCI中生成对应的<code>fingerprints</code>，并添加到下面的yml文件。这样当我们每次<code>push</code>的时候就会调用机器用户权限来使用 git 命令。</p>
 <h2 id="git">git</h2>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="attr">version:</span> <span class="number">2</span></div><div class="line"><span class="attr">jobs:</span></div><div class="line"><span class="attr">  build:</span></div><div class="line"><span class="attr">    working_directory:</span> <span class="string">~/repo</span> <span class="comment"># directory where steps will run</span></div><div class="line"><span class="attr">    docker:</span> <span class="comment"># use the docker executor type; machine and macos executors are also supported</span></div><div class="line"><span class="attr">      - image:</span> <span class="string">circleci/node:8.10</span> <span class="comment"># the primary container, where your job's commands are run</span></div><div class="line"><span class="attr">    filters:</span></div><div class="line"><span class="attr">      branches:</span></div><div class="line"><span class="attr">        only:</span> <span class="string">master</span></div><div class="line"><span class="attr">    steps:</span></div><div class="line"><span class="attr">      - add_ssh_keys:</span></div><div class="line"><span class="attr">          fingerprints:</span> <span class="string">'41:f1:b3:2d:89:ff:f0:16:a4:eb:49:92:39:27:95:04'</span></div><div class="line"><span class="bullet">      -</span> <span class="string">checkout</span> <span class="comment"># check out the code in the project directory</span></div><div class="line"><span class="attr">      - run:</span></div><div class="line"><span class="attr">          name:</span> <span class="string">update-npm</span></div><div class="line"><span class="attr">          command:</span> <span class="string">'sudo npm install -g npm@latest'</span></div><div class="line"><span class="attr">      - restore_cache:</span> <span class="comment"># special step to restore the dependency cache</span></div><div class="line">          <span class="comment"># Read about caching dependencies: https://circleci.com/docs/2.0/caching/</span></div><div class="line"><span class="attr">          key:</span> <span class="string">dependency-cache-&#123;&#123;</span> <span class="string">checksum</span> <span class="string">"package.json"</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">      - run:</span></div><div class="line"><span class="attr">          name:</span> <span class="string">install-npm</span></div><div class="line"><span class="attr">          command:</span> <span class="string">npm</span> <span class="string">install</span></div><div class="line"><span class="attr">      - save_cache:</span> <span class="comment"># special step to save the dependency cache</span></div><div class="line"><span class="attr">          key:</span> <span class="string">dependency-cache-&#123;&#123;</span> <span class="string">checksum</span> <span class="string">"package.json"</span> <span class="string">&#125;&#125;</span></div><div class="line"><span class="attr">          paths:</span></div><div class="line"><span class="bullet">            -</span> <span class="string">./node_modules</span></div><div class="line"><span class="attr">      - run:</span> <span class="comment"># run build</span></div><div class="line"><span class="attr">          name:</span> <span class="string">build</span></div><div class="line"><span class="attr">          command:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></div><div class="line"><span class="attr">      - run:</span> <span class="comment"># git push</span></div><div class="line"><span class="attr">          name:</span> <span class="string">push-github</span></div><div class="line"><span class="attr">          command:</span> <span class="string">|</span></div><div class="line"><span class="string">            git config --global user.email "975018306@qq.com"</span></div><div class="line"><span class="string">            git config --global user.name "hddMachine"</span></div><div class="line"><span class="string">            git add -f dist</span></div><div class="line"><span class="string">            git commit -m 'create dist'</span></div><div class="line"><span class="string">            git push origin `git subtree split --prefix dist master`:gh-pages --force</span></div></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="number">2</span></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">working_directory:</span> <span class="string">~/repo</span> <span class="comment"># directory where steps will run</span></span><br><span class="line">    <span class="attr">docker:</span> <span class="comment"># use the docker executor type; machine and macos executors are also supported</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">image:</span> <span class="string">circleci/node:8.10</span> <span class="comment"># the primary container, where your job's commands are run</span></span><br><span class="line">    <span class="attr">filters:</span></span><br><span class="line">      <span class="attr">branches:</span></span><br><span class="line">        <span class="attr">only:</span> <span class="string">master</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">add_ssh_keys:</span></span><br><span class="line">          <span class="attr">fingerprints:</span> <span class="string">'41:f1:b3:2d:89:ff:f0:16:a4:eb:49:92:39:27:95:04'</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">checkout</span> <span class="comment"># check out the code in the project directory</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">update-npm</span></span><br><span class="line">          <span class="attr">command:</span> <span class="string">'sudo npm install -g npm@latest'</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">restore_cache:</span> <span class="comment"># special step to restore the dependency cache</span></span><br><span class="line">          <span class="comment"># Read about caching dependencies: https://circleci.com/docs/2.0/caching/</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">dependency-cache-&#123;&#123;</span> <span class="string">checksum</span> <span class="string">"package.json"</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">install-npm</span></span><br><span class="line">          <span class="attr">command:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">save_cache:</span> <span class="comment"># special step to save the dependency cache</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">dependency-cache-&#123;&#123;</span> <span class="string">checksum</span> <span class="string">"package.json"</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">paths:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">./node_modules</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="comment"># run build</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">build</span></span><br><span class="line">          <span class="attr">command:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">run:</span> <span class="comment"># git push</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">push-github</span></span><br><span class="line">          <span class="attr">command:</span> <span class="string">|</span></span><br><span class="line">            <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">"975018306@qq.com"</span></span><br><span class="line">            <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">"hddMachine"</span></span><br><span class="line">            <span class="string">git</span> <span class="string">add</span> <span class="string">-f</span> <span class="string">dist</span></span><br><span class="line">            <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">'create dist'</span></span><br><span class="line">            <span class="string">git</span> <span class="string">push</span> <span class="string">origin</span> <span class="string">`git</span> <span class="string">subtree</span> <span class="string">split</span> <span class="string">--prefix</span> <span class="string">dist</span> <span class="string">master`:gh-pages</span> <span class="string">--force</span></span><br></pre></td></tr></table></figure>
 <h1 id="参考">参考</h1>
 <ul>
 <li>https://circleci.com/docs/2.0/configuration-reference/#add_ssh_keys</li>
 <li>https://circleci.com/docs/2.0/language-javascript/</li>
 <li>https://github.com/CircleCI-Public/circleci-demo-javascript-express/blob/master/.circleci/config.yml</li>
-<li><a href="https://stackoverflow.com/questions/13756055/git-subtree-subtree-up-to-date-but-cant-push" target="_blank" rel="noopener">git-subtree-cant-push</a></li>
-<li><a href="https://circleci.com/docs/2.0/gh-bb-integration/?tdsourcetag=s_pctim_aiomsg" target="_blank" rel="noopener">GitHub和Bitbucket使用CircleCI</a></li>
+<li><a href="https://stackoverflow.com/questions/13756055/git-subtree-subtree-up-to-date-but-cant-push">git-subtree-cant-push</a></li>
+<li><a href="https://circleci.com/docs/2.0/gh-bb-integration/?tdsourcetag=s_pctim_aiomsg">GitHub和Bitbucket使用CircleCI</a></li>
 </ul>
-
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/自动化/" rel="tag"># 自动化</a>
-          
-            <a href="/tags/git/" rel="tag"># git</a>
-          
-            <a href="/tags/GitHub/" rel="tag"># GitHub</a>
-          
-            <a href="/tags/CircleCI/" rel="tag"># CircleCI</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/01/25/CircleCI简单概念/" rel="next" title="CircleCI简单概念">
-                <i class="fa fa-chevron-left"></i> CircleCI简单概念
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/30/webpack基础-1/" rel="prev" title="webpack基础(一)：为什么选择Webpack">
-                webpack基础(一)：为什么选择Webpack <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-  </div>
-
-
-          </div>
-          
-
-  
-    <div class="comments" id="comments">
-    </div>
-
-  
-
-
-
-        </div>
+</div><div class="article-tags size-small is-uppercase mb-4"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted mr-2" rel="tag" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a><a class="link-muted mr-2" rel="tag" href="/tags/git/">git</a><a class="link-muted mr-2" rel="tag" href="/tags/GitHub/">GitHub</a><a class="link-muted mr-2" rel="tag" href="/tags/CircleCI/">CircleCI</a><p class="text-right font1_1"><time datetime="2020-03-27T08:06:33.234Z"><strong><em> 本文最后修改于: 2020-03-27.</em></strong></time></p></div><ul class="post-copyright"><li><strong>本文标题：</strong><a href="https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/">CircleCI实践gh-pages部署</a></li><li><strong>本文作者：</strong><a href="https://hddhyq.github.io">hddhyq</a></li><li><strong>本文链接：</strong><a href="https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/">https://hddhyq.github.io/2019/01/31/CircleCI实践gh-pages部署/</a></li><li><strong>版权声明：</strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li></ul><div><div class="recommend-post"><span class="is-size-6 has-text-grey has-mr-7"># 相关文章</span><br><span>  1.<a class="is-size-6" href="/2019/01/25/CircleCI%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5/" target="_blank">CircleCI简单概念</a><br></span></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><div class="social-share"></div><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2019/03/30/webpack%E5%9F%BA%E7%A1%80-1/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">webpack基础(一)：为什么选择Webpack</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2019/01/25/CircleCI%E7%AE%80%E5%8D%95%E6%A6%82%E5%BF%B5/"><span class="level-item">CircleCI简单概念</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread' ,
+            notify: true,
+            verify: true,
+            appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
+            appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
+            placeholder: '留下你的回复吧~',
+            avatar: 'mm',
+            avatarForce: false,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            visitor: true,
+            highlight: true,
+            recordIP: false
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1 is-sticky"><div class="card widget toc-scroll" id="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="is-flex" id="toc-item-使你circleci的项目能够检出私有仓库" href="#使你circleci的项目能够检出私有仓库"><span>使你CircleCI的项目能够检出私有仓库</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-用户密钥安全" href="#用户密钥安全"><span>用户密钥安全</span></a></li><li><a class="is-flex" id="toc-item-用户密钥访问相关错误信息" href="#用户密钥访问相关错误信息"><span>用户密钥访问相关错误信息</span></a></li></ul></li><li><a class="is-flex" id="toc-item-创建机器用户" href="#创建机器用户"><span>创建机器用户</span></a></li><li><a class="is-flex" id="toc-item-权限概述" href="#权限概述"><span>权限概述</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-读权限" href="#读权限"><span>读权限</span></a></li><li><a class="is-flex" id="toc-item-写权限" href="#写权限"><span>写权限</span></a></li><li><a class="is-flex" id="toc-item-团队账户权限" href="#团队账户权限"><span>团队账户权限</span></a></li><li><a class="is-flex" id="toc-item-如何为github组织重新启用circleci" href="#如何为github组织重新启用circleci"><span>如何为GitHub组织重新启用CircleCI</span></a></li></ul></li><li><a class="is-flex" id="toc-item-部署密钥和用户密钥" href="#部署密钥和用户密钥"><span>部署密钥和用户密钥</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-什么是部署密钥" href="#什么是部署密钥"><span>什么是部署密钥？</span></a></li><li><a class="is-flex" id="toc-item-什么是用户密钥" href="#什么是用户密钥"><span>什么是用户密钥？</span></a></li><li><a class="is-flex" id="toc-item-创建github用户密钥" href="#创建github用户密钥"><span>创建GitHub用户密钥</span></a></li><li><a class="is-flex" id="toc-item-这些键是怎么用的" href="#这些键是怎么用的"><span>这些键是怎么用的？</span></a></li><li><a class="is-flex" id="toc-item-关于安全因素" href="#关于安全因素"><span>关于安全因素？</span></a></li><li><a class="is-flex" id="toc-item-部署密钥和用户密钥的区别" href="#部署密钥和用户密钥的区别"><span>部署密钥和用户密钥的区别？</span></a></li></ul></li><li><a class="is-flex" id="toc-item-关于github机器用户" href="#关于github机器用户"><span>关于GitHub机器用户</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-pros" href="#pros"><span>Pros</span></a></li><li><a class="is-flex" id="toc-item-cons" href="#cons"><span>Cons</span></a></li><li><a class="is-flex" id="toc-item-创建" href="#创建"><span>创建</span></a></li></ul></li><li><a class="is-flex" id="toc-item-gh-pages实践步骤" href="#gh-pages实践步骤"><span>gh-pages实践步骤</span></a><ul class="menu-list"><li><a class="is-flex" id="toc-item-创建机器用户-1" href="#创建机器用户-1"><span>1. 创建机器用户</span></a></li><li><a class="is-flex" id="toc-item-git" href="#git"><span>git</span></a></li></ul></li><li><a class="is-flex" id="toc-item-参考" href="#参考"><span>参考</span></a></li></ul></div></div><script type="text/javascript" async>
+        $(document).ready(function () { //参考自 https://github.com/ppoffice/hexo-theme-icarus/pull/616/files
+            var observerTopMargin;
+            var scrollObserver;
+            var headerElems = $(".headerlink");
+            var activeTocItem;
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="https://s.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?size=496&default=retro"
-                alt="hddhyq"/>
-            
-              <p class="site-author-name" itemprop="name">hddhyq</p>
-              <div class="site-description motion-element" itemprop="description">落花人独立，微雨燕双飞</div>
-          </div>
-
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">46</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">26</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">53</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-              <div class="links-of-blogroll motion-element links-of-blogroll-block">
-                <div class="links-of-blogroll-title">
-                  <!-- modify icon to fire by szw -->
-                  <i class="fa fa-history fa-" aria-hidden="true"></i>
-                  近期文章
-                </div>
-                <ul class="links-of-blogroll-list">
-                  
-                  
-                    <li>
-                      <a href="/2020/03/24/构建简易网页浏览器/" title="构建简易网页浏览器" target="_blank">构建简易网页浏览器</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2020/02/06/抽象系统的多重表示/" title="抽象系统的多重表示" target="_blank">抽象系统的多重表示</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/11/18/你所需要了解的CSS变量知识点/" title="你所需要了解的CSS变量知识点" target="_blank">你所需要了解的CSS变量知识点</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/19/JavaScript异步处理1/" title="JavaScript异步处理(一)：Parallel VS Async && Callbacks" target="_blank">JavaScript异步处理(一)：Parallel VS Async && Callbacks</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/18/webpack基础4/" title="webpack 基础(四)： 简单配置" target="_blank">webpack 基础(四)： 简单配置</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/07/Webpack基础3/" title="webpack 基础(三)： 核心概念" target="_blank">webpack 基础(三)： 核心概念</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/04/03/webpack基础2/" title="webpack基础(二):认识Webpack" target="_blank">webpack基础(二):认识Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/03/30/webpack基础-1/" title="webpack基础(一)：为什么选择Webpack" target="_blank">webpack基础(一)：为什么选择Webpack</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/31/CircleCI实践gh-pages部署/" title="CircleCI实践gh-pages部署" target="_blank">CircleCI实践gh-pages部署</a>
-                    </li>
-                  
-                    <li>
-                      <a href="/2019/01/25/CircleCI简单概念/" title="CircleCI简单概念" target="_blank">CircleCI简单概念</a>
-                    </li>
-                  
-                </ul>
-              </div>
-          
-
-          
-
-        
-         
-            <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="https://github.com/hddhyq" title="GitHub &rarr; https://github.com/hddhyq" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  
-                  
-                    
-                  
-                  
-                    
-                  
-                  <a href="mailto:brokenbonesdd@gmail.com" title="E-Mail &rarr; mailto:brokenbonesdd@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            </div>
-          
-
-          
-            
-          
-          
-
-        </div>
-      </div>
-
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使你circleci的项目能够检出私有仓库"><span class="nav-number">1.</span> <span class="nav-text">使你CircleCI的项目能够检出私有仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户密钥安全"><span class="nav-number">1.1.</span> <span class="nav-text">用户密钥安全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户密钥访问相关错误信息"><span class="nav-number">1.2.</span> <span class="nav-text">用户密钥访问相关错误信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建机器用户"><span class="nav-number">2.</span> <span class="nav-text">创建机器用户</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#权限概述"><span class="nav-number">3.</span> <span class="nav-text">权限概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#读权限"><span class="nav-number">3.1.</span> <span class="nav-text">读权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#写权限"><span class="nav-number">3.2.</span> <span class="nav-text">写权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#团队账户权限"><span class="nav-number">3.3.</span> <span class="nav-text">团队账户权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何为github组织重新启用circleci"><span class="nav-number">3.4.</span> <span class="nav-text">如何为GitHub组织重新启用CircleCI</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署密钥和用户密钥"><span class="nav-number">4.</span> <span class="nav-text">部署密钥和用户密钥</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是部署密钥"><span class="nav-number">4.1.</span> <span class="nav-text">什么是部署密钥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是用户密钥"><span class="nav-number">4.2.</span> <span class="nav-text">什么是用户密钥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建github用户密钥"><span class="nav-number">4.3.</span> <span class="nav-text">创建GitHub用户密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这些键是怎么用的"><span class="nav-number">4.4.</span> <span class="nav-text">这些键是怎么用的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于安全因素"><span class="nav-number">4.5.</span> <span class="nav-text">关于安全因素？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#部署密钥和用户密钥的区别"><span class="nav-number">4.6.</span> <span class="nav-text">部署密钥和用户密钥的区别？</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关于github机器用户"><span class="nav-number">5.</span> <span class="nav-text">关于GitHub机器用户</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pros"><span class="nav-number">5.1.</span> <span class="nav-text">Pros</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cons"><span class="nav-number">5.2.</span> <span class="nav-text">Cons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建"><span class="nav-number">5.3.</span> <span class="nav-text">创建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#gh-pages实践步骤"><span class="nav-number">6.</span> <span class="nav-text">gh-pages实践步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建机器用户-1"><span class="nav-number">6.1.</span> <span class="nav-text">1. 创建机器用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git"><span class="nav-number">6.2.</span> <span class="nav-text">git</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-  
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2020</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">hddhyq</span>
-
-  
-
-  
-</div>
-
-
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a></div>
-
-
-
-
-        
-
-
-
-
-
-
-  <div style="display: none;">
-    <script src="//s95.cnzz.com/z_stat.php?id=1276849494&web_id=1276849494"></script>
-  </div>
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-    
-
-    
-  </div>
-
-  
-
-<script>
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
-
-  
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
-
-  
-  
-
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
-
-
-
-  
-  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
-<script src="/js/src/post-details.js?v=7.0.1"></script>
-
-
-
-  
-
-
-  <script src="/js/src/next-boot.js?v=7.0.1"></script>
-
-
-  
-
-  
-
-  
-
-  
-  
-
-<script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script>
-
-
-
-<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-<script>
-  var GUEST = ['nick', 'mail', 'link'];
-  var guest = 'nick,mail,link';
-  guest = guest.split(',').filter(function(item) {
-    return GUEST.indexOf(item) > -1;
-  });
-  new Valine({
-    el: '#comments',
-    verify: false,
-    notify: true,
-    appId: 'UgVUkMddHzRxMrj1KInT5vta-gzGzoHsz',
-    appKey: 'p3BnWTb2v9kVUwGIiVp0moRm',
-    placeholder: '留下你的回复吧',
-    avatar: 'mm',
-    meta: guest,
-    pageSize: '10' || 10,
-    visitor: true,
-    lang: 'zh-cn' || 'zh-cn'
-  });
-</script>
-
-
-
-
-  
-
-
-  
-  <script>
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
+            function initIntersectionObserver(docHeight) {
+                observerTopMargin = docHeight;
+                scrollObserver = new IntersectionObserver(scrollCallBack,
+                    {
+                        root: null,  // viewpoint
+                        rootMargin: docHeight + "px 0px -80% 0px"  // cover top 30% of viewport to the top of document
+                    })
             }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
+        
+            function scrollCallBack(entries, observer) {
+                if ($(window).scrollTop() > observerTopMargin * 0.7) { 
+                    // User somehow scroll to 70% of observerTopMargin (which is inited as 200% document height)
+                    // Observer top margin need to extend to cover all the space to the top of the document
+                    initIntersectionObserver(observerTopMargin * 2)
+                    observer.disconnect();
+                    return;
                 }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
+                let toActive;
+                if (entries[0].intersectionRatio == 1) {  // enter viewed area
+                    let entry = entries.reduce((u, v) => (u.target.toc_id > v.target.toc_id ? u : v));  // get the lowest item
+                    toActive = $("#toc-item-" + $(entry.target).attr("href").substr(1));
                 } else {
-                  return resultRight.id - resultLeft.id;
+                    let entry = entries.reduce((u, v) => (u.target.toc_id < v.target.toc_id ? u : v));  // get the highest item
+                    let idx = Math.max(entry.target.toc_id - 1, 0);
+                    toActive = $("#toc-item-" + $(headerElems[idx]).attr("href").substr(1));
                 }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
+                if (activeTocItem) activeTocItem.removeClass("is-current");
+                activeTocItem = toActive
+                activeTocItem.addClass("is-current");
             }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
+        
+            initIntersectionObserver($(document).height() * 2);
+            headerElems.each(function (index, obj) {
+                obj.toc_id = index;
+                scrollObserver.observe(obj);
+            })
+        });</script></div><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="is-rounded" src="https://www.gravatar.com/avatar/6dd1668d5e30a1368a1c35d9511b237b?s=128" alt="hddhyq"></figure><p class="title is-size-4 is-block line-height-inherit">hddhyq</p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives"><p class="title">46</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories"><p class="title">26</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags"><p class="title">53</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/hddhyq" target="_blank" rel="noopener">关注我</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/hddhyq"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="Email" href="mailto:brokenbonesdd@gmail.com"><i class="fa fa-envelope"></i></a><a class="level-item button is-transparent is-white is-marginless" target="_blank" rel="noopener" title="RSS" href="/atom.xml"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content size-small"><p><time dateTime="2020-03-24T09:30:16.000Z">2020-03-24</time></p><p class="title is-6"><a class="link-muted" href="/2020/03/24/%E6%9E%84%E5%BB%BA%E7%AE%80%E6%98%93%E7%BD%91%E9%A1%B5%E6%B5%8F%E8%A7%88%E5%99%A8/">构建简易网页浏览器</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Browser/">Browser</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2020-02-06T11:48:22.000Z">2020-02-06</time></p><p class="title is-6"><a class="link-muted" href="/2020/02/06/%E6%8A%BD%E8%B1%A1%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%A4%9A%E9%87%8D%E8%A1%A8%E7%A4%BA/">抽象系统的多重表示</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/sicp/">sicp</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-11-18T15:29:10.000Z">2019-11-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/11/18/%E4%BD%A0%E6%89%80%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84CSS%E5%8F%98%E9%87%8F%E7%9F%A5%E8%AF%86%E7%82%B9/">你所需要了解的CSS变量知识点</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/CSS/">CSS</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-19T15:03:11.000Z">2019-04-19</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/19/JavaScript%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%861/">JavaScript异步处理(一)：Parallel VS Async &amp;&amp; Callbacks</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/asynchronous/">asynchronous</a></p></div></article><article class="media"><div class="media-content size-small"><p><time dateTime="2019-04-18T14:46:08.000Z">2019-04-18</time></p><p class="title is-6"><a class="link-muted" href="/2019/04/18/webpack%E5%9F%BA%E7%A1%804/">webpack 基础(四)： 简单配置</a></p><p class="is-uppercase"><i class="fas fa-folder-open has-text-grey"> </i><a class="link-muted" href="/categories/Webpack/">Webpack</a></p></div></article></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">分类</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Browser/"><span class="level-start"><span class="level-item">Browser</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CSS/"><span class="level-start"><span class="level-item">CSS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/CircleCI/"><span class="level-start"><span class="level-item">CircleCI</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTML%E5%9F%BA%E7%A1%80/"><span class="level-start"><span class="level-item">HTML基础</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/HTTPS/"><span class="level-start"><span class="level-item">HTTPS</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JS/"><span class="level-start"><span class="level-item">JS</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/JStricks/"><span class="level-start"><span class="level-item">JStricks</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Puppeteer/"><span class="level-start"><span class="level-item">Puppeteer</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Webpack/"><span class="level-start"><span class="level-item">Webpack</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/asynchronous/"><span class="level-start"><span class="level-item">asynchronous</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/categories/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/archives/2020/03/"><span class="level-start"><span class="level-item">三月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2020/02/"><span class="level-start"><span class="level-item">二月 2020</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/11/"><span class="level-start"><span class="level-item">十一月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/04/"><span class="level-start"><span class="level-item">四月 2019</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile is-marginless" href="/archives/2019/03/"><span class="level-start"><span class="level-item">三月 2019</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><a class="level is-mobile is-marginless" href="/archives/"><span class="level-start"><span class="level-item">查看全部&gt;&gt;</span></span></a></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">标签</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/CSS/"><span class="tag">CSS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/node/"><span class="tag">node</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/JS/"><span class="tag">JS</span><span class="tag is-grey-lightest">6</span></a></div><div class="control"><a class="tags has-addons" href="/tags/css/"><span class="tag">css</span><span class="tag is-grey-lightest">5</span></a></div><div class="control"><a class="tags has-addons" href="/tags/foundation/"><span class="tag">foundation</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Webpack/"><span class="tag">Webpack</span><span class="tag is-grey-lightest">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><span class="tag">设计模式</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84JS/"><span class="tag">你不知道的JS</span><span class="tag is-grey-lightest">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mongodb/"><span class="tag">mongodb</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CircleCI/"><span class="tag">CircleCI</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/html5/"><span class="tag">html5</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/express/"><span class="tag">express</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"><span class="tag">自动化</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tag">算法</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/sicp/"><span class="tag">sicp</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Puppeteer/"><span class="tag">Puppeteer</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Web%E6%80%A7%E8%83%BD/"><span class="tag">Web性能</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/async/"><span class="tag">async</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/babel/"><span class="tag">babel</span><span class="tag is-grey-lightest">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bug/"><span class="tag">bug</span><span class="tag is-grey-lightest">1</span></a></div></div><div class="field is-grouped is-grouped-multiline"><a class="tags has-addons" href="/tags/"><span class="tag">查看全部&gt;&gt;</span></a></div></div></div></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://images-1253206717.cos.ap-guangzhou.myqcloud.com/blog/logo.png" alt="hddhyq&#039;s blog" height="28"></a><p class="size-small"><span>&copy; 2020 hddhyq</span>  Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a> <br>© 版权说明：[本网站所有内容均收集于互联网或自己创作,<br>    方便于网友与自己学习交流，如有侵权，请<a href="/message" target="_blank">留言</a>，立即处理]<br><div class="size-small"><span id="busuanzi_container_site_uv">❤️感谢<strong> <span id="busuanzi_value_site_uv">99+</span> </strong></span>小伙伴的<strong> <span id="busuanzi_value_site_pv">99+</span> </strong>次光临，查看💐</div></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'https://hddhyq.github.io',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back-to-top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.12/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" defer></script><script>document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
             });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-
-  
-
-  
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-  
-
-  
-
-  
-
-  
-  
-  
-  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
-  <script>pangu.spacingPage();</script>
-
-
-  
-
-  
-
-  
-
-  
-
-</body>
-</html>
+        });</script><!--!--><script src="/js/main.js" defer></script><script src="/js/comment-issue-data.js" defer></script><link rel="stylesheet" href="/css/insight.css"><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"></div></div></div></div><script>(function (window) {
+            var INSIGHT_CONFIG = {
+                TRANSLATION: {
+                    POSTS: '文章',
+                    PAGES: '页面',
+                    CATEGORIES: '分类',
+                    TAGS: '标签',
+                    UNTITLED: '(无标题)',
+                },
+                CONTENT_URL: '/content.json',
+            };
+            window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+        })(window);</script><script src="/js/insight.js" defer></script></body></html>

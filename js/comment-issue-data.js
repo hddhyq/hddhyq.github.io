@@ -10,7 +10,7 @@ var reqCommentCountUrl = repoIssuesUrl + "?t=" + new Date().getTime() + "&labels
 var COMMENT_CACHE_KEY = "commentKey";
 
 // 管理员名称,评论时添加 [博主] 后缀
-var ADMIN_NAME = "removeif";
+var ADMIN_NAME = "hddhyq";
 
 function ajaxReqForGitHub(url, call) {
     $.ajax({

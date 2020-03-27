@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hddhyq.github.io/about/index.html</loc>
+    
+    <lastmod>2020-03-27T15:03:16.392Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hddhyq.github.io/2018/01/08/%25E3%2580%258AWeb%25E6%2580%25A7%25E8%2583%25BD%25E6%259D%2583%25E5%25A8%2581%25E6%258C%2587%25E5%258D%2597%25E3%2580%258B%25E8%25AF%25BB%25E4%25B9%25A6%25E6%2580%25BB%25E7%25BB%2593/</loc>
     
     <lastmod>2020-03-27T08:06:33.236Z</lastmod>
@@ -12,6 +19,13 @@
     <loc>https://hddhyq.github.io/2020/03/24/%25E6%259E%2584%25E5%25BB%25BA%25E7%25AE%2580%25E6%2598%2593%25E7%25BD%2591%25E9%25A1%25B5%25E6%25B5%258F%25E8%25A7%2588%25E5%2599%25A8/</loc>
     
     <lastmod>2020-03-27T08:06:33.236Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2018/06/12/%25E5%2585%25B3%25E4%25BA%258E%25E4%25B9%258B%25E5%2589%258D%25E7%259C%258B%25E7%259C%258B%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259Bcss/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.235Z</lastmod>
     
   </url>
   
@@ -30,14 +44,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/06/12/%25E5%2585%25B3%25E4%25BA%258E%25E4%25B9%258B%25E5%2589%258D%25E7%259C%258B%25E7%259C%258B%25E7%259A%2584%25E4%25B8%2580%25E4%25BA%259Bcss/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.235Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hddhyq.github.io/2017/10/29/mongodb%25E7%2594%25A8%25E6%25B3%2595%25E5%2588%259D%25E8%25AF%2586/</loc>
+    <loc>https://hddhyq.github.io/2018/10/02/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E5%25B1%2582%25E5%258F%25A0%25E8%25A7%2584%25E5%2588%2599/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -51,7 +58,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/10/01/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E5%2586%2585%25E8%2581%2594%25E5%2585%2583%25E7%25B4%25A0-%25E6%25B5%2581%25E7%259A%2584%25E7%25A0%25B4%25E5%259D%258F/</loc>
+    <loc>https://hddhyq.github.io/2018/09/27/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E7%259B%2592%25E5%25AD%2590%25E6%25A8%25A1%25E5%259E%258B/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -72,28 +79,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/09/27/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E7%259B%2592%25E5%25AD%2590%25E6%25A8%25A1%25E5%259E%258B/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hddhyq.github.io/2018/07/28/canvas%25E4%25B8%258Esvg%25E7%259A%2584%25E7%25AE%2580%25E5%258D%2595%25E4%25BA%2586%25E8%25A7%25A3%25E5%258F%258A%25E5%25BA%2594%25E7%2594%25A8/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hddhyq.github.io/2018/01/05/css%25E6%258F%25AD%25E7%25A7%2598%25E6%2580%25BB%25E7%25BB%2593%25E5%259B%259B/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hddhyq.github.io/2017/11/12/express%25E5%2590%258E%25E7%25BB%25AD%25E7%25AF%2587/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -107,6 +93,13 @@
   </url>
   
   <url>
+    <loc>https://hddhyq.github.io/2017/11/12/express%25E5%2590%258E%25E7%25BB%25AD%25E7%25AF%2587/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hddhyq.github.io/2017/11/20/headless-chrome-Puppeteer-%25E6%2597%25A0%25E5%25A4%25B4or%25E6%2597%25A0%25E7%2595%258C%25E9%259D%25A2/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
@@ -114,14 +107,28 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2019/01/25/CircleCI%25E7%25AE%2580%25E5%258D%2595%25E6%25A6%2582%25E5%25BF%25B5/</loc>
+    <loc>https://hddhyq.github.io/2017/11/02/mongoose%25E5%25B8%25B8%25E7%2594%25A8%25E7%2594%25A8%25E6%25B3%2595/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2017/11/02/mongoose%25E5%25B8%25B8%25E7%2594%25A8%25E7%2594%25A8%25E6%25B3%2595/</loc>
+    <loc>https://hddhyq.github.io/2017/10/29/mongodb%25E7%2594%25A8%25E6%25B3%2595%25E5%2588%259D%25E8%25AF%2586/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2018/12/08/Levenshtein-distance-%25E7%25BC%2596%25E8%25BE%2591%25E8%25B7%259D%25E7%25A6%25BB%25E7%25AE%2597%25E6%25B3%2595/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2019/01/31/CircleCI%25E5%25AE%259E%25E8%25B7%25B5gh-pages%25E9%2583%25A8%25E7%25BD%25B2/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -142,7 +149,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2019/01/31/CircleCI%25E5%25AE%259E%25E8%25B7%25B5gh-pages%25E9%2583%25A8%25E7%25BD%25B2/</loc>
+    <loc>https://hddhyq.github.io/2018/05/14/%25E4%25BD%25A0%25E4%25B8%258D%25E7%259F%25A5%25E9%2581%2593%25E7%259A%2584JS-this%25E5%2592%258C%25E5%258E%259F%25E5%259E%258B%25E5%25AF%25B9%25E8%25B1%25A1/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -156,21 +163,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/05/14/%25E4%25BD%25A0%25E4%25B8%258D%25E7%259F%25A5%25E9%2581%2593%25E7%259A%2584JS-this%25E5%2592%258C%25E5%258E%259F%25E5%259E%258B%25E5%25AF%25B9%25E8%25B1%25A1/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hddhyq.github.io/2018/02/05/%25E4%25BD%25A0%25E4%25B8%258D%25E7%259F%25A5%25E9%2581%2593%25E7%259A%2584JS%25E6%2580%25BB%25E7%25BB%2593-%25E4%25BD%259C%25E7%2594%25A8%25E5%259F%259F%25E5%2592%258C%25E9%2597%25AD%25E5%258C%2585-%25E4%25BA%258C/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hddhyq.github.io/2019/04/19/JavaScript%25E5%25BC%2582%25E6%25AD%25A5%25E5%25A4%2584%25E7%2590%25861/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -184,7 +177,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/12/08/Levenshtein-distance-%25E7%25BC%2596%25E8%25BE%2591%25E8%25B7%259D%25E7%25A6%25BB%25E7%25AE%2597%25E6%25B3%2595/</loc>
+    <loc>https://hddhyq.github.io/2019/04/19/JavaScript%25E5%25BC%2582%25E6%25AD%25A5%25E5%25A4%2584%25E7%2590%25861/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -192,6 +185,20 @@
   
   <url>
     <loc>https://hddhyq.github.io/2017/10/22/babel%25E4%25BD%25BF%25E7%2594%25A8/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2018/10/01/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E5%2586%2585%25E8%2581%2594%25E5%2585%2583%25E7%25B4%25A0-%25E6%25B5%2581%25E7%259A%2584%25E7%25A0%25B4%25E5%259D%258F/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2018/07/28/canvas%25E4%25B8%258Esvg%25E7%259A%2584%25E7%25AE%2580%25E5%258D%2595%25E4%25BA%2586%25E8%25A7%25A3%25E5%258F%258A%25E5%25BA%2594%25E7%2594%25A8/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
     
@@ -212,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/10/02/css%25E4%25B8%2596%25E7%2595%258C%25E4%25B9%258B%25E5%25B1%2582%25E5%258F%25A0%25E8%25A7%2584%25E5%2588%2599/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hddhyq.github.io/2020/02/06/%25E6%258A%25BD%25E8%25B1%25A1%25E7%25B3%25BB%25E7%25BB%259F%25E7%259A%2584%25E5%25A4%259A%25E9%2587%258D%25E8%25A1%25A8%25E7%25A4%25BA/</loc>
     
     <lastmod>2020-03-27T08:06:33.234Z</lastmod>
@@ -233,7 +233,14 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/05/02/JavaScript%25E8%25AE%25BE%25E8%25AE%25A1%25E6%25A8%25A1%25E5%25BC%258F%25E4%25B8%258E%25E5%25BC%2580%25E5%258F%2591%25E5%25AE%259E%25E8%25B7%25B5%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589/</loc>
+    <loc>https://hddhyq.github.io/2019/01/25/CircleCI%25E7%25AE%2580%25E5%258D%2595%25E6%25A6%2582%25E5%25BF%25B5/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.234Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2019/04/07/Webpack%25E5%259F%25BA%25E7%25A1%25803/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
     
@@ -247,7 +254,14 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2017/11/06/socket.io%25E7%25AE%2580%25E6%2598%2593%25E7%2594%25A8%25E6%25B3%2595/</loc>
+    <loc>https://hddhyq.github.io/2018/02/23/JS%25E4%25B8%25AD%25E6%258E%2592%25E5%25BA%258F%25E5%2592%258C%25E6%2590%259C%25E7%25B4%25A2%25E7%25AE%2597%25E6%25B3%2595/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.233Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2017/10/12/vue-music%25E7%259B%25AE%25E5%25BD%2595%25E5%258F%258A%25E6%25A0%25B7%25E5%25BC%258F%25E5%2588%259D%25E5%25A7%258B%25E5%258C%2596/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
     
@@ -261,21 +275,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2017/12/10/HTTP%25E8%25AF%2586%25E5%2588%25AB%25E3%2580%2581%25E8%25AE%25A4%25E8%25AF%2581%25E4%25B8%258E%25E5%25AE%2589%25E5%2585%25A8-https/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.233Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://hddhyq.github.io/2018/07/12/touch%25E4%25BA%258B%25E4%25BB%25B6-mouse%25E4%25BA%258B%25E4%25BB%25B6-PC%25E7%25AB%25AF-%25E7%25A7%25BB%25E5%258A%25A8%25E7%25AB%25AF%25E6%2580%25BB%25E7%25BB%2593/</loc>
-    
-    <lastmod>2020-03-27T08:06:33.233Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://hddhyq.github.io/2017/10/12/vue-music%25E7%259B%25AE%25E5%25BD%2595%25E5%258F%258A%25E6%25A0%25B7%25E5%25BC%258F%25E5%2588%259D%25E5%25A7%258B%25E5%258C%2596/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
     
@@ -296,7 +296,7 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2017/12/27/wepy%25E5%25BC%2580%25E5%258F%2591%25E5%25BE%25AE%25E4%25BF%25A1%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E6%2580%25BB%25E7%25BB%2593/</loc>
+    <loc>https://hddhyq.github.io/2018/05/02/JavaScript%25E8%25AE%25BE%25E8%25AE%25A1%25E6%25A8%25A1%25E5%25BC%258F%25E4%25B8%258E%25E5%25BC%2580%25E5%258F%2591%25E5%25AE%259E%25E8%25B7%25B5%25EF%25BC%2588%25E4%25B8%2580%25EF%25BC%2589/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
     
@@ -310,16 +310,30 @@
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2019/04/07/Webpack%25E5%259F%25BA%25E7%25A1%25803/</loc>
+    <loc>https://hddhyq.github.io/2017/12/10/HTTP%25E8%25AF%2586%25E5%2588%25AB%25E3%2580%2581%25E8%25AE%25A4%25E8%25AF%2581%25E4%25B8%258E%25E5%25AE%2589%25E5%2585%25A8-https/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://hddhyq.github.io/2018/02/23/JS%25E4%25B8%25AD%25E6%258E%2592%25E5%25BA%258F%25E5%2592%258C%25E6%2590%259C%25E7%25B4%25A2%25E7%25AE%2597%25E6%25B3%2595/</loc>
+    <loc>https://hddhyq.github.io/2017/12/27/wepy%25E5%25BC%2580%25E5%258F%2591%25E5%25BE%25AE%25E4%25BF%25A1%25E5%25B0%258F%25E7%25A8%258B%25E5%25BA%258F%25E6%2580%25BB%25E7%25BB%2593/</loc>
     
     <lastmod>2020-03-27T08:06:33.233Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/2017/11/06/socket.io%25E7%25AE%2580%25E6%2598%2593%25E7%2594%25A8%25E6%25B3%2595/</loc>
+    
+    <lastmod>2020-03-27T08:06:33.233Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hddhyq.github.io/message/index.html</loc>
+    
+    <lastmod>2020-03-25T19:23:40.000Z</lastmod>
     
   </url>
   
